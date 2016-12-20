@@ -21,7 +21,7 @@
 #about {
 	margin-top:2em;
 	padding-left:2em;
-	font-size:24px;
+	font-size:2em;
 	font-family:'PT Sans Narrow',sans-serif;
 	color:black;
 }
@@ -56,7 +56,7 @@ header{
 
 h3{
 	font-family:'PT Sans Narrow',sans-serif;
-	font-size:36px;
+	font-size:3em;
 }
 
 hr{
@@ -73,22 +73,22 @@ ul {
 
 
 .size1{
-	font-size:48px;
+	font-size:4em;
 	padding-left:20px;
 }
 	
 .size2{
 	padding-left:24px;
-	font-size:20px;
+	font-size:1.5em;
 }
 
 .size3{
-	font-size:18px;
+	font-size:1.5em;
 	font-family:'PT Sans Narrow',sans-serif;
 }
 	
 .link{
-	font-size:28px;
+	font-size:2.5em;
 	text-align: right ;
 	list-style:none;
 }
@@ -102,14 +102,14 @@ ul {
 }
 
 .circlelink{
-	font-size:36px;
+	font-size:3em;
 	color:white;
 	font-family:'PT Sans Narrow',sans-serif;
 }
 
 .bannertxt{
 	color:white;
-	font-size:48px;
+	font-size:4em;
 	vertical-align:middle;
 	margin-top:50px;
 	margin-bottom:60px;
