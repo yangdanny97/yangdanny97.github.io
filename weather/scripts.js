@@ -21,7 +21,7 @@ $(document).ready(function(){
 	
 	function updatepage(){
 		$.getJSON(cityurl,function(json){
-			var source=json.current_observation.icon_url;
+			var source=json.current_observation.icon_url.replace("http","https");			
 			temperaturec = json.current_observation.temp_c;
 			temperaturef = json.current_observation.temp_f;		
 			$('#icon').attr("src",source);
@@ -37,7 +37,7 @@ $(document).ready(function(){
     
 	function updateForecast(json,day,num){
 		$(day).html("<img id='icon' width='75px' src="+
-					json.forecast.txt_forecast.forecastday[num].icon_url+" alt='weather icon'></img><p>"+json.forecast.txt_forecast.forecastday[num].title+'</p>');
+					json.forecast.txt_forecast.forecastday[num].icon_url.replace("http","https")+" alt='weather icon'></img><p>"+json.forecast.txt_forecast.forecastday[num].title+'</p>');
 	}
                                            
 	$("#change").click(function(){
