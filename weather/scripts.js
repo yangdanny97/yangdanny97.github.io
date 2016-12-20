@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	var Geo=getLocation();
-	var cityurl='http://api.wunderground.com/api/2160d9c4250d3691/forecast/geolookup/conditions/q/';
+	var cityurl='https://api.wunderground.com/api/2160d9c4250d3691/forecast/geolookup/conditions/q/';
 	
 	function getLocation() {
     	if (navigator.geolocation) {
