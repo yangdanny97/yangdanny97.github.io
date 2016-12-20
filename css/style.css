@@ -1,0 +1,152 @@
+#profile {
+	display: table-cell;
+	margin-left: auto;
+	margin-right: auto;
+	width:200px;
+	background-color:white;
+	padding:3px;
+	margin-top: 1.5em;
+}
+
+#profilesml {
+	display: table-cell;
+	margin-left: auto;
+	margin-right: auto;
+	width:250px;
+	background-color:white;
+	padding:3px;
+	margin-top: 1.5em;
+}
+
+#about {
+	margin-top:2em;
+	padding-left:2em;
+	font-size:24px;
+	font-family:'PT Sans Narrow',sans-serif;
+	color:black;
+}
+
+#projects{
+	margin-top:2em;
+}
+
+
+#sidebar{
+	background-color:navy;
+	color:white;
+	height:100%;
+	position: fixed;
+	font-family:'PT Sans Narrow',sans-serif;
+}
+	
+#content{
+	background-color:white;
+	position:absolute;
+	right:0px;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+header{
+	position:relative;
+	background-color:navy;
+}
+
+h3{
+	font-family:'PT Sans Narrow',sans-serif;
+	font-size:36px;
+}
+
+hr{
+	color:gray;
+	border-color:gray;
+	border-width:1px;
+}
+
+ul {
+  margin-top:2em;
+  list-style-type: none;
+      -webkit-padding-start: 0px;
+}
+
+
+.size1{
+	font-size:48px;
+	padding-left:20px;
+}
+	
+.size2{
+	padding-left:24px;
+	font-size:20px;
+}
+
+.size3{
+	font-size:18px;
+	font-family:'PT Sans Narrow',sans-serif;
+}
+	
+.link{
+	font-size:28px;
+	text-align: right ;
+	list-style:none;
+}
+
+.white{
+	color:white;
+}
+
+.center{
+	text-align:center;
+}
+
+.circlelink{
+	font-size:36px;
+	color:white;
+	font-family:'PT Sans Narrow',sans-serif;
+}
+
+.bannertxt{
+	color:white;
+	font-size:48px;
+	vertical-align:middle;
+	margin-top:50px;
+	margin-bottom:60px;
+	font-family:'PT Sans Narrow',sans-serif;
+}
+		
+.left{
+	text-align:left;
+}
+
+.right{
+	text-align:right;
+}
+
+.circle {
+	background-color:white;
+	border-color:navy;
+	border-style:solid;
+	border-width:5px;
+	border-radius:50%;
+    display:inline-block;
+    line-height:200px;
+	width:200px;
+	height:200px;
+	vertical-align:middle;
+    text-align:center;
+	position:relative;
+	margin-top:50px;
+}
+
+.circlesml {
+	display:inline-block;
+    line-height:80px;
+}
+
+@media screen and (max-width: 992px) {
+	#sidebar{
+		position: inherit;
+	}
+}

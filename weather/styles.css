@@ -1,0 +1,20 @@
+body{
+  background-color: #87ceeb;
+}
+
+#weather{
+  text-align:center;
+}
+
+#temp{
+	font-size:24px;
+}
+
+#display{
+	font-size:24px;
+}
+
+.container{
+	margin-top:50px;
+  
+}

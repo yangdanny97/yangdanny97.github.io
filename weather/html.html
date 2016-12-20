@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Weather Forecast</title>
+
+    <!-- Bootstrap -->
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link href="styles.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!--2160d9c4250d3691-->
+<div class='row'>
+	<div class='col-md-3'></div>
+	<div class='container well col-md-6 text-center'>
+		<h1 class='text-center'>Local Weather</h1>
+		<div id='weather' class='row'>
+			<div class='col-md-3'></div>
+			<div class='col-md-6' style='text-align-center'>
+				<p id='display'></p>
+				<p><img id='icon' width='100px' alt='weather icon'></img></p>
+			</div>
+			<div class='col-md-3'></div>
+		</div>
+		<div id='temperature' class='row'>   
+			<div class='col-md-2'></div>
+			<div id='temp' class='col-md-4' style='text-align:right'></div>
+			<div class='col-md-3' style="text-align:left">
+				<button id='change' class='btn btn-lg btn-primary btn-block'>Fahrenheit</button>
+			</div>
+			<div class='col-md-3'></div>
+		</div>
+		<h1 class='text-center'>Three Day Forecast</h1>
+		<div id='forecast' class='row text-center'>
+			<div class='col-md-3'></div>
+			<div id='day1' class='col-md-2 text-center'></div>
+			<div id='day2' class='col-md-2 text-center'></div>
+			<div id='day3' class='col-md-2 text-center'></div>
+		</div>
+	<p class='text-center'>Weather data from Weather Underground API</p>
+	<div style='margin-left:25%' class='text-center'><img src='https://www.wunderground.com/logos/images/wundergroundLogo_4c_horz.jpg' width='400px'></img></div>
+	</div>
+	</div>
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="scripts.js"></script>
+  </body>
+</html>
