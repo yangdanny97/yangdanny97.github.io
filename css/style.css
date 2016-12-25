@@ -8,25 +8,13 @@
 	margin-top: 1.5em;
 }
 
-#profilesml {
-	display: table-cell;
-	margin-left: auto;
-	margin-right: auto;
-	width:250px;
-	background-color:white;
-	padding:3px;
-	margin-top: 1.5em;
-}
-
 #about {
-	margin-top:2em;
-	padding-left:2em;
+	padding-left:1em;
 	font-size:2em;
-	font-family:'PT Sans Narrow',sans-serif;
-	color:black;
+	font-family:'Quicksand';
 }
 
-#projects{
+.well{
 	margin-top:2em;
 }
 
@@ -41,15 +29,16 @@
 	color:white;
 	height:100%;
 	position: fixed;
-	font-family:'PT Sans Narrow',sans-serif;
+	font-family:'Quicksand';
 	padding-right: 0;
 }
-	
+
 #content{
 	background-color:white;
 	position:absolute;
 	right:0px;
 }
+
 a{
 	color:#b31b1b;
 }
@@ -58,10 +47,14 @@ a:hover {
 	text-decoration: none;
 }
 
+h1{
+	margin-top:1em;
+}
 
-h3{
-	font-family:'PT Sans Narrow',sans-serif;
+h4{
+	font-family:'Quicksand';
 	font-size:3em;
+	margin-top:1em
 }
 
 hr{
@@ -70,27 +63,21 @@ hr{
 	border-width:1px;
 }
 
-
-
-
-
-
 .size1{
 	font-size:4em;
 }
-	
+
 .size2{
-	font-size:1.5em;
+	font-size:2em;
 }
 
 .size3{
 	font-size:1.5em;
-	font-family:'PT Sans Narrow',sans-serif;
+	font-family:'Quicksand';
 }
-	
+
 .link{
-	font-size:2.5em;
-	text-align: right ;
+	font-size:3em;
 	list-style:none;
 }
 
@@ -100,45 +87,6 @@ hr{
 
 .center{
 	text-align:center;
-}
-
-.circlelink{
-	font-size:3em;
-	color:white;
-	font-family:'PT Sans Narrow',sans-serif;
-}
-
-.bannertxt{
-	color:white;
-	font-size:4em;
-	vertical-align:middle;
-	margin-top:50px;
-	margin-bottom:60px;
-	font-family:'PT Sans Narrow',sans-serif;
-}
-		
-.left{
-	text-align:left;
-}
-
-.right{
-	text-align:right;
-}
-
-.circle {
-	background-color:white;
-	border-color:#222222;
-	border-style:solid;
-	border-width:5px;
-	border-radius:50%;
-    display:inline-block;
-    line-height:200px;
-	width:200px;
-	height:200px;
-	vertical-align:middle;
-    text-align:center;
-	position:relative;
-	margin-top:50px;
 }
 
 .circlesml {
