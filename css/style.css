@@ -11,7 +11,6 @@
 #about {
 	padding-left:1em;
 	font-size:2em;
-	font-family:'Quicksand';
 }
 
 .well{
@@ -20,8 +19,8 @@
 
 .sidebarlink{
 	margin-top:2em;
-    list-style-type: none;
-    -webkit-padding-start: 0px;
+  list-style: none;
+	padding-right:2em;
 }
 
 #sidebar{
@@ -29,8 +28,7 @@
 	color:white;
 	height:100%;
 	position: fixed;
-	font-family:'Quicksand';
-	padding-right: 0;
+	padding-right: 1em;
 }
 
 #content{
@@ -52,7 +50,6 @@ h1{
 }
 
 h4{
-	font-family:'Quicksand';
 	font-size:3em;
 	margin-top:1em
 }
@@ -63,6 +60,9 @@ hr{
 	border-width:1px;
 }
 
+body{
+	font-family:'Quicksand';
+}
 .size1{
 	font-size:4em;
 }
@@ -73,7 +73,6 @@ hr{
 
 .size3{
 	font-size:1.5em;
-	font-family:'Quicksand';
 }
 
 .link{

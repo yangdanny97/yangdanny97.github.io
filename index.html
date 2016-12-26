@@ -12,6 +12,7 @@
 </head>
 
 <body>
+  <div id='top'></div>
     <div class='row'>
         <div id='sidebar' class='col-md-3' link='white'>
             <h1 class='size1 text-center'>Danny Yang</h1>
@@ -19,8 +20,8 @@
             <h2 class='size2 text-center'>Cornell University</h2>
             <img id='profile' class='img-circle' src='images/profile.jpg' alt='cannot display'>
             <ul class='text-center sidebarlink'>
-                <li><a id='about-btn' class='white link text-center' href='#about'>About Me</a></li>
-                <li><a id='projects-btn' class='white link text-center' href='#projects'>Projects</a></li>
+                <li><a id='about-btn' class='white link' href='#about'>About Me</a></li>
+                <li><a id='projects-btn' class='white link' href='#projects'>Projects</a></li>
             </ul>
             <div id='icons' class='row text-center'>
                 <div class='col-xs-2 col-xs-offset-2'>
@@ -57,7 +58,7 @@
             <div id='projects' class='well'>
                 <h4 class='link'>Selected Projects</h4><hr>
                 <h4><a href='https://devpost.com/software/fun-with-foursquare' target='_blank'>
-			 FunSquare <img src='images/funsquare.png' width='50px' alt='Funsquare Logo'></a></h4>
+			 FunSquare <img src='images/funsquare.png' width='50px' alt='Funsquare Logo'/></a></h4>
                 <ul>
                     <li class='size3'>an AR app utilizing FourSquare API and geolocation (see DevPost for more details)</li>
                     <li class='size3'>won first place overall at HackNY Fall 2016</li>
@@ -68,9 +69,11 @@
                     <li class='size3'>Used actual voting results from California AD06 Primary Elections in June 2016</li>
                     <li class='size3'>Results used to optimize campaign's outreach operation before successful November 2016 general election campaign</li>
                 </ul>
-                <h4><a href='https://github.com/yangdanny97/markov' target='_blank'>Markov Text Generator (python)</a></h4>
+                <h4><a href='https://github.com/yangdanny97/markov' target='_blank'>Markov Text Generator <img src='images/python.png' width='50px' alt='Python'/></a></h4>
+                <h4><a href='https://github.com/yangdanny97/linkscraper' target='_blank'>Web Scraper <img src='images/python.png' width='50px' alt='Python'/></a></h4>
                 <h4>Front End Web Development/Javascript</h4>
                 <ul>
+                    <li><a class='size3' href='https://yangdanny97.github.io'>This website</a></li>
                     <li><a class='size3' href='https://yangdanny97.github.io/wikisearch/'>Wikipedia Searcher (Wikpedia API)</a></li>
                     <li><a class='size3' href='https://yangdanny97.github.io/localweatherforecast/'>Local Weather and Forecast (Geolocation and Weather Underground API)</a></li>
                 </ul>
@@ -90,7 +93,7 @@
     <script>
         $('#about-btn').click(function() {
             $('html, body').animate({
-                scrollTop: $("#about").offset().top
+                scrollTop: $("#top").offset().top
             }, 600)
         });
 
