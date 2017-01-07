@@ -10,7 +10,7 @@
 
 #about {
 	padding-left:1em;
-	font-size:2em;
+	font-size:4vh;
 }
 
 .well{
@@ -50,8 +50,7 @@ h1{
 }
 
 h4{
-	font-size:3em;
-	margin-top:1em
+	font-size:6vh;
 }
 
 hr{
@@ -73,11 +72,11 @@ body{
 }
 
 .size2{
-	font-size:2em;
+	font-size:5vh;
 }
 
 .size3{
-	font-size:1.5em;
+	font-size:3vh;
 }
 
 .link{
@@ -101,6 +100,9 @@ body{
 @media screen and (max-width: 992px) {
 	#sidebar{
 		position: inherit;
+	}
+	#content{
+		width:100%;
 	}
 }
 
