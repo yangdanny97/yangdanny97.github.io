@@ -8,9 +8,9 @@
 	margin-top: 1.5em;
 }
 
-#about {
+.about {
 	padding-left:1em;
-	font-size:4vh;
+	font-size:3vh;
 }
 
 .well{
@@ -72,7 +72,7 @@ body{
 }
 
 .size2{
-	font-size:5vh;
+	font-size:4vh;
 }
 
 .size3{
