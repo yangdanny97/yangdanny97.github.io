@@ -5,7 +5,7 @@ header{
 body{
 	font-family: "Quicksand";
 	width:100%;
-	overflow:hidden;
+	overflow-x:hidden;
 }
 
 footer{
@@ -122,6 +122,11 @@ float:left;
 
 	p, li{
 		font-size: 3vh;
+	}
+
+	.row{
+		margin-left:5vh;
+		margin-right:5vh;
 	}
 
 	.title{
