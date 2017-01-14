@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="author" content="Danny Yang">
+    <meta name="description" content="Personal Website of Danny Yang, Cornell University Computer Science Major">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Danny Yang</title>
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
@@ -12,56 +14,58 @@
 </head>
 
 <body>
-  <div id='top'></div>
-    <div class='row'>
-        <div id='sidebar' class='col-md-3' link='white'>
-            <h1 class='size1 text-center'>Danny Yang</h1>
-            <h2 class='sidebar-text text-center'>Computer Science</h2>
-            <h2 class='sidebar-text text-center'>Cornell University</h2>
-            <img id='profile' class='img-circle' src='images/profile.jpg' alt='cannot display'>
-            <ul class='text-center sidebarlink'>
-                <li><a id='about-btn' class='white link' href='#about'>About Me</a></li>
-                <li><a id='projects-btn' class='white link' href='#projects'>Projects</a></li>
-            </ul>
-            <div id='icons' class='row text-center'>
-                <div class='col-xs-2 col-xs-offset-2'>
-                    <a class='circlesml' href='https://www.linkedin.com/in/yangdanny97' target='_blank'><img src='images/linkedin.svg' width='20px' alt='LinkedIn'></a>
-                </div>
-                <div class='col-xs-2'>
-                    <a class='circlesml' href='https://github.com/yangdanny97' target='_blank'><img src='images/github.svg' width='20px' alt='GitHub'></a>
-                </div>
-                <div class='col-xs-2'>
-                    <a class='circlesml' href='mailto:dzy4@cornell.edu' target='_blank'><img src='images/email.png' width='20px' alt='Email'></a>
-                </div>
-                <div class='col-xs-2'>
-                    <a class='circlesml' href='https://devpost.com/dzy4' target='_blank'><img id='svg' src='images/devpost.png' width='20px' alt='DevPost'></a>
-                </div>
-            </div>
-
+  <nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class = "nav navbar-nav">
+              <li><a class='navicon' href='https://github.com/yangdanny97' target='_blank'><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class='navicon' href='https://www.linkedin.com/in/yangdanny97' target='_blank'><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                <a class='navicon' href='mailto:dzy4@cornell.edu' target='_blank'><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+                <a class='navicon' href='https://devpost.com/dzy4' target='_blank'><img src='images/devpost.png' width=24px/></a>
+              </li>
+          </ul>
+         <ul class="nav navbar-nav navbar-right text-center">
+           <li><a id='about-btn' href='#about'>About Me</a></li>
+           <li><a id='projects-btn' href='#projects'>Projects</a></li>
+         </ul>
+       </div>
+   </div>
+</nav>
 
-        <div id='content' class='col-md-9'>
-          <div class='well'>
-            <h4>Introduction</h4><hr>
-            <div id='about' class='about'>
-                <p>Hi, my name is Danny Yang and I am a freshman studying computer science at Cornell University. </p>
-                <p>Besides technical skills, I have good written and verbal communication skills and have experience with project management,
-                    scientific research, and CAD software.</p>
-                <p>Outside of class, I enjoy biking, farmer's markets, renaissance fairs, road trips, and Hackathons.</p>
-                <p>In the near future, I hope to gain practical experience in software and web development through an internship, and learn about data analysis and visualization through my coursework.</p>
-            </div><hr>
+    <div id='about-marker' class="parallax-1">
+      <div class='title-container row'>
+        <div class='col-md-4 text-center'>
+          <img class='profile-image' src='images/profile.jpg'/>
+        </div>
+        <div class='col-md-8'><h1 class='title'>Danny Yang</h1></div>
+      </div>
+    </div>
+
+    <div id='about' class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+            <hr><div class='text-center'><h3>About me</h3></div><hr>
+            <p>Hi, my name is Danny Yang and I am a freshman studying computer science at Cornell University. </p>
+            <br><p>When I was a child, I loved to solve problems and build things, from making weekend projects in my garage to fixing and improving things around the house.</p>
+            <br><p>Fast forward to college, and I'm still doing what I love- my weekend projects have transformed into coding projects, and my affinity for fixing things has been applied to debugging and optimizing code.</p>
+            <br><p>Besides CS, I enjoy learning about design and history, and keeping up with current events. In between schoolwork and side projects, I enjoy spending going to farmer's markets, renaissance fairs, museums, and Hackathons.</p>
+            <br><p>Below is a summary of my skills and coursework including the current semester, as well as some selected projects (the rest can be found on my Github).</p>
+            <hr>
             <h4>Technical Skills</h4>
-            <div class='about'>
-              <ul>
+            <ul>
                 <li class='size3'>Python</li>
                 <li class='size3'>Java</li>
                 <li class='size3'>HTML/CSS/Javascript</li>
                 <li class='size3'>Boostrap, jQuery, AngularJS</li>
-              </ul>
-            </div>
+            </ul>
             <h4>Relevant Courses</h4>
-            <div class='about'>
-              <ul>
+            <ul>
                 <li class='size3'>CS 1110 Intro to Computing with Python (2016)</li>
                 <li class='size3'>ENGRI 1101 Intro to Operations Research (2016)</li>
                 <li class='size3'>CS 2110 Obj Oriented Programming and Data Structures (2017)</li>
@@ -69,75 +73,50 @@
                 <li class='size3'>CS 3300 Data Driven Web Applications (2017)</li>
                 <li class='size3'>CS 2800 Discrete Structures(2017)</li>
                 <li class='size3'>BTRY 3080 Probability Models and Inference (2017)</li>
-              </ul>
-            </div>
-          </div>
-            <div id='projects' class='well'>
-                <h4>Selected Projects (check out my Github for more!)</h4><hr>
-                <h4><a href='https://devpost.com/software/fun-with-foursquare' target='_blank'>
-			 FunSquare <img src='images/funsquare.png' width='50px' alt='Funsquare Logo'/></a></h4>
-                <ul>
-                    <li class='size3'>an AR app utilizing FourSquare API and geolocation (see DevPost for more details)</li>
-                    <li class='size3'>won first place overall at HackNY Fall 2016</li>
-                </ul>
-                <h4>Python <img src='images/python.png' width='50px' alt='Python'/></h4>
-                <ul>
-                    <li><a class='size3' href='https://github.com/yangdanny97/linkscraper' target='_blank'>Links Scraper</a></li>
-                    <li><a class='size3' href='https://github.com/yangdanny97/markov' target='_blank'>Markov Text Generator</a></li>
-                    <li><a class='size3' href='https://github.com/yangdanny97/greedy-python' target='_blank'>Greedy Algorithm Implementations for Traveling Salesman, Shortest Path, and Minimum Spanning Tree</a></li>
-                </ul>
-                <h4>Front End Web Development and Javascript</h4>
-                <ul>
-                    <li><a class='size3' href='https://www.folsomchineseschool.org/'>Folsom Chinese School Website</a></li>
-                    <li><a class='size3' href='https://yangdanny97.github.io/wikisearch/'>Wikipedia Searcher (Wikipedia API)</a></li>
-                    <li><a class='size3' href='https://yangdanny97.github.io/localweatherforecast/'>Local Weather and Forecast (Geolocation and Weather Underground API)</a></li>
-                    <li><a class='size3' href='https://yangdanny97.github.io/translate/'>Text Translation (AngularJS, Yandex Translate API)</a></li>
-                </ul>
-                <h4><a href='http://www.kileyforassembly.com/intern_report' target='_blank'>Voting Data Analysis Project</a></h4>
-                <ul>
-                    <li class='size3'>Analyzed the effectiveness of precinct walking on voter turnout (spreadsheet modeling, data visualization, and significance tests)</li>
-                    <li class='size3'>Used actual voting results from California AD06 Primary Elections in June 2016</li>
-                    <li class='size3'>Results used to optimize campaign's outreach operation before successful November 2016 general election campaign</li>
-                </ul>
-                <hr>
-                <div class='size3'>
-                    <p>I'm currently learning: AngularJS, backend web development</p>
-                    <p>In the future I want to learn about: databases, analyzing/visualizing datasets, big data</p>
-                </div>
-            </div>
-            <div class='text-center'>Made by Danny Yang &#169 2017</div><hr>
-
+            </ul>
+            <hr>
         </div>
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script>
-        $('#about-btn').click(function() {
-            $('html, body').animate({
-                scrollTop: $("#top").offset().top
-            }, 600)
-        });
-
-        $('#projects-btn').click(function() {
-            $('html, body').animate({
-                scrollTop: $("#projects").offset().top
-            }, 600)
-        });
-
-        $('#resume-btn').click(function() {
-            $('html, body').animate({
-                scrollTop: $("#resume").offset().top
-            }, 600)
-        });
-    </script>
-
-
+    <div id='projects-marker' class="text-center parallax-2 filter"></div>
+    <div id='projects' class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+            <hr><div class='text-center'><h3>Selected Projects</h3></div><hr>
+            <h4><a href='https://devpost.com/software/fun-with-foursquare' target='_blank'>FunSquare <img src='images/funsquare.png' width='50px' alt='Funsquare Logo'/></a></h4>
+            <ul>
+                <li>Android app built with FourSquare API and Wikitude</li>
+                <li>Uses AR to display icons pointing to nearby locations that are trending on Foursquare</li>
+                <li>Won first place overall at HackNY Fall 2016</li>
+            </ul>
+            <br><h4>Python <img src='images/python.png' width='50px' alt='Python'/></h4>
+            <ul>
+                <li><a href='https://github.com/yangdanny97/linkscraper' target='_blank'>Links Scraper</a></li>
+                <li><a href='https://github.com/yangdanny97/markov' target='_blank'>Markov Text Generator</a></li>
+                <li><a href='https://github.com/yangdanny97/greedy-python' target='_blank'>Greedy Algorithm Implementations for Traveling Salesman, Shortest Path, and Minimum Spanning Tree</a></li>
+            </ul>
+            <br><h4>HTML/CSS/Javascript</h4>
+            <ul>
+                <li><a href='https://github.com/xiaoxuwu/FCS-Website/'>Folsom Chinese School Website</a></li>
+                <li><a href='https://yangdanny97.github.io/wikisearch/'>Wikipedia Searcher (Wikipedia API)</a></li>
+                <li><a href='https://yangdanny97.github.io/localweatherforecast/'>Local Weather and Forecast (Geolocation and Weather Underground API)</a></li>
+                <li><a href='https://yangdanny97.github.io/translate/'>Text Translation (AngularJS, Yandex Translate API)</a></li>
+            </ul>
+            <br><h4><a href='http://www.kileyforassembly.com/intern_report' target='_blank'>Voting Data Analysis</a></h4>
+            <ul>
+                <li>Analyzed the effectiveness of precinct walking on voter turnout (spreadsheet modeling, data visualization, and significance tests)</li>
+                <li>Used actual voting results from California AD06 Primary Elections in June 2016</li>
+                <li>Results used to optimize campaign's outreach operation before successful November 2016 general election campaign</li>
+            </ul>
+            <hr>
+            <p>I'm currently learning: AngularJS, backend web development</p>
+            <p>In the future I want to learn about: databases, analyzing/visualizing datasets, big data</p>
+        </div>
+    </div>
+    <hr>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src='js/scripts.js'></script>
+    <script src="https://use.fontawesome.com/feacc1e8b4.js"></script>
 </body>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-
-
-</body>
+<footer class='text-center'>Made by Danny Yang &#169 2017</footer>
 
 </html>

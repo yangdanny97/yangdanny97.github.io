@@ -1,125 +1,147 @@
-#profile {
-	display: table-cell;
-	margin-left: auto;
-	margin-right: auto;
-	width:200px;
-	background-color:white;
-	padding:3px;
-	margin-top: 1.5em;
+header{
+	font-family: "Quicksand";
 }
 
-.about {
-	padding-left:1em;
-	font-size:3vh;
+body{
+	font-family: "Quicksand";
 }
 
-.well{
-	margin-top:2em;
+footer{
+	font-family: "Quicksand";
 }
 
-.sidebarlink{
-	margin-top:2em;
-  list-style: none;
-	padding-right:2em;
-}
-
-#sidebar{
-	background-color:#b31b1b;
-	color:white;
-	height:100%;
-	position: fixed;
-	padding-right: 1em;
-}
-
-#content{
-	background-color:white;
-	position:absolute;
-	right:0px;
-}
-
-a{
-	color:#b31b1b;
-}
-a:hover {
-	color:#EF9A9A;
-	text-decoration: none;
+p, li{
+	font-size: 1.5em;
 }
 
 h1{
-	margin-top:3vh;
+	font-size:5em;
+	color:white;
+	background-color:#b31b1b;
+	padding:0.25em;
+	margin-top:15vh;
+}
+
+h3{
+	font-size:3em;
 }
 
 h4{
-	font-size:6vh;
+	font-size: 2.5em;
 }
 
 hr{
 	color:gray;
-	border-color:gray;
+	border-color:#b31b1b;
 	border-width:1px;
 }
 
-body{
-	font-family:'Quicksand';
-}
-
-.sidebar-text{
-	font-size:4vh;
-}
-
-.size1{
-	font-size:8vh;
-}
-
-.size2{
-	font-size:4vh;
-}
-
-.size3{
-	font-size:3vh;
-}
-
-.link{
-	font-size:5vh;
-	list-style:none;
-}
-
-.white{
+i{
 	color:white;
 }
 
-.center{
-	text-align:center;
+a{
+	color:black;
 }
 
-.circlesml {
-	display:inline-block;
-    line-height:80px;
+a:hover {
+	color:#b31b1b;
+	text-decoration: none;
+}
+
+.navbar{
+	background-color:#b31b1b;
+}
+
+.nav.navbar-nav li a{
+	color:white;
+}
+
+.nav.navbar-nav li a:hover,i:hover{
+	color:#EF9A9A;
+}
+
+.navicon
+{
+display: inline-block;
+float:left;
+}
+
+.parallax-1 {
+    background-image: url("../images/cornell_library.jpg");
+    height: 80vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+		overflow-y:hidden;
+}
+
+.parallax-2 {
+    background-image: url("../images/cornell_library.jpg");
+    height: 20vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+		overflow-y:hidden;
+}
+
+.filter{
+	-webkit-filter: blur(2px);
+	-moz-filter: blur(2px);
+	-o-filter: blur(2px);
+	-ms-filter: blur(2px);
+	filter: blur(2px);
+}
+
+.title-container{
+	width:80%;
+	height:40vh;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top:20vh;
+}
+
+.profile-image{
+	width:250px;
+	border:solid;
+	border-radius:50%;
+	border-width:3px;
+	border-color:#444;
 }
 
 @media screen and (max-width: 992px) {
-	#sidebar{
-		position: inherit;
-	}
-	#content{
-		width:100%;
-	}
-}
-
-@media screen and (max-height: 500px) {
-	#profile{
-		display: none;
+	h4{
+		font-size: 6vh;
 	}
 
-	.sidebar-text{
-		font-size:8vh;
+
+
+	p, li{
+		font-size: 4vh;
 	}
 
-	.size1{
-		font-size:8vh;
-	}
-
-	.link{
+	.title{
+		padding-top:6vh;
 		font-size:6vh;
+	}
+
+	.row{
+		padding-left:10vw;
+		padding-right:10vw;
+	}
+	.nav.navbar-nav li{
+		text-align:right;
+	}
+	.navicon{
+		float:right;
+	}
+
+	.title-container{
+		height:40vh;
+		margin-left:0px;
+		margin-right:0px;
+		margin-top:20vh;
 	}
 }
