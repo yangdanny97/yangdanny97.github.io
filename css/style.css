@@ -4,6 +4,8 @@ header{
 
 body{
 	font-family: "Quicksand";
+	width:100%;
+	overflow:hidden;
 }
 
 footer{
