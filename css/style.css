@@ -146,6 +146,7 @@ float:left;
 	}
 
 	.parallax-1 {
+			background-image:none;
 	    background-color: white;
 	    height: 80vh;
 	    background-attachment: fixed;
@@ -156,7 +157,8 @@ float:left;
 	}
 
 	.parallax-2 {
-	    background-color:white;
+			background-image:none;
+	    background-color:#b31b1b;
 	    height: 20vh;
 	    background-attachment: fixed;
 	    background-position: center;
