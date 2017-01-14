@@ -74,7 +74,7 @@ float:left;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-		overflow-y:hidden;
+		overflow:hidden;
 }
 
 .parallax-2 {
@@ -84,7 +84,7 @@ float:left;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-		overflow-y:hidden;
+		overflow:hidden;
 }
 
 .filter{
