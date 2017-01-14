@@ -144,4 +144,24 @@ float:left;
 		margin-right:0px;
 		margin-top:20vh;
 	}
+
+	.parallax-1 {
+	    background-color: white;
+	    height: 80vh;
+	    background-attachment: fixed;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+			overflow:hidden;
+	}
+
+	.parallax-2 {
+	    background-color:white;
+	    height: 20vh;
+	    background-attachment: fixed;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+			overflow:hidden;
+	}
 }
