@@ -113,6 +113,7 @@ float:left;
 	border-radius:50%;
 	border-width:3px;
 	border-color:#444;
+	margin-left:5vh;
 }
 
 @media screen and (max-width: 992px) {
