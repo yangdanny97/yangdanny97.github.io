@@ -70,6 +70,7 @@ float:left;
 .parallax-1 {
     background-image: url("../images/cornell_library.jpg");
     height: 80vh;
+		width:100%
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -80,6 +81,7 @@ float:left;
 .parallax-2 {
     background-image: url("../images/cornell_library.jpg");
     height: 20vh;
+		width:100%
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -116,10 +118,8 @@ float:left;
 		font-size: 6vh;
 	}
 
-
-
 	p, li{
-		font-size: 4vh;
+		font-size: 3vh;
 	}
 
 	.title{
@@ -145,25 +145,4 @@ float:left;
 		margin-top:20vh;
 	}
 
-	.parallax-1 {
-			background-image:none;
-	    background-color: white;
-	    height: 80vh;
-	    background-attachment: fixed;
-	    background-position: center;
-	    background-repeat: no-repeat;
-	    background-size: cover;
-			overflow:hidden;
-	}
-
-	.parallax-2 {
-			background-image:none;
-	    background-color:#b31b1b;
-	    height: 20vh;
-	    background-attachment: fixed;
-	    background-position: center;
-	    background-repeat: no-repeat;
-	    background-size: cover;
-			overflow:hidden;
-	}
 }
