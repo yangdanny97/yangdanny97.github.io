@@ -6,6 +6,7 @@ body{
 	font-family: "Quicksand";
 	width:100%;
 	overflow-x:hidden;
+	padding-top:50px;
 }
 
 footer{
@@ -19,9 +20,7 @@ p, li{
 h1{
 	font-size:5em;
 	color:white;
-	background-color:#b31b1b;
 	padding:0.25em;
-	margin-top:15vh;
 }
 
 h3{
@@ -34,7 +33,8 @@ h4{
 
 hr{
 	color:gray;
-	border-color:#b31b1b;
+	border-color:#1A237E;
+	background: #1A237E;
 	border-width:1px;
 }
 
@@ -47,12 +47,16 @@ a{
 }
 
 a:hover {
-	color:#b31b1b;
+	color:#1A237E;
 	text-decoration: none;
 }
 
 .navbar{
-	background-color:#b31b1b;
+	background: #4DD0E1;
+	background: -webkit-linear-gradient(left, #4DD0E1 , #1A237E);
+	background: -o-linear-gradient(right, #4DD0E1, #1A237E);
+	background: -moz-linear-gradient(right, #4DD0E1, #1A237E);
+	background: linear-gradient(to right, #4DD0E1 , #1A237E);
 }
 
 .nav.navbar-nav li a{
@@ -60,7 +64,7 @@ a:hover {
 }
 
 .nav.navbar-nav li a:hover,i:hover{
-	color:#EF9A9A;
+	color:#1A237E;
 }
 
 .navicon
@@ -69,9 +73,13 @@ display: inline-block;
 float:left;
 }
 
-.parallax-1 {
-    background-image: url("../images/cornell_library.jpg");
-    height: 80vh;
+.background-1 {
+	background: #4DD0E1;
+	background: -webkit-linear-gradient(left top, #84FFFF , #1A237E);
+	background: -o-linear-gradient(left top, #84FFFF, #1A237E);
+	background: -moz-linear-gradient(left top, #84FFFF, #1A237E);
+	background: linear-gradient(to bottom right, #84FFFF , #1A237E);
+    height:100vh;
 		width:100%;
     background-attachment: fixed;
     background-position: center;
@@ -80,8 +88,12 @@ float:left;
 		overflow:hidden;
 }
 
-.parallax-2 {
-    background-image: url("../images/cornell_library.jpg");
+.background-2 {
+	background: #4DD0E1;
+	background: -webkit-linear-gradient(left, #4DD0E1 , #1A237E);
+	background: -o-linear-gradient(right, #4DD0E1, #1A237E);
+	background: -moz-linear-gradient(right, #4DD0E1, #1A237E);
+	background: linear-gradient(to right, #4DD0E1 , #1A237E);
     height: 20vh;
 		width:100%;
     background-attachment: fixed;
@@ -91,30 +103,24 @@ float:left;
 		overflow:hidden;
 }
 
-.filter{
-	-webkit-filter: blur(2px);
-	-moz-filter: blur(2px);
-	-o-filter: blur(2px);
-	-ms-filter: blur(2px);
-	filter: blur(2px);
-}
-
-.title-container{
-	width:80%;
-	height:40vh;
-	margin-left: 10%;
-	margin-right: 10%;
-	margin-top:20vh;
-}
-
 .profile-image{
 	width:250px;
 	border:solid;
 	border-radius:50%;
 	border-width:3px;
-	border-color:#444;
-	margin-left:5vh;
+	margin-top:10vh;
+	border-color:#1A237E;
 }
+
+.title{
+	display:inline-block
+}
+
+.title-container{
+	width:100vw;
+}
+
+
 
 @media screen and (max-width: 992px) {
 	h4{
@@ -140,13 +146,6 @@ float:left;
 	}
 	.navicon{
 		float:right;
-	}
-
-	.title-container{
-		height:40vh;
-		margin-left:0px;
-		margin-right:0px;
-		margin-top:20vh;
 	}
 
 }

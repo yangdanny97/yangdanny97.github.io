@@ -39,54 +39,63 @@
        </div>
    </div>
 </nav>
-
-    <div id='about-marker' class="parallax-1">
-      <div class='title-container row'>
-        <div class='col-md-4 text-center'>
+      <div class='title-container background-1'>
+        <div class='text-center'>
           <img class='profile-image' src='images/profile.jpg'/>
+          <div>
+          <h1 class='title'>Danny Yang</h1>
         </div>
-        <div class='col-md-8'><h1 class='title'>Danny Yang</h1></div>
+        </div>
       </div>
-    </div>
 
-    <div id='about' class='row'>
+    <div id='about-marker' class='row'>
         <div class='col-md-8 col-md-offset-2'>
             <hr><div class='text-center'><h3>About me</h3></div><hr>
             <p>Hi, my name is Danny Yang and I am a freshman studying computer science at Cornell University. </p>
             <br><p>When I was a child, I loved to solve problems and build things, from making weekend projects in my garage to fixing and improving things around the house.</p>
             <br><p>Fast forward to college, and I'm still doing what I love- my weekend projects have transformed into coding projects, and my affinity for fixing things has been applied to debugging and optimizing code.</p>
             <br><p>Besides CS, I enjoy learning about design and history, and keeping up with current events. In between schoolwork and side projects, I enjoy spending going to farmer's markets, renaissance fairs, museums, and Hackathons.</p>
-            <br><p>Below is a summary of my skills and coursework including the current semester, as well as some selected projects (the rest can be found on my Github).</p>
             <hr>
-            <h4>Technical Skills</h4>
-            <ul>
-                <li class='size3'>Python</li>
-                <li class='size3'>Java</li>
-                <li class='size3'>HTML, CSS, Javascript</li>
-                <li class='size3'>Boostrap, jQuery</li>
-            </ul>
-            <h4>Relevant Courses</h4>
-            <ul>
-                <li class='size3'>CS 1110 Intro to Computing with Python (2016)</li>
-                <li class='size3'>ENGRI 1101 Intro to Operations Research (2016)</li>
-                <li class='size3'>CS 2110 Obj Oriented Programming and Data Structures (2017)</li>
-                <li class='size3'>ECE 2300 Digital Logic and Computer Organization (2017)</li>
-                <li class='size3'>CS 3300 Data Driven Web Applications (2017)</li>
-                <li class='size3'>CS 2800 Discrete Structures(2017)</li>
-                <li class='size3'>BTRY 3080 Probability Models and Inference (2017)</li>
-            </ul>
+            <div class='row'>
+              <div class='col-md-4'>
+                <h4>Technical Skills</h4>
+                <ul>
+                    <li class='size3'>Python</li>
+                    <li class='size3'>Java</li>
+                    <li class='size3'>Javascript</li>
+                </ul>
+              </div>
+              <div class='col-md-8'>
+                <h4>Relevant Courses</h4>
+                <ul>
+                    <li class='size3'>CS 1110 Intro to Computing with Python (2016)</li>
+                    <li class='size3'>ENGRI 1101 Intro to Operations Research (2016)</li>
+                    <li class='size3'>CS 2110 Obj Oriented Programming and Data Structures (2017)</li>
+                    <li class='size3'>CS 2300 Intermediate Web Design and Programming (2017)</li>
+                    <li class='size3'>CS 3300 Data Driven Web Applications (2017)</li>
+                    <li class='size3'>CS 2800 Discrete Structures (2017)</li>
+                </ul>
+              </div>
+            </div>
             <hr>
         </div>
     </div>
-    <div id='projects-marker' class="parallax-2 filter"></div>
+    <div id='projects-marker' class="background-2"></div>
     <div id='projects' class='row'>
         <div class='col-md-8 col-md-offset-2'>
-            <hr><div class='text-center'><h3>Selected Projects (More on my Github)</h3></div><hr>
+            <hr><div class='text-center'><h3>Selected Projects (More on <a href='https://github.com/yangdanny97' target='_blank'><i style='color:#1A237E' class="fa fa-github" aria-hidden="true"></i></a>)</h3></div><hr>
             <h4><a href='https://devpost.com/software/fun-with-foursquare' target='_blank'>FunSquare <img src='images/funsquare.png' width='50px' alt='Funsquare Logo'/></a></h4>
             <ul>
                 <li>Android app built with FourSquare API and Wikitude</li>
                 <li>Uses AR to display icons pointing to nearby locations that are trending on Foursquare</li>
                 <li>Won first place overall at HackNY Fall 2016</li>
+            </ul>
+            <br><h4><a href='https://devpost.com/software/proton-positivity-generator' target='_blank'>Proton<img src='images/alexa.png' width='70px' alt='Alexa Logo'/></a></h4>
+            <ul>
+                <li>Web app with custom interface and skills for Amazon Alexa</li>
+                <li>Current functionality: original compliment generation, facts, greeting/goodbye</li>
+                <li>Animated mascot and elimination of wake word for smoother UX</li>
+                <li>Recieved onstage honorable mention from Amazon rep at HackDavis 2017</li>
             </ul>
             <br><h4>Python <img src='images/python.png' width='50px' alt='Python'/></h4>
             <ul>
@@ -94,13 +103,10 @@
                 <li><a href='https://github.com/yangdanny97/markov' target='_blank'>Markov Text Generator</a></li>
                 <li><a href='https://github.com/yangdanny97/greedy-python' target='_blank'>Greedy Algorithm Implementations for Traveling Salesman, Shortest Path, and Minimum Spanning Tree</a></li>
             </ul>
-            <br><h4>Javascript and Web Apps <img src='images/javascript.png' width='50px' alt='Javascript'/></h4>
+            <br><h4>Web Apps (Javascript and Python) <img src='images/javascript.png' width='50px' alt='Javascript'/></h4>
             <ul>
-              <li><a href='https://github.com/yangdanny97/twitter-analyzer' target='_blank'>Tweet Analysis/Comparison Tool(Flask, Plotly, Twitter API)</a></li>
-              <li><a href='https://yangdanny97.github.io/wikisearch/'>Wikipedia Searcher (Wikipedia API)</a></li>
-              <li><a href='https://yangdanny97.github.io/localweatherforecast/'>Local Weather and Forecast (Geolocation and Weather Underground API)</a></li>
+              <li><a href='https://github.com/yangdanny97/twitter-analyzer' target='_blank'>Tweet Analysis/Comparison Tool (Flask, Plotly, Twitter API)</a></li>
               <li><a href='https://yangdanny97.github.io/translate/'>Text Translation (AngularJS, Yandex Translate API)</a></li>
-              <li><a href='https://yangdanny97.github.io/face-analyzer/'>Face Analyzer (Microsoft Face API)</a></li>
             </ul>
             <br><h4>Websites</h4>
             <ul>
@@ -108,8 +114,8 @@
                 <li><a href='https://github.com/xiaoxuwu/FCS-Website/'>Folsom Chinese School Website</a></li>
             </ul>
             <hr>
-            <p>I'm currently learning: web development w/ Python (Flask), SQL</p>
-            <p>In the future I want to learn about: analyzing/visualizing datasets, backend web development</p>
+            <p>I'm currently learning: Python web development, SQL, Amazon Alexa</p>
+            <p>In the future I want to learn about: analyzing/visualizing datasets, natural language processing</p>
         </div>
     </div>
     <hr>
