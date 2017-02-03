@@ -39,13 +39,11 @@
        </div>
    </div>
 </nav>
-      <div class='title-container background-1'>
-        <div class='text-center'>
-          <img class='profile-image' src='images/profile.jpg'/>
-          <div>
-          <h1 class='title'>Danny Yang</h1>
-        </div>
-        </div>
+
+      <div id='canvas-container' class='title-container background-1'>
+        <canvas id='main-canvas'></canvas>
+        <img class='profile-image' src='images/profile.jpg'/>
+        <h1 class='title'>Danny Yang</h1>
       </div>
 
     <div id='about-marker' class='row'>
@@ -57,23 +55,29 @@
             <br><p>Besides CS, I enjoy learning about design and history, and keeping up with current events. In between schoolwork and side projects, I enjoy spending going to farmer's markets, renaissance fairs, museums, and Hackathons.</p>
             <hr>
             <div class='row'>
-              <div class='col-md-4'>
+              <div class='col-md-5'>
                 <h4>Technical Skills</h4>
                 <ul>
                     <li class='size3'>Python</li>
                     <li class='size3'>Java</li>
-                    <li class='size3'>Javascript</li>
+                    <li class='size3'>HTML, CSS, Javascript</li>
+                </ul>
+                <h4>Experience With</h4>
+                <ul>
+                    <li class='size3'>Flask, Django</li>
+                    <li class='size3'>CAD (Inventor, Solidworks, Sketchup)</li>
+                    <li class='size3'>AngularJS</li>
                 </ul>
               </div>
-              <div class='col-md-8'>
+              <div class='col-md-7'>
                 <h4>Relevant Courses</h4>
                 <ul>
-                    <li class='size3'>CS 1110 Intro to Computing with Python (2016)</li>
-                    <li class='size3'>ENGRI 1101 Intro to Operations Research (2016)</li>
-                    <li class='size3'>CS 2110 Obj Oriented Programming and Data Structures (2017)</li>
-                    <li class='size3'>CS 2300 Intermediate Web Design and Programming (2017)</li>
-                    <li class='size3'>CS 3300 Data Driven Web Applications (2017)</li>
-                    <li class='size3'>CS 2800 Discrete Structures (2017)</li>
+                    <li class='size3'>Intro to Computing with Python</li>
+                    <li class='size3'>Engineering Applications of Operations Research</li>
+                    <li class='size3'>Obj Oriented Programming and Data Structures</li>
+                    <li class='size3'>Engineering Probability and Statistics</li>
+                    <li class='size3'>Data Driven Web Applications</li>
+                    <li class='size3'>Discrete Structures</li>
                 </ul>
               </div>
             </div>
@@ -121,7 +125,11 @@
     <hr>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src='js/TweenLite.min.js'></script>
+    <script src='js/EasePack.min.js'></script>
     <script src='js/scripts.js'></script>
+    <script src='js/scripts2.js'></script>
+
     <script src="https://use.fontawesome.com/feacc1e8b4.js"></script>
 </body>
 <footer class='text-center'>Made by Danny Yang &#169 2017</footer>
