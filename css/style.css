@@ -38,10 +38,6 @@ hr{
 	border-width:1px;
 }
 
-i{
-	color:white;
-}
-
 a{
 	color:black;
 }
@@ -51,12 +47,17 @@ a:hover {
 	text-decoration: none;
 }
 
+i.top{
+	color:white;
+}
+
+
 .navbar{
-	background: #4DD0E1;
-	background: -webkit-linear-gradient(left, #4DD0E1 , #1A237E);
-	background: -o-linear-gradient(right, #4DD0E1, #1A237E);
-	background: -moz-linear-gradient(right, #4DD0E1, #1A237E);
-	background: linear-gradient(to right, #4DD0E1 , #1A237E);
+	background: #FD5F00;
+	background: -webkit-linear-gradient(left, #FD5F00 , #1A237E);
+	background: -o-linear-gradient(right, #FD5F00, #1A237E);
+	background: -moz-linear-gradient(right, #FD5F00, #1A237E);
+	background: linear-gradient(to right, #FD5F00 , #1A237E);
 }
 
 .nav.navbar-nav li a{
@@ -69,34 +70,30 @@ a:hover {
 
 .navicon
 {
-display: inline-block;
-float:left;
+	display: inline-block;
+	float:left;
 }
 
 .background-1 {
-	background: #4DD0E1;
-	background: -webkit-linear-gradient(left top, #84FFFF , #1A237E);
-	background: -o-linear-gradient(left top, #84FFFF, #1A237E);
-	background: -moz-linear-gradient(left top, #84FFFF, #1A237E);
-	background: linear-gradient(to bottom right, #84FFFF , #1A237E);
+	background: #1A237E;
     height:100vh;
-		width:100%;
+	width:100%;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-		overflow:hidden;
-		z-index:1;
+	overflow:hidden;
+	z-index:1;
 }
 
 .background-2 {
-	background: #4DD0E1;
-	background: -webkit-linear-gradient(left, #4DD0E1 , #1A237E);
-	background: -o-linear-gradient(right, #4DD0E1, #1A237E);
-	background: -moz-linear-gradient(right, #4DD0E1, #1A237E);
-	background: linear-gradient(to right, #4DD0E1 , #1A237E);
+	background: #FD5F00;
+	background: -webkit-linear-gradient(left, #FD5F00 , #1A237E);
+	background: -o-linear-gradient(right, #FD5F00, #1A237E);
+	background: -moz-linear-gradient(right, #FD5F00, #1A237E);
+	background: linear-gradient(to right, #FD5F00 , #1A237E);
     height: 20vh;
-		width:100%;
+	width:100%;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -105,12 +102,12 @@ float:left;
 }
 
 .profile-image{
-	width:350px;
+	width:250px;
 	border:solid;
 	border-radius:50%;
 	border-width:3px;
-	margin-top:10vh;
-	border-color:#1A237E;
+	margin-top:5vh;
+	border-color:#4682b4;
 	position:absolute;
 	display:inline-block;
 	text-align: center;
