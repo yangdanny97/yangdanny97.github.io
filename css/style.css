@@ -239,4 +239,10 @@ i.top{
 		width:100vw;
 	}
 
+	.row{
+		padding:0px;
+		margin:0px;
+		width:100vw;
+	}
+
 }
