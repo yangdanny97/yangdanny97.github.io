@@ -39,25 +39,41 @@ hr{
 }
 
 a{
-	color:black;
+	color:white;
 }
 
 a:hover {
-	color:#1A237E;
+	color:skyblue;
 	text-decoration: none;
+}
+
+a:active {
+	color:skyblue;
+}
+
+a:visited{
+	color:skyblue;
 }
 
 i.top{
 	color:white;
 }
 
+.light{
+	color:white;
+}
+
+.details{
+	color:white;
+	font-size: 1em;
+}
 
 .navbar{
-	background: #FD5F00;
-	background: -webkit-linear-gradient(left, #FD5F00 , #1A237E);
-	background: -o-linear-gradient(right, #FD5F00, #1A237E);
-	background: -moz-linear-gradient(right, #FD5F00, #1A237E);
-	background: linear-gradient(to right, #FD5F00 , #1A237E);
+	background: #1A237E;
+	background: -webkit-linear-gradient(left, indigo , #1A237E);
+	background: -o-linear-gradient(right, indigo, #1A237E);
+	background: -moz-linear-gradient(right, indigo, #1A237E);
+	background: linear-gradient(to right, indigo , #1A237E);
 }
 
 .nav.navbar-nav li a{
@@ -65,7 +81,15 @@ i.top{
 }
 
 .nav.navbar-nav li a:hover,i:hover{
-	color:#1A237E;
+	color:skyblue;
+}
+
+.nav.navbar-nav li a:active{
+	color:skyblue;
+}
+
+.nav.navbar-nav li a:visited{
+	color:white;
 }
 
 .navicon
@@ -76,6 +100,10 @@ i.top{
 
 .background-1 {
 	background: #1A237E;
+	background: -webkit-linear-gradient(left, indigo , #1A237E);
+	background: -o-linear-gradient(right, indigo, #1A237E);
+	background: -moz-linear-gradient(right, indigo, #1A237E);
+	background: linear-gradient(to right, indigo , #1A237E);
     height:100vh;
 	width:100%;
     background-attachment: fixed;
@@ -87,18 +115,45 @@ i.top{
 }
 
 .background-2 {
-	background: #FD5F00;
-	background: -webkit-linear-gradient(left, #FD5F00 , #1A237E);
-	background: -o-linear-gradient(right, #FD5F00, #1A237E);
-	background: -moz-linear-gradient(right, #FD5F00, #1A237E);
-	background: linear-gradient(to right, #FD5F00 , #1A237E);
-    height: 20vh;
+	padding:5% 5%;
+	background: #1A237E;
+	background: -webkit-linear-gradient(left, indigo , #1A237E);
+	background: -o-linear-gradient(right, indigo, #1A237E);
+	background: -moz-linear-gradient(right, indigo, #1A237E);
+	background: linear-gradient(to right, indigo , #1A237E);
 	width:100%;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 		overflow:hidden;
+}
+
+.proj-1{
+	position:relative;
+	padding:10% 10%;
+	height:40vh;
+	background: #1A237E;
+	background: -webkit-linear-gradient(left, indigo , #1A237E);
+	background: -o-linear-gradient(right, indigo, #1A237E);
+	background: -moz-linear-gradient(right, indigo, #1A237E);
+	background: linear-gradient(to right, indigo , #1A237E);
+}
+
+.proj-2{
+	position:relative;
+	padding:10% 10%;
+	height:40vh;
+	background: #1A237E;
+	background: -webkit-linear-gradient(right, indigo , #1A237E);
+	background: -o-linear-gradient(left, indigo, #1A237E);
+	background: -moz-linear-gradient(left, indigo, #1A237E);
+	background: linear-gradient(to left, indigo ,#1A237E);
+}
+
+.no-margin{
+	padding:0;
+	margin:0;
 }
 
 .profile-image{

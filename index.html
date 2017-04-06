@@ -49,29 +49,51 @@
     <div id='about-marker' class='row'>
         <div class='col-md-8 col-md-offset-2'>
             <hr><div class='text-center'><h3>About me</h3></div><hr>
-            <p>Hi, my name is <strong>Danny Yang</strong> and I am a studying <strong>computer science</strong> at <strong>Cornell University</strong>. </p>
-            <br><p>Here at Cornell I am a member of <strong>Cornell Cup, a robotics project team</strong>, and I work as a <strong>Django developer at StartupTree</strong>, a startup based in the eHub at Cornell.</p>
+            <p>Hi, my name is <strong>Danny Yang</strong> and I am studying <strong>computer science</strong> at <strong>Cornell University</strong>. </p>
+            <br><p>Here at Cornell I am a member of <strong id='cornell-cup'>Cornell Cup, a robotics project team</strong>, and I work as a <strong>Django developer at StartupTree</strong>, a startup based in the eHub at Cornell.</p>
             <br><p>In between schoolwork and side projects, I enjoy going to farmer's markets, renaissance fairs, museums, and Hackathons. I enjoy learning about design and history, and keeping up with current events.</p>
+            <br><p>I'm currently learning about data science using R, data visualization using d3.js, and Django web development. In the future I plan to learn more about statistics, data science, and machine learning, while maintaining a solid foundation in core CS skills.</p>
             <hr>
-            <div class='row'>
-              <div class='col-md-5'>
-                <h4>Languages</h4>
-                <ul>
-                    <li class='size3'>Python | <i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></li>
-                    <li class='size3'>Java | <i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></li>
-                    <li class='size3'>HTML/CSS/Javascript | <i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></li>
-                    <li class='size3'>R | <i class="fa fa-eraser" aria-hidden="true"></i></li>
-                </ul>
-                <h4>Technologies</h4>
-                <ul>
-                    <li class='size3'>Django | <i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></li>
-                    <li class='size3'>D3.js | <i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></li>
-                    <li class='size3'>Flask | <i class="fa fa-eraser" aria-hidden="true"></i></li>
-                    <li class='size3'>Android Studio | <i class="fa fa-eraser" aria-hidden="true"></i></li>                    
-                </ul>
+        </div>
+        <div class='row background-2'>
+            <div class='col-md-10 col-md-offset-1'>
+              <div class='col-md-6 light'>
+                <h4 class='text-center'><strong>Languages</strong></h4>
+                <div class='row'>
+                    <div class='col-xs-6 text-right'>
+                        <p>Python</p>
+                        <p>Java</p>
+                        <p>HTML/CSS/Javascript</p>
+                        <p>R</p>
+                    </div>
+                    <div class='col-xs-6 text-left'>
+                        <p><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></p>
+                        <p><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></p>
+                        <p><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></p>
+                        <p><i class="fa fa-eraser" aria-hidden="true"></i></p>
+                    </div>
+                </div>
+
+                <h4 class='text-center'><strong>Technologies</strong></h4>
+                <div class='row'>
+                    <div class='col-xs-6 text-right'>
+                        <p>Django</p>
+                        <p>D3.js</p>
+                        <p>Flask</p>
+                        <p>Android Studio</p>
+                        <p>JQuery</p>
+                    </div>
+                    <div class='col-xs-6 text-left'>
+                        <p><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></p>
+                        <p><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></p>
+                        <p><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></p>
+                        <p><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></p>
+                        <p><i class="fa fa-eraser" aria-hidden="true"></i><i class="fa fa-eraser" aria-hidden="true"></i></p>
+                    </div>
+                </div>                
               </div>
-              <div class='col-md-7'>
-                <h4>Relevant Courses</h4>
+              <div class='col-md-6 light'>
+                <h4><strong>Relevant Courses</strong></h4>
                 <ul>
                     <li class='size3'>Applications of Operations Research</li>
                     <li class='size3'>Obj Oriented Programming/Data Structures</li>
@@ -84,57 +106,58 @@
             </div>
             <hr>
         </div>
-    </div>
-    <div id='projects-marker' class="background-2"></div>
-    <div id='projects' class='row'>
-        <div class='col-md-8 col-md-offset-2'>
-            <hr><div class='text-center'><h3>Selected Projects (More on <a href='https://github.com/yangdanny97' target='_blank'><i style='color:#1A237E' class="fa fa-github" aria-hidden="true"></i></a>)</h3></div><hr>
+        </div>
 
-            <h4>Cornell Cup <img src='images/cup.png' width='50px' alt='Cup logo'/> - Minibot Platform Team</a></h4>
-            <p>[ Python, Java, Javascript ] [ Jan. 2017 - present ]</p>
-            <ul>
-                <li>Worked on the software platform for Minibot, an educational robotics platform being developed by Cornell Cup</li>
-                <li>Contributed to: Python API for custom scripts, Minibot simulator with JBox2D physics backend, and GUI for controlling the Minibot/simulator.</li>
-            </ul>
-
-            <br><h4><a href='https://devpost.com/software/proton-positivity-generator' target='_blank'>Proton<img src='images/alexa.png' width='70px' alt='Alexa Logo'/>- HackDavis Honorable Mention</a></h4>
-            <p>[ Python, Javascript ] [ Jan. 2017 ]</p>
-            <ul>
-                <li>Web app with custom interface and skills for Amazon Alexa</li>
-                <li>Original compliment generation using Markov Chains</li>
-                <li>Eliminated the Alexa wake word for smoother UX</li>
-            </ul>
-
-            <br><h4><a href='https://github.com/yangdanny97/CoopMaster' target='_blank'>CoopMaster <img src='images/coopmasterlogo.png' width='70px' alt='Alexa Logo'/> - Hackathon Finalist</a></h4>
-            <p>[ Java, Android Studio ] [ Jan. 2017 - Feb. 2017 ]</p>
-            <ul>
-                <li>Data collection and visualization tool for owners of backyard hen flocks like my parents</li>
-                <li>Graphs behavioral trends in flock over time to track flock health</li>
-                <li>Finalist at Cornell Animal Health Hackathon, released on app store in Feb. 2017</li>
-            </ul>
-
-            <br><h4><a href='https://devpost.com/software/fun-with-foursquare' target='_blank'>FunSquare <img src='images/funsquare.png' width='50px' alt='Funsquare Logo'/> - HackNY First Place</a></h4>
-            <p>[ Java, Javascript, Android Studio ] [ Oct. 2016 ]</p>
-            <ul>
-                <li>Android app built with FourSquare API and Wikitude</li>
-                <li>Uses AR to display icons pointing to nearby locations that are trending on Foursquare</li>
-            </ul>
-
-            <hr>
-            <p>I'm currently learning: Django, Data Science using R, d3.js</p>
-            <p>In the future I want to learn more about statistics, data science, and machine learning.</p>
+    <div id='projects-marker'></div>
+    <div class='row'>
+        <div id='projects' class='col-md-10 col-md-offset-1'>
+        <!--(More on <a href='https://github.com/yangdanny97' target='_blank'><i style='color:#1A237E' class="fa fa-github" aria-hidden="true"></i></a>)-->
+            <hr><div class='text-center'><h3>Selected Projects</h3></div><hr>
+            <div class='row'>
+                <div class='col-md-6 no-margin light'>
+                    <div id='p1' class='proj-1'>
+                    <div class='text-center'>
+                        <h4>Cornell Cup <img src='images/cup.png' width='60px' alt='Cup logo'/></h4>
+                        <p>Minibot Platform Team</p>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-md-6 no-margin light'>
+                    <div id='p3' class='proj-2'>
+                    <div class='text-center'>
+                        <h4><a href='https://github.com/yangdanny97/CoopMaster' target='_blank'>CoopMaster <img src='images/coopmasterlogo.png' width='70px' alt='CoopMaster Logo'/></a></h4>
+                        <p>Animal Health Hackathon Finalist</p>                        
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-md-6 no-margin light'>
+                    <div id='p2' class='proj-1'>
+                    <div class='text-center'>
+                        <h4><a href='https://devpost.com/software/proton-positivity-generator' target='_blank'>Proton<img src='images/alexa.png' width='80px' alt='Alexa Logo'/></a></h4>
+                        <p>HackDavis 2017 Honorable Mention</p>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-md-6 no-margin light'>
+                    <div id='p4' class='proj-2'>
+                    <div class='text-center'>
+                        <h4><a href='https://devpost.com/software/fun-with-foursquare' target='_blank'>FunSquare <img src='images/funsquare.png' width='60px' alt='Funsquare Logo'/></a></h4>
+                        <p>HackNY 2016 First Place</p> 
+                    </div>                       
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src='js/TweenLite.min.js'></script>
-    <script src='js/EasePack.min.js'></script>
     <script src='js/scripts.js'></script>
-    <script src='js/scripts2.js'></script>
 
     <script src="https://use.fontawesome.com/feacc1e8b4.js"></script>
 </body>
-<footer class='text-center'>Made by Danny Yang &#169 2017</footer>
+<footer class='text-center'><p><small>Danny Yang &#169 2017</small></p></footer>
 
 </html>
