@@ -225,11 +225,17 @@ i.top{
 	}
 
 	.col-md-offset-1{
-		margin-left:0;
+		margin:0px;
 	}
 
 	.col-md-10{
-		width:100%;
+		margin: 0px;
+		width:100vw;
+	}
+
+	.col-md-6{
+		margin:0px;
+		width:100vw;
 	}
 
 }
