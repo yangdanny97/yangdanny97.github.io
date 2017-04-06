@@ -216,4 +216,16 @@ i.top{
 		float:right;
 	}
 
+	.proj-1{
+		height:65vh;
+	}
+
+	.proj-2{
+		height:65vh;
+	}
+
+	.col-md-offset-1{
+		margin-left:0;
+	}
+
 }
