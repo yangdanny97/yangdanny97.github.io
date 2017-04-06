@@ -228,4 +228,8 @@ i.top{
 		margin-left:0;
 	}
 
+	.col-md-10{
+		width:100%;
+	}
+
 }
