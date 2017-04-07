@@ -55,6 +55,16 @@ a:visited{
 	color:skyblue;
 }
 
+a.project{
+	color:white;
+	text-decoration: none;
+}
+
+a.project :hover {
+	color:white;
+	text-decoration: none;
+}
+
 i.top{
 	color:white;
 }
@@ -96,6 +106,14 @@ i.top{
 {
 	display: inline-block;
 	float:left;
+}
+
+.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
 }
 
 .background-1 {
@@ -217,11 +235,11 @@ i.top{
 	}
 
 	.proj-1{
-		height:65vh;
+		height:50vh;
 	}
 
 	.proj-2{
-		height:65vh;
+		height:50vh;
 	}
 
 	.col-md-offset-1{
