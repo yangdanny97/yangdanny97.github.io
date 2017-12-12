@@ -5,8 +5,8 @@ var details = {
 p1: "<p class='details unselectable'>[ Python, Javascript ]<br>[ Jan. - Aug. 2017 ]</p><p class='details unselectable'>Implemented robust endpoints across the entire mobile service using Django REST Framework</p><p class='details unselectable'>Optimized an existing endpoint to reduce response time by 66% and wrote extensive unit tests for all endpoints</p></a>",
 p2: "<a href='https://yangdanny97.github.io/US-foreign-aid-visualizer/' target='_blank'><p class='details unselectable'>[ R, Javascript, D3.js ]<br>[ Feb. - May 2017 ]</p><p class='details unselectable'>Created an interactive world map visualization of the flow of US foreign aid mapped against various metrics like happiness index, HDI, and democracy index, featuring detailed tooltips and a country comparison tool</p>",
 p3: "<a href='http://cornellcuprobotics.com/' target='_blank'><p class='details unselectable'>[ Python, Java, Javascript ]<br>[ Jan. 2017 - present ]</p><p class='details unselectable'>Worked on the software platform for Minibot, Cornell Cup's educational robotics platform</p><p class='details unselectable'>Helped implement physics backend and optimized frontend display for virtual bot/obstacle simulator</p></a>",
-p4: "<a href='https://devpost.com/software/proton-positivity-generator' target='_blank'><p class='details unselectable'>[ Python, Javascript ]<br>[ Jan. 2017 ]</p><p class='details unselectable'>Developed an animated custom web interface for Amazon Alexa that eliminates the wake word</p><p class='details unselectable'>Created custom Alexa skill that generates speech using Markov chains</p><p>Honorable mention at HackDavis 2017</p></a>",
-p5: "<a href='https://github.com/yangdanny97/CoopMaster' target='_blank'><p class='details unselectable'>[ Java, Android Studio ]<br>[ Jan. - Feb. 2017 ]</p>Led team of four developers to create Android application that allows owners of chickens to log and visualize data for backyard chicken flocks</p><p class='details unselectable'>Finalist at Cornell Animal Health Hackathon</p></a>",
+p4: "<a href='https://devpost.com/software/proton-positivity-generator' target='_blank'><p class='details unselectable'>[ Python, Javascript ]<br>[ Jan. 2017 ]</p><p class='details unselectable'>Developed an animated custom web interface for Amazon Alexa that eliminates the wake word</p><p class='details unselectable'>Created custom Alexa skill that generates speech using Markov chains</p><p class='details unselectable'>Honorable mention at HackDavis 2017</p></a>",
+p5: "<a href='https://github.com/yangdanny97/CoopMaster' target='_blank'><p class='details unselectable'>[ Java, Android Studio ]<br>[ Jan. - Feb. 2017 ]</p><p class='details unselectable'>Led team of four developers to create Android application that allows owners of chickens to log and visualize data for backyard chicken flocks</p><p class='details unselectable'>Finalist at Cornell Animal Health Hackathon</p></a>",
 p6: "<a href='https://devpost.com/software/fun-with-foursquare' target='_blank'><p class='details unselectable'>[ Java, Javascript, Android Studio ]<br>[ Oct. 2016 ]</p><p class='details unselectable'>Developed Android application that uses AR markers to display nearby locations that are trending on Foursquare</p><p class='details unselectable'>First Place at HackNY 2016</p></a>"};
 
 var original = {
@@ -75,9 +75,4 @@ document.getElementById('projects-btn').addEventListener('click',function() {
         }, 600)
     });
 
-document.getElementById('cornell-cup').addEventListener('click',function() {
-        $('html, body').animate({
-            scrollTop: $("#projects-marker").offset().top - 50
-        }, 600)
-    });
 

@@ -38,32 +38,11 @@ hr{
 	border-width:1px;
 }
 
-a{
-	color:white;
-}
-
-a:hover {
-	color:skyblue;
-	text-decoration: none;
-}
-
-a:active {
-	color:skyblue;
-}
-
-a:visited{
-	color:skyblue;
-}
-
-a.project{
+a a:hover a:active a:visited{
 	color:white;
 	text-decoration: none;
 }
 
-a.project :hover {
-	color:white;
-	text-decoration: none;
-}
 
 i.top{
 	color:white;
@@ -75,7 +54,7 @@ i.top{
 
 .details{
 	color:white;
-	font-size: 1.5em;
+	font-size: 1.25em;
 }
 
 .navbar{
@@ -86,20 +65,12 @@ i.top{
 	background: linear-gradient(to right, indigo , #1A237E);
 }
 
-.nav.navbar-nav li a{
+.navbar-default .navbar-nav>li>a{
 	color:white;
 }
 
-.nav.navbar-nav li a:hover,i:hover{
+.navbar-default .navbar-nav>li:hover>a:hover{
 	color:skyblue;
-}
-
-.nav.navbar-nav li a:active{
-	color:skyblue;
-}
-
-.nav.navbar-nav li a:visited{
-	color:white;
 }
 
 .navicon
@@ -205,7 +176,6 @@ i.top{
 .title-container{
 	width:100vw;
 }
-
 
 
 @media screen and (max-width: 992px) {
