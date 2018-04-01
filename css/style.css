@@ -1,236 +1,32 @@
-header{
-	font-family: "Quicksand";
-}
+    .text-center,.centered {
+        text-align: center;
+    }
+    .title {
+        font-size: 72px;
+        margin-top: 50px;
+    }
+    
+    .row {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
 
-body{
-	font-family: "Quicksand";
-	width:100%;
-	overflow-x:hidden;
-	padding-top:50px;
-}
+    .text-right {
+        text-align:right;
+    }
 
-footer{
-	font-family: "Quicksand";
-}
+    .text-left {
+        text-align:left;
+    }
 
-p, li{
-	font-size: 1.5em;
-}
+    body {
+        background-color: white;
+        color: #666666;
+        margin: 10px;
+        font: 14px verdana,tahoma,sans-serif;
+    }
 
-h1{
-	font-size:5em;
-	color:white;
-	padding:0.25em;
-}
-
-h3{
-	font-size:3em;
-}
-
-h4{
-	font-size: 2.5em;
-}
-
-hr{
-	color:gray;
-	border-color:#1A237E;
-	background: #1A237E;
-	border-width:1px;
-}
-
-a a:hover a:active a:visited{
-	color:white;
-	text-decoration: none;
-}
-
-
-i.top{
-	color:white;
-}
-
-.light{
-	color:white;
-}
-
-.details{
-	color:white;
-	font-size: 1.25em;
-}
-
-.navbar{
-	background: #1A237E;
-	background: -webkit-linear-gradient(left, indigo , #1A237E);
-	background: -o-linear-gradient(right, indigo, #1A237E);
-	background: -moz-linear-gradient(right, indigo, #1A237E);
-	background: linear-gradient(to right, indigo , #1A237E);
-}
-
-.navbar-default .navbar-nav>li>a{
-	color:white;
-}
-
-.navbar-default .navbar-nav>li:hover>a:hover{
-	color:skyblue;
-}
-
-.navicon
-{
-	display: inline-block;
-	float:left;
-}
-
-.unselectable {
-   -moz-user-select: -moz-none;
-   -khtml-user-select: none;
-   -webkit-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
-}
-
-.background-1 {
-	background: #1A237E;
-	background: -webkit-linear-gradient(left, indigo , #1A237E);
-	background: -o-linear-gradient(right, indigo, #1A237E);
-	background: -moz-linear-gradient(right, indigo, #1A237E);
-	background: linear-gradient(to right, indigo , #1A237E);
-    height:100vh;
-	width:100%;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-	overflow:hidden;
-	z-index:1;
-}
-
-.background-2 {
-	padding:5% 5%;
-	background: #1A237E;
-	background: -webkit-linear-gradient(left, indigo , #1A237E);
-	background: -o-linear-gradient(right, indigo, #1A237E);
-	background: -moz-linear-gradient(right, indigo, #1A237E);
-	background: linear-gradient(to right, indigo , #1A237E);
-	width:100%;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-		overflow:hidden;
-}
-
-.proj-1{
-	position:relative;
-	padding:10% 10%;
-	height:40vh;
-	background: #1A237E;
-	background: -webkit-linear-gradient(left, indigo , #1A237E);
-	background: -o-linear-gradient(right, indigo, #1A237E);
-	background: -moz-linear-gradient(right, indigo, #1A237E);
-	background: linear-gradient(to right, indigo , #1A237E);
-}
-
-.proj-2{
-	position:relative;
-	padding:10% 10%;
-	height:40vh;
-	background: #1A237E;
-	background: -webkit-linear-gradient(right, indigo , #1A237E);
-	background: -o-linear-gradient(left, indigo, #1A237E);
-	background: -moz-linear-gradient(left, indigo, #1A237E);
-	background: linear-gradient(to left, indigo ,#1A237E);
-}
-
-.no-margin{
-	padding:0;
-	margin:0;
-}
-
-.profile-image{
-	width:250px;
-	border:solid;
-	border-radius:50%;
-	border-width:3px;
-	margin-top:5vh;
-	border-color:#4682b4;
-	position:absolute;
-	display:inline-block;
-	text-align: center;
-	top: 40%;
-	left: 50%;
-	-webkit-transform: translate3d(-50%,-50%,0);
-	transform: translate3d(-50%,-50%,0);
-	z-index:0;
-}
-
-.title{
-	position:absolute;
-	display:inline-block;
-	text-align: center;
-	top: 80%;
-	left: 50%;
-	-webkit-transform: translate3d(-50%,-50%,0);
-	transform: translate3d(-50%,-50%,0);
-	z-index:0;
-}
-
-.title-container{
-	width:100vw;
-}
-
-
-@media screen and (max-width: 992px) {
-	h4{
-		font-size: 6vh;
-	}
-
-	p, li{
-		font-size: 3vh;
-	}
-
-	.row{
-		margin-left:5vh;
-		margin-right:5vh;
-	}
-
-	.title{
-		padding-top:6vh;
-		font-size:6vh;
-	}
-
-	.nav.navbar-nav li{
-		text-align:right;
-	}
-	.navicon{
-		float:right;
-	}
-
-	.proj-1{
-		height:50vh;
-	}
-
-	.proj-2{
-		height:50vh;
-	}
-
-	.col-md-offset-1{
-		margin:0px;
-		padding:0px;
-	}
-
-	.col-md-10{
-		margin: 0px;
-		width:100vw;
-	}
-
-	.col-md-6{
-		margin:0px;
-		width:100vw;
-	}
-
-	.row{
-		padding:0px;
-		margin:0px;
-		width:100vw;
-	}
-
-}
+    a {
+        text-decoration: none;
+        color: navy;
+    }

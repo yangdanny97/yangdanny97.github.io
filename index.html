@@ -4,149 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Danny Yang">
-    <meta name="description" content="Personal Website of Danny Yang, Cornell University Computer Science Major">
-    <meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Personal Website of Danny Yang, Cornell CS 2020">
     <title>Danny Yang</title>
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link rel='stylesheet' href="./css/style.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navigation">
-          <ul class = "nav navbar-nav">
-              <li><a class='navicon' href='https://github.com/yangdanny97' target='_blank'><i class="fa fa-github top" aria-hidden="true"></i></a>
-                <a class='navicon' href='https://www.linkedin.com/in/yangdanny97' target='_blank'><i class="fa fa-linkedin top" aria-hidden="true"></i></a>
-                <a class='navicon' href='mailto:dzy4@cornell.edu' target='_blank'><i class="fa fa-envelope-o top" aria-hidden="true"></i></a>
-              </li>
-          </ul>
-         <ul class="nav navbar-nav navbar-right text-center">
-           <li><a id='about-btn' href='#about'> About Me </a></li>
-           <li><a id='projects-btn' href='#projects'> Experience/Projects </a></li>
-         </ul>
-       </div>
-   </div>
-</nav>
-
-      <div id='canvas-container' class='title-container background-1'>
-        <canvas id='main-canvas'></canvas>
-        <img class='profile-image' src='images/profile.jpg'/>
-        <h1 class='title'>Danny Yang</h1>
-      </div>
-
-    <div id='about-marker' class='row'>
-        <div class='col-md-8 col-md-offset-2'>
-            <hr><div class='text-center'><h3>About me</h3></div><hr>
-            <p>Hi, my name is Danny Yang and I am a sophomore studying Computer Science at Cornell University. </p>
-            <br><p>Here at Cornell, I am a member of the BigRed//Hacks organizing committee, and will be working as a TA for INFO/CS 3300 in Spring 2018. I am most interested in backend development and will be interning for Facebook in Summer 2018.</p>
-            <br><p>In between schoolwork and side projects, I enjoy going to farmer's markets, renaissance fairs, museums, and hackathons. I enjoy learning about design and history, and keeping up with current events.</p>
-            <br><p>Aside from software engineering, I am also interested in statistics, data science, and data visualization. In the future I plan to take more classes relating to my Operations Research minor.</p>
-            <hr>
-        </div>
-        <div class='row background-2'>
-            <div class='col-md-10 col-md-offset-1'>
-              <div class='col-md-6 light'>
-                <h4 class='text-center'>Languages</h4>
-                <div class='row'>
-                    <div class='col-xs-6 text-right'>
-                        <p>Python</p>
-                        <p>Java</p>
-                        <p>HTML/CSS/JS</p>
-                        <p>R</p>
-                        <p>Julia</p>
-                    </div>
-                    <div class='col-xs-6 text-left'>
-                        <p>[Proficient]</p>
-                        <p>[Proficient]</p>
-                        <p>[Proficient]</p>
-                        <p>[Basic]</p>
-                        <p>[Basic]</p>
-                    </div>
-                </div>
-
-                <h4 class='text-center'>Technologies</h4>
-                <div class='row'>
-                    <div class='col-xs-6 text-right'>
-                        <p>Django</p>
-                        <p>D3.js</p>
-                        <p>Git/Github</p>
-                        <p>React</p>
-                    </div>
-                    <div class='col-xs-6 text-left'>
-                        <p>[Proficient]</p>
-                        <p>[Proficient]</p>
-                        <p>[Proficient]</p>
-                        <p>[Intermediate]</p>
-                    </div>
-                </div>              
-              </div>
-              <div class='col-md-6 light'>
-                <h4>Relevant Coursework</h4>
-                <ul>
-                    <li class='size3'>Applications of Operations Research</li>
-                    <li class='size3'>Obj Oriented Programming/Data Structures</li>
-                    <li class='size3'>Engineering Probability and Statistics</li>
-                    <li class='size3'>Data Driven Web Applications</li>
-                    <li class='size3'>Discrete Structures</li>
-                    <li class='size3'>Linear Algebra</li>
-                    <li class='size3'>CDS Data Science Training</li>
-                    <li class='size3'>Machine Learning with Big Messy Data</li>
-                    <li class='size3'>Intro to Algorithm Design and Analysis</li>
-                </ul>
-              </div>
-            </div>
-            <hr>
-        </div>
-        </div>
-
-    <div id='projects-marker'></div>
-    <div class='row'>
-        <div id='projects' class='col-md-10 col-md-offset-1'>
-        <!--(More on <a href='https://github.com/yangdanny97' target='_blank'><i style='color:#1A237E' class="fa fa-github" aria-hidden="true"></i></a>)-->
-            <hr><div class='text-center'><h3>Experience/Project Highlights</h3></div><hr>
-            <div class='row'>
-                <div class='col-md-6 no-margin light'>
-                    <div id='p1' class='proj-1'></div>
-                </div>
-                <div class='col-md-6 no-margin light'>
-                    <div id='p3' class='proj-2'></div>
-                </div>
-            </div>
-            <div class='row'>
-                <div class='col-md-6 no-margin light'>
-                    <div id='p2' class='proj-1'></div>
-                </div>
-                <div class='col-md-6 no-margin light'>
-                    <div id='p4' class='proj-2'></div>
-                </div>
-            </div>
-            <div class='row'>
-                <div class='col-md-6 no-margin light'>
-                    <div id='p5' class='proj-1'></div>
-                </div>
-                <div class='col-md-6 no-margin light'>
-                    <div id='p6' class='proj-2'></div>
-                </div>
-            </div>
-        </div>
+<h1 class = "centered title"> DANNY YANG </h1>
+<h4 class = "centered"> 
+<a href='./index.html'>about</a> - 
+<a href='./projects.html'>background + projects</a> - 
+<a href='./resume.pdf' target='_blank'>resume</a>
+</h4>
+<div class = 'row'>
+    <div class = 'col-md-2 col-md-offset-2'>
+        placeholder
     </div>
-    <hr>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src='js/scripts.js'></script>
-    <script src="https://use.fontawesome.com/feacc1e8b4.js"></script>
-</body>
-<footer class='text-center'><p><small>Danny Yang &#169 2017</small></p></footer>
+    <div class = 'col-md-6'>
+        <h4>Hi, my name is Danny Yang and I am a sophomore studying Computer Science at Cornell University. </h4>
+        <br><h4>Here at Cornell, I am a member of the BigRed//Hacks organizing committee and Cornell Data Science. I am also a TA for CS 3300 (a data visualization class). I am interested in backend development, data science, and data visualization. My favorite languages are Python and OCaml. This summer I will be interning at Facebook.</h4>
+        <br><h4>In between schoolwork and side projects, I like to play music, go to museums, read, and do archery. I really enjoy cooking and eating, and in my spare time I like to try out new recipes in the kitchen.</h4>
+    </div> 
+</div>
 
+<h4 class = "centered"> 
+<a href='https://github.com/yangdanny97' target='_blank'>github</a> - 
+<a href='https://www.linkedin.com/in/yangdanny97' target='_blank'>linkedin</a> - 
+<a href='mailto:dzy4@cornell.edu' target='_blank'>email</a>
+</h4>
+
+</body>
+<script></script>
 </html>
