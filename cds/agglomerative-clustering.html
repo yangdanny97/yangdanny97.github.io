@@ -1,0 +1,168 @@
+<html>
+<head>
+<title>Agglomerative Clustering implementation in JS </title>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/4.1.1/math.min.js"></script>
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script src = "./agglomerative-clustering.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+<style>
+	.centered {
+	  text-align: center;
+	}
+
+	.card {
+	  padding: 20px;
+	}
+
+	svg{
+	  display:block;
+	  margin:auto;
+	}
+
+	input{
+	  display: inline-block;
+	  margin: 0px 10px 0px 10px;
+	}
+	input[type="checkbox"] {
+  		transform:scale(2, 2);
+	}
+</style>
+<div class = "card centered col-md-8 offset-md-2" width = "800" height = "900">
+<h1> CDS DV - Social Tribes - Agglomerative Clustering Visualization</h1>
+<p>Agglomerative clustering works by merging the two most similar clusters at each iteration.<br>Step through the algorithm one iteration at a time, or select the auto box to automatically animate it. The similarity metric used for this algorithm is the euclidean distance between the centroids of clusters.</p>
+<div class = "options">
+<input type="button" id = 'start' value="Start/Reset">
+<input type="button" id = 'step' value="Step Simulation">
+<input type="checkbox" id = 'toggle_auto' value="Auto">
+<label for="toggle_auto">Auto</label>
+</div>
+<svg width="760" height="760"></svg>
+</div>
+<script>
+
+var auto = false;
+var clusters;
+var coords;
+//set the params here
+dist = _euclidean;
+metric = _centroid;
+
+var xScale = d3.scaleLinear()
+	.range([0, 760])
+	.domain([-3, 3]);
+var yScale = d3.scaleLinear()
+		.range([760,0])
+		.domain([-1.5, 1.5])
+
+var interval = 250;
+
+var rScale = d3.scaleSqrt().domain([1,432]).range([5,300]);
+var oScale = d3.scaleLinear().domain([1,432]).range([0.3,0.9]);
+
+var find_centroid = function(items) {
+	var _x = 0;
+	var _y = 0;
+	for (var i = 0 ; i < items.length ; i++){
+		_x += coords[items[i]][0];
+		_y += coords[items[i]][1];
+	}
+	return [_x/items.length, _y/items.length];
+}
+
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+var node = svg.selectAll(".node");
+
+//draw current clusters, call step again in 1 second
+function step_(){
+	if(clusters.length < 2){
+		auto = false;
+		toggle.checked = false;
+		alert('clustering is complete')
+	} else {
+		clusters = step(clusters);
+		svg.selectAll(".node").remove();
+	    node.data(clusters)
+	      .enter().append("circle")
+		  .attr("class","node")
+		  .attr("r", function(d,i){
+		  	if (i == clusters.length - 1){
+		  		return rScale(d["items"].length * 0.75);
+		  	} else {
+		  		return rScale(d["items"].length);
+		  	}
+		  })
+		  .style("opacity", function(d){return oScale(d["items"].length);})
+		  .attr("fill","gray")
+		  .attr("cx", function(d){
+		  	return xScale(find_centroid(d["items"])[0]);
+		  })
+		  .attr("cy", function(d){
+		  	return yScale(find_centroid(d["items"])[1]);
+		  })
+		  .transition().duration(interval/2).attr("r",function(d){
+		  	return rScale(d["items"].length);
+		  });
+	}
+	if (auto){setTimeout(step_,interval);}
+}
+
+function start(){
+	d3.queue()
+	.defer(d3.text, 'similarity.csv')
+	.defer(d3.csv, 'pca.csv')
+	.await(function (error, csvdata, components){
+	  data = d3.csvParseRows(csvdata, function(row){
+	    return row.map(x => Number(x));
+	  });
+	  coords = components.map(function(x){return [Number(x["Comp1"]),Number(x["Comp2"])]});
+	  clusters = init(data);
+	  node.data(clusters)
+		  .enter().append("circle")
+		  .attr("class","node")
+		  .attr("r",5)
+		  .attr("fill","gray")
+		  .style("opacity", 0.3)
+		  .attr("cx", function(d,i){
+		  	return xScale(find_centroid(d["items"])[0]);
+		  })
+		  .attr("cy", function(d,i){
+		  	return yScale(find_centroid(d["items"])[1]);
+		  });
+	});
+}
+
+//event listeners
+var toggle = document.getElementById('toggle_auto');
+toggle.addEventListener('change', function(a){
+	auto = a.target.checked;
+	if (auto){step_();} else{clearTimeout(step_);}
+	
+});
+
+var startbtn = document.getElementById('start');
+startbtn.addEventListener('click', function(a){
+	clearTimeout(step_);
+	auto = false;
+	toggle.checked = false;
+	svg.selectAll(".node").remove();
+	setTimeout(start,interval);
+});
+
+var stepbtn = document.getElementById('step');
+stepbtn.addEventListener('click', function(a){
+	clearTimeout(step_);
+	if(!auto){step_();}
+	auto = false;
+	toggle.checked = false;
+});
+
+start();
+</script>
+</body>	
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+
+.node {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-width: 1.5px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.card {
+  padding: 20px;
+}
+
+svg{
+  display:block;
+  margin:auto;
+}
+
+.slidercontainer {
+  display:block;
+  margin:auto;
+}
+
+.tooltip{
+  background-color:white;
+}
+
+.autocomplete-suggestions { border: 1px solid #999; background: white; cursor: default; overflow: auto; }
+.autocomplete-suggestion { padding: 10px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: silver; }
+.autocomplete-suggestions strong { font-weight: normal;}  
+
+</style>
+<body>
+<div class = "card centered" width = "800" height = "900">
+<h1> CDS DV - Social Tribes - Force Directed Network Visualization</h1>
+<p>Explanation for Links: Each node is connected with the node most similar to it. In addition, two nodes with a similarity score above a the threshold will be connected. Adjust the slider to change the threshold.</p>
+<div class = "card slidercontainer">
+<input style = "width: 400px;" type="range" min="35" max="100" value="100" class="slider" id="threshold">
+<span id = "th"> Threshold: 1.0</span>
+<div>Highlight specific person: <input id="searchbar" type="text" placeholder="search people"></div>
+</div>
+<svg width="760" height="760"></svg>
+</div>
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='./jquery.autocomplete.min.js'></script>
+<script src = "./force-directed.js"></script>
+</body>
