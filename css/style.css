@@ -2,7 +2,7 @@
     text-align: center;
 }
 .title {
-    font-size: 72px;
+    font-size: 64px;
     margin-top: 50px;
 }
 
@@ -19,6 +19,15 @@
     text-align:left;
 }
 
+h4 {
+    font-size: 16px;
+    color: #333333;
+}
+
+h3 {
+    font-size: 20px;
+}
+
 body {
     background-color: white;
     color: #666666;
@@ -28,7 +37,11 @@ body {
 
 a {
     text-decoration: none;
-    color: navy;
+    padding: 8px;
+}
+
+a:hover {
+    background-color:#eeeeee;
 }
 
 #profile {
@@ -36,5 +49,10 @@ a {
     margin-left: auto;
     margin-right: auto;
     max-width:100%;
-    max-height:500px;
+    max-height:300px;
+    border: 3px solid #cccccc;
+}
+
+.about {
+    color: #666666;
 }
