@@ -35,13 +35,21 @@ body {
     font: 14px verdana,tahoma,sans-serif;
 }
 
+.highlight {
+    color: crimson;
+}
+
 a {
     text-decoration: none;
-    padding: 8px;
+    color: crimson;
+    padding: 6px;
+    margin: -6px;
 }
 
 a:hover {
     background-color:#eeeeee;
+    color: darkred;
+    text-decoration: none;
 }
 
 #profile {
@@ -55,4 +63,13 @@ a:hover {
 
 .about {
     color: #666666;
+}
+
+.card {
+    padding-top: 15px;
+}
+
+.nm {
+    padding: 0px;
+    margin: 0px;
 }
