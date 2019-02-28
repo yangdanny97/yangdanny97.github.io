@@ -44,7 +44,6 @@ a {
     color: crimson;
     padding: 6px;
     margin: -5px;
-    transition: 0.5s;
     border-radius: 10px;
 }
 
@@ -52,6 +51,7 @@ a:hover {
     background-color:#eeeeee;
     color: darkred;
     text-decoration: none;
+    transition: 0.5s;
 }
 
 #profile {
