@@ -10,7 +10,7 @@ Due to the recent surge in popularity of machine learning, many people have beco
 
 Originally developed in 1967 at Cornell for the task of image recognition, the perceptron algorithm is one of the earliest machine learning algorithms. Machine learning algorithms are used to build a model that can take in an input (images, numbers, text) and generate a useful output. For example, a model used in a self-driving car might take in a video of the road as input, and output the angle to turn the steering wheel. The perceptron is designed to classify the input into one of two categories (for example, red or blue, hotdog or not) - this problem is called binary classification.
 
-![Figure of perceptron, borrowed from an O'Reilly book](https://www.oreilly.com/library/view/deep-learning-for/9781788295628/assets/ca819363-76a0-4968-b4ec-d9e239e2ba31.png){: height="px350" width="175"}
+![Figure of perceptron, borrowed from an O'Reilly book](https://www.oreilly.com/library/view/deep-learning-for/9781788295628/assets/ca819363-76a0-4968-b4ec-d9e239e2ba31.png){: height="px225" width="425"}
 
 Inputs to the perceptron (x) are given as lists of numbers. The perceptron stores some more numbers called weights (w). To make a prediction, the perceptron multiplies each input with its corresponding weight andsums them up. This result is fed into an activation function, which decides the final classification. The activation function for the perceptron outputs 1 if the result is positive, otherwise it outputs 0.
 
