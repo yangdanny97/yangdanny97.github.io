@@ -7,7 +7,7 @@ The importance of data visualization is rapidly growing in today's data-rich wor
 
 This is a peek of what the final product should look like.
 
-![console printout](https://yangdanny97.github.io/misc/spider_chart/4.png){: height="px250" width="250"}
+![console printout](https://yangdanny97.github.io/misc/spider_chart/4.png){: height="px300" width="300"}
 
 First to get started we will need some boilerplate code. Create an `index.html` file with the following contents. 
 
@@ -68,7 +68,7 @@ ticks.forEach(function(t){
 
 The page should look like this now:
 
-![console printout](https://yangdanny97.github.io/misc/spider_chart/1.png){: height="px250" width="250"}
+![console printout](https://yangdanny97.github.io/misc/spider_chart/1.png){: height="px300" width="300"}
 
 Next we will add text labels for the ticks; they will be arranged going up from the center of the chart. We offset the x value by 5 so that the label will not overlap with some of the later lines we will draw. Notice that the y value is not the value output by the radial scale. This is because SVG coordinate systems set the top left as 0,0 (as opposed to our normal system of bottom left being associated with 0,0). That means something that is 500 pixels from the bottom of the SVG has a y value of 100. Something that is 250 pixels up from the center of the SVG (like the text label for 10) will be at y value of 50.
 
@@ -83,7 +83,7 @@ ticks.forEach(function(t){
 
 The page should look like this now:
 
-![console printout](https://yangdanny97.github.io/misc/spider_chart/2.png){: height="px250" width="250"}
+![console printout](https://yangdanny97.github.io/misc/spider_chart/2.png){: height="px300" width="300"}
 
 We will now map each feature onto a line extending outwards from the center of the chart. To do this, we need to write a function which maps an angle and value into pixel coordinates using simple trig. The function outputs a JSON object with an x and y field to represent the coordinate.
 
@@ -119,7 +119,7 @@ for (var i = 0; i < features.length; i++) {
 
 The page should look like this now:
 
-![console printout](https://yangdanny97.github.io/misc/spider_chart/3.png){: height="px250" width="250"}
+![console printout](https://yangdanny97.github.io/misc/spider_chart/3.png){: height="px300" width="300"}
 
 Now, we will draw the shapes for the actual data. We will first define a helper function to generate the path for our shape, and an array of colors (we only need 3 of them since we know our data only has 3 points, but for larger datasets you can use an `scaleOrdinal` and map to an array of more colors). 
 
@@ -150,6 +150,6 @@ for (var i = 0; i < data.length; i ++){
     .attr("fill", color)
     .attr("opacity", 0.5);
 }
+```
 
 Congratulations! You have made your first spider chart in D3. Refer to the beginning of this post for how it should look, or check out a live version of the post [here](https://yangdanny97.github.io/misc/spider_chart/).
-```
