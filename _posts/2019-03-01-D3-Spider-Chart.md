@@ -43,7 +43,7 @@ Note: `f => point[f] = 1 + Math.random() * 8` is an anonymous function, equivale
 
 The console output should look like this:
 
-![console printout](https://yangdanny97.github.io/misc/spider_chart/0.png){: height="px250" width="250"}
+![console printout](https://yangdanny97.github.io/misc/spider_chart/0.png){: height="px300" width="300"}
 
 In D3, the charts are usually drawn onto SVG's. Let's add a SVG to the page - our SVG will be 600x600. D3 also provides helpers for mapping data into coordinates. We will make a scale to map our data values to their radial distance from the center of the chart. The scale below maps values from 0-10 linearly to 0-250. We will also define an array of tick marks to be placed on the chart. The page should not display anything yet...
 
