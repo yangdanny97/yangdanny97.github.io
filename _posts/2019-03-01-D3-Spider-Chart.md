@@ -1,13 +1,17 @@
 ---
 layout: post
 title: "D3 Spider Chart Tutorial"
-date: 2019-02-29
+date: 2019-03-01
 ---
 Note: this post will be updated throughout the coming weeks as we go through the revision process for the technical writing class.
 
-The importance of data visualization is rapidly growing in today's data-rich world. D3 is a powerful data visualization library for Javascript. This is a tutorial intended to teach how to make a spider chart, also known as a radar chart, in D3. Some background knowledge of HTML and Javascript is expected.
+The importance of data visualization is rapidly growing in today's data-rich world, and web-based interactive visualizations such as those on New York Times or FiveThirtyEight can engage and inform a wide audience. One of the most popular tools for visualizing data on the web is D3, a powerful data visualization library for Javascript. Tutorial is intended to teach you how to make a spider chart using D3. Some knowledge of HTML and Javascript is assumed.
 
-This is a peek of what the final product should look like.
+Spider charts, also known as radar charts, are a type of chart that can display multiple features of each data point. They are similar to bar charts, except each axis extends out radially from the center of the chart. They can sometimes be an alternative to line charts, and are useful for overlaying and comparing data that have multiple variables. 
+
+Because the variables can be placed around the chart in an arbitrary order, the total area of the plotted shape is often meaningless, and data can become hidden in some cases (such as when a non-zero value is sandwiched between two zero values). This means that spider charts are most appropriate when the variables are categorical but have a natural sequence to them, such as months in the year or different age ranges.
+
+Before we begin the tutorial, here is a peek of what the final product should look like.
 
 ![console printout](https://yangdanny97.github.io/misc/spider_chart/4.png){: height="px300" width="300"}
 
@@ -45,8 +49,12 @@ In D3, the charts are usually displayed as SVG's (Scalable Vector Graphics, an i
 
 D3 provides helper functions for mapping data into coordinates. We will make a scale to map our data values to their radial distance from the center of the chart. The scale below maps values from 0-10 linearly to 0-250. We will also define an array of tick marks to be placed on the chart. The page should not display anything yet.
 
-    let svg = d3.select("body").append("svg").attr("width", 600).attr("height", 600);
-    let radialScale = d3.scaleLinear().domain([0,10]).range([0,250]);
+    let svg = d3.select("body").append("svg")
+        .attr("width", 600)
+        .attr("height", 600);
+    let radialScale = d3.scaleLinear()
+        .domain([0,10])
+        .range([0,250]);
     let ticks = [2,4,6,8,10];
 
 Now, let's add some circles to mark the positions of the ticks we previously set. We place grey, unfilled circles centered at the middle of our SVG. The radius of the circle is determined by the scale we previously defined. For example, an input of 2 corresponds to an output of 50 on our scale, which means the circle for the tick at 2 will be 50px wide.
@@ -120,7 +128,9 @@ The page should look like this now:
 
 Now, we will draw the shapes for the actual data. We will first define a helper function to generate the path for our shape, and an array of colors (we only need 3 of them since we know our data only has 3 points, but for larger datasets you can use an `scaleOrdinal` and map to an array of more colors). 
 
-    let line = d3.line().x(d => d.x).y(d => d.y);
+    let line = d3.line()
+        .x(d => d.x)
+        .y(d => d.y);
     let colors = ["darkorange", "gray", "navy"];
 
 We iterate through the fields in each data point in order and use the field name and value to calculate the coordinate for that attribute. The coordinates are pushed into an array.
