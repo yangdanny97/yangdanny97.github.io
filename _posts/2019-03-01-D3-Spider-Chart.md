@@ -7,7 +7,7 @@ Note: this post will be updated throughout the coming weeks as we go through the
 
 The importance of data visualization is rapidly growing in today's data-rich world, and web-based interactive visualizations such as those on New York Times or FiveThirtyEight can engage and inform a wide audience. One of the most popular tools for visualizing data on the web is D3, a powerful data visualization library for Javascript. Tutorial is intended to teach you how to make a spider chart using D3. Some knowledge of HTML and Javascript is assumed.
 
-Spider charts, also known as radar charts, are a type of chart that can display multiple features of each data point. They are similar to bar charts, except each axis extends out radially from the center of the chart. They can sometimes be an alternative to line charts, and are useful for overlaying and comparing data that have multiple variables. 
+Spider charts, also known as [radar charts](https://en.wikipedia.org/wiki/Radar_chart), are a type of chart that can display multiple features of each data point. They are similar to bar charts, except each axis extends out radially from the center of the chart. They can sometimes be an alternative to line charts, and are useful for overlaying and comparing data that have multiple variables. 
 
 Because the variables can be placed around the chart in an arbitrary order, the total area of the plotted shape is often meaningless, and data can become hidden in some cases (such as when a non-zero value is sandwiched between two zero values). This means that spider charts are most appropriate when the variables are categorical but have a natural sequence or grouping, such as months in the year or different age ranges.
 
