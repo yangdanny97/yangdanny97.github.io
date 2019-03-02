@@ -9,7 +9,7 @@ The importance of data visualization is rapidly growing in today's data-rich wor
 
 Spider charts, also known as radar charts, are a type of chart that can display multiple features of each data point. They are similar to bar charts, except each axis extends out radially from the center of the chart. They can sometimes be an alternative to line charts, and are useful for overlaying and comparing data that have multiple variables. 
 
-Because the variables can be placed around the chart in an arbitrary order, the total area of the plotted shape is often meaningless, and data can become hidden in some cases (such as when a non-zero value is sandwiched between two zero values). This means that spider charts are most appropriate when the variables are categorical but have a natural sequence to them, such as months in the year or different age ranges.
+Because the variables can be placed around the chart in an arbitrary order, the total area of the plotted shape is often meaningless, and data can become hidden in some cases (such as when a non-zero value is sandwiched between two zero values). This means that spider charts are most appropriate when the variables are categorical but have a natural sequence or grouping, such as months in the year or different age ranges.
 
 Before we begin the tutorial, here is a peek of what the final product should look like.
 
@@ -41,7 +41,7 @@ Let's generate some fake data. Put the following code inside the `<script>` tag.
 
 Note: `f => point[f] = 1 + Math.random() * 8` is an anonymous function, equivalent to `function(f){ point[f] = 1 + Math.random() * 8; }`
 
-The console output should look like this:
+The console output should look something like this (note that your numbers will be different from mine):
 
 ![console printout](https://yangdanny97.github.io/misc/spider_chart/0.png){: height="px300" width="600"}
 
