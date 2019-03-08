@@ -1,4 +1,4 @@
 name: Danny Yang
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
-syntax_highlighter: rouge
+highlighter: rouge
