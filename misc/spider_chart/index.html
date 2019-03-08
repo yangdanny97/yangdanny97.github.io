@@ -20,21 +20,21 @@
         let radialScale = d3.scaleLinear().domain([0,10]).range([0,250]);
         let ticks = [2,4,6,8,10];
         //draw grid lines (circles)
-        ticks.forEach(function(t){
+        ticks.forEach(t =>
             svg.append("circle")
             .attr("cx", 300)
             .attr("cy", 300)
             .attr("fill", "none")
             .attr("stroke", "gray")
-            .attr("r", radialScale(t));
-        });
+            .attr("r", radialScale(t))
+        );
         //draw tick labels
-        ticks.forEach(function(t){
+        ticks.forEach(t =>
             svg.append("text")
             .attr("x", 305)
             .attr("y", 300 - radialScale(t))
-            .text(t.toString());
-        });
+            .text(t.toString())
+        );
         //draw axis for each feature
         function angleToCoordinate(angle, value){
             let x = Math.cos(angle) * radialScale(value);
@@ -60,16 +60,24 @@
         //drawing the line for the spider chart
         let line = d3.line().x(d => d.x).y(d => d.y);
         let colors = ["darkorange", "gray", "navy"];
+
+        //get coordinates for a data point
+        function getPathCoordinates(d){
+            let coordinates = [];
+            for (var i = 0; i < features.length; i++){
+                let ft_name = features[i];
+                let angle = (Math.PI / 2) + (2 * Math.PI * i / features.length);
+                coordinates.push(angleToCoordinate(angle, d[ft_name]));
+            }
+            return coordinates;
+        }
+
         for (var i = 0; i < data.length; i ++){
             let d = data[i];
             let color = colors[i];
-            let coordinates = [];
-            for (var j = 0; j < features.length; j++){
-                let ft_name = features[j];
-                let angle = (Math.PI / 2) + (2 * Math.PI * j / features.length);
-                coordinates.push(angleToCoordinate(angle, d[ft_name]));
-            }
-            console.log(coordinates);
+            let coordinates = getPathCoordinates(d);
+
+            //draw the path element
             svg.append("path")
             .datum(coordinates)
             .attr("d",line)
