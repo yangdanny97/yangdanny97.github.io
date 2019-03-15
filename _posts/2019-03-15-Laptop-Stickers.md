@@ -14,4 +14,4 @@ There's a second type of stickers, which I keep on my laptop solely because they
 
 Bonus: me petting a corgi at Corgi-con:
 
-![Corgi-con](https://yangdanny97.github.io/images/corgicon.jpg){: height="500" width="500"}
+![Corgi-con](https://yangdanny97.github.io/images/corgicon.jpg){: height="400" }
