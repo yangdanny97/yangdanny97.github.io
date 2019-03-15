@@ -97,14 +97,11 @@ ticks.forEach(t =>
     .text(t.toString())
 );
 ```
+Notice that the y value is not the value output by the radial scale. This is because SVG coordinate systems have the top left as (0,0) and the y axis extends downwards from there (see diagram below). That means something that is 500 pixels from the bottom of the SVG has a y value of 100. Something that is 250 pixels up from the center of the SVG (like the text label for 10) will be at y value of 50. 
 
 The page should look like this now:
 
-![part 2](https://yangdanny97.github.io/misc/spider_chart/2.png){: height="px300" width="300"}
-
-Notice that the y value is not the value output by the radial scale. This is because SVG coordinate systems have the top left as (0,0) and the y axis extends downwards from there (see diagram below). That means something that is 500 pixels from the bottom of the SVG has a y value of 100. Something that is 250 pixels up from the center of the SVG (like the text label for 10) will be at y value of 50. 
-
-![SVG coordinate system borrowed from O'Reilly](https://oreillymedia.github.io/Using_SVG/ch08-coordinates-files/coordinate-systems-basic.svg){: height="px250" width="250"}
+![part 2](https://yangdanny97.github.io/misc/spider_chart/2.png){: height="px300" width="300"} ![SVG coordinate system borrowed from O'Reilly](https://oreillymedia.github.io/Using_SVG/ch08-coordinates-files/coordinate-systems-basic.svg){: height="px250" width="250"}
 
 ## Plotting the Axes
 
