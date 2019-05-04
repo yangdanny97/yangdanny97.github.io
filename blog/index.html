@@ -5,10 +5,8 @@ title: Danny Yang's Blog
 <div class='row slide'>
 	<div class="col-sm-6 offset-sm-3 card">
 		<h3>{{ page.title }}</h1>
-		<ul class="posts">
-			{% for post in site.posts %}
-				<li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
-			{% endfor %}
-		</ul>
+		{% for post in site.posts %}
+			<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></p>
+		{% endfor %}
 	</div>
 </div>
