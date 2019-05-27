@@ -1,10 +1,11 @@
 ---
 layout: default
-title: My Blog/Journal
+title: Danny's Blog/Journal
 ---
 <div class='row slide'>
 	<div class="col-sm-6 offset-sm-3 card">
 		<h3>{{ page.title }}</h3>
+		<br>
 		{% for post in site.posts %}
 			<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <span class="badge badge-secondary">{{ post.category }}</span></p>
 		{% endfor %}
