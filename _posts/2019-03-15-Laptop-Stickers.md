@@ -2,6 +2,7 @@
 layout: post
 title: "Laptop Stickers"
 date: 2019-03-15
+category: "Misc"
 ---
 Updated 3/19
 

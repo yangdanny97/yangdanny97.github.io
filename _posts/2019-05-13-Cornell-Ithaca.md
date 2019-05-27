@@ -2,6 +2,7 @@
 layout: post
 title: "Cornell's Contributions to Ithaca"
 date: 2019-05-13
+category: "Misc"
 ---
 
 Several months ago, there was a lot of attention around Amazon's decision to cancel plans to build a second headquarters in NYC due to the vehement opposition of a vocal minority. Much of the discussion centered on the tax breaks that Amazon would receive, and the benefits that Amazon would bring to the city. Naturally, this reminded me of a similar debate that was playing out in college towns across America - how much should universities like Cornell be expected to contribute to their surrounding communities?

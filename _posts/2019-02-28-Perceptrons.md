@@ -2,6 +2,7 @@
 layout: post
 title: "How Perceptrons Work"
 date: 2019-02-28
+category: "Technical"
 ---
 
 Note: This is a high-level explanation of how perceptrons work, intended for a college-educated but non-technical audience. I wrote this piece a few weeks ago for a technical writing class.

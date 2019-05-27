@@ -2,6 +2,7 @@
 layout: post
 title: "D3 Spider Chart Tutorial"
 date: 2019-03-01
+category: "Technical"
 ---
 Updated 08 March 2019
 
