@@ -35,6 +35,18 @@ body {
     font: 14px verdana,tahoma,sans-serif;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+td {
+    padding: 15px;
+}
+
 .highlight {
     color: crimson;
 }
