@@ -94,14 +94,14 @@ a:hover {
     margin-right: auto;
     max-width: 100%;
     max-height: 300px;
-    border: 2px solid #ccc;
+    border: 1px solid #aaa;
 }
 
 .about {
     color: #666666;
 }
 
-.card {
+.content-pad {
     padding-top: 15px;
 }
 
