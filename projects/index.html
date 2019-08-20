@@ -2,95 +2,113 @@
 layout: default
 title: Danny Yang - Projects
 ---
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+crossorigin="anonymous">
+<link rel='stylesheet' href="../css/style.css">
+<style>
+	.project-item {
+		border-radius: 5px;
+		border: 1px solid silver;
+		margin: 10px;
+		padding: 10px;
+	}
+</style>
 <div class='row slide'>
 	<div class='col-sm-6 offset-sm-3 content-pad'>
 		<h3>PROJECTS</h3>
-		<p>Below is a selection of the projects that I am working/have worked on. They include final projects for
-			courses, hackathon projects, side projects, and work for clubs/project teams.</p>
+		<p>Below is a selection of the current and past projects. They include hackathon projects, side projects, course projects, and work for clubs/project teams.</p>
 		<hr>
 
 		<h3>CURRENT PROJECTS</h3>
-
-		<h4><a href="https://github.com/yangdanny97/Tython" target="_blank">Tython</a> - designing a Python-like
-			language - (2019)</h4>
-		<ul>
-			<li>language with Python-like syntax and static typechecking</li>
-			<li>Tython code transpiles to Python (goal is to be kind of like Typescript but for Python)</li>
-			<li>currently being rewritten from scratch as of Summer 2019 (see repostory README to track progress!)</li>
-		</ul>
+		<div class="project-item">
+			<h4><a href="https://github.com/yangdanny97/Tython" target="_blank">Tython</a> - designing a Python-like
+				language - (2019)</h4>
+			<ul>
+				<li>language with Python-like syntax and static typechecking</li>
+				<li>Tython code transpiles to Python (goal is to be kind of like Typescript but for Python)</li>
+				<li>currently being rewritten from scratch as of Summer 2019 (see repostory README to track progress!)
+				</li>
+			</ul>
+		</div>
 		<hr>
 
 		<h3>PAST PROJECTS</h3>
-		<h4><a href="https://github.com/Bluefire2/xic" target="_blank">XiC (Xi Compiler)</a> - (2019)</a></h4>
-		<ul>
-			<li>compiler for Xi (a strongly-typed, imperative, procedural language) and Xi++ (its object-oriented
-				extension), targeting x64 and implemented in Java</li>
-			<li>developed a dataflow analysis framework and used it to build several optimizations including register
-				allocation, dead code elimination, copy-propagation, and common-subexpressions elimination
-			</li>
-		</ul>
-		<hr>
-		<h4>12 Hour Club - <a href="https://shiro.community/" target="_blank">Shiro</a> - (2019)</h4>
-		<ul>
-			<li>interactive concept map with dynamically positioned nodes and Prezi-like navigation, implemented in D3
-			</li>
-		</ul>
+		<div class="project-item">
+			<h4><a href="https://github.com/Bluefire2/xic" target="_blank">XiC (Xi Compiler)</a> - (2019)</a></h4>
+			<ul>
+				<li>compiler for Xi (a strongly-typed, imperative, procedural language) and Xi++ (its object-oriented
+					extension), targeting x64 and implemented in Java</li>
+				<li>developed a dataflow analysis framework and used it to build several optimizations including
+					register
+					allocation, dead code elimination, copy-propagation, and common-subexpressions elimination
+				</li>
+			</ul>
+		</div>
+		<div class="project-item">
+			<h4>12 Hour Club - <a href="https://shiro.community/" target="_blank">Shiro</a> - (2019)</h4>
+			<ul>
+				<li>interactive concept map with dynamically positioned nodes and Prezi-like navigation, implemented in
+					D3
+				</li>
+			</ul>
+		</div>
+		<div class="project-item">
+			<h4><a href="https://cornelldata.science">Cornell Data Science</a> - <a
+					href="https://github.com/CornellDataScience/Insights-FakeNews" target="_blank">Fake News
+					Challenge</a> - (2018-19)</h4>
+			<ul>
 
-		<hr>
-		<h4><a href="https://cornelldata.science">Cornell Data Science</a> - <a
-				href="https://github.com/CornellDataScience/Insights-FakeNews" target="_blank">Fake News
-				Challenge</a> - (2018-19)</h4>
-		<ul>
-
-			<li>build and visualize models to detect relevance and stance of a news article relative to a claim</li>
-			<li>goal: to increase transparency and interpretability of models and results</li>
-			<li>won a prize from Sandia National Labs at <a
-					href="https://www.cis.cornell.edu/about/outreach-events/boom-bits-our-minds/awards/boom-2019-award-recipients">BOOM
-					2019</a></li>
-		</ul>
-
-		<hr>
-		<h4><a href="https://dnm-finalapp.herokuapp.com/" target="_blank">DestiNation Matcher</a> - Travel
-			Destination Recommender - (2019)</h4>
-		<ul>
-			<li>returns destinations based on user's interests and preferences (activities, climate,
-				local language/drinking age, etc)</li>
-			<li>uses custom nicheness metric calculated using network structure of Wikivoyage to emphasize "hidden gems"
-			</li>
-		</ul>
-		<hr>
-		<h4><a href="https://github.com/RobYang1024/OCaMOSS" target="_blank">OCaMOSS</a> - (2018)</h4>
-		<ul>
-			<li>source code plagiarism detection software implemented in OCaml, inspired by MOSS</li>
-		</ul>
-		<hr>
-
-		<h4>Cornell Data Science - Social Tribes - (2018)</h4>
-		<ul>
-			<li>unsupervised clustering and visualization of political journalists on Twitter</li>
-			<li>Interactive Demos: <a href="{{ site.url }}/cds/agglomerative-clustering.html">agglomerative
-					clustering</a> ·
-				<a href="{{ site.url }}/cds/dendrograms.html">dendrograms</a>
-				· <a href="{{ site.url }}/cds/force-directed.html">force-directed graph</a></li>
-		</ul>
-		<hr>
-
-		<h4><a href='https://yangdanny97.github.io/US-foreign-aid-visualizer/' target='_blank'>US Foreign Aid</a> -
-			Dynamic Data Visualization - (2017)</h4>
-		<ul>
-			<li>interactive visualization of US foreign aid flow, implemented in D3</li>
-		</ul>
-
-		<hr>
-
-		<h4><a href="https://github.com/cornell-cup" target="_blank">Cornell Cup Robotics</a> - Minibot Platform
-			Team
-			- (2017)</h4>
-		<ul>
-			<li>software platform for Minibot, Cornell Cup's educational robotics platform</li>
-			<li>helped implement physics backend and optimized frontend display for virtual bot/obstacle simulator </li>
-		</ul>
-
+				<li>build and visualize models to detect relevance and stance of a news article relative to a claim</li>
+				<li>goal: to increase transparency and interpretability of models and results</li>
+				<li>won a prize from Sandia National Labs at <a
+						href="https://www.cis.cornell.edu/about/outreach-events/boom-bits-our-minds/awards/boom-2019-award-recipients">BOOM
+						2019</a></li>
+			</ul>
+		</div>
+		<div class="project-item">
+			<h4><a href="https://dnm-finalapp.herokuapp.com/" target="_blank">DestiNation Matcher</a> - Travel
+				Destination Recommender - (2019)</h4>
+			<ul>
+				<li>returns destinations based on user's interests and preferences (activities, climate,
+					local language/drinking age, etc)</li>
+				<li>uses custom nicheness metric calculated using network structure of Wikivoyage to emphasize "hidden
+					gems"
+				</li>
+			</ul>
+		</div>
+		<div class="project-item">
+			<h4><a href="https://github.com/RobYang1024/OCaMOSS" target="_blank">OCaMOSS</a> - (2018)</h4>
+			<ul>
+				<li>source code plagiarism detection software implemented in OCaml, inspired by MOSS</li>
+			</ul>
+		</div>
+		<div class="project-item">
+			<h4>Cornell Data Science - Social Tribes - (2018)</h4>
+			<ul>
+				<li>unsupervised clustering and visualization of political journalists on Twitter</li>
+				<li>Interactive Demos: <a href="{{ site.url }}/cds/agglomerative-clustering.html">agglomerative
+						clustering</a> ·
+					<a href="{{ site.url }}/cds/dendrograms.html">dendrograms</a>
+					· <a href="{{ site.url }}/cds/force-directed.html">force-directed graph</a></li>
+			</ul>
+		</div>
+		<div class="project-item">
+			<h4><a href='https://yangdanny97.github.io/US-foreign-aid-visualizer/' target='_blank'>US Foreign Aid</a> -
+				Dynamic Data Visualization - (2017)</h4>
+			<ul>
+				<li>interactive visualization of US foreign aid flow, implemented in D3</li>
+			</ul>
+		</div>
+		<div class="project-item">
+			<h4><a href="https://github.com/cornell-cup" target="_blank">Cornell Cup Robotics</a> - Minibot Platform
+				Team
+				- (2017)</h4>
+			<ul>
+				<li>software platform for Minibot, Cornell Cup's educational robotics platform</li>
+				<li>helped implement physics backend and optimized frontend display for virtual bot/obstacle simulator
+				</li>
+			</ul>
+		</div>
 		<hr>
 
 		<h3>HACKATHON PROJECTS</h3>
