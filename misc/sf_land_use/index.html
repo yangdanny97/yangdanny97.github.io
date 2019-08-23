@@ -1,0 +1,295 @@
+<html>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
+<!-- loading animation credit: https://projects.lukehaas.me/css-loaders/ -->
+<style>
+    .title-text {
+        font-size: 20px;
+    }
+
+    text {
+        font-family: Helvetica, Sans-Serif;
+        color: silver;
+        font-size: 12px;
+        fill: silver;
+    }
+
+    .loader {
+        border-radius: 50%;
+        width: 2em;
+        height: 2em;
+        margin: 20px auto;
+        position: absolute;
+        text-align: center;
+        border-top: 5px solid rgba(255, 255, 255, 0.2);
+        border-right: 5px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 5px solid rgba(255, 255, 255, 0.2);
+        border-left: 5px solid skyblue;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-animation: load8 1.1s infinite linear;
+        animation: load8 1.1s infinite linear;
+    }
+
+    @-webkit-keyframes load8 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes load8 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+    <svg id="vis"></svg>
+    <script>
+        var width = document.documentElement.clientWidth,
+            height = document.documentElement.clientHeight;
+
+        // set up SVG
+        var svg = d3.select("#vis").attr("width", width).attr("height", height);
+        svg.append("rect")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("fill", "black");
+
+        var chart = svg.append("g");
+
+        // loading icon
+        d3.select("body").append("div")
+            .attr("class", "loader")
+            .style("left", (width / 2) + "px")
+            .style("top", (height / 2) + "px");
+
+        // set up globals and scales
+        var features;
+        var yearScale = d3.scaleLinear()
+            .domain([1850, 2000])
+            .range(['red', 'blue']);
+        var ageScale = function (d) {
+            return (d !== 0 && d > 1400 && d <
+                2020) ? yearScale(d) : "gray";
+        }
+        var unitsScale = d3.scaleLinear()
+            .domain([1, 100])
+            .range(['silver', 'orange']);
+        var resScale = function (d) {
+            return (d === 0) ? "gray" : unitsScale(d);
+        }
+        var useScale = d3.scaleOrdinal()
+            .domain([
+                "RESIDENT",
+                "MIXRES",
+                "PDR", //industrial
+                "OpenSpace",
+                "VISITOR", //hotel
+                "MIPS", //office
+                "MIXED",
+                "RETAIL/ENT",
+                "VACANT",
+                "CIE", //education/culture
+                "MISSING DATA",
+                "MED", //medical
+                "Right of Way"
+            ]).range([
+                "steelblue",
+                "purple",
+                "crimson",
+                "lightgreen",
+                "crimson",
+                "crimson",
+                "crimson",
+                "crimson",
+                "gray",
+                "crimson",
+                "silver",
+                "crimson",
+                "gray",
+            ]);
+        var pathGenerator;
+        var parcels;
+
+        // update the legend on the right hand side of the screen
+        var displayLegend = function (name, legend) {
+            svg.selectAll(".menu-item").remove();
+            svg.append("text")
+                .attr("class", "menu-item title-text")
+                .attr("x", 0.8 * width)
+                .attr("y", 100)
+                .text(name);
+            legend.map((d, i) => {
+                svg.append("rect")
+                    .attr("width", 50)
+                    .attr("height", 25)
+                    .attr("x", 0.8 * width)
+                    .attr("y", 110 + i * 25)
+                    .attr("class", "menu-item")
+                    .attr("fill", d.color);
+                svg.append("text")
+                    .attr("class", "menu-item")
+                    .attr("x", 0.8 * width + 60)
+                    .attr("y", 124 + i * 25)
+                    .text(d.label);
+            });
+        }
+
+        // callback after data loads
+        var processData = function (data) {
+            console.log(data);
+            var center = d3.geoCentroid(data);
+            pathGenerator = d3.geoPath();
+
+            features = topojson.feature(data, data.objects.land_use_smaller).features;
+            parcels = chart
+                .selectAll('path')
+                .data(features);
+            parcels.enter()
+                .append('path')
+                .style("stroke", "none")
+                .style("fill", "black")
+                .attr("id", (d) => d.objectid)
+                .attr('d', pathGenerator);
+            displayVis("yrbuilt");
+            d3.select(".loader").remove();
+        }
+
+        // update vis to display some metric
+        // after data is loaded and visualization is set up
+        var displayVis = function (feature) {
+            var scale;
+            if (feature === "yrbuilt") {
+                scale = function (d) {
+                    return ageScale(d.properties.yrbuilt)
+                };
+                displayLegend("Building Age", [{
+                    color: "red",
+                    label: "1850 or earlier"
+                }, {
+                    color: "#AA0055",
+                    label: "1900"
+                }, {
+                    color: "#5500AA",
+                    label: "1950"
+                }, {
+                    color: "blue",
+                    label: "2000 or later"
+                }, {
+                    color: "silver",
+                    label: "no data"
+                }]);
+            } else if (feature === "resunits") {
+                scale = function (d) {
+                    return resScale(d.properties.resunits)
+                };
+                displayLegend("Residential Units", [{
+                    color: "orange",
+                    label: "100+ units"
+                }, {
+                    color: "silver",
+                    label: "1 unit"
+                }, {
+                    color: "gray",
+                    label: "0 units"
+                }]);
+            } else if (feature === "landuse") {
+                scale = function (d) {
+                    return useScale(d.properties.landuse)
+                };
+                displayLegend("Land Use", [{
+                        color: "crimson",
+                        label: "commercial"
+                    }, {
+                        color: "steelblue",
+                        label: "residential"
+                    },
+                    {
+                        color: "lightgreen",
+                        label: "open space"
+                    },
+                    {
+                        color: "gray",
+                        label: "vacant/other"
+                    },
+                    {
+                        color: "silver",
+                        label: "no data"
+                    }
+                ]);
+            }
+            parcels = svg
+                .selectAll('path')
+                .data(features);
+            parcels.style("fill", (d) => scale(d));
+            var chartScaling = height / 700;
+            chart.attr("transform",
+                `scale(${chartScaling}) translate(${width/2-chartScaling*1000/2} ${-0.15*chartScaling*1000})`
+            );
+        }
+
+        // left side menu
+        svg.append("text")
+            .attr("class", "title-text")
+            .attr("x", 50)
+            .attr("y", 100)
+            .text("San Francisco Land Use Visualization");
+
+        svg.append("text")
+            .attr("x", 50)
+            .attr("y", 125)
+            .text("Dataset: https://data.sfgov.org/Housing-and-Buildings/Land-Use/us3s-fp9q");
+
+        svg.append("text")
+            .attr("class", "title-text")
+            .attr("x", 50)
+            .attr("y", 250)
+            .text("Select a Metric");
+
+        svg.append("text")
+            .attr("x", 50)
+            .attr("y", 275)
+            .text("Building Age")
+            .on("click", (d) => {
+                displayVis("yrbuilt")
+            });
+
+        svg.append("text")
+            .attr("x", 50)
+            .attr("y", 300)
+            .text("Residential Unit Density")
+            .on("click", (d) => {
+                displayVis("resunits")
+            });
+
+        svg.append("text")
+            .attr("x", 50)
+            .attr("y", 325)
+            .text("Land Use/Zoning")
+            .on("click", (d) => {
+                displayVis("landuse")
+            });
+
+        // load data
+        d3.json("./land_use_smaller.json").then((data) => {
+            processData(data);
+        });
+    </script>
+</body>
+
+</html>
