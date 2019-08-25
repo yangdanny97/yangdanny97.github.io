@@ -9,13 +9,13 @@ This post is a collection of common problems people will encounter while making 
 
 ### Large GeoJSON Files
 
-Depending on the level of detail, GeoJSON can get very large. The GeoJSON containing [land use information on each parcel of land in San Francisco](https://data.sfgov.org/Housing-and-Buildings/Land-Use/us3s-fp9q) is ~137mb. Since D3 visualizations are rendered by the browser, it forces the user to download a massive data file to view the visualization, which makes load times exceedingly long. This is something we want to minimize, and thankfully there are several ways to deal with this.
+Depending on the level of detail, GeoJSON can get very large. For example, the GeoJSON containing [land use information on each parcel of land in San Francisco](https://data.sfgov.org/Housing-and-Buildings/Land-Use/us3s-fp9q) is ~137mb. Since D3 visualizations are rendered by the browser, it forces the user to download a massive data file to view the visualization, which makes load times exceedingly long. This is something we want to minimize, and thankfully there are several ways to deal with this.
 
 1. **Reducing the amount of properties for each feature** 
 
     A feature refers to some object on the map (like a building) that has a shape and some properties. Properties are like columns in a traditional CSV, they can hold data. For example, in the SF Land Use dataset, each parcel is a feature and contains properties like their age and zoning type. 
     
-    Oftentimes, the datasets you download will have a lot of properties that you don't plan on displaying, which can be removed to save on size. Appling this method reduced the SF Land Use dataset from 137mb to 98mb.
+    Oftentimes, the datasets you download will have a lot of properties that you don't plan on displaying, which can be removed to save on size. Applying this method reduced the SF Land Use dataset from 137mb to 98mb.
 
 2. **Compacting the JSON** 
 

@@ -4,7 +4,6 @@ title: "First Post"
 date: 2019-02-27
 category: "Misc"
 ---
-Updated 3/18
 
 I've always wanted to try blogging, but I never really got started because I couldn't quite decide what I wanted to blog about, or which platform to use.
 I wasn't sure if I wanted to blog about technical things or about life/culture, if I wanted to write serious posts or just short snippets. Twitter and Tumblr seem to be too informal and restrictive if I ever wanted to write about technical things, and Medium seems to be too fancy for short snippets of musings...
