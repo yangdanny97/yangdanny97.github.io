@@ -7,7 +7,7 @@ category: "Technical"
 
 This post is a collection of common problems people will encounter while making maps using D3, and my advice for how to deal with them.
 
-## Large GeoJSON Files
+### Large GeoJSON Files
 
 Depending on the level of detail, GeoJSON can get very large. The GeoJSON containing [land use information on each parcel of land in San Francisco](https://data.sfgov.org/Housing-and-Buildings/Land-Use/us3s-fp9q) is ~137mb. Since D3 visualizations are rendered by the browser, it forces the user to download a massive data file to view the visualization, which makes load times exceedingly long. This is something we want to minimize, and thankfully there are several ways to deal with this.
 
@@ -37,17 +37,17 @@ Depending on the level of detail, GeoJSON can get very large. The GeoJSON contai
 
 As a rule of thumb, you should keep data under 10mb for best performance, although if you included a loading indicator you might be able to get away with 50mb without the user complaining too much.
 
-## Non-JSON File Formats
+### Non-JSON File Formats
 
 Map data doesn't always come nicely formatted as GeoJSON or TopoJSON; sometimes they will come as shapefiles, which cannot directly be displayed by D3. You can edit and convert map data using a tool called [MapShaper](https://mapshaper.org). It has both a web interface and CLI where you can upload files in a variety of formats, edit their layers and polygons, and re-export them as GeoJSON or TopoJSON. I used it once to convert a shapefile of Westeros into a format that can be displayed in D3 (the final map, if you're curious, is [here](https://yangdanny97.github.io/GoT-interactive-battles-map/)).
 
-## Scaling Issues
+### Scaling Issues
 
 This is most common when working with city-level GeoJSON data, which will appear as a tiny speck on the screen if the projection is not adjusted. This can be fixed by centering the projection on the city's centroid, then zooming and offsetting appropriately. For example, my map of San Francisco was zoomed to a factor of 250000 in order to fill the screen. 
 
 Note that most of the time TopoJSON already comes with a projection applied, so it is not possible to adjust the projection's scaling. In this case, you can set the `transform` attribute [using D3](https://www.tutorialspoint.com/d3js/d3js_svg_transformation.htm), or you can upload the file to MapShaper and export a new version with the desired width/height/scaling.
 
-## Zooming Behavior
+### Zooming Behavior
 
 Sadly, this is one of the things that D3 is bad at. For simpler maps with fewer shapes, this is totally doable. Unfortunately, when the number of shapes gets large (>10000), it becomes very difficult to have smooth zooming behavior. 
 
