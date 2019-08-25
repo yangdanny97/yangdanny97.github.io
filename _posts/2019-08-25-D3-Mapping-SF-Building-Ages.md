@@ -27,23 +27,23 @@ By using MapShaper, a handy tool I discovered when I made a map of [Westeros](ht
 
 The final product can be seen below (or see a live version [here](https://yangdanny97.github.io/misc/sf_building_ages/)). 
 
-![building age in San Francisco](https://yangdanny97.github.io/misc/sf_mapping/1.png){: height="px400" width="700"}
+![building age in San Francisco](https://yangdanny97.github.io/misc/sf_mapping/1.png){: height="px400" width="650"}
 
 While the level of detail is fantastic, the irregular shapes of the buildings and the large amount of empty space actually make it harder to see trends across neighborhoods, so I wanted to try and make a version that showed this information more clearly.
 
 I decided to just visualize the parcels themselves without any buildings, since the parcel footprints fill more space. 
-The final product was an interactive visualization that allowed users to see the year built, land use (zoning), and number of residential units for each parcel (see it live [here](https://yangdanny97.github.io/misc/sf_land_use/).
+The final product was an interactive visualization that allowed users to see the year built, land use (zoning), and number of residential units for each parcel (see it live [here](https://yangdanny97.github.io/misc/sf_land_use/)).
 
-![zoning in San Francisco](https://yangdanny97.github.io/misc/sf_mapping/2.png){: height="px400" width="700"}
+![zoning in San Francisco](https://yangdanny97.github.io/misc/sf_mapping/2.png){: height="px400" width="650"}
 
 It's obvious at a glance which neighborhoods were more residential and which were more commercial, and it's easy to identify clusters of high density housing (corresponding with high rises near SoMa and, surprisingly, Lake Merced).
 
-![high density housing in San Francisco](https://yangdanny97.github.io/misc/sf_mapping/3.png){: height="px400" width="700"}
+![high density housing in San Francisco](https://yangdanny97.github.io/misc/sf_mapping/3.png){: height="px400" width="650"}
 
 Additionally, the building age patterns that I observed in the building-level visualization are further emphasized here. 
-The historic Western Addition is full of red colored parcels, indicating older buildings. Meanwhile the areas with a lot of recent construction, such as SoMa, are almost all blue.
+Historic neighborhoods like Western Addition are full of red colored parcels, indicating older buildings. Meanwhile the areas with a lot of recent construction, such as SoMa, have a lot of bright blue.
 
-![parcel age in San Francisco](https://yangdanny97.github.io/misc/sf_mapping/4.png){: height="px400" width="700"}
+![parcel age in San Francisco](https://yangdanny97.github.io/misc/sf_mapping/4.png){: height="px400" width="650"}
 
 Interestingly, landmarks can be seen as well - the Palace of Fine Arts, built for the 1915 World Fair, can be seen as a uniquely-shaped, magenta-colored parcel at the top of the map.
 
