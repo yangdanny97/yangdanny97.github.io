@@ -15,7 +15,7 @@ Meanwhile, there is no direct mapping for which building corresponds to which pa
 
 I came across [a paper](https://simulationresearch.lbl.gov/sites/all/files/20_-_city_buildings_dataset_-_tianzhen_hong.pdf) that described this precise dilemma and suggested a simple solution, which I ultimately adopted: assign each building to the parcel containing its centroid.
 
-Thus, I was able to map each building in the [building footprints dataset] to the "year built" of a parcel in the [land use dataset](https://data.sfgov.org/Housing-and-Buildings/Land-Use/us3s-fp9q).
+Using this method I was able to associate each building in the [building footprints dataset](https://data.sfgov.org/Geographic-Locations-and-Boundaries/Building-Footprints/ynuv-fyni) to the year it was built, using data from the [land use dataset](https://data.sfgov.org/Housing-and-Buildings/Land-Use/us3s-fp9q).
 
 Loading and displaying such a large dataset was a huge challenge. 
 The building footprints dataset contained detailed shapes of almost 180,000 buildings, and removing all the unnecessary columns only reduced it to 170mb from an original 230mb. 
