@@ -24,5 +24,7 @@ To correctly perform substitution for the earlier example, we would rename the `
 To define things more formally, the complete rules for substitution would be as follows:
 
 - `v1 {e\v2}` -> `e` if `v1` == `v2`, otherwise `v1`
+
 - `e1 e2 {e3\v}` -> `(e1 {e3\v}) (e2 {e3\v})`
+
 - `λv1.e1 {e2\v2}` -> `λv1.(e1 {e2\v2})` where `v1` != `v2` and `v1` is not in the free variables of `e2`.
