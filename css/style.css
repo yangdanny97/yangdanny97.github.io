@@ -14,10 +14,10 @@ ul {
     list-style-type: none;
 }
 
-ul li:before {
+/* ul li:before {
     content: "•";
     margin-right: .5em;
-}
+} */
 
 .row {
     margin-top: 25px;
