@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "Tomato and Egg"
-date: 2019-10-27
+date: 2019-10-26
 category: "Cooking"
 ---
 
 I decided that it would be a good idea to start writing down recipes for foods that I like to cook and eat, and today we'll start off with something simple: Tomato and Egg. 
 
-Growing up in a Chinese household, this dish was commonplace in my family and remains one of my favorite dishes to make. The mild acidity makes it an appetizing meal despite not being heavily spiced.
+Growing up in a Chinese household, this dish was commonplace in my family and remains one of my favorite dishes to make. The mild acidity makes it an appetizing meal despite being very lightly seasoned.
 
 ### Tomato and Egg
 - Prep time: 5 minutes

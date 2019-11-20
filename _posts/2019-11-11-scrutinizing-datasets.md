@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Scrutinizing Datasets"
-date: 2019-11-12
+date: 2019-11-11
 category: "Technical"
 ---
 

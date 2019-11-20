@@ -4,7 +4,7 @@ title: "Pork Belly Noodles"
 date: 2019-11-12
 category: "Cooking"
 ---
-This is one of my favorite ways to have noodles with soup. The noodles and veggies are pretty standard, and another protein like katsu or fish cake can be easily substituted for the pork belly. 
+This is one of my favorite ways to have noodles with soup. The noodles and veggies are pretty standard, and another protein like katsu or fish cake can be easily substituted for the pork belly. Adding a fried egg with furikake on top is also an option.
 
 ### Pork Belly Noodles:
 - Prep time: 5 minutes
