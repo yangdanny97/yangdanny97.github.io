@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Explanation of Capture-Avoiding Substitution"
-date: 2019-05-26
+date: 2019-05-25
 category: "Notes"
 ---
 
