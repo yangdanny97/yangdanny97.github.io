@@ -8,6 +8,8 @@ title: My Blog
 		<p>Welcome to my blog! As you can see, I like to write about technical things and I also like to cook.</p>
 		<hr>
 		<h3>Technical</h3>
+		<span>- posts about a variety of technical subjects that I'm interested in</span>
+		<br>
 		{% for post in site.posts %}
 		{% if post.category == "Technical" %}
 		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
@@ -16,6 +18,8 @@ title: My Blog
 		{% endfor %}
 		<hr>
 		<h3>Cooking</h3>
+		<span>- recipes for my favorite foods.</span>
+		<br>
 		{% for post in site.posts %}
 		{% if post.category == "Cooking" %}
 		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
@@ -24,6 +28,8 @@ title: My Blog
 		{% endfor %}
 		<hr>
 		<h3>Notes</h3>
+		<span>- less structured posts about technical topics</span>
+		<br>
 		{% for post in site.posts %}
 		{% if post.category == "Notes" %}
 		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
@@ -32,6 +38,8 @@ title: My Blog
 		{% endfor %}
 		<hr>
 		<h3>Misc</h3>
+		<span>- anything that doesn't fit in the above categories</span>
+		<br>
 		{% for post in site.posts %}
 		{% if post.category == "Misc" %}
 		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
