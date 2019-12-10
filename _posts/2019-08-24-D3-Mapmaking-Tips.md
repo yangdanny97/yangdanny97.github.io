@@ -2,7 +2,7 @@
 layout: post
 title: "Mapmaking using D3: Tips and Common Pitfalls"
 date: 2019-08-24
-category: "Technical"
+category: "Notes"
 ---
 
 This post is a collection of common problems people will encounter while making maps using D3, and my advice for how to deal with them.

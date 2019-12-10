@@ -9,26 +9,34 @@ title: My Blog
 		<hr>
 		<h3>Technical</h3>
 		{% for post in site.posts %}
+		{% if post.category == "Technical" %}
 		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
 				title="{{ post.title }}">{{ post.title }}</a> </p>
+		{% endif %}
 		{% endfor %}
 		<hr>
 		<h3>Cooking</h3>
-		{% for post in site.cooking %}
+		{% for post in site.posts %}
+		{% if post.category == "Cooking" %}
 		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
 				title="{{ post.title }}">{{ post.title }}</a> </p>
+		{% endif %}
 		{% endfor %}
 		<hr>
 		<h3>Notes</h3>
-		{% for post in site.notes %}
+		{% for post in site.posts %}
+		{% if post.category == "Notes" %}
 		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
 				title="{{ post.title }}">{{ post.title }}</a> </p>
+		{% endif %}
 		{% endfor %}
 		<hr>
 		<h3>Misc</h3>
-		{% for post in site.other %}
+		{% for post in site.posts %}
+		{% if post.category == "Misc" %}
 		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
 				title="{{ post.title }}">{{ post.title }}</a> </p>
+		{% endif %}
 		{% endfor %}
 	</div>
 </div>
