@@ -5,9 +5,30 @@ title: My Blog
 <div class='row slide'>
 	<div class="col-sm-6 offset-sm-3 content-pad">
 		<h3>{{ page.title }}</h3>
-		<br>
+		<p>Welcome to my blog! As you can see, I like to write about technical things and I also like to cook.</p>
+		<hr>
+		<h3>Technical</h3>
 		{% for post in site.posts %}
-			<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <span class="badge badge-secondary">{{ post.category }}</span></p>
+		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
+				title="{{ post.title }}">{{ post.title }}</a> </p>
+		{% endfor %}
+		<hr>
+		<h3>Cooking</h3>
+		{% for post in site.cooking %}
+		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
+				title="{{ post.title }}">{{ post.title }}</a> </p>
+		{% endfor %}
+		<hr>
+		<h3>Notes</h3>
+		{% for post in site.notes %}
+		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
+				title="{{ post.title }}">{{ post.title }}</a> </p>
+		{% endfor %}
+		<hr>
+		<h3>Misc</h3>
+		{% for post in site.other %}
+		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
+				title="{{ post.title }}">{{ post.title }}</a> </p>
 		{% endfor %}
 	</div>
 </div>
