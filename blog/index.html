@@ -8,7 +8,7 @@ title: My Blog
 		<p>Welcome to my blog! As you can see, I like to write about technical things and I also like to cook.</p>
 		<hr>
 		<h3>Technical</h3>
-		<span>- posts about a variety of technical subjects that I'm interested in</span>
+		<p>Posts about a variety of technical subjects that I'm interested in</p>
 		<br>
 		{% for post in site.posts %}
 		{% if post.category == "Technical" %}
@@ -18,7 +18,7 @@ title: My Blog
 		{% endfor %}
 		<hr>
 		<h3>Cooking</h3>
-		<span>- recipes for my favorite foods.</span>
+		<p>Recipes for my favorite foods</p>
 		<br>
 		{% for post in site.posts %}
 		{% if post.category == "Cooking" %}
@@ -28,7 +28,7 @@ title: My Blog
 		{% endfor %}
 		<hr>
 		<h3>Notes</h3>
-		<span>- less structured posts about technical topics</span>
+		<p>Less structured posts about technical topics</p>
 		<br>
 		{% for post in site.posts %}
 		{% if post.category == "Notes" %}
@@ -38,7 +38,7 @@ title: My Blog
 		{% endfor %}
 		<hr>
 		<h3>Misc</h3>
-		<span>- anything that doesn't fit in the above categories</span>
+		<p>Anything that doesn't fit in the above categories</p>
 		<br>
 		{% for post in site.posts %}
 		{% if post.category == "Misc" %}
