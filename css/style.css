@@ -105,8 +105,8 @@ a:hover {
 }
 
 .slide {
-    transform: translateX(-10%);
-    -webkit-transform: translateX(-10%);
+    transform: translateX(-5%);
+    -webkit-transform: translateX(-5%);
     -webkit-animation: fadein 0.5s forwards, slide-in 0.5s forwards;
     animation: fadein 0.5s forwards, slide-in 0.5s forwards;
 }
