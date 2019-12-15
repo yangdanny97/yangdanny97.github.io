@@ -1,0 +1,57 @@
+<html>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<style>
+    #card {
+        margin: 50px;
+        padding: 50px;
+        border: solid gray 1px;
+        border-radius: 20px;
+        border-color: gray;
+        background-color: cornsilk;
+        color: navy;
+        width: 300px;
+        height: 500px;
+    }
+
+    .card-text {
+        text-align: center;
+    }
+
+    img {
+        margin-left: 50px;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+<body>
+    <div id="card">
+        <h1 id="card-title" class="card-text"></h1>
+        <p id="version" class="card-text"></p>
+        <br>
+        <span id="cardimage"></span>
+        <br>
+        <p class="card-text">From: Danny</p>
+    </div>
+    <script>
+        const versions = ["A", "B"];
+        const messages = ["ConGraduations!", "ConGRADulations!"];
+        var i = Math.floor(Math.random() * 2);
+        d3.select("#card-title").html(messages[i]);
+        d3.select("#version").html(`Version ${versions[i]}`);
+
+        const backgrounds = ["cornflowerblue", "cornsilk"];
+        const colors = ["cornsilk", "navy"];
+        const url = "https://yangdanny97.github.io/misc/graduation/";
+        const images = [
+            "cactus.png",
+            "cat.png"
+        ];
+        var theme = Math.floor(Math.random() * 2);
+        d3.select("#card").style("background-color", backgrounds[theme]);
+        d3.select("#card").style("color", colors[theme]);
+        d3.select("#cardimage").append("img").attr("src", url + images[theme]);
+    </script>
+</body>
+
+</html>
