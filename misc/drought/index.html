@@ -11,16 +11,50 @@
         var width = document.documentElement.clientWidth,
             height = document.documentElement.clientHeight;
 
-        var hexbin = d3.hexbin()
-            .x(d => d.geometry.coordinates[0])
-            .y(d => d.geometry.coordinates[1]);
-
         // set up SVG
         var svg = d3.select("#vis").attr("width", width).attr("height", height);
         svg.append("rect")
             .attr("width", width)
-            .attr("height", height)
+            .attr("height", height * 2)
             .attr("fill", "cornsilk");
+
+        function drawStates(state_data, y = 0) {
+            var statesProjection = d3.geoAlbersUsa()
+                .fitSize([width, height], state_data);
+
+            var statesGenerator = d3.geoPath()
+                .projection(statesProjection);
+
+            var states = svg.selectAll(`.state`)
+                .data(state_data.features);
+            states.enter().append("path")
+                .attr("class", `state`)
+                .attr("d", statesGenerator)
+                .attr("fill", "none")
+                .attr("stroke", "gray")
+                .attr("stroke-width", 0.5)
+                .attr("transform", `translate(0,${y})`);
+        }
+
+        function drawDrought(drought_data, scale, colorScale, widthScale, y = 0) {
+            var hexbin = d3.hexbin()
+                .x(d => d.geometry.coordinates[0])
+                .y(d => d.geometry.coordinates[1])
+                .size([width, height])
+                .radius(scale * 20000);
+
+            var drought = svg.selectAll(`.drought`)
+                .data(hexbin(drought_data.features));
+            drought.enter().append("path")
+                .attr("class", `drought`)
+                .attr("d", d => hexbin.hexagon(scale * 20000 * widthScale(d[0].properties.PctAny)))
+                .attr("transform", d => `translate(${d.x},${d.y + y})`)
+                .attr("fill", d => colorScale(d[0].properties.CountWgt))
+                .attr("stroke", "black")
+                .attr("stroke-width", 0);
+        }
+
+        function drawLegend() { }
 
         function processData(droughts, usa) {
             usa.objects.us_20m.geometries = usa.objects.us_20m.geometries.filter(x =>
@@ -30,32 +64,17 @@
             );
 
             var state_data = topojson.feature(usa, usa.objects.us_20m);
-            var statesProjection = d3.geoAlbersUsa()
-                .fitSize([width, height], state_data);
-
-            var statesGenerator = d3.geoPath()
-                .projection(statesProjection);
-
-            // state outlines
-            var states = svg.selectAll(".state")
-                .data(state_data.features);
-            states.enter().append("path")
-                .attr("class", "state")
-                .attr("d", statesGenerator)
-                .attr("fill", "none")
-                .attr("stroke", "silver")
-                .attr("stroke-width", 1);
 
             var drought_data = topojson.feature(droughts, droughts.objects["30KMSampleAll"]);
 
             var extent_x = d3.extent(drought_data.features.map(f => f.geometry.coordinates[0]));
             var extent_y = d3.extent(drought_data.features.map(f => f.geometry.coordinates[1]));
-            var scale_x = width / (extent_x[1] - extent_x[0]) * .97;
-            var scale_y = height / (extent_y[1] - extent_y[0]) * .97;
+            var scale_x = width / (extent_x[1] - extent_x[0]) * 0.99;
+            var scale_y = height / (extent_y[1] - extent_y[0]) * 0.99;
             var offset_x = extent_x[0];
             var offset_y = extent_y[0];
 
-            var scale, adjust_x = 0, adjust_y = -0.02 * height;
+            var scale, adjust_x = 0, adjust_y = -0.01 * height;
             if (scale_x > scale_y) {
                 scale = scale_y;
                 adjust_x = (width - (extent_x[1] - extent_x[0]) * scale) / 2;
@@ -67,18 +86,29 @@
                 var x = coords[0], y = coords[1];
                 return [(x - offset_x) * scale + adjust_x, -1 * (y - offset_y) * scale + height + adjust_y];
             }
+
+            var minWgt = 1000, maxWgt = 0;
             drought_data.features.forEach(f => {
                 f.geometry.coordinates = proj(f.geometry.coordinates);
+                minWgt = Math.min(f.properties.CountWgt, minWgt);
+                maxWgt = Math.max(f.properties.CountWgt, maxWgt);
             });
-            var drought = svg.selectAll(".drought")
-                .data(hexbin(drought_data.features));
-            drought.enter().append("path")
-                .attr("class", "drought")
-                .attr("d", d => hexbin.hexagon(scale * 15000))
-                .attr("transform", d => `translate(${d.x},${d.y})rotate(90)`)
-                .attr("fill", "none")
-                .attr("stroke", "black")
-                .attr("stroke-width", 0.5);
+
+            var diff = maxWgt - minWgt;
+            var severityDomain = [minWgt,
+                minWgt + diff / 5,
+                minWgt + diff * 2 / 5,
+                minWgt + diff * 3 / 5,
+                minWgt + diff * 4 / 5,
+                maxWgt];
+
+            var colorScale = d3.scaleLinear().domain(severityDomain)
+                .range(["cornsilk", "lightyellow", "orange", "red", "darkmagenta"]);
+            var widthScale = d3.scaleQuantize().domain([0, 0.95]).range([0.0, 0.4, 0.6, 0.8, 1.0]);
+
+            drawDrought(drought_data, scale, colorScale, widthScale);
+            drawStates(state_data);
+            drawLegend();
         }
 
         Promise.all([d3.json("./30KMSampleAll.json"), d3.json("./us_20m.json")]).then((jsons) => {
