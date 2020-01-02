@@ -16,7 +16,7 @@
         svg.append("rect")
             .attr("width", width)
             .attr("height", height * 2)
-            .attr("fill", "cornsilk");
+            .attr("fill", "whitesmoke");
 
         function drawStates(state_data, y = 0) {
             var statesProjection = d3.geoAlbersUsa()
@@ -54,7 +54,43 @@
                 .attr("stroke-width", 0);
         }
 
-        function drawLegend() { }
+        function drawLegend(severity, widthScale, x = 0, y = 0) { 
+            svg.append("text")
+            .attr("transform","translate(25,75)scale(3)")
+            .attr("fill", "black")
+            .text("Drought in the United States");
+            svg.append("line")
+            .attr("x1", x)
+            .attr("y1", y)
+            .attr("x2", x + 100)
+            .attr("y2", y)
+            .attr("stroke", "black")
+            .attr("stroke-width", 1);
+            svg.append("line")
+            .attr("x1", x)
+            .attr("y1", y)
+            .attr("x2", x)
+            .attr("y2", y + 100)
+            .attr("stroke", "black")
+            .attr("stroke-width", 1);
+            svg.append("text")
+            .attr("transform",`translate(${x - 5},${y + 80})rotate(270)`)
+            .attr("fill", "black")
+            .text("Frequency");
+            svg.append("text")
+            .attr("transform",`translate(${x + 20},${y - 5})`)
+            .attr("fill", "black")
+            .text("Severity");
+            for (var i = 0; i < severity.length; i++) {
+                for (var j = 0; j < 5; j++) {
+                    svg.append("circle")
+                    .attr("r", 5 * widthScale(0.2 + j * 0.2))
+                    .attr("cx", x + 15 * i)
+                    .attr("cy", y + 15 + 15 * j)
+                    .attr("fill", severity[i]);
+                }
+            }
+        }
 
         function processData(droughts, usa) {
             usa.objects.us_20m.geometries = usa.objects.us_20m.geometries.filter(x =>
@@ -101,14 +137,14 @@
                 minWgt + diff * 3 / 5,
                 minWgt + diff * 4 / 5,
                 maxWgt];
+            var severityRange = ["none", "lightyellow", "orange", "red", "darkmagenta", "indigo"];
 
-            var colorScale = d3.scaleLinear().domain(severityDomain)
-                .range(["cornsilk", "lightyellow", "orange", "red", "darkmagenta"]);
+            var colorScale = d3.scaleLinear().domain(severityDomain).range(severityRange);
             var widthScale = d3.scaleQuantize().domain([0, 0.95]).range([0.0, 0.4, 0.6, 0.8, 1.0]);
 
             drawDrought(drought_data, scale, colorScale, widthScale);
             drawStates(state_data);
-            drawLegend();
+            drawLegend(severityRange, widthScale, width * 0.1, height * 0.85);
         }
 
         Promise.all([d3.json("./30KMSampleAll.json"), d3.json("./us_20m.json")]).then((jsons) => {
