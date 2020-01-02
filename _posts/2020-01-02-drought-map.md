@@ -11,7 +11,7 @@ For convenience of comparison, the original map is is displayed below:
 
 <img src="https://adventuresinmapping.files.wordpress.com/2016/07/droughtintensityandduration.jpg" height="400">
 
-The original data was collected from weekly summaries provided by the [US Drouight Monitor](https://droughtmonitor.unl.edu/), but since the author already aggregated and binned the data and shared the binned points as a shapefile, I decided to just use that. 
+The original data was collected from weekly summaries provided by the [US Drought Monitor](https://droughtmonitor.unl.edu/), but since the author already aggregated and binned the data and shared the binned points as a shapefile, I decided to just use that. 
 
 When I plotted the data initially, I realized that the x and y coordinates of the points were not latitude and longitude, thus they would not work with D3's projections and did not overlay properly with the US map TopoJSON. I ended up writing a custom projection function which scaled the points to fit the screen, while using the same extent to scale the US map so that the two elements would be the same size and were overlaid properly.
 
