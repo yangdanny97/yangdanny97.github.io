@@ -48,7 +48,7 @@
             drought.enter()
                 .append("path")
                 .attr("class", `drought`)
-                .attr("d", d => d[0].properties.PctAny > 0 ? hexbin.hexagon(scale * 20000) : hexbin.hexagon(0))//hexbin.hexagon(scale * 20000 * widthScale(d[0].properties.PctAny)))
+                .attr("d", d => d[0].properties.PctAny > 0 ? hexbin.hexagon(scale * 20000) : hexbin.hexagon(0))
                 .attr("transform", d => `translate(${d.x},${d.y + y})`)
                 .attr("fill", d => colorScale(d[0].properties.CountWgt))
                 .attr("stroke", "black")
@@ -57,40 +57,9 @@
 
         function drawLegend(severity, widthScale, x = 0, y = 0) {
             svg.append("text")
-                .attr("transform", "translate(25,75)scale(3)")
+                .attr("transform", `translate(${width * 0.6},75)scale(2)`)
                 .attr("fill", "black")
-                .text("Drought in the United States");
-            svg.append("line")
-                .attr("x1", x)
-                .attr("y1", y)
-                .attr("x2", x + 100)
-                .attr("y2", y)
-                .attr("stroke", "black")
-                .attr("stroke-width", 1);
-            svg.append("line")
-                .attr("x1", x)
-                .attr("y1", y)
-                .attr("x2", x)
-                .attr("y2", y + 100)
-                .attr("stroke", "black")
-                .attr("stroke-width", 1);
-            svg.append("text")
-                .attr("transform", `translate(${x - 5},${y + 80})rotate(270)`)
-                .attr("fill", "black")
-                .text("Frequency");
-            svg.append("text")
-                .attr("transform", `translate(${x + 20},${y - 5})`)
-                .attr("fill", "black")
-                .text("Severity");
-            for (var i = 0; i < severity.length; i++) {
-                for (var j = 0; j < 5; j++) {
-                    svg.append("circle")
-                        .attr("r", 5 * widthScale(0.2 + j * 0.2))
-                        .attr("cx", x + 15 * i)
-                        .attr("cy", y + 15 + 15 * j)
-                        .attr("fill", severity[i]);
-                }
-            }
+                .text("Drought Resilience in the United States");
         }
 
         function processData(droughts, usa) {
@@ -132,13 +101,6 @@
             });
 
             var diff = maxWgt - minWgt;
-            // var severityDomain = [minWgt,
-            //     minWgt + diff / 5,
-            //     minWgt + diff * 2 / 5,
-            //     minWgt + diff * 3 / 5,
-            //     minWgt + diff * 4 / 5,
-            //     maxWgt];
-            // var severityRange = ["none", "lightyellow", "orange", "red", "darkmagenta", "indigo"];
             var severityDomain = [minWgt, minWgt + diff / 3, minWgt + diff * 2 / 3, minWgt + diff];
             var severityRange = ["navy", "cyan","lightyellow","none"];
 
@@ -147,7 +109,7 @@
 
             drawDrought(drought_data, scale, colorScale, widthScale);
             drawStates(state_data);
-            // drawLegend(severityRange, widthScale, width * 0.1, height * 0.85);
+            drawLegend(severityRange, widthScale, width * 0.1, height * 0.85);
         }
 
         Promise.all([d3.json("./30KMSampleAll.json"), d3.json("./us_20m.json")]).then((jsons) => {

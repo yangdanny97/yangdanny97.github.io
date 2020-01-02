@@ -4,7 +4,6 @@ title: "D3 Spider Chart Tutorial"
 date: 2019-03-01
 category: "Technical"
 ---
-Updated 08 March 2019
 
 The importance of data visualization is rapidly growing in today's data-rich world, and web-based interactive visualizations such as those on [New York Times](https://www.nytimes.com/interactive/2018/03/27/upshot/make-your-own-mobility-animation.html) or [FiveThirtyEight](https://projects.fivethirtyeight.com/redistricting-maps/) can engage and inform a wide audience. One of the most popular tools for visualizing data on the web is D3, a powerful data visualization library for Javascript. This tutorial is intended to teach you how to make a spider chart using D3. Some knowledge of HTML and Javascript is assumed.
 
