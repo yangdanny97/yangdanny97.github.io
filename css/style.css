@@ -7,6 +7,7 @@
     font-size: 64px;
     margin-top: 50px;
     color: #555;
+    font-family: 'Lato', sans-serif;
 }
 
 .row {
@@ -23,7 +24,7 @@
 }
 
 h4 {
-    font-size: 16px;
+    font-size: 17px;
     color: #444;
 }
 
@@ -37,7 +38,8 @@ body {
     background-color: white;
     color: #666;
     margin: 10px;
-    font: 14px verdana, tahoma, sans-serif;
+    font: 14px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 table {
@@ -60,15 +62,18 @@ table {
 }
 
 .highlight {
-    color: crimson;
+    background-color: white;
+    color: firebrick;
 }
 
 a {
     text-decoration: none;
-    color: crimson;
-    padding: 6px;
-    margin: -5px;
-    border-radius: 10px;
+    color: firebrick;
+    padding: 3px;
+    margin-bottom: -5px;
+    margin-top: -5px;
+    margin-left: -3px;
+    margin-right: -3px;
 }
 
 a:hover {
@@ -125,7 +130,7 @@ a:hover {
 
 @keyframes fadein {
     from {
-        opacity: 0;
+        opacity: 0.25;
     }
 
     to {
@@ -135,7 +140,7 @@ a:hover {
 
 @-webkit-keyframes fadein {
     from {
-        opacity: 0;
+        opacity: 0.25;
     }
 
     to {
