@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pan-Fried Pork Chops"
-date: 2019-04-17
+date: 2020-04-17
 category: "Cooking"
 ---
 A quick and easy pork chop recipe.
