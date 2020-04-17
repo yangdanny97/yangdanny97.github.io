@@ -14,7 +14,7 @@ This post will cover some of the major biking trails in Folsom; I hope to regula
 This north-south trail goes down the eastern shore of Lake Natoma, from Historic Folsom in the north to Nimbus Dam in the south (it's also possible to continue on to Downtown Sacramento). The trail is mostly flat and the views of the lake are amazing.
 
 <p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/trails/lake-natoma-trail.png">
+  <img height="400" src="https://yangdanny97.github.io/misc/trails/lake-natoma-trail.png">
 </p>
 
 ### Willow Creek Trail
@@ -24,7 +24,7 @@ One of the paved east-west trails in Folsom, this trail ends at Folsom Blvd and 
 The trail passes through several wetland areas, with many small bridges where it crosses Willow Creek. The topography is flat, and it runs parallel to an old railroad for most of the western half. 
 
 <p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/trails/willow-creek-trail.png">
+  <img height="400" src="https://yangdanny97.github.io/misc/trails/willow-creek-trail.png">
 </p>
 
 ### Humbug Creek Trail
@@ -36,7 +36,7 @@ I prefer this trail to Willow Creek Trail; the scenery is slightly more interest
 The middle section has several possible paths, but they all go in roughly the same direction. The northernmost out of those paths will take you to a large pond near Folsom Middle School. The eastern end of the trail stops at Econome Park, but continuing north on a dirt path will take you to Folsom Lake. 
 
 <p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/trails/humbug-creek-trail.png">
+  <img height="400" src="https://yangdanny97.github.io/misc/trails/humbug-creek-trail.png">
 </p>
 
 ### Oak Parkway Trail
@@ -46,6 +46,6 @@ Another east-west trail, it connects with the Johnny Cash Trail in the west (nea
 Overall, I don't think the ride is as pleasant as the other east-west trails in Folsom, although the part of the Johnny Cash Trail that passes near the prison is very nice.
 
 <p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/trails/oak-parkway-trail.png">
+  <img height="400" src="https://yangdanny97.github.io/misc/trails/oak-parkway-trail.png">
 </p>
 
