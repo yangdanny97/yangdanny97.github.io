@@ -11,11 +11,11 @@ This post will cover some of the major biking trails in Folsom; I hope to regula
 
 ### Lake Natoma Trail
 
-This trail goes down the eastern shore of Lake Natoma, from Historic Folsom in the north to Nimbus Dam in the south (it's also possible to continue on to Downtown Sacramento). The trail is mostly flat and the views of the lake are amazing.
+This north-south trail goes down the eastern shore of Lake Natoma, from Historic Folsom in the north to Nimbus Dam in the south (it's also possible to continue on to Downtown Sacramento). The trail is mostly flat and the views of the lake are amazing.
 
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/trails/lake-natoma-trail.png">
-</p
+</p>
 
 ### Willow Creek Trail
 
@@ -25,7 +25,7 @@ The trail passes through several wetland areas, with many small bridges where it
 
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/trails/willow-creek-trail.png">
-</p
+</p>
 
 ### Humbug Creek Trail
 
@@ -37,7 +37,7 @@ The middle section has several possible paths, but they all go in roughly the sa
 
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/trails/humbug-creek-trail.png">
-</p
+</p>
 
 ### Oak Parkway Trail
 
@@ -47,5 +47,5 @@ Overall, I don't think the ride is as pleasant as the other east-west trails in 
 
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/trails/oak-parkway-trail.png">
-</p
+</p>
 
