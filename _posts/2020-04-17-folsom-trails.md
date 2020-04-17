@@ -5,7 +5,7 @@ date: 2020-04-17
 category: "Misc"
 ---
 
-Due to the coronavirus lockdown ruining all my spring 2020 travel plans, I've been biking a lot and enjoying the beautiful weather and scenery in Folsom. Taking advantage of this opportunity to explore the trails of Folsom, I thought I'd share my thoughts on the trails on each of the trails I've been on. 
+Due to the coronavirus lockdown ruining all my spring 2020 travel plans, I've been biking a lot and enjoying the beautiful weather and scenery in Folsom. Taking advantage of this opportunity to explore the trails of Folsom, I thought I'd share my thoughts on some of them. 
 
 This post will cover some of the major biking trails in Folsom; I hope to regularly update this with info on more walking/biking trails in the future. Credit for the trail maps goes to [Friends of Folsom Parkways](https://enjoyfolsomtrails.org/trailsmaps.html).
 
