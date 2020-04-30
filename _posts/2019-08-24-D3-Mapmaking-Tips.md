@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Mapmaking using D3: Tips and Common Pitfalls"
+title: "Mapmaking with D3: Tips and Common Pitfalls"
 date: 2019-08-24
-category: "Notes"
+category: "Technical"
 ---
 
-This post is a collection of common problems people will encounter while making maps using D3, and my advice for how to deal with them.
+This post is a collection of common problems people will encounter while making maps using D3, and my advice for how to deal with them. I plan to make regular updates/corrections as my understanding improves.
 
 ### Large GeoJSON Files
 
@@ -35,7 +35,7 @@ Depending on the level of detail, GeoJSON can get very large. For example, the G
 
     Converting is as easy as loading the file into MapShaper and exporting as TopoJSON. The drawback, as I understand it, is that you can't adjust the projection like you can with GeoJSON, so it is best to set your desired projection using a tool like MapShaper before you convert it. 
 
-As a rule of thumb, you should keep data under 10mb for best performance, although if you included a loading indicator you might be able to get away with 50mb without the user complaining too much.
+As a rule of thumb, you should keep data under 25mb for best performance, although if you included a loading indicator you might be able to get away with 50mb without the user complaining too much.
 
 ### Non-JSON File Formats
 
@@ -47,11 +47,27 @@ This is most common when working with city-level GeoJSON data, which will appear
 
 Note that most of the time TopoJSON already comes with a projection applied, so it is not possible to adjust the projection's scaling. In this case, you can set the `transform` attribute [using D3](https://www.tutorialspoint.com/d3js/d3js_svg_transformation.htm), or you can upload the file to MapShaper and export a new version with the desired width/height/scaling.
 
-### Zooming Behavior
+### Zooming/Panning Behavior
 
-Sadly, this is one of the things that D3 is bad at. For simpler maps with fewer shapes, this is totally doable. Unfortunately, when the number of shapes gets large (>10000), it becomes very difficult to have smooth zooming behavior. 
+Maps with high levels of detail often benefit from the user being able to zoom and pan to focus on specific areas of the map.
 
-By optimizing zooming behavior on the map of Westeros, I was able to improve the zooming animation from <1fps to 10-12fps. While not ideal, this made the visualization at least usable. Here are some features that have a lot of negative impact on zooming smoothness - they should be avoided if possible.
+There are 2 basic approaches to implement this. Each of these approaches can be implemented in 2 ways: by translating and scaling the map, or by adjusting the projection. The latter has the benefit of the map not having any edges (if something moves off the edge of the map, it would spill over onto the other side, much like rotating a globe). 
+
+I'll describe the approaches below using a hypothetical world map visualization:
+
+1. **Click to Focus**
+
+    When the user clicks on a country, the map zooms in to that country. When the user clicks a different country while zoomed in, the map pans to the new country. When the user clicks the country that is currently being focused, the map zooms out. This approach is best for choropleths and things that have distinct items that users would want to click and focus on.
+
+2. **Free Panning and Zooming**
+
+    This approach allows the user to freely pan by dragging and zoom by scrolling. This is preferred if the data is unevenly distributed (dense in some areas but not in others) or if there isn't any geographical unit that the user would logically want to click on. 
+
+### Zooming/Panning Performance
+
+For simpler maps with fewer shapes, zooming is totally doable by using translate/scale transformations on your shapes. Unfortunately, when the number of shapes gets large, it becomes very difficult to have smooth zooming behavior using the standard technique.
+
+Here are some features that have a lot of negative impact on zooming smoothness - they should be avoided if possible.
 
 1. filling shapes with images
 
@@ -59,5 +75,11 @@ By optimizing zooming behavior on the map of Westeros, I was able to improve the
 
 3. semi-transparent fill
 
-For smooth dynamic behavior on more detailed maps, the best bet is probably to use a specialized mapmaking tool like MapBox, which has tiling behavior and can adjust the level of detail based on your magnification level. 
+### Tiling
+
+For high-performance zooming and panning, tiling can be used. This is the technique that software like Google Maps/Mapbox use, to make zoomable & pannable [slippy maps](https://wiki.openstreetmap.org/wiki/Slippy_Map). Basically, the map is broken up into a grid of images (tiles), and only the part that is currently being looked at is rendered. 
+
+D3 has a library called [d3-tile](https://github.com/d3/d3-tile) that can be used tiling, but as far as I know the background of a map must be an image (you can't tile SVG shapes). 
+
+That means that it is best to use an image for the background, and draw the lines separately. Render the lines without fill as you normally would, and tile the background. Note that this technique is better for rendering points/lines on a map, and would not work for choropleths.
 
