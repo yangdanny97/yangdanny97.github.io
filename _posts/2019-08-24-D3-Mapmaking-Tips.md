@@ -43,17 +43,35 @@ Map data doesn't always come nicely formatted as GeoJSON or TopoJSON; sometimes 
 
 ### Scaling Issues
 
-This is most common when working with city-level GeoJSON data, which will appear as a tiny speck on the screen if the projection is not adjusted. This can be fixed by centering the projection on the city's centroid, then zooming and offsetting appropriately. For example, my map of San Francisco was zoomed to a factor of 250000 in order to fill the screen. 
+This is most common when working with city-level GeoJSON data, which will appear as a tiny speck on the screen if the projection is not adjusted. This can be fixed by centering the projection on the city's centroid, then zooming and offsetting appropriately. 
 
 Note that most of the time TopoJSON already comes with a projection applied, so it is not possible to adjust the projection's scaling. In this case, you can set the `transform` attribute [using D3](https://www.tutorialspoint.com/d3js/d3js_svg_transformation.htm), or you can upload the file to MapShaper and export a new version with the desired width/height/scaling.
+
+### Country Centers
+
+When plotting data points on top of countries/states, at first glance it might be intuitive to calculate the centroid of the shape and plot the point there, but there are 2 problems to this approach. 
+
+Firstly, not all countries are contiguous and convex. For example, countries like Indonesia, Malaysia, and the Philippines have their centroids in the middle of the ocean, which can cause confusion because there are a lot of countries in that area. The US has a centroid somewhere in Canada when using the Mercator projection (Montana if using Equirectangular) because Alaska affects the centroid positioning.
+
+Secondly, for interactive maps, countries at the edges of the map may not be displayed properly. If the projection was adjusted such that a country was cut in half by the edge of the map, the centroid of that country would not be placed at its geographic center; instead, it would be placed in the middle of the map. 
+
+The solution to is to pre-determine nice-looking lat/long coordinates for country centers (there are also datasets available for this), and then join it with the GeoJSON feature for each country. The data points can just be displayed by applying the projection to the coordinates, without relying on re-calculating the centroid of each shape on the map.
 
 ### Zooming/Panning Behavior
 
 Maps with high levels of detail often benefit from the user being able to zoom and pan to focus on specific areas of the map.
 
-There are 2 basic approaches to implement this. Each of these approaches can be implemented in 2 ways: by translating and scaling the map, or by adjusting the projection. The latter has the benefit of the map not having any edges (if something moves off the edge of the map, it would spill over onto the other side, much like rotating a globe). 
+There are 2 ways to implement zooming and panning:
 
-I'll describe the approaches below using a hypothetical world map visualization:
+1.  **Translating and scaling the shapes using [d3-zoom](https://github.com/d3/d3-zoom)**
+
+    This might be laggy if the map is very complex, but it is possible to work around this by tiling the background. For more on this, see my [other post](https://yangdanny97.github.io/blog/2019/08/24/D3-Mapmaking-Tips).
+
+2.  **Adjusting scaling/offset for the projection** 
+
+    The offset of a projection can be conceptualized like adjusting the view by rotating a globe. This approach has the benefit of the map not having any edges, but it only works for world maps. 
+
+There are 2 different approaches allow the user to zoom into a map; which one is better depends on the use case. I'll describe the approaches below using a hypothetical world map visualization:
 
 1. **Click to Focus**
 

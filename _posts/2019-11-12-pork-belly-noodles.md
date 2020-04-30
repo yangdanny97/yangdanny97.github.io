@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pork Belly Noodles"
+title: "[Recipe] Pork Belly Noodles"
 date: 2019-11-12
 category: "Cooking"
 ---
