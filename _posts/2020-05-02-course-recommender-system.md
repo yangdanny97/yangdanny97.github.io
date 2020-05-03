@@ -32,7 +32,7 @@ To answer the latter question, we made a **post-enrollment graph**. In this grap
 A pattern we noticed was that a small number of edges had extremely high weights (corresponding to core courses), while most edges had low weights (corresponding to electives outside of the selected major). Below is a picture of a post-enrollment graph rendered in graphviz, filtered to only show edges with extremely high weights:
 
 <p align="center">
-  <img width="500" src="https://yangdanny97.github.io/misc/pathways/graphviz.png">
+  <img height="400" src="https://yangdanny97.github.io/misc/pathways/graphviz.png">
 </p>
 
 An early insight we reached was that this information would strongly reflect the pre-requisites and co-requisites that courses had. Since Cornell enforces pre-requisites loosely, we felt that seeing what courses people _actually_ took would be more informative than seeing what courses people were _supposed_ to take.
@@ -42,7 +42,7 @@ An early insight we reached was that this information would strongly reflect the
 Based on the graph structure of the data, we initially thought of a [force-directed layout](https://www.d3-graph-gallery.com/network.html). We also considered a [dendrogram](https://www.d3-graph-gallery.com/dendrogram.html) rooted at a selected course, to show branching options for courses to take. 
 
 <p align="center">
-  <img width="500" src="https://yangdanny97.github.io/misc/pathways/force_directed.png">
+  <img height="400" src="https://yangdanny97.github.io/misc/pathways/force_directed.png">
 </p>
 
 We decided to enforce a grid layout for our visualization, with course nodes organized into 8 rows each corresponding to a semester. The more ordered layout allowed users to focus on a semester by clicking on a specific row, which helped them add courses and view recommendations more easily. 
@@ -60,7 +60,7 @@ We wanted to show connections between courses in different semesters, but soon r
 To overcome this, we only displayed the highest weight incoming edge and the highest weight outgoing edge for each node. Additionally, we used an edge overlap reduction heuristic to re-order the nodes in each semester to minimize the number of edges that cross each other.
 
 <p align="center">
-  <img width="500" src="https://yangdanny97.github.io/misc/pathways/edge_bundling.png">
+  <img height="400" src="https://yangdanny97.github.io/misc/pathways/edge_bundling.png">
 </p>
 
 ### Recommender System
