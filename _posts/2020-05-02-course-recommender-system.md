@@ -25,9 +25,9 @@ The app provides a visual interface to explore courses at Cornell and get course
 
 We were provided with registrar data of course enrollment over a decade, with each student identified by a unique ID. We initially separated the entries by major and modeled each major as a bipartite graph, with students and courses as individual nodes. With this data, we wanted to answer 2 main questions: "what courses did people take at the same time?", and "if a person took a certain course X, what courses did they take next?"
 
-To answer the former question, we made a co-enrollment graph. This graph represented each course as a node, with an undirected edge linking each pair of courses with weight equal to how many people took both courses concurrently.
+To answer the former question, we made a **co-enrollment graph**. This graph represented each course as a node, with an undirected edge linking each pair of courses with weight equal to how many people took both courses concurrently.
 
-To answer the latter question, we made a post-enrollment graph. In this graph, we had directed edges from course A to course B with weight equal to how many people took B the semester after they took A. Reversing the dire
+To answer the latter question, we made a **post-enrollment graph**. In this graph, we had directed edges from course A to course B with weight equal to how many people took B the semester after they took A. Reversing the dire
 
 A pattern we noticed was that a small number of edges had extremely high weights (corresponding to core courses), while most edges had low weights (corresponding to electives outside of the selected major). Below is a picture of a post-enrollment graph rendered in graphviz, filtered to only show edges with extremely high weights:
 
@@ -67,13 +67,13 @@ To overcome this, we only displayed the highest weight incoming edge and the hig
 
 Using the post-enrollment and co-enrollment graphs, it was relatively straightforward to build a recommendation system for courses. 
 
-We defined the task as follows: given a list of courses the user took and what semester they took each course in, the system should output a separate list of recommendations for each semester. 
+We defined the task as follows: **Given a list of courses the user took and what semester they took each course in, the system should output a separate list of recommendations for each semester.** 
 
 The reason we provide recommendations for every semester is to allow this system to be used for planning purposes - in other words, users can put in what courses they will definitely take in future semesters, and we'll provide suggestions to fill the rest of the schedule.
 
 To make a list of recommendations for a particular semester, we first need to assign a score to each course. Let's say the semester is N and the list of courses the user has already selected for the semester is Courses(N). For a particular course C, this score is calculated by adding the co-enrollment edge weights from all the courses in Courses(N) to C, and the post-enrollment edge weights from all the courses in Courses(N-1) to C. The list of courses is then sorted by score, and filtered to remove courses that have already been taken, and courses which were already recommended for earlier semesters (semesters are processed in ascending order). Then, we can simply take the top few to use as recommendations.
 
-Based on user feedback, we found that the system produces satisfactory results, although it had a tendency to suggest courses which were within the same department as the selected major. While that is good for some use cases, it wouldn't help students who were looking to explore courses in different departments. 
+Based on user feedback, we found that the system produces satisfactory results, although it had a tendency to suggest courses which were within the same department as the selected major. While that is good for some use cases, it wouldn't help students who were looking to explore courses in different departments (use case 3). 
 
 To solve this problem, we added an optional constraint that a list of recommendations for a particular semester cannot include more than 1 course from each department. This resulted in recommendations that were noticeably more diverse, although for technical majors the recommendations generally still came from other technical fields.
 
@@ -81,9 +81,9 @@ To solve this problem, we added an optional constraint that a list of recommenda
 
 In order to take this project from a functional product to a user-friendly one, we added several quality of life features.
 
-For users who want to take specific courses but don't know where to fit it into their schedules, we built a "smart-add" system. The user can add a course without selecting a smeester, and our system makes its best guess for where to place the course. 
+For users who want to take specific courses but don't know where to fit it into their schedules, we built a "smart-add" system. The user can add a course without selecting a smeester, and our system tries to guess where to place the course. 
 
-Essentially, we calculate a score for each semester based on co-enrollment and post-enrollment edge weights between the selected course and the courses that the user has taken. The result isn't always exactly right, but slightly incorrect course placement usually doesn't affect which recommendations are generated in future semesters.
+This is accomplished in a manner similar to the recommendation system, except instead of scoring courses we score semesters. The result isn't always exactly right, but slightly incorrect course placement usually doesn't affect which recommendations are generated in future semesters.
 
 One of the biggest issues with course recommendation systems is that users need to input what courses they've already taken. This can be time consuming and a deterrent to adoption. To help with this, we built a bulk-add functionality allowing users to quickly the courses from their department that they have already taken. To further reduce complexity, the user doesn't have to specify which semester they took those courses - the placement is handled by the smart-add feature, and user testing showed that the results offered a good tradeoff between speed and accuracy.
 
