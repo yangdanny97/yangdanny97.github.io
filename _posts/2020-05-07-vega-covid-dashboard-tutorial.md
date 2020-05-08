@@ -14,7 +14,7 @@ Since I'm writing from the perspective of someone who learned D3 first before pi
 
 Before we begin, here's an idea of what the finished product will look like:
 
-![finished product](https://yangdanny97.github.io/misc/dashboard/us.png){: width="500" }
+![finished product](https://yangdanny97.github.io/misc/dashboard/us.png){: width="650" }
 
 ### Setup
 
