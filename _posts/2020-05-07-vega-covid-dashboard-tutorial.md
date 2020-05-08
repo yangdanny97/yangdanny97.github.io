@@ -16,7 +16,7 @@ Before we begin, here's an idea of what the finished product will look like:
 
 ![finished product](https://yangdanny97.github.io/misc/dashboard/us.png){: width="500" }
 
-## Setup
+### Setup
 
 Create a directory for this visualization. Inside, create a file called `index.html` and paste in the following contents:
 
@@ -63,7 +63,7 @@ Note that the Vega spec (the `spec` variable) is defined as a JSON object, which
 
 Inside the same directory as `index.html`, you'll also need to download the TopoJSON shapefile found [here](https://github.com/topojson/us-atlas#states-albers-10m.json). 
 
-## Spec Overview
+### Spec Overview
 
 This is the starter code for our Vega spec. It sets some basic properties about the visualization, but the data, projections, scales, signals, and marks fields are empty. I'll explain what each of those things do as we will them in.
 
@@ -87,7 +87,7 @@ This is the starter code for our Vega spec. It sets some basic properties about 
 }
 ```
 
-## Data
+### Data
 
 The data section of the spec allows us to define our data sources, and any preprocessing/transformations we want to do. We have 2 data sources for this visualization: state-by-state coronavirus cases data, and the map data that we downloaded earlier. The goal is to join the 2 datasets so that the number of cases/deaths/recovered/tested for each state is associated with a shape on the map.
 
@@ -124,7 +124,7 @@ Loading the map data is similar, except we will be loading the file we have loca
 
 Note that the `transform` field is empty. We're not quite done here, because we have to use transformations to join the 2 datasets together. We will use 3 transformations in total; the transformations are applied in the order in which they appear in the array.
 
-### Transform
+#### Transform
 
 The first transformation converts the TopoJSON into a GeoJSON. The difference between GeoJSON and TopoJSON is that TopoJSON stores each line in the map once: if 2 states share a border, the border is only defined once in TopoJSON, whereas in GeoJSON the edge is defined for each state. The former saves space, but needs to be converted to the latter to display.
 
@@ -196,7 +196,7 @@ With that, we're done defining our data sources and transformations. The complet
     }
 ]
 ```
-## Projections
+### Projections
 
 The projection we need for this visualization is really simple, because the map data has already been centered on the USA scaled to fit in a 975 x 610 visualization. Normally this isn't the case and we need to use projections like Mercator or Equirectangular, since coordinates are usually defined as latitude and longitude, but US map data sometimes comes nicely like this.
 
@@ -207,7 +207,7 @@ The projection we need for this visualization is really simple, because the map 
 }
 ```
 
-## Scales
+### Scales
 
 We will define 4 separate scales for this visualization, one for each variable. Scales are functions we define to map our input data to a range of values. 
 
@@ -253,7 +253,7 @@ These scales will be used to control the size of the circles for each state. Whe
 }]
 ```
 
-## Signals
+### Signals
 
 The `signals` field in the spec is where we define the interactivity of the visualization. This includes things like hovering, clicking, scrolling, and dragging, as well as inputs elements that the user can use to change the visualization (which is what we're doing here). We can reference the signal in many other parts of the spec, and Vega sets up all the event listeners so that the appropriate elements are updated according to the user's actions.
 
@@ -277,11 +277,11 @@ In this visualization, we want to make a dropdown menu that the user can select 
 }
 ```
 
-## Marks
+### Marks
 
 Marks are the visual elements that the visualization displays. In our dashboard, there are 2 marks: the outline of each state, and the circle that corresponds to the data for that state.
 
-### States & Tooltip
+#### States & Tooltip
 
 The outline for each state is a `path` element, with one shape for each object in our map data. The encoding for each shape is specified in the `encode` field; `enter`, `update`, `exit` (not shown) correspond with D3's update pattern and will not be explained here. 
 
@@ -332,7 +332,7 @@ Although we define the tooltip signal as a string, the `signal` field is interpr
 }
 ```
 
-### Circles
+#### Circles
 
 These marks are red circles that appear over each state, with bigger circles corresponding to larger numbers of whatever variable we are displaying.
 
@@ -389,7 +389,7 @@ For the size of each circle, we take the value of a field and apply one of our s
     }
 ```
 
-## Completed Spec
+### Completed Spec
 
 Congrats! You just made your first Vega spec. The completed spec is shown below for reference:
 
@@ -582,7 +582,7 @@ If you have Python 3, the process is simple. Navigate to the folder containing y
 
 Another tip for debugging Vega visualizations: if there's no errors shown in the browser's console but things aren't being displayed properly, you can inspect the data at runtime to see the result after all the transformations are applied. This is really useful because you can't put `console.log` calls in the Vega spec. For example, you can type `view.data("map")` into the console to view the map data to make sure our data sources were joined properly.
 
-## Add Some Styling
+### Add Some Styling
 
 Finally, add the following styles to the style tag in `index.html`. Feel free to change around the fonts and colors depending on your preferences.
 
