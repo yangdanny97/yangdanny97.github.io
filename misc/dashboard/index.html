@@ -1,0 +1,231 @@
+<head>
+    <title>Vega COVID-19 Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
+</head>
+<style>
+    body {
+        background-color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        color: silver;
+    }
+
+    select {
+        margin-left: 10px;
+    }
+
+    #view,
+    #viewControl {
+        float: left;
+    }
+</style>
+
+<body>
+    <h1>COVID-19 Dashboard</h1>
+    <hr>
+    <div id="view"></div>
+    <div id="viewControl"></div>
+    <script>
+        var view;
+
+        function render(spec) {
+            var runtime = vega.parse(spec);
+            var handler = new vegaTooltip.Handler({
+                'theme': 'dark'
+            });
+            view = new vega.View(runtime, {
+                renderer: 'svg',
+                container: '#view',
+                hover: true
+            })
+                .tooltip(handler.call)
+                .initialize(document.getElementById("view"))
+                .run();
+            return view.runAsync();
+        }
+
+        var spec = {
+            "$schema": "https://vega.github.io/schema/vega/v5.json",
+            "width": 975,
+            "height": 610,
+            "padding": {
+                "top": 0,
+                "left": 0,
+                "right": 0,
+                "bottom": 0
+            },
+            "data": [{
+                "name": "covid",
+                "url": "https://covidtracking.com/api/v1/states/current.json"
+            }, {
+                "name": "map",
+                "url": "./states-albers-10m.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "states"
+                },
+                "transform": [{
+                    "type": "geopath",
+                    "projection": "projection"
+                },
+                {
+                    "type": "formula",
+                    "as": "center",
+                    "expr": "geoCentroid('projection', datum.geometry)"
+                },
+                {
+                    "type": "lookup",
+                    "from": "covid",
+                    "key": "fips",
+                    "fields": ["id"],
+                    "as": ["Confirmed", "Deaths", "Recovered", "Tested"],
+                    "values": ["positive", "death", "recovered", "total"],
+                    "default": null
+                }]
+            }],
+            "projections": [{
+                "name": "projection",
+                "type": "identity"
+            }],
+            "scales": [{
+                "name": "Deaths",
+                "type": "linear",
+                "domain": {
+                    "data": "covid",
+                    "field": "death"
+                },
+                "range": [4, 2500]
+            },
+            {
+                "name": "Confirmed",
+                "type": "linear",
+                "domain": {
+                    "data": "covid",
+                    "field": "positive"
+                },
+                "range": [4, 2500]
+            },
+            {
+                "name": "Tested",
+                "type": "linear",
+                "domain": {
+                    "data": "covid",
+                    "field": "total"
+                },
+                "range": [4, 2500]
+            },
+            {
+                "name": "Recovered",
+                "type": "linear",
+                "domain": {
+                    "data": "covid",
+                    "field": "recovered"
+                },
+                "range": [4, 2500]
+            }
+            ],
+            "autosize": "none",
+            "signals": [
+                {
+                    "name": "Variable",
+                    "value": "Deaths",
+                    "bind": {
+                        "input": "select",
+                        "options": [
+                            "Deaths",
+                            "Confirmed",
+                            "Recovered",
+                            "Tested"
+                        ],
+                        "element": "#viewControl",
+                        "name": "Select a Variable:"
+                    },
+                }
+            ],
+            "marks": [{
+                "type": "path",
+                "from": {
+                    "data": "map"
+                },
+                "encode": {
+                    "enter": {
+                        "fill": {
+                            "value": "dimgray"
+                        },
+                        "stroke": {
+                            "value": "lavender"
+                        },
+                        "tooltip": {
+                            "signal": `{ 
+                                'State': datum.properties.name, 
+                                'Tested': format(datum.Tested, ',d'),
+                                'Cases': format(datum.Confirmed, ',d'), 
+                                'Recovered': format(datum.Recovered, ',d'),
+                                'Deaths': format(datum.Deaths, ',d')
+                            }`
+                        }
+                    },
+                    "update": {
+                        "path": {
+                            "field": "path"
+                        },
+                        "fill": {
+                            "value": "dimgray"
+                        }
+                    },
+                    "hover": {
+                        "fill": {
+                            "value": "silver"
+                        },
+                    },
+                }
+            }, {
+                "type": "symbol",
+                "from": {
+                    "data": "map"
+                },
+                "encode": {
+                    "enter": {
+                        "tooltip": {
+                            "signal": `{ 
+                                'State': datum.properties.name, 
+                                'Tested': format(datum.Tested, ',d'),
+                                'Cases': format(datum.Confirmed, ',d'), 
+                                'Recovered': format(datum.Recovered, ',d'),
+                                'Deaths': format(datum.Deaths, ',d')
+                            }`
+                        }
+                    },
+                    "update": {
+                        "size": {
+                            "scale": {
+                                "signal": "Variable"
+                            },
+                            "field": {
+                                "signal": "Variable"
+                            }
+                        },
+                        "fill": {
+                            "value": "red"
+                        },
+                        "fillOpacity": {
+                            "value": 0.8
+                        },
+                        "strokeWidth": {
+                            "value": 0
+                        },
+                        "x": {
+                            "field": "center[0]"
+                        },
+                        "y": {
+                            "field": "center[1]"
+                        }
+                    }
+                }
+            }]
+        };
+        render(spec);
+    </script>
+
+</body>
