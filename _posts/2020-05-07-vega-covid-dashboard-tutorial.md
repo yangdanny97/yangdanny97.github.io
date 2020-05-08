@@ -120,20 +120,20 @@ To include it in our spec, add the following JSON object to the `data` field:
 Loading the map data is similar, except we will be loading the file we have locally:
 
 ``` javascript
-    {
-        "name": "map",
-        "url": "./states-albers-10m.json",
-        "format": {
-            "type": "topojson",
-            "feature": "states"
-        },
-        "transform": []
-    }
+{
+    "name": "map",
+    "url": "./states-albers-10m.json",
+    "format": {
+        "type": "topojson",
+        "feature": "states"
+    },
+    "transform": []
+}
 ```
 
 Note that the `transform` field is empty. We're not quite done here, because we have to use transformations to join the 2 datasets together. We will use 3 transformations in total; the transformations are applied in the order in which they appear in the array.
 
-#### Transform
+### Transform
 
 The first transformation converts the TopoJSON into a GeoJSON. The difference between GeoJSON and TopoJSON is that TopoJSON stores each line in the map once: if 2 states share a border, the border is only defined once in TopoJSON, whereas in GeoJSON the edge is defined for each state. The former saves space, but needs to be converted to the latter to display.
 
@@ -198,8 +198,7 @@ With that, we're done defining our data sources and transformations. The complet
                 "key": "fips",
                 "fields": ["id"],
                 "as": ["Confirmed", "Deaths", "Recovered", "Tested"],
-                "values": ["positive", "death", "recovered", "total"],
-                "default": null
+                "values": ["positive", "death", "recovered", "total"]
             }
         ]
     }
@@ -290,7 +289,7 @@ In this visualization, we want to make a dropdown menu that the user can select 
 
 Marks are the visual elements that the visualization displays. In our dashboard, there are 2 marks: the outline of each state, and the circle that corresponds to the data for that state.
 
-#### States & Tooltip
+### States & Tooltip
 
 The outline for each state is a `path` element, with one shape for each object in our map data. The encoding for each shape is specified in the `encode` field; `enter`, `update`, `exit` (not shown) correspond with D3's update pattern and will not be explained here. 
 
@@ -341,7 +340,7 @@ Although we define the tooltip signal as a string, the `signal` field is interpr
 }
 ```
 
-#### Circles
+### Circles
 
 These marks are red circles that appear over each state, with bigger circles corresponding to larger numbers of whatever variable we are displaying.
 
