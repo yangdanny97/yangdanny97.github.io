@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Tutorial: COVID-19 Dashboard Using Vega"
+title: "Tutorial: Simple COVID-19 Dashboard Using Vega"
 date: 2020-05-07
 category: "Technical"
 ---
