@@ -65,7 +65,7 @@ Inside the same directory as `index.html`, you'll also need to download the Topo
 
 ### Spec Overview
 
-This is the starter code for our Vega spec. It sets some basic properties about the visualization, but the data, projections, scales, signals, and marks fields are empty. I'll explain what each of those things do as we will them in.
+Below is the starter code for our Vega spec, which we will use to define our entire visualization. Right now it just sets some basic properties about the visualization, but the data, projections, scales, signals, and marks fields are empty. I'll explain what each of those things do as we fill them in.
 
 ``` javascript
 {
