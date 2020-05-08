@@ -94,8 +94,17 @@ The data section of the spec allows us to define our data sources, and any prepr
 We will use the [https://covidtracking.com](https://covidtracking.com) API for to get the coronavirus data. The specific endpoint is [https://covidtracking.com/api/v1/states/current.json](https://covidtracking.com/api/v1/states/current.json). If you open that in your browser, you can see that it looks like an array of JSON data with one entry for each state:
 
 ```
-[{"state":"AK","positive":374,"positiveScore":1,"negativeScore":1,"negativeRegularScore":1,"commercialScore":1,"grade":"A","score":4,"dataQualityGrade":"C","negative":23967,"pending":null,"hospitalizedCurrently":12,"hospitalizedCumulative":null,"inIcuCurrently":null,"inIcuCumulative":null,"onVentilatorCurrently":null,"onVentilatorCumulative":null,"recovered":291,"lastUpdateEt":"5/07 00:00","checkTimeEt":"5/07 16:09","death":10,"hospitalized":null,"total":24341,"totalTestResults":24341,"posNeg":24341,"fips":"02","dateModified":"2020-05-07T04:00:00Z","dateChecked":"2020-05-07T20:09:00Z","hash":"e526819a2f4402a3274715e9fac1404adb2edc17"},
-...
+[
+    {
+        "state":"AK",
+        "positive":374,
+        "recovered":291,
+        "death":10,
+        "total":24341,
+        "fips":"02",
+        ...more fields
+    },
+    ...more entries
 ]
 ```
 
