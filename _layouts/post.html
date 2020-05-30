@@ -2,19 +2,49 @@
 layout: default
 ---
 <style>
-    p {
-        font: 16px verdana, tahoma, sans-serif;
+    .meta {
+        font-family: verdana, tahoma, sans-serif;
         color:#444;
     }
 
     li {
         padding-bottom: 8px;
     }
+
+    .post {
+        font-size: 1.25rem;
+    }
+
+    .borders {
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+
+    h1 {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
 </style>
 <div class='row slide'>
-    <div class="col-sm-6 offset-sm-3 card">
-        <h2>{{ page.title }}</h1>
-        <p class="meta">{{ page.date | date_to_string }}</p>
-        {{ content }}
+    <div class="col-sm-8 offset-sm-2 borders">
+        <h1>{{ page.title }}</h1>
+        <p class="meta post">{{ page.date | date_to_string }}</p>
+        <div class="post">
+            {{ content }}
+        </div>
     </div>
 </div>

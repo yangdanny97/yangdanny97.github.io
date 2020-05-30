@@ -25,7 +25,7 @@ In the end, I think I created a reasonably close approximation of the original. 
 
 Using a different set of scales, I also able to replicate the "drought resilience" visualization from the same post.
 
-Mine (live page + code ([linked here](https://yangdanny97.github.io/misc/drought/vis2.html))):
+Mine ([live page + code](https://yangdanny97.github.io/misc/drought/vis2.html)):
 
 <img src="https://yangdanny97.github.io/misc/drought/resilience.png" height="350">
 
