@@ -49,13 +49,21 @@ Note that most of the time TopoJSON already comes with a projection applied, so 
 
 ### Country Centers
 
-When plotting data points on top of countries/states, at first glance it might be intuitive to calculate the centroid of the shape and plot the point there, but there are 2 problems to this approach. 
+When plotting data points on top of countries/states, at first glance it might be intuitive to calculate the centroid of the shape and plot the point there, but there are several problems to this approach. 
 
-Firstly, not all countries are contiguous and convex. For example, countries like Indonesia, Malaysia, and the Philippines have their centroids in the middle of the ocean, which can cause confusion because there are a lot of countries in that area. The US has a centroid somewhere in Canada when using the Mercator projection (Montana if using Equirectangular) because Alaska affects the centroid positioning.
+Firstly, not all countries are contiguous and convex. In both of the example below, countries like Indonesia, Malaysia, and the Philippines have their centroids in the middle of the ocean, which can cause confusion because there are a lot of countries in that area. The centroid of the US is affected by Alaska and Hawaii: the centroid is somewhere in Canada when using the Mercator projection, and in Montana if using Equirectangular.
 
-Secondly, for interactive maps, countries at the edges of the map may not be displayed properly. If the projection was adjusted such that a country was cut in half by the edge of the map, the centroid of that country would not be placed at its geographic center; instead, it would be placed in the middle of the map. 
+Centroids w/ Mercator:
 
-The solution to is to pre-determine nice-looking lat/long coordinates for country centers (there are also datasets available for this), and then join it with the GeoJSON feature for each country. The data points can just be displayed by applying the projection to the coordinates, without relying on re-calculating the centroid of each shape on the map.
+![centroids in mercator projection](https://yangdanny97.github.io/misc/dashboard/centroids.png){: width="650" }
+
+Centroids w/ Equirectangular:
+
+![centroids in equirectangular projection](https://yangdanny97.github.io/misc/dashboard/equirectangular.png){: width="650" }
+
+Beyond that, country centroids also have another issue when used for certain types of interactive maps. In maps where panning is done by adjusting the projection (making things that would normally disappear offscreen wrap onto the other side), countries at the edges of the map may not be displayed properly. If the projection was adjusted such that a country was cut in half by the edge of the map, the centroid of that country would not be placed at its geographic center; instead, it would be placed in the middle of the map. 
+
+The solution is to pre-determine nice-looking lat/long coordinates for country centers (there are also datasets available for this), and then join it with the GeoJSON feature for each country. The data points can just be displayed by applying the projection to the coordinates, without relying on re-calculating the centroid of each shape on the map.
 
 ### Zooming/Panning Behavior
 
