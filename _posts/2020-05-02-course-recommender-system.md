@@ -7,7 +7,7 @@ category: "Technical"
 
 During my last semester at Cornell, I worked with my peers on Cornell Data Science to build a course visualization/recommender system. In this post, I'll give an overview of the project and how we built it. I'll also synthesize some of the lessons and insights that we learned from the process, for the benefit of anyone looking to build a similar system.
 
-The finished product can be viewed [HERE](pathway.cis.cornell.edu) (if you're a Cornell student) and the source code can be found [HERE](https://github.com/yangdanny97/pathways-vis) for anyone who is curious. 
+The finished product can be viewed [HERE](https://pathway.cis.cornell.edu) (if you're a Cornell student) and the source code can be found [HERE](https://github.com/yangdanny97/pathways-vis) for anyone who is curious. 
 
 <p align="center">
   <img width="500" src="https://yangdanny97.github.io/misc/pathways/final.png">
