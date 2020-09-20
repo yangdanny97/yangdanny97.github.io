@@ -15,7 +15,7 @@ Even GPT-3, the most advanced NLP model in existence, cannot answer the simple q
 
 Fyi, three of its responses were:
 - Four. One in the front and three in the rear
-- 4. It has two eyes on the outside and two eyes on the inside
+- 4, it has two eyes on the outside and two eyes on the inside
 - Four. Two in front, two in back
 
 While it seems absurd that a model like GPT-3 doesn’t know a simple fact like how many eyes a horse has, this limitation makes sense if you understand deep learning models work.
@@ -24,7 +24,9 @@ Put simply, GPT-3 is a deep learning model that can generate sequences of words 
 
 The English language training data for GPT-3 consists of text that humans wrote, and humans just don’t ask the question “how many eyes does a horse have”; by far the most commonly asked question with the format “How many ___ does a horse have” is “How many legs does a horse have”. 
 
-Therefore, when asked “How many eyes does a horse have”, the model recognizes the sequence of words as almost identical to “How many legs does a horse have” and tries to generate words that are likely to follow, which is why it responds with “4”. From this, we can see that GPT-3 does not actually know facts about horses, despite having been trained on text containing hundreds, if not thousands, of horse facts.
+Therefore, when asked “How many eyes does a horse have”, the model recognizes the sequence of words as almost identical to “How many legs does a horse have” and tries to generate words that are likely to follow, which is why it responds with “4”. 
+
+From this, we can see that GPT-3 does not actually know facts about horses, despite having been trained on text containing hundreds, if not thousands, of horse facts. 
 
 ## A Digression Into Rule-Based AI: Watson & Chatbots
 
