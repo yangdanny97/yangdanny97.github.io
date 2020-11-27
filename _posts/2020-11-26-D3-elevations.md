@@ -9,7 +9,7 @@ Creating topography and elevation maps in D3 is challenging due to the availabil
 
 In this post, I'll show how to acquire elevation data and visualize it as a contour plot in D3. As an example, I used this technique to visualize the topography of my [hometown](https://yangdanny97.github.io/misc/elevation/).
 
-![folsom topography](https://yangdanny97.github.io/misc/elevation/folsom.png){: height="px400"}
+![folsom topography](https://yangdanny97.github.io/misc/elevation/folsom.png){: height="px600" width="800"}
 
 ## Acquiring the Data
 
@@ -17,9 +17,9 @@ Elevation data is most commonly found in the GeoTIFF or DEM formats. Unlike GeoJ
 
 The best source of topography data I have found is the Shuttle Radar Topography Mission (SRTM), which contains high-resolution topography data of the entire world captured by a space shuttle mission. It can be accessed [online](https://portal.opentopography.org/raster?opentopoID=OTSRTM.042013.4326.1), and comes with a very nice interface to select a specific region to download elevation data for:
 
-![opentopograpy interface](https://yangdanny97.github.io/misc/elevation/0.png){: height="px400"}
+![opentopograpy interface](https://yangdanny97.github.io/misc/elevation/0.png){: height="px600" width="800"}
 
-I downloaded the elevation for my hometown as a GeoTIFF, which can be found [here](https://yangdanny97.github.io/misc/elevation/elevations.tif). The downloaded file can viewed online using [geotiff.io](http://geotiff.io/).
+I downloaded the elevation for my hometown as a GeoTIFF, which can be found [here](https://yangdanny97.github.io/misc/elevation/elevations.tif). The downloaded file can be inspected online using [geotiff.io](http://geotiff.io/).
 
 ## Creating the Plot
 
@@ -103,7 +103,7 @@ elevations.enter().append('path')
 
 We can load the chart in your browser by placing your HTML file in the same directory as your GeoTIFF file, starting a local http server in that directory using Python (`python3 -m http.server`), and navigating to `localhost:<PORT_NUMBER>` in your browser. Using the same data as my example, the chart should look something like this:
 
-![example 1](https://yangdanny97.github.io/misc/elevation/1.png){: height="px400"}
+![example 1](https://yangdanny97.github.io/misc/elevation/1.png){: height="px600" width="800"}
 
 ### Adding a Legend
 
@@ -135,7 +135,7 @@ svg.append('g')
 
 And with that, we're done! The final outcome should look like this:
 
-![example 2](https://yangdanny97.github.io/misc/elevation/2.png){: height="px400"}
+![example 2](https://yangdanny97.github.io/misc/elevation/2.png){: height="px600" width="800"}
 
 ## What's next?
 
