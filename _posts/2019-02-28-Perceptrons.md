@@ -2,7 +2,7 @@
 layout: post
 title: "How Perceptrons Work"
 date: 2019-02-28
-category: "Notes"
+category: "Technical"
 ---
 
 Due to the recent surge in popularity of machine learning, many people have become interested in learning about how these algorithms work, either to understand how they can be applied to their businesses, or just out of curiosity. Systems such as Google Translate and self-driving cars are powered by machine learning models called neural networks, which are made of thousands of interconnected simpler models. Here, I will discuss an algorithm that was used as the building block of the earliest neural networks, the perceptron.

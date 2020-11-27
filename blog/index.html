@@ -27,16 +27,6 @@ title: My Blog
 		{% endif %}
 		{% endfor %}
 		<hr>
-		<h3>Notes</h3>
-		<p>Less structured posts about technical topics</p>
-		<br>
-		{% for post in site.posts %}
-		{% if post.category == "Notes" %}
-		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
-				title="{{ post.title }}">{{ post.title }}</a> </p>
-		{% endif %}
-		{% endfor %}
-		<hr>
 		<h3>Misc</h3>
 		<p>Anything that doesn't fit in the above categories</p>
 		<br>

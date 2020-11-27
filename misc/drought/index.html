@@ -8,8 +8,8 @@
 <body>
     <svg id="vis"></svg>
     <script>
-        var width = document.documentElement.clientWidth,
-            height = document.documentElement.clientHeight;
+        var width = window.innerWidth * 0.9,
+            height = window.innerHeight * 0.9;
 
         // set up SVG
         var svg = d3.select("#vis").attr("width", width).attr("height", height);

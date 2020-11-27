@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Limitations of AI"
+title: "Limitations of AI"
 date: 2020-09-19
 category: "Technical"
 ---
