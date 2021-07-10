@@ -53,11 +53,14 @@ Overall, as I converted more of the project to ReScript the need for shimming wa
 ### Before & After
 
 Some stats, plus commit pointers if you want to check out the code for yourself.
-| Before                    | After                           |
-|---------------------------|---------------------------------|
-| ~1050 LOC JS              | ~1050 LOC ReScript, ~200 LOC JS |
-| [Commit before the rewrite](https://github.com/yangdanny97/fire-emblem-chess/tree/4846a94c4a729ee957bb1713f048acea35b8dff2) | [Most recent commit](https://github.com/yangdanny97/fire-emblem-chess)       |
-<br>
+
+Before:
+- 1050 LOC JS
+- [Commit](https://github.com/yangdanny97/fire-emblem-chess/tree/4846a94c4a729ee957bb1713f048acea35b8dff2)
+
+After:
+- 1050 LOC ReSCript, 200 LOC JS
+- [Most recent commit](https://github.com/yangdanny97/fire-emblem-chess)
 
 Before I conclude this section I'd like to mention that the official ReScript docs has a tutorial for [converting from Javascript](https://rescript-lang.org/docs/manual/latest/converting-from-js) which provides some generally sound advice. I did not see it until I finished converting my project :P 
 
