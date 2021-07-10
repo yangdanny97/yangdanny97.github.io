@@ -14,6 +14,8 @@ Several months ago, I built a [pass & play browser-based chess game](https://git
 - Implementing a game like chess in JS requires some very complicated state management. Immutability and a functional approach would be preferred here, but that is difficult to do in JS.
 - In a codebase with a lot of branching logic and special cases, iterating quickly was difficult without strong static typing/null-safety (which Javascript doesn't have) or an extensive test suite (a rarity for personal projects such as this)
 
+<hr>
+
 ## Why I Chose ReScript
 For those unfamiliar with the language, ReScript is a functional programming language which has the same type system as OCaml, and compiles to Javascript. It can be used to write UI code or backend logic, and since it compiles to JS, it can interoperate with existing JS code.
 
@@ -26,6 +28,8 @@ For me, the biggest/most game-changing features in ReScript were:
 - Immutability by default - no complicated state management
 
 Of course, lack of strong typing could have been solved by rewriting the project in TypeScript (which would have been much less work). A full comparison with TypeScript is out of scope for this blog post, but ReScript's soundness, immutability, type inference, lower verbosity, and pattern matching led me to choose it over TypeScript. In case you haven't realized already, I'm a big fan of functional programming.
+
+<hr>
 
 ## Migration Process
 
@@ -52,8 +56,6 @@ Overall, as I converted more of the project to ReScript the need for shimming wa
 
 ### Before & After
 
-Some stats, plus commit pointers if you want to check out the code for yourself.
-
 Before:
 - 1050 LOC JS
 - [Commit](https://github.com/yangdanny97/fire-emblem-chess/tree/4846a94c4a729ee957bb1713f048acea35b8dff2)
@@ -63,6 +65,8 @@ After:
 - [Most recent commit](https://github.com/yangdanny97/fire-emblem-chess)
 
 Before I conclude this section I'd like to mention that the official ReScript docs has a tutorial for [converting from Javascript](https://rescript-lang.org/docs/manual/latest/converting-from-js) which provides some generally sound advice. I did not see it until I finished converting my project :P 
+
+<hr>
 
 ## My Thoughts on ReScript
 
@@ -128,6 +132,8 @@ In my case, I explicitly chose to use Lists over Arrays despite the performance 
 Records and Objects in ReScript both map to Javascript objects at runtime, although they have pretty different behavior in the type system. The main limitations for Records are that they cannot be extended and are not structurally typed (so it's impossible to write a function that takes in any record with a certain field). On the other hand, Objects are structurally typed, but they don't support pattern matching & don't support updates unless they're imported from JS.
 
 To newcomers, this can be confusing - if they both compile to the same thing, why are there weird limitations on each? Ultimately this can be traced back to OCaml's type system; Records and Objects were originally two separate concepts in OCaml that happened to compile to the same thing in ReScript, resulting in the aforementioned differences in typechecking. This is one of the few downsides of trying to build a new language using another language's type system - which has led me to view ReScript more as "OCaml that runs in the browser" than as a distinct/separate language.
+
+<hr>
 
 ## Conclusion
 
