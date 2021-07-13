@@ -18,7 +18,7 @@ When I plotted the data initially, I realized that the x and y coordinates of th
 
 <img src="https://yangdanny97.github.io/misc/drought/inprogress.png" height="350">
 
-To generate a hexagonal grid, I used D3's hexbin library. I used a quantized scale for the hexagon radius in order to create the contiguous regions of color seen on the original map, and chose appropriate colors for the linear color scale in order to match the original. The final outcome is shown below (live page + code [linked here](https://yangdanny97.github.io/misc/drought)).
+To generate a hexagonal grid, I used D3's hexbin library. I used a quantized scale for the hexagon radius in order to create the contiguous regions of color seen on the original map, and chose appropriate colors for the linear color scale in order to match the original. The final outcome is shown below (live page + code: [Drought Map](https://yangdanny97.github.io/misc/drought)).
 
 <img src="https://yangdanny97.github.io/misc/drought/drought.png" height="350">
 
@@ -26,7 +26,7 @@ In the end, I think I created a reasonably close approximation of the original. 
 
 Using a different set of scales, I also able to replicate the "drought resilience" visualization from the same post.
 
-Mine ([live page + code](https://yangdanny97.github.io/misc/drought/vis2.html)):
+Mine (live page + code: [Inverted Drought Map](https://yangdanny97.github.io/misc/drought/vis2.html)):
 
 <img src="https://yangdanny97.github.io/misc/drought/resilience.png" height="350">
 

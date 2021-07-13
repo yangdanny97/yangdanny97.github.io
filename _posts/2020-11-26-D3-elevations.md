@@ -8,7 +8,7 @@ category: "Technical"
 
 Creating topography and elevation maps in D3 is challenging due to the availability and format of the data. Most city or county open data websites do not provide elevation data, and unlike other mapping data, elevation data is usually not in GeoJSON or TopoJSON format. 
 
-In this post, I'll show how to acquire elevation data and visualize it as a contour plot in D3. As an example, I used this technique to visualize the topography of my [hometown](https://yangdanny97.github.io/misc/elevation/).
+In this post, I'll show how to acquire elevation data and visualize it as a contour plot in D3. As an example, I used this technique to [visualize the topography of my hometown](https://yangdanny97.github.io/misc/elevation/).
 
 ![folsom topography](https://yangdanny97.github.io/misc/elevation/folsom.png){: height="px600" width="800"}
 
@@ -20,7 +20,7 @@ The best source of topography data I have found is the Shuttle Radar Topography 
 
 ![opentopograpy interface](https://yangdanny97.github.io/misc/elevation/0.png){: height="px600" width="800"}
 
-I downloaded the elevation for my hometown as a GeoTIFF, which can be found [here](https://yangdanny97.github.io/misc/elevation/elevations.tif). The downloaded file can be inspected online using [geotiff.io](http://geotiff.io/).
+I downloaded the [elevation for my hometown as a GeoTIFF](https://yangdanny97.github.io/misc/elevation/elevations.tif). The downloaded file can be inspected online using [geotiff.io](http://geotiff.io/).
 
 ## Creating the Plot
 

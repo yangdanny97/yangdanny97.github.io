@@ -62,7 +62,7 @@ This is some boilerplate HTML and Javascript that's required for every Vega visu
 
 Note that the Vega spec (the `spec` variable) is defined as a JSON object, which is currently an empty placeholder.
 
-Inside the same directory as `index.html`, you'll also need to download the TopoJSON shapefile found [here](https://github.com/topojson/us-atlas#states-albers-10m.json). 
+Inside the same directory as `index.html`, you'll also need to download the [TopoJSON shapefile of the US](https://github.com/topojson/us-atlas#states-albers-10m.json). 
 
 ### Spec Overview
 
@@ -611,8 +611,8 @@ Finally, add the following styles to the style tag in `index.html`. Feel free to
 </style>
 ```
 
-And we're finished! Your dashboard should look something like the one I have [here](https://yangdanny97.github.io/misc/dashboard). I hope this tutorial was useful in showing how easy it is to pick up and work with Vega.
+And we're finished! Your dashboard should look something like the one I made here: [Vega COVID Dashboard](https://yangdanny97.github.io/misc/dashboard). I hope this tutorial was useful in showing how easy it is to pick up and work with Vega.
 
-For an example of a more elaborate COVID dashboard that mixes D3 and Vega for more interactivity, [click here](https://yangdanny97.github.io/misc/dashboard). Many thanks to [Milan Zhou](https://github.com/milan-zhou) for assisting with my Vega projects.
+For an example of a more elaborate COVID dashboard that mixes D3 and Vega for more interactivity, see the [Full Vega COVID Dashboard](https://yangdanny97.github.io/misc/dashboard) we made. Many thanks to [Milan Zhou](https://github.com/milan-zhou) for assisting with my Vega projects.
 
 For additional [tutorials](https://vega.github.io/vega/tutorials/) and [examples](https://vega.github.io/vega/examples/), consult the Vega official documentation. 

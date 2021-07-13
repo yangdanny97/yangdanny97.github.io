@@ -26,14 +26,14 @@ I also wanted to add an outline of San Francisco to the map, since the building 
 
 By using MapShaper, a handy tool I discovered when I made a map of [Westeros](https://yangdanny97.github.io/GoT-interactive-battles-map/) a few years ago, I was able to combine the two GeoJSON files and re-export the combined file as a TopoJSON, which reduced the size to around 44mb.
 
-The final product can be seen below (or see a live version [here](https://yangdanny97.github.io/misc/sf_building_ages/)). 
+A screenshot of the final product can be seen below (or click the link to see a live version of the [SF building ages map](https://yangdanny97.github.io/misc/sf_building_ages/)). 
 
 ![building age in San Francisco](https://yangdanny97.github.io/misc/sf_mapping/1.png){: height="px400" width="650"}
 
 While the level of detail is fantastic, the irregular shapes of the buildings and the large amount of empty space actually make it harder to see trends across neighborhoods, so I wanted to try and make a version that showed this information more clearly.
 
 I decided to just visualize the parcels themselves without any buildings, since the parcel footprints fill more space. 
-The final product was an interactive visualization that allowed users to see the year built, land use (zoning), and number of residential units for each parcel (see it live [here](https://yangdanny97.github.io/misc/sf_land_use/)).
+The final product was an interactive visualization that allowed users to see the year built, land use (zoning), and number of residential units for each parcel (see it live here: [SF land use map](https://yangdanny97.github.io/misc/sf_land_use/)).
 
 ![zoning in San Francisco](https://yangdanny97.github.io/misc/sf_mapping/2.png){: height="px400" width="650"}
 
@@ -50,4 +50,4 @@ Interestingly, landmarks can be seen as well - the Palace of Fine Arts, built fo
 
 D3 isn't particularly well-suited to making maps, and performance suffers when rendering large GeoJSON/TopoJSON files. There isn't a way to implement tiling or smooth zooming, both of which impact the usability of a map this detailed. In the end, I found that the best way to present high-detail maps in D3 is as static SVG visualizations, which allows the user to use the browser window to zoom in without pixelation. 
 
-Overall, I found mapping in D3 to be surprisingly fun, with an interesting set of challenges that led to interesting insights and workarounds. I collected some tips and tricks for anyone that wants to try their hand at D3 mapmaking in a blog post [here](https://yangdanny97.github.io/blog/2019/08/24/D3-Mapmaking-Tips), which I hope will help people create more cool maps and visualizations of open data.
+Overall, I found mapping in D3 to be surprisingly fun, with an interesting set of challenges that led to interesting insights and workarounds. I collected some [D3 mapmaking tips and tricks](https://yangdanny97.github.io/blog/2019/08/24/D3-Mapmaking-Tips) for anyone that wants to try their hand at making maps with D3, which I hope will help people create more cool maps and visualizations of open data.

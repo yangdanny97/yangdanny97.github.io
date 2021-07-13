@@ -40,7 +40,7 @@ As a rule of thumb, you should keep data under 25mb for best performance, althou
 
 ### Non-JSON File Formats
 
-Map data doesn't always come nicely formatted as GeoJSON or TopoJSON; sometimes they will come as shapefiles, which cannot directly be displayed by D3. You can edit and convert map data using a tool called [MapShaper](https://mapshaper.org). It has both a web interface and CLI where you can upload files in a variety of formats, edit their layers and polygons, and re-export them as GeoJSON or TopoJSON. I used it once to convert a shapefile of Westeros into a format that can be displayed in D3 (the final map, if you're curious, is [here](https://yangdanny97.github.io/GoT-interactive-battles-map/)).
+Map data doesn't always come nicely formatted as GeoJSON or TopoJSON; sometimes they will come as shapefiles, which cannot directly be displayed by D3. You can edit and convert map data using a tool called [MapShaper](https://mapshaper.org). It has both a web interface and CLI where you can upload files in a variety of formats, edit their layers and polygons, and re-export them as GeoJSON or TopoJSON. I used it once to convert a shapefile of Westeros into a format that can be displayed in D3 (the final map, if you're curious, is here: [Game Of Thrones Interactive Battles Map](https://yangdanny97.github.io/GoT-interactive-battles-map/)).
 
 ### Scaling Issues
 

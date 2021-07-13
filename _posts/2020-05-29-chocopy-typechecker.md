@@ -12,7 +12,7 @@ After taking a peek at the project ideas page for Cornell's [grad compilers cour
 
 For the first project, I built a compiler frontend for Chocopy. It was implemented in Python, in order to leverage Python's built-in parser and the `ast` module. Despite using a different language, I wanted to maintain compatibility with Chocopy's reference implementation, which would allow Chocopy's backend to generate assembly using typechecked ASTs from my frontend.
 
-The source code for the project can be found [here](https://github.com/yangdanny97/chocopy-python-frontend).
+Here's a link to the source code for this project: [Chocopy Python Frontend Source Code](https://github.com/yangdanny97/chocopy-python-frontend).
  
 ### Parser
 

@@ -38,7 +38,7 @@ I approached the migration by starting with core logic and rewriting one class a
 
 ### Setup
 
-Project setup was smooth; I followed the tutorial on the official docs to install the compiler & editor integrations, and followed the instructions [here](https://webbureaucrat.gitlab.io/articles/setting-up-webpack-for-rescript/) to integrate with webpack. The compiler is quite fast and the editor integrations are solid as well. 
+Project setup was smooth; I followed the tutorial on the official docs to install the compiler & editor integrations, and followed the instructions to [set up Webpack for ReScript](https://webbureaucrat.gitlab.io/articles/setting-up-webpack-for-rescript/). The compiler is quite fast and the editor integrations are solid as well. 
 
 ### Goals
 

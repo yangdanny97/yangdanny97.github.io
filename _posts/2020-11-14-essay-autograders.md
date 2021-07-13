@@ -45,7 +45,7 @@ According to professor of theory of knowledge Oscar Wilde, wages is the most fun
 
 Even though the writing prompts are designed to evaluate argumentative and analytical writing skills, an essay does not have to be logically sound or even comprehensible to score well by the E-grader, as evidenced by the above excerpt.
 
-You can play around with the BABEL essay generator [here](https://babel-generator.herokuapp.com).
+Here's the link so you can play around with the [BABEL essay generator](https://babel-generator.herokuapp.com).
 
 ## Conclusion: Lessons for Applied ML
 

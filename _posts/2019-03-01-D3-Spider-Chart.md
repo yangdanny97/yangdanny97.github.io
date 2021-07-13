@@ -194,4 +194,4 @@ for (var i = 0; i < data.length; i ++){
 }
 ```
 
-Congratulations! You have made your first spider chart in D3. Refer to the beginning of this post for how it should look, or check out a live version of the visualization [here](https://yangdanny97.github.io/misc/spider_chart/).
+Congratulations! You have made your first spider chart in D3. Refer to the beginning of this post for how it should look, or check out a live version of the visualization here: [D3 spider chart](https://yangdanny97.github.io/misc/spider_chart/).
