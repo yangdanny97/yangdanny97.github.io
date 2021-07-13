@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Building a Course Recommender System"
+description: "Algorithms and heuristics for building a course recommendation system"
 date: 2020-05-02
 category: "Technical"
 ---

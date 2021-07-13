@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Scrutinizing Datasets"
+description: "Things to look for when you evaluate datasets - Data Science"
 date: 2019-11-11
 category: "Technical"
 ---

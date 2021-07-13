@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Recreating the 5 Years of Drought Visualization"
+description: "Visualizing the severity and frequency of drought using D3"
 date: 2020-01-02
 category: "Technical"
 ---

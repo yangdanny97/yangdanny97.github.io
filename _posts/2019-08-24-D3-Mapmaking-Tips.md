@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Mapmaking with D3: Tips and Common Pitfalls"
+description: "Tips and tricks for making interactive maps using D3"
 date: 2019-08-24
 category: "Technical"
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Flaws of Essay Autograders"
+description: "How essay autograders work, and when they fail"
 date: 2020-11-14
 category: "Technical"
 ---

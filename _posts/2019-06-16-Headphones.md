@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Review: Bose QC-35 vs Sony WH-1000xM2"
+description: "My thoughts on the Bose QC-35 and Sony WH-1000xM2 noise cancelling headphones - Review"
 date: 2019-06-16
 category: "Misc"
 ---

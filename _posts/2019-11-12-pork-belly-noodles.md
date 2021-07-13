@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[Recipe] Pork Belly Noodles"
+description: "Recipe for making soup noodles with pan fried pork belly"
 date: 2019-11-12
 category: "Cooking"
 ---

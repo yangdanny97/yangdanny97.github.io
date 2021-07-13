@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Tutorial: Simple COVID-19 Dashboard Using Vega"
+title: "Vega Dashboard Tutorial"
+description: "Build a dashboard of COVID cases and deaths using Vega"
 date: 2020-05-07
 category: "Technical"
 ---

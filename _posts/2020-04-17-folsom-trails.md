@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Folsom Biking Trails"
+description: "Overview of Biking Trails in Folsom, CA"
 date: 2020-04-17
 category: "Misc"
 ---

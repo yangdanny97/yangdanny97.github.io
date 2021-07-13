@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[Recipe] Pan-Fried Pork Chops"
+description: "Recipe for pan-fried pork chops"
 date: 2020-04-17
 category: "Cooking"
 ---

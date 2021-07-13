@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[Recipe] Tomato and Egg"
+description: "Recipe for Tomato and Egg"
 date: 2019-10-26
 category: "Cooking"
 ---

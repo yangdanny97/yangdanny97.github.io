@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Limitations of AI"
+description: "My thoughts on limitations of present-day AI systems"
 date: 2020-09-19
 category: "Technical"
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[Recipe] Impossible Bolognese"
+description: "Recipe for Impossible meat bolognese"
 date: 2020-07-16
 category: "Cooking"
 ---

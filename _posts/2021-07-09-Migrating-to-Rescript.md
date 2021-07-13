@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Rewriting a Project in ReScript"
+description: "My experience reimplementing a small project in ReScript"
 date: 2021-07-09
 category: "Technical"
 ---

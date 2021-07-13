@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Mapping San Francisco Building Ages Using D3"
+description: "Interactive map of building ages in San Francisco using D3"
 date: 2019-08-25
 category: "Technical"
 ---

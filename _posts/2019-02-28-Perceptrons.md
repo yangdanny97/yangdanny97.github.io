@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "How Perceptrons Work"
+description: "Beginner-friendly explanation of how perceptrons work"
 date: 2019-02-28
 category: "Technical"
 ---

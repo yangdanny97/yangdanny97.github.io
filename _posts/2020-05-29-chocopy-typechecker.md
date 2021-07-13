@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Chocopy Hacking Part 1: Building a compiler frontend in Python"
+description: "Building a typechecker using Python"
 date: 2020-05-29
 category: "Technical"
 ---

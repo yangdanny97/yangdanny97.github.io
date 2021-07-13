@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Elevation Contour Plots With D3"
+description: "How to map elevation contours using D3"
 date: 2020-11-26
 category: "Technical"
 ---

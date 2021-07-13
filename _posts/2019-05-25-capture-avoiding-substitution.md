@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Explanation of Capture-Avoiding Substitution"
+description: "Short notes on the concept of capture-avoiding substitution in lambda calculus"
 date: 2019-05-25
 category: "Technical"
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "D3 Spider Chart Tutorial"
+description: "D3 Radar Chart Tutorial"
 date: 2019-03-01
 category: "Technical"
 ---
