@@ -1,4 +1,9 @@
-<html>
+---
+layout: default
+title: Visualizing San Francisco Building Age in D3
+description: San Francisco Building Age Visualization in D3
+---
+<link rel='stylesheet' href="{{ site.url }}/css/site-style.css">
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
 <!-- loading animation credit: https://projects.lukehaas.me/css-loaders/ -->
@@ -56,8 +61,7 @@
         }
     }
 </style>
-
-<body>
+<div>
     <svg id="vis"></svg>
     <script>
         var width = document.documentElement.clientWidth,
@@ -117,7 +121,6 @@
         // callback after data loads
         var processData = function (data) {
             var data;
-            console.log(data);
             pathGenerator = d3.geoPath();
 
             features = topojson.feature(data, data.objects['buildings_yrbuilt']).features;
@@ -144,7 +147,6 @@
                 .style("fill", "none")
                 .attr('d', pathGenerator);
             var bbox = chart.node().getBBox();
-            console.log(bbox);
             var scale = 0.9 * Math.min(width / bbox.width, height / bbox.height),
                 translate = [-1.25 * bbox.x, -1.1* bbox.y];
             d3.selectAll("path").attr("transform", `translate(${translate}) scale(${scale})`);
@@ -213,6 +215,4 @@
             processData(jsons[0]);
         });
     </script>
-</body>
-
-</html>
+</div>

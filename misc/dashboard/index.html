@@ -1,9 +1,12 @@
-<head>
-    <title>Vega COVID-19 Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
-</head>
+---
+layout: default
+title: COVID Dashboard using Vega
+description: Dashboard of COVID cases in the US, built using Vega
+---
+<link rel='stylesheet' href="{{ site.url }}/css/site-style.css">
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
 <style>
     body {
         background-color: black;
@@ -21,8 +24,8 @@
     }
 </style>
 
-<body>
-    <h1>COVID-19 Dashboard</h1>
+<div>
+    <h1>COVID-19 Dashboard - Built using Vega</h1>
     <hr>
     <div id="view"></div>
     <div id="viewControl"></div>
@@ -227,5 +230,4 @@
         };
         render(spec);
     </script>
-
-</body>
+</div>

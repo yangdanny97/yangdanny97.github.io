@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+---
+layout: default
+title: "Force Directed Graph in D3"
+description: "Force Directed Visualization in D3"
+---
+<link rel='stylesheet' href="{{ site.url }}/css/site-style.css">
 <style>
 
 .node {
@@ -41,9 +44,8 @@ svg{
 .autocomplete-suggestions strong { font-weight: normal;}  
 
 </style>
-<body>
 <div class = "card centered" width = "800" height = "900">
-<h1> CDS DV - Social Tribes - Force Directed Network Visualization</h1>
+<h1> CDS Social Tribes - Force Directed Network Visualization</h1>
 <p>Explanation for Links: Each node is connected with the node most similar to it. In addition, two nodes with a similarity score above a the threshold will be connected. Adjust the slider to change the threshold.</p>
 <div class = "card slidercontainer">
 <input style = "width: 400px;" type="range" min="35" max="100" value="100" class="slider" id="threshold">
@@ -56,4 +58,3 @@ svg{
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 <script src='./jquery.autocomplete.min.js'></script>
 <script src = "./force-directed.js"></script>
-</body>

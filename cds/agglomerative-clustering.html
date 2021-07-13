@@ -1,13 +1,12 @@
-<html>
-<head>
-<title>Agglomerative Clustering implementation in JS </title>
+---
+layout: default
+title: "Agglomerative Clustering Visualization in D3"
+description: "Agglomerative Clustering in D3"
+---
+<link rel='stylesheet' href="{{ site.url }}/css/site-style.css">
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/4.1.1/math.min.js"></script>
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script src = "./agglomerative-clustering.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-
-<body>
 <style>
 	.centered {
 	  text-align: center;
@@ -31,7 +30,7 @@
 	}
 </style>
 <div class = "card centered col-md-8 offset-md-2" width = "800" height = "900">
-<h1> CDS DV - Social Tribes - Agglomerative Clustering Visualization</h1>
+<h1>CDS Social Tribes - Agglomerative Clustering Visualization Using D3</h1>
 <p>Agglomerative clustering works by merging the two most similar clusters at each iteration.<br>Step through the algorithm one iteration at a time, or select the auto box to automatically animate it. The similarity metric used for this algorithm is the euclidean distance between the centroids of clusters.</p>
 <div class = "options">
 <input type="button" id = 'start' value="Start/Reset">
@@ -164,5 +163,3 @@ stepbtn.addEventListener('click', function(a){
 
 start();
 </script>
-</body>	
-</html>

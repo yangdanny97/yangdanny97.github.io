@@ -1,10 +1,14 @@
-<html>
+---
+layout: default
+title: Elevation Map in D3
+description: D3 Contour Plot Example
+---
+<link rel='stylesheet' href="{{ site.url }}/css/site-style.css">
 <script src='https://d3js.org/d3.v6.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/geotiff'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js'></script>
-
-<body>
-    Elevation map of Folsom, CA
+<div>
+    <h2>Elevation map of Folsom, CA - Implemented with D3.js</h2>
     <div>Opacity: <input id='opacity' type='range' /></div>
     <div id='vis'></div>
     <script>
@@ -59,6 +63,4 @@
         }
         renderVis();
     </script>
-</body>
-
-</html>
+</div>

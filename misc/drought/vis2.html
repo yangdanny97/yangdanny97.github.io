@@ -1,11 +1,13 @@
-<html>
+---
+layout: default
+title: Drought Resilience in the US
+description: Recreating the "5 Years of Drought" Visualization using D3
+---
+<link rel='stylesheet' href="{{ site.url }}/css/site-style.css">
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
-<style>
-</style>
-
-<body>
+<div>
     <svg id="vis"></svg>
     <script>
         var width = window.innerWidth * 0.9,
@@ -102,7 +104,7 @@
 
             var diff = maxWgt - minWgt;
             var severityDomain = [minWgt, minWgt + diff / 3, minWgt + diff * 2 / 3, minWgt + diff];
-            var severityRange = ["navy", "cyan","lightyellow","none"];
+            var severityRange = ["navy", "cyan", "lightyellow", "none"];
 
             var colorScale = d3.scaleLinear().domain(severityDomain).range(severityRange);
             var widthScale = d3.scaleQuantize().domain([0, 0.95]).range([0.0, 0.4, 0.6, 0.8, 1.0]);
@@ -116,6 +118,4 @@
             processData(jsons[0], jsons[1]);
         });
     </script>
-</body>
-
-</html>
+</div>

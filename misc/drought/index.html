@@ -1,11 +1,14 @@
-<html>
+---
+layout: default
+title: Drought in the US
+description: Recreating the "5 Years of Drought" Visualization using D3
+---
+<link rel='stylesheet' href="{{ site.url }}/css/site-style.css">
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
-<style>
-</style>
 
-<body>
+<div>
     <svg id="vis"></svg>
     <script>
         var width = window.innerWidth * 0.9,
@@ -132,28 +135,24 @@
             });
 
             var diff = maxWgt - minWgt;
-            // var severityDomain = [minWgt,
-            //     minWgt + diff / 5,
-            //     minWgt + diff * 2 / 5,
-            //     minWgt + diff * 3 / 5,
-            //     minWgt + diff * 4 / 5,
-            //     maxWgt];
-            // var severityRange = ["none", "lightyellow", "orange", "red", "darkmagenta", "indigo"];
-            var severityDomain = [minWgt, minWgt + diff / 3, minWgt + diff * 2 / 3, minWgt + diff];
-            var severityRange = ["navy", "cyan","lightyellow","none"];
+            var severityDomain = [minWgt,
+                minWgt + diff / 5,
+                minWgt + diff * 2 / 5,
+                minWgt + diff * 3 / 5,
+                minWgt + diff * 4 / 5,
+                maxWgt];
+            var severityRange = ["none", "lightyellow", "orange", "red", "darkmagenta", "indigo"];
 
             var colorScale = d3.scaleLinear().domain(severityDomain).range(severityRange);
             var widthScale = d3.scaleQuantize().domain([0, 0.95]).range([0.0, 0.4, 0.6, 0.8, 1.0]);
 
             drawDrought(drought_data, scale, colorScale, widthScale);
             drawStates(state_data);
-            // drawLegend(severityRange, widthScale, width * 0.1, height * 0.85);
+            drawLegend(severityRange, widthScale, width * 0.1, height * 0.85);
         }
 
         Promise.all([d3.json("./30KMSampleAll.json"), d3.json("./us_20m.json")]).then((jsons) => {
             processData(jsons[0], jsons[1]);
         });
     </script>
-</body>
-
-</html>
+</div>
