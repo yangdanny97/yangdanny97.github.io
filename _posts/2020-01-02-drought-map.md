@@ -35,3 +35,5 @@ Original:
 <img src="https://adventuresinmapping.files.wordpress.com/2016/07/optimistsdroughtmap1.jpg" height="400">
 
 The data source I used is linked at the bottom of [this post](https://nation.maps.arcgis.com/apps/Cascade/index.html?appid=a9d345446d1a48a2918ff95b51f5841c). The original creator of this map John Nelson has a [fantastic blog](https://adventuresinmapping.com) that I often read for inspiration. Although we use different tools (he uses ArcGIS, which is a more specialized tool that's better for making maps than D3), I find that the techniques he discusses to be very relevant and I find an interesting challenge in thinking about whether/how I could implement the same maps in D3. 
+
+I collected some [D3 mapmaking tips and tricks](https://yangdanny97.github.io/blog/2019/08/24/D3-Mapmaking-Tips) for anyone that wants to try their hand at making maps with D3, which I hope will help people create more cool maps and visualizations of open data.

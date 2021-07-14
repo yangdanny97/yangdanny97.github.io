@@ -1,12 +1,12 @@
 ---
 layout: post
 title: "Elevation Contour Plots With D3"
-description: "How to map elevation contours using D3"
+description: "How to map topography contours using D3"
 date: 2020-11-26
 category: "Technical"
 ---
 
-Creating topography and elevation maps in D3 is challenging due to the availability and format of the data. Most city or county open data websites do not provide elevation data, and unlike other mapping data, elevation data is usually not in GeoJSON or TopoJSON format. 
+Creating contour plots of elevation and topography in D3 is challenging due to the availability and format of the data. Most city or county open data websites do not provide topographical data and, when it's present, elevation data is usually not in GeoJSON or TopoJSON format (unlike many other mapping data sources). 
 
 In this post, I'll show how to acquire elevation data and visualize it as a contour plot in D3. As an example, I used this technique to [visualize the topography of my hometown](https://yangdanny97.github.io/misc/elevation/).
 
@@ -140,10 +140,7 @@ And with that, we're done! The final outcome should look like this:
 
 ## What's next?
 
-In [my example](https://yangdanny97.github.io/misc/elevation/), I also included a static image of the roads in my hometown under the contour plot and added a slider to adjust the opacity. 
+In [my example](https://yangdanny97.github.io/misc/elevation/), I also included a static image of the roads in my hometown under the contour plot and added a slider to adjust the opacity. Feel free to check out the example code for how those were implemented (right click on the page, and click "view page source").
 
-Feel free to check out the example code for how those were implemented (right click on the page, and click "view page source").
-
-
-
+I collected some [D3 mapmaking tips and tricks](https://yangdanny97.github.io/blog/2019/08/24/D3-Mapmaking-Tips) for anyone that wants to try their hand at making maps with D3, which I hope will help people create more cool maps and visualizations of open data.
 

@@ -50,4 +50,6 @@ Interestingly, landmarks can be seen as well - the Palace of Fine Arts, built fo
 
 D3 isn't particularly well-suited to making maps, and performance suffers when rendering large GeoJSON/TopoJSON files. There isn't a way to implement tiling or smooth zooming, both of which impact the usability of a map this detailed. In the end, I found that the best way to present high-detail maps in D3 is as static SVG visualizations, which allows the user to use the browser window to zoom in without pixelation. 
 
-Overall, I found mapping in D3 to be surprisingly fun, with an interesting set of challenges that led to interesting insights and workarounds. I collected some [D3 mapmaking tips and tricks](https://yangdanny97.github.io/blog/2019/08/24/D3-Mapmaking-Tips) for anyone that wants to try their hand at making maps with D3, which I hope will help people create more cool maps and visualizations of open data.
+Overall, I found mapping in D3 to be surprisingly fun, with an interesting set of challenges that led to interesting insights and workarounds. 
+
+I collected some [D3 mapmaking tips and tricks](https://yangdanny97.github.io/blog/2019/08/24/D3-Mapmaking-Tips) for anyone that wants to try their hand at making maps with D3, which I hope will help people create more cool maps and visualizations of open data.
