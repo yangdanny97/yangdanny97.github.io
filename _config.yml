@@ -1,5 +1,9 @@
 name: Danny Yang
-title: Danny Yang
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
 highlighter: rouge
+plugins:
+  - jekyll-feed
+author: Danny Yang
+title: Danny Yang's Blog
+description: Welcome to my personal website and blog! I like talking about compilers and data visualization.
