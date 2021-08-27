@@ -3,7 +3,7 @@ layout: post
 title: "Chocopy Hacking Part 1: Building a compiler frontend in Python"
 description: "Building a typechecker using Python"
 date: 2020-05-29
-category: "Technical"
+category: "Compilers"
 ---
 
 A while back, I thought about trying to hack around with various languages and compilers for fun/practice. Since I'm still pretty busy with research currently and I start work in 2 months, I decided from the outset to keep my projects limited in scope. 

@@ -3,7 +3,7 @@ layout: post
 title: "Mapmaking with D3: Tips and Common Pitfalls"
 description: "Tips and tricks for making interactive maps using D3"
 date: 2019-08-24
-category: "Technical"
+category: "Vis"
 ---
 
 This post is a collection of common problems people will encounter while making maps using D3, and my advice for how to deal with them. I plan to make regular updates/corrections as my understanding improves.
@@ -74,7 +74,7 @@ There are 2 ways to implement zooming and panning:
 
 1.  **Translating and scaling the shapes using [d3-zoom](https://github.com/d3/d3-zoom)**
 
-    This might be laggy if the map is very complex, but it is possible to work around this by tiling the background. For more on this, see my [other post](https://yangdanny97.github.io/blog/2019/08/24/D3-Mapmaking-Tips).
+    This might be laggy if the map is very complex, but it is possible to work around this by tiling the background. 
 
 2.  **Adjusting scaling/offset for the projection** 
 

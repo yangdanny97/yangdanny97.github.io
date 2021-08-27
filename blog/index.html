@@ -8,8 +8,28 @@ description: Blog Homepage
 		<h3>{{ page.title }}</h3>
 		<div>Welcome to my blog! As you can see, I like to write about technical things (mainly programming languages, compilers, & data vis). <a href="/feed.xml" target="_blank">RSS</a></div>
 		<hr>
+		<h3>Compilers</h3>
+		<p>Posts about programming languages and compilers</p>
+		<br>
+		{% for post in site.posts %}
+		{% if post.category == "Compilers" %}
+		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
+				title="{{ post.title }}">{{ post.title }}</a> </p>
+		{% endif %}
+		{% endfor %}
+		<hr>
+		<h3>Data Visualization</h3>
+		<p>Posts and tutorials about data visualization, usually with D3.js</p>
+		<br>
+		{% for post in site.posts %}
+		{% if post.category == "Vis" %}
+		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
+				title="{{ post.title }}">{{ post.title }}</a> </p>
+		{% endif %}
+		{% endfor %}
+		<hr>
 		<h3>Technical</h3>
-		<p>Posts about a variety of technical subjects that I'm interested in</p>
+		<p>Posts and essays about other technical subjects that I'm interested in</p>
 		<br>
 		{% for post in site.posts %}
 		{% if post.category == "Technical" %}

@@ -3,7 +3,7 @@ layout: post
 title: "Elevation Contour Plots With D3"
 description: "How to map topography contours using D3"
 date: 2020-11-26
-category: "Technical"
+category: "Vis"
 ---
 
 Creating contour plots of elevation and topography in D3 is challenging due to the availability and format of the data. Most city or county open data websites do not provide topographical data and, when it's present, elevation data is usually not in GeoJSON or TopoJSON format (unlike many other mapping data sources). 

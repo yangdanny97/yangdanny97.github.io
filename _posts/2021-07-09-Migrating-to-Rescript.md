@@ -77,15 +77,15 @@ As someone who knew OCaml going in, learning ReScript wasn't too tricky, since i
 
 ### Feels like OCaml
 
-The functional nature of ReScript, along with features like Lists, Variants, Options, and Records, are very much second nature to anyone who has used OCaml, although for someone with no functional programming experience the learning curve may be a bit steeper.
+The functional nature of ReScript, along with features like Lists, Variants, Options, and Records, are very much second nature to anyone who has used OCaml. For someone with no functional programming experience, the learning curve may be a bit steeper.
 
-Like in OCaml, both mutable and immutable data types are supported, although perhaps ReScript promotes mutability a little more than OCaml does (more on that later). Although interop with Javascript is always a looming concern, it's entirely possible to implement something in ReScript basically the same way you would implement it in OCaml.
+Like in OCaml, both mutable and immutable data types are supported in ReScript. However, it feels like ReScript promotes mutability a little more than OCaml does (more on that later). Interop with Javascript is always a looming concern, but it's entirely possible to implement something using just the functional features in ReScript, basically the same way you would implement it in OCaml.
 
 ### Documentation
 
 I was pleasantly surprised by the documentation: the core language documentation was clear and easy to understand; the ReScript/Javascript code snippet comparisons were especially helpful to see what each language construct mapped to at runtime.
 
-However, it's not all perfect. Some [older docs](https://rescript-lang.org/docs/reason-compiler/latest/class) haven't been converted from the ReasonML syntax yet, and aren't linked from other documentation pages. The sections about external bindings were a bit unclear to me, and it took me several tries to get them working correctly. Another part that seems lacking is documentation on attributes/decorators; although they're mentioned in the interop docs, I've been unable to find an exhaustive list of attributes and what they do.
+However, it's not all perfect. Some [older docs](https://rescript-lang.org/docs/reason-compiler/latest/class) haven't been converted from the ReasonML syntax yet, and aren't linked from other documentation pages. The sections about external bindings were a bit unclear to me, and it took me several tries to get them working correctly. Another part that seems lacking is documentation on attributes/decorators; while they're mentioned in the interop docs, I've been unable to find an exhaustive list of attributes and what they do.
 
 ### Interop
 Interop between the various data types in ReScript & JS is clean and intuitive for the most part, aside from some complications for Lists, Classes, and Variants. 
@@ -105,7 +105,7 @@ Lists are represented in JS as a nested object that looks roughly like
 ```
 which means that Lists aren't easily manipulated or accessed in JS code, although ReScript's standard library functions may be used directly in the JS code in cases where List values need to be manipulated in JS.
 
-Although Classes and OOP exist in OCaml, interop for Classes between ReScript & JS is a bit more complicated and the level of support for classes in ReScript is unclear. There is [old documentation](https://rescript-lang.org/docs/reason-compiler/latest/class) for Class interop, but it is written for ReasonML.
+While classes and OOP exist in OCaml, interop for classes between ReScript & JS is a bit more complicated and the level of support for classes in ReScript is unclear. There is [old documentation](https://rescript-lang.org/docs/reason-compiler/latest/class) for class interop, but it is written for ReasonML.
 
 Variants are also represented as a nested object:
 ```
@@ -130,7 +130,7 @@ In my case, I explicitly chose to use Lists over Arrays despite the performance 
 
 ### Records vs Objects
 
-Records and Objects in ReScript both map to Javascript objects at runtime, although they have pretty different behavior in the type system. The main limitations for Records are that they cannot be extended and are not structurally typed (so it's impossible to write a function that takes in any record with a certain field). On the other hand, Objects are structurally typed, but they don't support pattern matching & don't support updates unless they're imported from JS.
+Records and Objects in ReScript both map to Javascript objects at runtime, though they have pretty different behavior in the type system. The main limitations for Records are that they cannot be extended and are not structurally typed (so it's impossible to write a function that takes in any record with a certain field). On the other hand, Objects are structurally typed, but they don't support pattern matching & don't support updates unless they're imported from JS.
 
 To newcomers, this can be confusing - if they both compile to the same thing, why are there weird limitations on each? Ultimately this can be traced back to OCaml's type system; Records and Objects were originally two separate concepts in OCaml that happened to compile to the same thing in ReScript, resulting in the aforementioned differences in typechecking. This is one of the few downsides of trying to build a new language using another language's type system - which has led me to view ReScript more as "OCaml that runs in the browser" than as a distinct/separate language.
 

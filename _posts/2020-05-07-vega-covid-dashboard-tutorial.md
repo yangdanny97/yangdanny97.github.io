@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Vega Dashboard Tutorial"
+title: "Building a Dashboard using Vega - Tutorial"
 description: "Build a dashboard of COVID cases and deaths using Vega"
 date: 2020-05-07
-category: "Technical"
+category: "Vis"
 ---
 In this tutorial, we will be using [Vega](https://vega.github.io/) to make an interactive map that displays COVID-19 data for each state in the US. 
 
