@@ -36,7 +36,13 @@ Depending on the level of detail, GeoJSON can get very large. For example, the G
 
     Converting is as easy as loading the file into MapShaper and exporting as TopoJSON. The drawback, as I understand it, is that you can't adjust the projection like you can with GeoJSON, so it is best to set your desired projection using a tool like MapShaper before you convert it. 
 
-As a rule of thumb, you should keep data under 25mb for best performance, although if you included a loading indicator you might be able to get away with 50mb without the user complaining too much.
+### Load Times
+
+Generally, page load time is related to the size of the dataset, and how much data processing/manipulation the visualization needs to do. Larger datasets take more time to load, and more display elements take longer to render and update. 
+
+As a rule of thumb, loading datasets with more than 25mb will lead to a severe and noticeable performance hit. The best option is always to shrink your dataset, but if that cannot be done, then adding a loading indicator/spinner can go a long way to making sure users don't think your visualization is broken while it loads.
+
+For visualizations using static datasets, loading and combining multiple datasets or doing preprocessing on the data in Javascript is unnecessary. To optimize page load time, you should always merge datasets and do preprocessing offline ahead of time. 
 
 ### Non-JSON File Formats
 
