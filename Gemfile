@@ -4,6 +4,5 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem "github-pages", "~> 204", group: :jekyll_plugins
-gem "jekyll", "~> 3.8.5"
-# gem "rails"
+gem "github-pages", group: :jekyll_plugins
+gem "jekyll"
