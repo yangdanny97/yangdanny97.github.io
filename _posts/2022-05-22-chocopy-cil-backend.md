@@ -81,29 +81,17 @@ Compared to building out the JVM backend, building the CIL backend was much easi
 
 When I built the JVM code generation pass, I approached each language feature by trying to translate Chocopy programs into Java and seeing how the translated programs were compiled into JVM bytecode. Having the mental process of mapping features from Chocopy->Java->JVM was helpful for guiding the implementation process.
 
-digraph {
-    rankdir="LR"
-    Chocopy -> Java [ label="my brain" ]
-    Java -> "JVM bytecode" [label="javac"]
-}
+![Chocopy to Java to JVM](https://yangdanny97.github.io/misc/chocopy/chocopy_graphviz_1.png){: width="600"}
 
 With the CIL backend I initially adopted a similar approach, by first finding a C# equivalent to Chocopy language features and seeing what CIL instructions the C# got compiled to. Although I had never written C# before, it was pretty easy to pick up enough to write some small programs.
 
-digraph {
-    rankdir="LR"
-    Chocopy -> "C#" [ label="my brain" ]
-    "C#" -> CIL [label="csc + monodis"]
-} 
+![Chocopy to C# to CIL](https://yangdanny97.github.io/misc/chocopy/chocopy_graphviz_2.png){: width="600"}
 
 Unlike last time, I wasn't starting from scratch, so I wanted to find a way to leverage the Chocopy->JVM mapping that I had previously developed. As it turns out, there are a lot of similarities between the JVM and CIL code structure and instruction sets, and some [previous research](https://www.researchgate.net/publication/222515939_A_Translation-Facilitated_Comparison_Between_the_Common_Language_Runtime_and_the_Java_Virtual_Machine) on translating between CIL and JVM. 
 
 This meant that in addition to mapping features from Chocopy->C#->CIL, I could also approach this as a Chocopy->JVM->CIL translation task. The latter approach actually made my work a lot easier - since JVM and CIL are both relatively lower-level representations, in some cases it was very straightforward to translate between them, instead translating a higher-level language like C# or Java down to a lower-level representation.
 
-digraph {
-    rankdir="LR"
-    Chocopy -> "JVM bytecode" [ label="Chocopy JVM backend" ]
-    "JVM bytecode" -> CIL [label="my brain"]
-} 
+![Chocopy to JVM to CIL](https://yangdanny97.github.io/misc/chocopy/chocopy_graphviz_3.png){: width="600"}
 
 For many parts of the CIL codegen, I just copied the JVM backend's implementation and replaced JVM instructions and stdlib functions with their CIL equivalents. For example, using `add` (CIL) instead of `iadd` (JVM), or calling `System.Console::WriteLine` (CIL) instead of `System.Out.println` (JVM). Not every feature could be translated this cleanly, but in places when this was possible I saved a lot of time.
 
@@ -135,65 +123,25 @@ load <new_temp_local>
 stelem
 ```
 
-#### Locals and the Code Builder
-
-Since new local variables were needed all the time to store intermediate values, the compiler only knew how many locals it needed to generate after trying to compile the whole function. That seemed pretty simple - just generate the instructions for the function body first, then go back and generate the local declarations once we know how many locals we need. As it turns out, it actually took some effort.
-
-The compiler's existing code builder system was something terrible that I wrote in 10 minutes - each output file used a single instance of the code builder, which was essentially a list of lines that also tracked the current indentation level. A builder could only be interacted with by updating the current indentation level or adding a new line. The lines were simply joined together to form the final output of the compiler. The API looks something like this:
-
-```
-instrs = Builder()
-instrs.indent()
-      .addLine("nop")
-      .addLine("nop")
-      .unindent()
-output = instrs.emit()
-```
-
-The problem with this setup is that CIL requires local declarations to come before the function body, and the current builder could only append new lines to the end. To support local declarations with minimal refactoring and hackiness, I decided to add a composability aspect to the code builder. Now, instead of adding only new text lines to the builder, I could add a child code builder in the place of a line. The children would be expanded in place, giving me the flexibility I need to generate locals.
-
-```
-locals = Builder()
-instrs = Builder()
-
-instrs.indent()
-      .child(locals)
-      .addLine("nop")
-      .addLine("nop")
-      .unindent()
-
-locals.indent()
-      .instr(f"[0] int64 {varname}")
-      .unindent()
-
-output = builder.emit()
-```
-
-Even with this improvement, the code builder still feels crude because of its statefulness. One possible solution to this would be to handle indentations automatically using a more declarative API. Overhauling the code building system would be a good task for the future, once I decide on a good API.
-
 ### Debugging and Testing
 
-CIL modules that can be parsed and assembled into executables can still have serious problems that cause them to fail at runtime, since the assembler does not do typechecking or any validation of program semantics. I used a combination of Mono's command line tools (csc, ilasm, monodis) and an [online C# compiler/decompiler](https://sharplab.io) to debug the generated CIL code. 
+Since the assembler does not validate correctness or semantics, debugging the generated code is mostly manual. I used a combination of Mono's command line tools (csc, ilasm, monodis) and an [online C# compiler/decompiler](https://sharplab.io) to debug the generated CIL code. 
 
-While debugging such issues, I leveraged a decompiler to translate my CIL instructions into a C# program. This made it much easier to see problems in my bytecode, since the resulting C# programs would have strange artifacts and fail to typecheck.
+Decompilers in particular are super useful for debugging, because they make errors in the generated instructions much easier to spot. If a generated CIL module fails at runtime, my first step would always be to disassemble it into C# - oftentimes the resulting C# code would have strange artifacts and fail to typecheck, which were excellent indicators of 1) what caused the program to fail and 2) what part of the compiler should be fixed.
 
-This is more or less the same technique I used to debug the JVM backend, but I want to give a specific example here to show how useful this is. 
-
-When generated instructions are incorrect, the programs frequently fail with a cryptic error at runtime, something like this:
+Allow me to demonstrate with a specific example. Here is a cryptic error message printed when a generated CIL program failed to execute:
 ```
 [ERROR] FATAL UNHANDLED EXCEPTION: System.InvalidProgramException: Invalid IL code in test:myfunction (long[]): IL_0024: stelem    0x1b000001
 ```
 
-While debugging one such case, I pasted the CIL instructions into the decompiler and was greeted with an odd-looking C# program:
+Putting the generated code into the decompiler yielded a C# program with this suspicious-looking code:
 ```
 long[] array = new long[1];
 array[0] = 1L;
 long num = ((long[])array[0])[0];
 ```
 
-The extra cast immediately caught my eye, and it was easy to spot that I was incorrectly indexing the array an extra time. 
-
-After finding the corresponding section of CIL code, I saw that there were duplicate instructions:
+It was easy to spot that the array was being indexed an extra time. In the corresponding section of CIL code, I found that these instructions were duplicated:
 ```
 ldc.i4.0
 ldelem i8
@@ -211,7 +159,7 @@ long num = array[0];
 
 ## JVM vs CIL
 
-I want to take some time to discuss the differences I observed between CIL and JVM as compilation targets. I won't dive into specifics about type erasure or memory layouts since I didn't have to deal with that myself for this project, so this discussion is probably most relevant for compiling high-level object-oriented languages.
+I want to take some time to discuss the differences I observed between CIL and JVM as compilation targets. I won't dive into specifics about type erasure or memory layouts since I didn't have to deal with those for this project, so this discussion is probably most relevant for compiling high-level object-oriented languages.
 
 ### Primitives and Value Types
 
@@ -235,9 +183,9 @@ The same is not true for JVM. ALthough Java has an officially supported disassem
 
 ## Conclusion
 
-Overall, I felt that this project was generally successful in meeting the goals I had set out. I learned a lot about CIL, C#, and the .NET ecosystem, and I gained some insights into how CIL compares to JVM. Writing the CIL backend was remarkably simple, I did it over approximately 2 days and only had to write around 700 lines of code. 
+Overall, I felt that this project was generally successful in meeting the goals I had set out. I learned a lot about CIL, C#, and the .NET ecosystem, and I gained some insights into how CIL compares to JVM. Writing the CIL backend was remarkably simple, I did it over approximately 2 days and only had to write around 700 lines of code. CIL is a pretty high level compilation target and it was very similar to JVM, which made things quite a bit simpler for me. 
 
-I don't have a clear idea of what I want to do in the future for this project, but I do plan on revisiting it in a few months since it's a useful learning tool. CIL is a pretty high level compilation target and it was very similar to JVM, which made things quite a bit simpler for me. In the past I've looked into targets like WASM and LLVM (both of which I want to explore more in the future), but they're much lower-level and thus will require more planning and time set aside to accomplish. Of course, if anyone reading this has any suggestions for what I could try next, I'd by happy to hear them.
+For future work, I'd like to explore targeting some lower level languages with this compiler, like WASM or LLVM. Targeting those will likely be harder than JVM/CIL, since they require manual memory management and don't have high-level object-oriented concepts like classes/fields/methods baked into the language. Of course, if anyone reading this has any suggestions for what I could try next, I'd by happy to hear them.
 
 ## Resources
 - [Online compiler/disassembler](https://sharplab.io)
