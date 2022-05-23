@@ -71,7 +71,7 @@ Without going into too much detail about each feature, below is a table showing 
 
 <tr>
 <td>nonlocal variables</td>
-<td>wrapped with an array, which functions like a ref</td>
+<td>ref parameters</td>
 </tr>
 </table>
 
@@ -163,9 +163,13 @@ I want to take some time to discuss the differences I observed between CIL and J
 
 ### Primitives and Value Types
 
-I prefer the way CIL handles value types and primitives compared to JVM. In CIL, numeric and boolean types are part of the same type hierarchy as other data types and extend `Object`.
+I prefer the way CIL handles value types and primitives compared to JVM. JVM bytecode has a lot of Java-specific design decisions baked into the instruction set and semantics, which results in weird limitations that have to be worked around. 
 
-In JVM, the primitive value types are not part of the same type hierarchy as classes. This is a legacy design decision related to the Java language, but unfortunately it affects the bytecode and runtime for JVM. There exists a set of wrapper classes corresponding to each primitive, and values need to be wrapped or unwrapped depending on how they are being used. The Java compiler does this wrapping automatically in some situations through a feature called autoboxing, and any compiler targeting JVM would likely have to implement autoboxing as well. 
+In JVM, the primitive value types are not part of the same type hierarchy as classes. There exists a set of wrapper classes corresponding to each primitive which _do_ belong to the class hierarchy, and values need to be wrapped or unwrapped depending on how they are being used. The Java compiler does this wrapping automatically in some situations through a feature called autoboxing, and any compiler targeting JVM would likely have to implement autoboxing as well. 
+
+It's worth nothing that even with autoboxing, JVM does not allow passing around mutable references to primitives, because the wrapper classes are immutable. In order to simulate refs, values need to be explicitly wrapped in an array or some wrapper class, which is very inefficient (this is how I implemented nonlocals for the JVM backend). 
+
+In CIL, numeric and boolean types are part of the same type hierarchy as other data types and are subtypes of `Object`. References to variables or fields containing primitives can be passed around just like any other references, so there was no need for the wrapper class workaround when I implemented the CIL backend.
 
 ### Instruction Set
 
