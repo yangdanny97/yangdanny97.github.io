@@ -72,6 +72,14 @@ Beyond that, country centroids also have another issue when used for certain typ
 
 The solution is to pre-determine nice-looking lat/long coordinates for country centers (there are also datasets available for this), and then join it with the GeoJSON feature for each country. The data points can just be displayed by applying the projection to the coordinates, without relying on re-calculating the centroid of each shape on the map.
 
+### D3 Projections Returning NaN
+
+This is a pretty common gotcha when using projections for single coordinates, such as when calculating positions of tooltips or using the pre-determined centroids that I mentioned in the last section.
+
+Trying to map a lat, long pair to pixel values with something like like `d3.geoMercator()([10, -99])` will yield `NaN` for the y value.
+
+This is because D3 projection functions unintuitively accept input coordinates as `[long, lat]`, NOT `[lat, long]`. The solution is to flip the numbers - `d3.geoMercator()([-99, 10])` will yield the correct pixel position for 10N -99W.
+
 ### Zooming/Panning Behavior
 
 Maps with high levels of detail often benefit from the user being able to zoom and pan to focus on specific areas of the map.
