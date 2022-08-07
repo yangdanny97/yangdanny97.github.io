@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "D3.js Tutorials, Tools, and References"
-description: "List of resources for Learning and Using D3.js"
+title: "D3.js Resources: Tutorials, Tools, and References"
+description: "List of resources for learning and using D3.js"
 date: 2022-08-07
 category: "Vis"
 ---
