@@ -6,4 +6,6 @@ plugins:
   - jekyll-feed
 author: Danny Yang
 title: Danny Yang's Blog
-description: Welcome to my personal website and blog! I like talking about compilers and data visualization.
+description: A blog mostly about compilers, programming languages, and data vis.
+feed:
+  posts_limit: 100
