@@ -3,7 +3,7 @@ layout: post
 title: "Scratching the PL Itch"
 description: "How to use compilers and programming languages skills in industry without being a compiler engineer"
 date: 2022-09-03
-category: "compilers"
+category: "Compilers"
 ---
 
 When browsing programming forums online, I often see people ask questions along the lines of "is a background in PL/compilers useful in industry?"
