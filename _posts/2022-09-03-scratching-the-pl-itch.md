@@ -61,6 +61,12 @@ For example, a DSL doesn't need to have a bespoke syntax and parser to count as 
 
 In fact, a DSL doesn't even need any syntax at all! I've also worked with that can only be used by building their AST programmatically in another language. These were definitely "languages": they supported variables, control flow, and functions; their compilers had static analysis and generated source code or bytecode. They just didn't have a standalone syntax, and that's fine. Designing that type of language is an interesting blend of API design and language design.
 
+## Aside: Web Performance
+
+I've had multiple engineers working on performance for web applications tell me that a compilers background has been helpful to their job, and it was the topic of one of the most memorable industry tech talks I attended when I was in college. 
+
+For the heaviest web applications, dynamically loading resources on-demand is vital to ensure that the initial page load time is performant. Dominator trees can be used to model the dependencies between resources, allowing optimizations to be made similar to how dominator trees are used for compiler optimizations.
+
 ## Final Thoughts
 
 Even though programming language design and implementation skills seem niche (after all, how many new languages do you need?), they're actually very relevant to other areas of software engineering. The definition of what actually counts as a language or a compiler is pretty blurry, and software that isn't explicitly a compiler can still have similarities to what we traditionally consider to be a compiler.
