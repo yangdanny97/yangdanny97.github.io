@@ -6,17 +6,17 @@ date: 2022-09-14
 category: "Technical"
 ---
 
-This tutorial is a brief introduction to the syntax and features of ReScript.
-
 ReScript is a robustly typed language that compiles to efficient and human-readable JavaScript. It brings features like type inference, pattern matching, and null-safety to the web ecosystem, along with beginner-friendly syntax and easy integration with JavaScript.
 
-Install ReScript by following the instructions on the [official docs](https://rescript-lang.org/), or try it online in the [ReScript playground](https://rescript-lang.org/try).
+This tutorial is a brief introduction to the syntax and features of ReScript, based on the [Learn Reason in Y Minutes](https://learnxinyminutes.com/docs/reason/) tutorial. Credit for the original goes to [Seth Corker](https://sethcorker.com).
 
-This is a translation of the [Learn Reason in Y Minutes](https://learnxinyminutes.com/docs/reason/) tutorial to ReScript syntax. Credit for the original goes to [Seth Corker](https://sethcorker.com).
-
-If you're a JavaScript developer interested in learning the basics of functional programming through ReScript, consider preordering my book [Introducing ReScript: Functional Programming for the Web](https://www.amazon.com/Introducing-ReScript-Functional-Programming-Applications/dp/1484288874).
+# Resources
+- [Official ReScript Documentation](https://rescript-lang.org/)
+- [Online ReScript playground](https://rescript-lang.org/try)
 
 <hr>
+
+# Tutorial
 
 ```javascript
 /* Comments start with slash-star, and end with star-slash */
@@ -539,3 +539,7 @@ module SpecializedStaff = {
     }
 }
 ```
+
+<hr>
+
+If you're a JavaScript developer interested in learning the basics of functional programming through ReScript, consider preordering my book [Introducing ReScript: Functional Programming for the Web](https://www.amazon.com/Introducing-ReScript-Functional-Programming-Applications/dp/1484288874).
