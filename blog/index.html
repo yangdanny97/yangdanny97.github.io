@@ -4,58 +4,64 @@ title: My Blog
 description: Blog Homepage
 ---
 <div class='row slide'>
-	<div class="col-sm-6 offset-sm-3 content-pad">
-		<h3>{{ page.title }}</h3>
-		<div>Welcome to my blog! As you can see, I like to write about technical things (mainly programming languages, compilers, & data vis). <a href="/feed.xml" target="_blank">RSS</a></div>
-		<hr>
-		<h3>Compilers</h3>
-		<p>Posts about programming languages and compilers</p>
-		<br>
-		{% for post in site.posts %}
-		{% if post.category == "Compilers" %}
-		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
-				title="{{ post.title }}">{{ post.title }}</a> </p>
-		{% endif %}
-		{% endfor %}
-		<hr>
-		<h3>Data Visualization</h3>
-		<p>Posts and tutorials about data visualization, usually with D3.js</p>
-		<br>
-		{% for post in site.posts %}
-		{% if post.category == "Vis" %}
-		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
-				title="{{ post.title }}">{{ post.title }}</a> </p>
-		{% endif %}
-		{% endfor %}
-		<hr>
-		<h3>Technical</h3>
-		<p>Posts and essays about other technical subjects that I'm interested in</p>
-		<br>
-		{% for post in site.posts %}
-		{% if post.category == "Technical" %}
-		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
-				title="{{ post.title }}">{{ post.title }}</a> </p>
-		{% endif %}
-		{% endfor %}
-		<hr>
-		<h3>Cooking</h3>
-		<p>Recipes for my favorite foods + more</p>
-		<br>
-		{% for post in site.posts %}
-		{% if post.category == "Cooking" %}
-		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
-				title="{{ post.title }}">{{ post.title }}</a> </p>
-		{% endif %}
-		{% endfor %}
-		<hr>
-		<h3>Misc</h3>
-		<p>Anything that doesn't fit in the above categories</p>
-		<br>
-		{% for post in site.posts %}
-		{% if post.category == "Misc" %}
-		<p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}"
-				title="{{ post.title }}">{{ post.title }}</a> </p>
-		{% endif %}
-		{% endfor %}
-	</div>
+    <div class="col-sm-6 offset-sm-3 content-pad">
+        <h3>{{ page.title }}</h3>
+        <div>Welcome to my blog! As you can see, I like to write about technical things (mainly programming languages,
+            compilers, & data vis). <a href="/feed.xml" target="_blank">RSS</a></div>
+        <br>
+        <div>If you're a JavaScript developer interested in learning the basics of functional programming through
+            ReScript, consider preordering my book <a
+                href="https://www.amazon.com/Introducing-ReScript-Functional-Programming-Applications/dp/1484288874"
+                target="_blank">Introducing ReScript: Functional Programming for the Web</a>.</div>
+        <hr>
+        <h3>Compilers</h3>
+        <p>Posts about programming languages and compilers</p>
+        <br>
+        {% for post in site.posts %}
+        {% if post.category == "Compilers" %}
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+                post.title }}</a> </p>
+        {% endif %}
+        {% endfor %}
+        <hr>
+        <h3>Data Visualization</h3>
+        <p>Posts and tutorials about data visualization, usually with D3.js</p>
+        <br>
+        {% for post in site.posts %}
+        {% if post.category == "Vis" %}
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+                post.title }}</a> </p>
+        {% endif %}
+        {% endfor %}
+        <hr>
+        <h3>Technical</h3>
+        <p>Posts and essays about other technical subjects that I'm interested in</p>
+        <br>
+        {% for post in site.posts %}
+        {% if post.category == "Technical" %}
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+                post.title }}</a> </p>
+        {% endif %}
+        {% endfor %}
+        <hr>
+        <h3>Cooking</h3>
+        <p>Recipes for my favorite foods + more</p>
+        <br>
+        {% for post in site.posts %}
+        {% if post.category == "Cooking" %}
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+                post.title }}</a> </p>
+        {% endif %}
+        {% endfor %}
+        <hr>
+        <h3>Misc</h3>
+        <p>Anything that doesn't fit in the above categories</p>
+        <br>
+        {% for post in site.posts %}
+        {% if post.category == "Misc" %}
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+                post.title }}</a> </p>
+        {% endif %}
+        {% endfor %}
+    </div>
 </div>
