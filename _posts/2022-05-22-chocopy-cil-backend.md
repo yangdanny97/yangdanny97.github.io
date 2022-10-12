@@ -1,15 +1,19 @@
 ---
 layout: post
-title: "Chocopy Hacking Part 3: Building a CIL backend"
-description: "Compiling a subset of Python 3 to CIL"
+title: "Chocopy Hacking Part 4: Compiling to CIL"
+description: "Building a CIL compiler backend for a subset of Python 3"
 date: 2022-05-22
 category: "Compilers"
 ---
 
-In the third part of my Chocopy Compiler Hacking series, I will be discussing how I built the backend to compile [Chocopy](https://chocopy.org/) (a statically typed subset of Python 3) to Microsoft's Common Intermediate Language (CIL). I'll go over how I built on top of my work on the JVM backend, compare and contrast the two backends, and give some thoughts on JVM and CIL as compilation targets.
+In the fourth part of my Chocopy Compiler Hacking series, I will be discussing how I built the backend to compile [Chocopy](https://chocopy.org/) to Microsoft's Common Intermediate Language (CIL). 
+
+For those unfamiliar with the topic, Chocopy is a subset of Python 3 with static type annotations. CIL is the intermediate format that languages in the .NET ecosystem like C# and F# compile to, similar to how Java, Kotlin, and Scala all compile to JVM. 
+
+In this post, I'll go over how I built on top of my work on the JVM backend, compare and contrast the two backends, and give some thoughts on JVM and CIL as compilation targets.
 
 For reference, the source code for the compiler is available on Github, and past progress is documented on this blog. If you haven't already, I recommend reading Part 2 before reading this, because I will make many references to the JVM backend in this blog post.
-- [Github](https://github.com/yangdanny97/chocopy-python-compiler)
+- [Source Code](https://github.com/yangdanny97/chocopy-python-compiler)
 - [Part 1: Frontend/typechecker](https://yangdanny97.github.io/blog/2020/05/29/chocopy-typechecker)
 - [Part 2: JVM backend](https://yangdanny97.github.io/blog/2021/08/26/chocopy-jvm-backend)
 
