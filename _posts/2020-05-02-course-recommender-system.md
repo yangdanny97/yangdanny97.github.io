@@ -86,7 +86,7 @@ The list of courses is then sorted by score, and filtered to remove courses that
 
 Based on qualitative user feedback on an early version of this algorithm, we found that the system produced reasonable results, although it had a tendency to suggest courses which were within the same department as the selected major. While that is good for some use cases, it wouldn't help students who were looking to explore courses in different departments (use case 3). 
 
-To cater to students that want to expore courses outside of their department, we allow the user to specify that a list of recommendations for a particular semester cannot include more than 1 course from each department. This resulted in recommendations that were noticeably more diverse, although for STEM majors the recommended courses were mostly in other STEM departments.
+To cater to students that want to explore courses outside of their department, we allow the user to specify that a list of recommendations for a particular semester cannot include more than 1 course from each department. This resulted in recommendations that were noticeably more diverse, although for STEM majors the recommended courses were mostly in other STEM departments.
 
 ### User Interface
 

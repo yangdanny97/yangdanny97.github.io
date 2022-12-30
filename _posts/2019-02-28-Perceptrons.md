@@ -12,7 +12,7 @@ Originally developed in 1967 at Cornell for the task of image recognition, the p
 
 ![Figure of perceptron, borrowed from an O'Reilly book](https://www.oreilly.com/library/view/deep-learning-for/9781788295628/assets/ca819363-76a0-4968-b4ec-d9e239e2ba31.png){: height="px225" width="425"}
 
-Inputs to the perceptron (x) are given as lists of numbers. The perceptron stores some more numbers called weights (w). To make a prediction, the perceptron multiplies each input with its corresponding weight andsums them up. This result is fed into an activation function, which decides the final classification. The activation function for the perceptron outputs 1 if the result is positive, otherwise it outputs 0.
+Inputs to the perceptron (x) are given as lists of numbers. The perceptron stores some more numbers called weights (w). To make a prediction, the perceptron multiplies each input with its corresponding weight and sums them up. This result is fed into an activation function, which decides the final classification. The activation function for the perceptron outputs 1 if the result is positive, otherwise it outputs 0.
 
 A perceptron must be trained to determine the best weights (weights that will result in the correct output for inputs that the perceptron has not seen before). The training process involves giving the perceptron inputs where the correct output is already known, and adjusting the weights when the perceptron makes an incorrect prediction. This training method is called supervised learning, and contrasts with unsupervised learning, where the correct outputs are not known. The method of adjusting weights to minimize error is called gradient descent. 
 

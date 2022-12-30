@@ -82,7 +82,7 @@ It has both a web interface and CLI where you can upload files in a variety of f
 
 One of the challenges of sourcing topographical data online is that elevation data is often provided as PDFs, which is easy for a human to read but not so easy to integrate with other datasets.
 
-Luckly, [Open Topography](https://portal.opentopography.org) provides high resolution topography data captured from space in a machine-readable format. 
+Luckily, [Open Topography](https://portal.opentopography.org) provides high resolution topography data captured from space in a machine-readable format. 
 
 For more on how to use this data with D3, check out [this blog post](https://yangdanny97.github.io/blog/2020/11/26/D3-elevations).
 

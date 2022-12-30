@@ -36,7 +36,7 @@ There were also a few features that took some time to get used to:
 
 Last year, I did Advent of Code using another functional language: ReScript. Unlike Erlang, ReScript is intended for web development - it has static typing with a type system inherited from OCaml, and it can interoperate with JavaScript.
 
-The primary use cases for the two languages are very different so it's unwise to directly compare the two languages as a whole, but I would say that for the very narrow case of solving programming puzzles I prefer Erlang becasue its more concise syntax and dynamic typing allowed me to implement solutions faster. 
+The primary use cases for the two languages are very different so it's unwise to directly compare the two languages as a whole, but I would say that for the very narrow case of solving programming puzzles I prefer Erlang because its more concise syntax and dynamic typing allowed me to implement solutions faster. 
 
 ## Final Thoughts
 

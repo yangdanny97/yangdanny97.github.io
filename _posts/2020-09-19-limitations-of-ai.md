@@ -35,7 +35,7 @@ But what about Watson, which certainly had to “know” facts to win Jeopardy, 
 
 While on the surface they may seem humanlike, they fall short when given inputs that they have not been explicitly programmed to respond to. To illustrate their limitations, I will describe a conversation with Mitsuku, the self proclaimed “world’s best conversational AI”.
 
-After correctly answering “How many wings does a ____ have?” for various winged and non-winged animals, I asked “How many wings does Pegasus have?” It responded “No wings at all,” probably becase it had not been explicitly programmed with the number of wings on a Pegasus.
+After correctly answering “How many wings does a ____ have?” for various winged and non-winged animals, I asked “How many wings does Pegasus have?” It responded “No wings at all,” probably because it had not been explicitly programmed with the number of wings on a Pegasus.
 
 When asked “How many wings does a one-winged chicken have?”, it responded with “Two”. This shows that it cannot reason that the one-winged modifier meant the chicken I was referring to had only one wing.
 

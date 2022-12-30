@@ -154,7 +154,7 @@ ldelem i8
 ```
 Just two extra instructions buried in hundreds or thousands of instructions - very challenging to spot with my untrained eye.
 
-Afte removing the duplicate codegen, the test program was able to execute successfully and the decompiler output looked correct as well:
+After removing the duplicate codegen, the test program was able to execute successfully and the decompiler output looked correct as well:
 ```
 long[] array = new long[1];
 array[0] = 1L;

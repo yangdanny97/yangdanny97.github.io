@@ -222,7 +222,7 @@ We will define 4 separate scales for this visualization, one for each variable. 
 
 We specify the domain and range, as well as the relationship between the two (for example linear, quadratic, square root). When we specify a dataset and field for the domain, Vega will use the extent (minimum and maximum values) of that field as the domain.
 
-These scales will be used to control the size of the circles for each state. When we make circles, we want the input to correspond with the _area_ of the circle and not the _radius_, to avoid misleading the viewer. In this case, the range corresponds to the area of each circle in square pixels (4-2500px^2 area corresonds to 2-50px radius) so the relationship can be linear. If we wanted a scale to calculate the radius, we could have used a square root scale. 
+These scales will be used to control the size of the circles for each state. When we make circles, we want the input to correspond with the _area_ of the circle and not the _radius_, to avoid misleading the viewer. In this case, the range corresponds to the area of each circle in square pixels (4-2500px^2 area corresponds to 2-50px radius) so the relationship can be linear. If we wanted a scale to calculate the radius, we could have used a square root scale. 
 ``` javascript
 [{
     "name": "Deaths",
