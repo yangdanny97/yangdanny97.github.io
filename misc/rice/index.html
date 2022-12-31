@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+    body {
+        background-color:black;
+        color: #9ff;
+        font: 18px sans-serif;
+    }
+    .axis { font: 18px sans-serif; }
+    .label { font: 18px sans-serif; }
+    label {
+        padding: 5px;
+    }
+    </style>
+    <body>
+    <div id="visBox">
+        <h1>Ultimate Rice Purity Test Stats Report</h1>
+    </div>
+    </body>
+    <script type="module">
+        import { setupVis } from './vis.js';
+        setupVis("visBox");
+    </script>
+</html>
