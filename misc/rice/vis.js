@@ -256,6 +256,7 @@ const drawYesNoChart = column => {
             },
         ];
     }
+    // selected segment bar
     chart.selectAll(".bars")
         .data(data)
         .join(
@@ -277,6 +278,7 @@ const drawYesNoChart = column => {
                     .attr("height", d => height - 25 - y(d.value));
             }
         );
+    // selected segment label
     chart.selectAll(".barstxt")
         .data(data)
         .join(
@@ -297,6 +299,7 @@ const drawYesNoChart = column => {
             },
             txt => txt.remove(),
         );
+    // overall comparison bar
     chart.selectAll(".overall")
         .data(overallData)
         .join(
@@ -321,6 +324,7 @@ const drawYesNoChart = column => {
                 bars.remove()
             }
         );
+    // overall comparison label
     chart.selectAll(".overalltxt")
         .data(overallData)
         .join(
@@ -375,6 +379,7 @@ const drawCountryChart = asc => {
         .range([25, height - 25])
         .domain(data.map(d => d.country))
         .padding(0.1);
+    // horizontal bars
     chart.selectAll(".hbars")
         .data(data)
         .join(
@@ -394,6 +399,7 @@ const drawCountryChart = asc => {
                     .attr("width", d => x(d.pct));
             }
         );
+    // fill the remainder of the space
     chart.selectAll(".hbars2")
         .data(data)
         .join(
@@ -413,6 +419,7 @@ const drawCountryChart = asc => {
                     .attr("width", d => x(100) - x(d.pct));
             }
         );
+    // label index and country
     chart.selectAll(".hbarstext")
         .data(data)
         .join(
@@ -431,6 +438,7 @@ const drawCountryChart = asc => {
                     .text((d, i) => `${i + 1}. ${d.country} ${d.emoji}`);
             }
         );
+    // label percentage
     chart.selectAll(".hbarstext2")
         .data(data)
         .join(
@@ -449,6 +457,7 @@ const drawCountryChart = asc => {
                     .text(d => `${d.pct}%`);
             }
         );
+    // mark overall percentage with line
     const overall = parseFloat(q.Overall);
     chart.selectAll(".line")
         .data([{
@@ -495,28 +504,50 @@ export const setupVis = elementId => {
     container.append("label")
         .attr("for", "question")
         .text("Select a Question:");
-    const selector = container.append("select")
+    const selector = container.append("input")
         .attr("id", "qSelector")
-        .attr("name", "question");
-    selector.selectAll(".qsOption")
-        .data(processedData)
-        .join(
-            opts =>
-            opts.append("option")
-            .attr("value", d => d.qid)
-            .attr("class", ".qsOption")
-            .text(d => `${d.qid}. ${d.q_text}`)
-            .on("click", (_, d) => {
-                selected = d.qid;
-                drawChart();
-            })
-        );
+        .attr("name", "question")
+        .style("width", "50vw")
+        .attr("value", `${processedData[0].qid}. ${processedData[0].q_text}`)
+        .attr("list", "qList");
+    const list = container.append("datalist")
+        .attr("id", "qList");
     container.append("label")
         .attr("for", "segment")
         .text("Filter Responses:");
     const segmentSelector = container.append("select")
         .attr("id", "segmentSelector")
         .attr("name", "segment");
+    const title = container.append("h2")
+        .style("text-align","center")
+        .text(`${processedData[0].qid}. ${processedData[0].q_text}`);
+    const qs = {};
+    processedData.forEach(d => {
+        qs[`${d.qid}. ${d.q_text}`] = true;
+    });
+    list.selectAll(".qsOption")
+        .data(processedData)
+        .join(
+            opts =>
+            opts.append("option")
+            .attr("value", d => `${d.qid}. ${d.q_text}`)
+            .attr("class", ".qsOption")
+            .text(d => `${d.qid}. ${d.q_text}`)
+        );
+    selector.on("click", _ => {
+            selector.property("value", "");
+        })
+        .on("input", _ => {
+            const val = selector.property("value");
+            if (!qs[val]) {
+                return;
+            }
+            const qid = parseInt(val);
+            title.text(val);
+            selected = qid;
+
+            drawChart();
+        });
     segmentSelector.append("option")
         .text("Overall")
         .on("click", () => {
