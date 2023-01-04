@@ -1,1 +1,104 @@
-/Users/dannyyang/Documents/Github/stats-app/d3/index.html
+<!doctype html>
+<meta charset="UTF-8">
+<html>
+<style>
+    body {
+        background-color: black;
+        color: #9ff;
+        font: 18px sans-serif;
+    }
+
+    .axis {
+        font: 18px sans-serif;
+    }
+
+    .label {
+        font: 18px sans-serif;
+    }
+
+    label {
+        padding: 5px;
+    }
+
+    .wrp_quests {
+        width: 95%;
+        display: inline-block;
+        position: relative;
+        margin-top: 5px;
+        border: 1px solid #9FF;
+        text-align: center;
+    }
+
+    .clear_fld,
+    .next_fld,
+    .prev_fld {
+        position: absolute;
+        top: -1px;
+        background: #4E6969;
+        color: #9FF;
+        width: 40px;
+        height: 100%;
+        line-height: 40px;
+        vertical-align: top;
+        cursor: pointer;
+        border: 1px solid #9FF;
+    }
+
+    .next_fld {
+        right: -1px;
+    }
+    .prev_fld {
+        left: 0;
+    }
+    .clear_fld {
+        right: 43px;
+    }
+
+    .select_fld,
+    .select_fld_show {
+        width: 100%;
+        background: #333;
+        font-size: 16px;
+        color: #9FF;
+        border: none;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+
+    .select_fld {
+        padding: 10px 90px 10px 50px;
+    }
+
+    .select_fld_show {
+        padding: 10px 40px 10px 10px;
+    }
+</style>
+
+<body>
+    <div id="danny-container">
+    </div>
+</body>
+<script>
+    aload('https://d3js.org/d3.v7.min.js', () => {
+        aload('./vis.js', () => {
+            setupVis("danny-container");
+        });
+    });
+    function aload(l, cb) {
+        var d = document,
+            s = "script",
+            w = window;
+        var js = d.createElement(s);
+        cb = cb || function () { };
+        js.onload = cb;
+        js.src = l;
+        try {
+            d.head.appendChild(js);
+        } catch (e) {
+            document.documentElement.appendChild(js);
+        }
+    }
+</script>
+
+</html>
