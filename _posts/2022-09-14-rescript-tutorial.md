@@ -542,4 +542,4 @@ module SpecializedStaff = {
 
 <hr>
 
-If you're a JavaScript developer interested in learning the basics of functional programming through ReScript, consider preordering my book [Introducing ReScript: Functional Programming for the Web](https://www.amazon.com/Introducing-ReScript-Functional-Programming-Applications/dp/1484288874).
+If you're a JavaScript developer interested in learning the basics of functional programming through ReScript, check out my book [Introducing ReScript: Functional Programming for the Web](https://www.amazon.com/Introducing-ReScript-Functional-Programming-Applications/dp/1484288874).
