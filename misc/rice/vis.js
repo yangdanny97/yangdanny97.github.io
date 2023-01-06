@@ -260,13 +260,13 @@ const horizontalBarChart = (columns, title, sort, numbered, id) => {
                     .attr("x", x(0) + 5)
                     .attr("y", d => y(d.col) + y.bandwidth() - 10)
                     .attr("fill", c_border)
-                    .text((d, i) => `${i + 1}. ${d.col} ${d.emoji}`);
+                    .text((d, i) => `${numbered ? (i + 1).toString() + '.' : ''} ${d.col} ${d.emoji}`);
             },
             update => {
                 update.transition().duration(AT)
                     .attr("x", x(0) + 5)
                     .attr("y", d => y(d.col) + y.bandwidth() - 10)
-                    .text((d, i) => `${i + 1}. ${d.col} ${d.emoji}`);
+                    .text((d, i) => `${numbered ? (i + 1).toString() + '.' : ''} ${d.col} ${d.emoji}`);
             }
         );
     // label percentage, with minimum to avoid overlap with name
