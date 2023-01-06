@@ -92,7 +92,7 @@ const rawData =
 90;Been convicted of a crime?;7.52%;12.28%;5.97%;3.01%;6.74%;9.63%;5.99%;7.17%;2.40%;7.55%;3.29%;8.84%;8.45%;14.87%;4.03%;5.78%;2.04%;12.34%;2.12%;5.55%;3.41%;2.88%;4.41%;1.97%;4.90%;3.35%;9.40%;6.36%;7.60%;7.26%
 91;Been convicted of a felony?;3.46%;4.71%;2.49%;2.41%;3.16%;5.40%;2.84%;5.01%;1.08%;3.24%;2.93%;3.66%;3.49%;2.67%;1.50%;3.41%;0.75%;3.25%;0.48%;3.24%;3.09%;1.02%;1.76%;1.23%;2.86%;1.98%;4.09%;2.98%;3.33%;3.08%
 92;Committed an act of vandalism?;40.07%;45.51%;43.36%;14.65%;48.56%;46.75%;36.57%;38.24%;11.74%;46.27%;42.35%;44.40%;48.95%;37.84%;44.05%;42.86%;39.78%;32.34%;8.53%;44.10%;35.32%;32.87%;31.31%;19.96%;19.42%;35.17%;42.99%;35.96%;41.26%;38.91%
-93;Joined themile high club?;3.72%;4.28%;3.79%;4.10%;4.15%;5.85%;2.12%;3.28%;2.65%;4.13%;3.18%;3.68%;5.91%;2.06%;2.51%;4.70%;2.34%;2.79%;3.87%;5.12%;3.13%;1.22%;8.41%;1.87%;6.38%;2.76%;3.90%;3.06%;3.54%;3.33%
+93;Joined the mile high club?;3.72%;4.28%;3.79%;4.10%;4.15%;5.85%;2.12%;3.28%;2.65%;4.13%;3.18%;3.68%;5.91%;2.06%;2.51%;4.70%;2.34%;2.79%;3.87%;5.12%;3.13%;1.22%;8.41%;1.87%;6.38%;2.76%;3.90%;3.06%;3.54%;3.33%
 94;Participated in a “booty call” with a partner whom you were not in a relationship with?;24.79%;38.33%;26.15%;13.87%;28.35%;23.44%;17.80%;20.67%;9.15%;23.05%;20.93%;23.18%;26.46%;19.59%;26.66%;24.73%;29.81%;35.29%;9.69%;26.91%;19.87%;34.65%;23.10%;14.65%;37.76%;21.10%;28.85%;23.89%;27.12%;22.81%
 95;Traveled 100 miles or more for the primary purpose of sexual intercourse?;8.88%;13.91%;7.29%;7.92%;11.08%;7.68%;10.01%;7.50%;9.40%;7.29%;12.02%;8.63%;11.70%;11.53%;11.01%;13.92%;10.41%;15.28%;3.93%;9.77%;7.56%;12.64%;15.23%;6.20%;15.38%;9.15%;12.47%;9.78%;8.29%;9.56%
 96;Had sexual intercourse with a partner with an age gap of more than 3 years?;20.79%;33.42%;18.31%;23.23%;23.15%;14.67%;23.80%;19.64%;16.22%;15.59%;25.82%;23.62%;21.78%;19.27%;24.98%;20.13%;26.07%;33.54%;13.20%;20.82%;24.03%;28.23%;32.82%;32.30%;26.21%;21.63%;28.12%;24.43%;19.93%;23.05%
@@ -118,107 +118,82 @@ const c_dark = '#333';
 const c_border = '#9ff';
 const AT = 500;
 
-const categories = {
-    "Country": {
-        "category_columns": [
-            "United States",
-            "United Kingdom",
-            "Japan",
-            "Canada",
-            "Australia",
-            "Germany",
-            "Netherlands",
-            "Indonesia",
-            "Ireland",
-            "Italy",
-            "Sweden",
-            "New Zealand",
-            "Finland",
-            "Spain",
-            "Israel",
-            "Argentina",
-            "France",
-            "Thailand",
-            "South Africa",
-            "Brazil",
-            "Mexico",
-            "Russia",
-            "South Korea",
-            "Nigeria",
-            "Portugal"
-        ],
-        "category_emoji_prefix": [
-            "🇺🇸",
-            "🇬🇧",
-            "🇯🇵",
-            "🇨🇦",
-            "🇦🇺",
-            "🇩🇪",
-            "🇳🇱",
-            "🇮🇩",
-            "🇮🇪",
-            "🇮🇹",
-            "🇸🇪",
-            "🇳🇿",
-            "🇫🇮",
-            "🇪🇸",
-            "🇮🇱",
-            "🇦🇷",
-            "🇫🇷",
-            "🇹🇭",
-            "🇿🇦",
-            "🇧🇷",
-            "🇲🇽",
-            "🇷🇺",
-            "🇰🇷",
-            "🇳🇬",
-            "🇵🇹"
-        ]
-    },
-    "Gender": {
-        "category_columns": [
-            "Male",
-            "Female"
-        ],
-        "category_emoji_prefix": [
-            "👨👨🏻👨🏼👨🏿",
-            "👩👩🏻👩🏼👩🏿"
-        ]
-    },
-    "Mobile Brand": {
-        "category_columns": [
-            "iPhone",
-            "Android"
-        ],
-        "category_emoji_prefix": [
-            "🍎",
-            "🤖️"
-        ]
-    }
-}
+const countries = [
+    "United States",
+    "United Kingdom",
+    "Japan",
+    "Canada",
+    "Australia",
+    "Germany",
+    "Netherlands",
+    "Indonesia",
+    "Ireland",
+    "Italy",
+    "Sweden",
+    "New Zealand",
+    "Finland",
+    "Spain",
+    "Israel",
+    "Argentina",
+    "France",
+    "Thailand",
+    "South Africa",
+    "Brazil",
+    "Mexico",
+    "Russia",
+    "South Korea",
+    "Nigeria",
+    "Portugal",
+];
+
+const emojis = {
+    "United States": "🇺🇸",
+    "United Kingdom": "🇬🇧",
+    "Japan": "🇯🇵",
+    "Canada": "🇨🇦",
+    "Australia": "🇦🇺",
+    "Germany": "🇩🇪",
+    "Netherlands": "🇳🇱",
+    "Indonesia": "🇮🇩",
+    "Ireland": "🇮🇪",
+    "Italy": "🇮🇹",
+    "Sweden": "🇸🇪",
+    "New Zealand": "🇳🇿",
+    "Finland": "🇫🇮",
+    "Spain": "🇪🇸",
+    "Israel": "🇮🇱",
+    "Argentina": "🇦🇷",
+    "France": "🇫🇷",
+    "Thailand": "🇹🇭",
+    "South Africa": "🇿🇦",
+    "Brazil": "🇧🇷",
+    "Mexico": "🇲🇽",
+    "Russia": "🇷🇺",
+    "South Korea": "🇰🇷",
+    "Nigeria": "🇳🇬",
+    "Portugal": "🇵🇹",
+    "Male": "👨",
+    "Female": "👩",
+    "iPhone": "🍎",
+    "Android": "🤖️",
+    "Overall": "🌍"
+};
 
 var processedData;
 var selected = 1;
-var segment = "Overall";
 var width = Math.min(document.documentElement.clientWidth, 600);
 var height = 600;
-var lastChart = charts.YES_NO;
 
-const drawYesNoChart = column => {
-    if (column == null) {
-        column = "Overall";
-    }
-    height = 600;
-    const chart = d3.select(`#chart`)
-        .attr("height", height);
-    if (lastChart != charts.YES_NO) {
-        chart.selectAll("*").remove();
-        lastChart = charts.YES_NO;
-    }
+const drawYesNoChart = (columns, title, id) => {
+    columns.push("Overall");
+    d3.select(`#title${id}`)
+        .text(`By ${title}`);
+    const chart = d3.select(`#chart${id}`)
+        .attr("height", 600);
     const x = d3.scaleBand()
         .range([25, width - 25])
-        .domain(["Yes", "No"])
-        .padding(0.2);
+        .domain(columns)
+        .padding(0.05);
     chart.append("g")
         .attr("class", "axis")
         .attr("transform", `translate(0,${height - 25})`)
@@ -226,36 +201,15 @@ const drawYesNoChart = column => {
     const y = d3.scaleLinear()
         .domain([0, 100])
         .range([height - 25, 25]);
-    const q = processedData.filter(d => d.qid === selected.toString())[0];
-    const pct = parseFloat(q[column]);
-    const data = [{
-            name: "Yes",
+    var data = columns.map(c => {
+        const q = processedData.filter(d => d.qid === selected.toString())[0];
+        const pct = parseFloat(q[c]);
+        return {
             value: pct,
-            text: `${pct}%`,
-        },
-        {
-            name: "No",
-            value: 100 - pct,
-            text: `${Math.round((100 - pct) * 100) / 100}%`,
-        },
-    ];
-    var barW = x.bandwidth();
-    var overallData = [];
-    if (column != "Overall") {
-        barW = x.bandwidth() / 2;
-        const overallPct = parseFloat(q["Overall"]);
-        overallData = [{
-                name: "Yes",
-                value: overallPct,
-                text: `${overallPct}%`,
-            },
-            {
-                name: "No",
-                value: 100 - overallPct,
-                text: `${Math.round((100 - overallPct) * 100) / 100}%`,
-            },
-        ];
-    }
+            column: c,
+            text: `${emojis[c]} ${pct}%`,
+        };
+    });
     // selected segment bar
     chart.selectAll(".bars")
         .data(data)
@@ -263,18 +217,18 @@ const drawYesNoChart = column => {
             bars => {
                 bars.append("rect")
                     .attr("class", "bars")
-                    .attr("x", d => x(d.name))
+                    .attr("x", d => x(d.column))
                     .attr("y", d => y(d.value))
-                    .attr("width", barW)
+                    .attr("width", x.bandwidth())
                     .attr("height", d => height - 25 - y(d.value))
                     .attr("fill", c_light)
                     .style("stroke", c_border);
             },
             bars => {
                 bars.transition().duration(AT)
-                    .attr("x", d => x(d.name))
+                    .attr("x", d => x(d.column))
                     .attr("y", d => y(d.value))
-                    .attr("width", barW)
+                    .attr("width", x.bandwidth())
                     .attr("height", d => height - 25 - y(d.value));
             }
         );
@@ -285,7 +239,7 @@ const drawYesNoChart = column => {
             txt => {
                 txt.append("text")
                     .attr("class", "barstxt label")
-                    .attr("x", d => x(d.name) + barW / 2)
+                    .attr("x", d => x(d.column) + x.bandwidth() / 2)
                     .attr("y", d => y(d.value) - 25)
                     .attr("fill", c_border)
                     .style("text-anchor", "middle")
@@ -293,76 +247,29 @@ const drawYesNoChart = column => {
             },
             txt => {
                 txt.transition().duration(AT)
-                    .attr("x", d => x(d.name) + barW / 2)
+                    .attr("x", d => x(d.column) + x.bandwidth() / 2)
                     .attr("y", d => y(d.value) - 25)
                     .text(d => d.text);
             },
             txt => txt.remove(),
         );
-    // overall comparison bar
-    chart.selectAll(".overall")
-        .data(overallData)
-        .join(
-            bars => {
-                bars.append("rect")
-                    .attr("class", "overall")
-                    .attr("x", d => x(d.name) + x.bandwidth() / 2)
-                    .attr("y", d => y(d.value))
-                    .attr("width", x.bandwidth() / 2)
-                    .attr("height", d => height - 25 - y(d.value))
-                    .attr("fill", c_dark)
-                    .style("stroke", c_border);
-            },
-            bars => {
-                bars.transition().duration(AT)
-                    .attr("x", d => x(d.name) + x.bandwidth() / 2)
-                    .attr("y", d => y(d.value))
-                    .attr("height", d => height - 25 - y(d.value));
-            },
-            bars => bars.remove()
-        );
-    // overall comparison label
-    chart.selectAll(".overalltxt")
-        .data(overallData)
-        .join(
-            txt => {
-                txt.append("text")
-                    .attr("class", "overalltxt label")
-                    .attr("x", d => x(d.name) + (x.bandwidth() * 0.75))
-                    .attr("y", d => y(d.value) - 25)
-                    .attr("fill", c_border)
-                    .style("text-anchor", "middle")
-                    .text(d => `🌍 ${d.text}`);
-            }, txt => {
-                txt.transition().duration(AT)
-                    .attr("x", d => x(d.name) + (x.bandwidth() * 0.75))
-                    .attr("y", d => y(d.value) - 25);
-            },
-            txt => txt.remove()
-        );
 };
 
-const drawCountryChart = asc => {
+const drawCountryChart = (asc, id) => {
     if (asc == null) {
         asc = false;
     }
-    height = 900;
-    const chart = d3.select(`#chart`)
-        .attr("height", height);
-    if (lastChart != charts.COUNTRIES) {
-        chart.selectAll("*").remove();
-        lastChart = charts.COUNTRIES;
-    }
-    var data = categories.Country.category_columns.map(
-        (n, i) => ({
-            country: n,
-            emoji: categories.Country.category_emoji_prefix[i]
+    d3.select(`#title${id}`)
+        .text("By Country");
+    const h = 900;
+    const chart = d3.select(`#chart${id}`)
+        .attr("height", h);
+    var data = countries.map(
+        c => ({
+            country: c,
+            emoji: emojis[c],
         })
     );
-    // data.push({
-    //     country: "Overall",
-    //     emoji: "🌍"
-    // });
     const q = processedData.filter(d => d.qid === selected.toString())[0];
     data.forEach(d => d.pct = parseFloat(q[d.country]));
     data.sort((a, b) => a.pct - b.pct);
@@ -373,7 +280,7 @@ const drawCountryChart = asc => {
         .domain([0, 100])
         .range([25, width - 25]);
     const y = d3.scaleBand()
-        .range([25, height - 25])
+        .range([25, h - 25])
         .domain(data.map(d => d.country))
         .padding(0.1);
     // horizontal bars
@@ -467,7 +374,7 @@ const drawCountryChart = asc => {
                     .attr("x1", d => x(d.val))
                     .attr("x2", d => x(d.val))
                     .attr("y1", 25)
-                    .attr("y2", height - 25)
+                    .attr("y2", h - 25)
                     .attr("stroke", c_border);
             },
             line => {
@@ -479,19 +386,9 @@ const drawCountryChart = asc => {
 };
 
 const drawChart = () => {
-    switch (segment) {
-        case "Ascending":
-            drawCountryChart(true);
-            break;
-        case "Descending":
-            drawCountryChart(false);
-            break;
-        case "Overall":
-            drawYesNoChart();
-            break;
-        default:
-            drawYesNoChart(segment);
-    }
+    drawCountryChart(false, 1);
+    drawYesNoChart(["Male", "Female"], "Gender", 2);
+    drawYesNoChart(["iPhone", "Android"], "Mobile Brand", 3);
 };
 
 const setupVis = elementId => {
@@ -518,6 +415,12 @@ const setupVis = elementId => {
             .attr("class", ".qsOption")
             .text(d => `${d.qid}. ${d.q_text}`)
         );
+    const title = container.append("h2")
+        .text(`${processedData[0].qid}. ${processedData[0].q_text}`);
+    const qs = {};
+    processedData.forEach(d => {
+        qs[`${d.qid}. ${d.q_text}`] = true;
+    });
     selector.on("click", _ => {
             selector.property("value", "");
         })
@@ -538,7 +441,7 @@ const setupVis = elementId => {
         .on("click", _ => {
             selector.property("value", "");
             selector.node().focus();
-    });
+        });
     questions.append("div")
         .attr("class", "next_fld")
         .text("❯")
@@ -565,49 +468,22 @@ const setupVis = elementId => {
             selector.node().focus();
             drawChart();
         });
-    container.append("br");
-    container.append("br");
-    container.append("label")
-        .attr("for", "segment")
-        .text("Filter Responses:");
-    const segmentSelector = container.append("select")
-        .attr("id", "segmentSelector")
-        .attr("name", "segment");
-    const title = container.append("h2")
-        .style("text-align", "center")
-        .text(`${processedData[0].qid}. ${processedData[0].q_text}`);
-    const qs = {};
-    processedData.forEach(d => {
-        qs[`${d.qid}. ${d.q_text}`] = true;
-    });
-    segmentSelector.on("change", _ => {
-        segment = segmentSelector.property("value");
-        drawChart();
-    });
-    segmentSelector.append("option")
-        .text("Overall")
-        .property("value", "Overall");
-    for (const [_, value] of Object.entries(segments)) {
-        const group = segmentSelector.append("optgroup")
-            .attr("label", value);
-        if (value === segments.SORT_COUNTRY) {
-            group.append("option")
-                .text("Descending")
-                .property("value", "Descending");
-            group.append("option")
-                .text("Ascending")
-                .property("value", "Ascending");
-        } else {
-            const categoryValues = categories[value];
-            categoryValues.category_columns.forEach((d, i) => {
-                group.append("option")
-                    .text(`${d} ${categoryValues.category_emoji_prefix[i]}`)
-                    .property("value", d);
-            });
-        }
-    }
+    container.append("h2")
+        .attr("id", "title1");
     container.append("svg")
-        .attr("id", "chart")
+        .attr("id", "chart1")
+        .attr("width", width)
+        .attr("height", height);
+    container.append("h2")
+        .attr("id", "title2");
+    container.append("svg")
+        .attr("id", "chart2")
+        .attr("width", width)
+        .attr("height", height);
+    container.append("h2")
+        .attr("id", "title3");
+    container.append("svg")
+        .attr("id", "chart3")
         .attr("width", width)
         .attr("height", height);
     drawChart();
