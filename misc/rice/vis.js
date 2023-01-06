@@ -184,96 +184,23 @@ var selected = 1;
 var width = Math.min(document.documentElement.clientWidth, 600);
 var height = 600;
 
-const drawYesNoChart = (columns, title, id) => {
-    columns.push("Overall");
+const horizontalBarChart = (columns, title, sort, numbered, id) => {
     d3.select(`#title${id}`)
         .text(`By ${title}`);
-    const chart = d3.select(`#chart${id}`)
-        .attr("height", 600);
-    const x = d3.scaleBand()
-        .range([25, width - 25])
-        .domain(columns)
-        .padding(0.05);
-    chart.append("g")
-        .attr("class", "axis")
-        .attr("transform", `translate(0,${height - 25})`)
-        .call(d3.axisBottom(x));
-    const y = d3.scaleLinear()
-        .domain([0, 100])
-        .range([height - 25, 25]);
-    var data = columns.map(c => {
-        const q = processedData.filter(d => d.qid === selected.toString())[0];
-        const pct = parseFloat(q[c]);
-        return {
-            value: pct,
-            column: c,
-            text: `${emojis[c]} ${pct}%`,
-        };
-    });
-    // selected segment bar
-    chart.selectAll(".bars")
-        .data(data)
-        .join(
-            bars => {
-                bars.append("rect")
-                    .attr("class", "bars")
-                    .attr("x", d => x(d.column))
-                    .attr("y", d => y(d.value))
-                    .attr("width", x.bandwidth())
-                    .attr("height", d => height - 25 - y(d.value))
-                    .attr("fill", c_light)
-                    .style("stroke", c_border);
-            },
-            bars => {
-                bars.transition().duration(AT)
-                    .attr("x", d => x(d.column))
-                    .attr("y", d => y(d.value))
-                    .attr("width", x.bandwidth())
-                    .attr("height", d => height - 25 - y(d.value));
-            }
-        );
-    // selected segment label
-    chart.selectAll(".barstxt")
-        .data(data)
-        .join(
-            txt => {
-                txt.append("text")
-                    .attr("class", "barstxt label")
-                    .attr("x", d => x(d.column) + x.bandwidth() / 2)
-                    .attr("y", d => y(d.value) - 25)
-                    .attr("fill", c_border)
-                    .style("text-anchor", "middle")
-                    .text(d => d.text);
-            },
-            txt => {
-                txt.transition().duration(AT)
-                    .attr("x", d => x(d.column) + x.bandwidth() / 2)
-                    .attr("y", d => y(d.value) - 25)
-                    .text(d => d.text);
-            },
-            txt => txt.remove(),
-        );
-};
-
-const drawCountryChart = (asc, id) => {
-    if (asc == null) {
-        asc = false;
-    }
-    d3.select(`#title${id}`)
-        .text("By Country");
-    const h = 900;
+    const h = 40 * columns.length + 50;
     const chart = d3.select(`#chart${id}`)
         .attr("height", h);
-    var data = countries.map(
+    var data = columns.map(
         c => ({
-            country: c,
+            col: c,
             emoji: emojis[c],
         })
     );
     const q = processedData.filter(d => d.qid === selected.toString())[0];
-    data.forEach(d => d.pct = parseFloat(q[d.country]));
-    data.sort((a, b) => a.pct - b.pct);
-    if (asc === false) {
+    data.forEach(d => d.pct = parseFloat(q[d.col]));
+    // descending sort
+    if (sort) {
+        data.sort((a, b) => a.pct - b.pct);
         data = data.reverse();
     }
     const x = d3.scaleLinear()
@@ -281,25 +208,25 @@ const drawCountryChart = (asc, id) => {
         .range([25, width - 25]);
     const y = d3.scaleBand()
         .range([25, h - 25])
-        .domain(data.map(d => d.country))
+        .domain(data.map(d => d.col))
         .padding(0.1);
     // horizontal bars
     chart.selectAll(".hbars")
         .data(data)
         .join(
-            bars => {
-                bars.append("rect")
+            enter => {
+                enter.append("rect")
                     .attr("class", "hbars")
                     .attr("x", x(0))
-                    .attr("y", d => y(d.country))
+                    .attr("y", d => y(d.col))
                     .attr("width", d => x(d.pct))
                     .attr("height", y.bandwidth())
                     .attr("fill", c_light);
             },
-            bars => {
-                bars.transition().duration(AT)
+            update => {
+                update.transition().duration(AT)
                     .attr("x", x(0))
-                    .attr("y", d => y(d.country))
+                    .attr("y", d => y(d.col))
                     .attr("width", d => x(d.pct));
             }
         );
@@ -307,57 +234,57 @@ const drawCountryChart = (asc, id) => {
     chart.selectAll(".hbars2")
         .data(data)
         .join(
-            bars => {
-                bars.append("rect")
+            enter => {
+                enter.append("rect")
                     .attr("class", "hbars2")
                     .attr("x", d => x(d.pct))
-                    .attr("y", d => y(d.country))
+                    .attr("y", d => y(d.col))
                     .attr("width", d => x(100) - x(d.pct))
                     .attr("height", y.bandwidth())
                     .attr("fill", c_dark);
             },
-            bars => {
-                bars.transition().duration(AT)
+            update => {
+                update.transition().duration(AT)
                     .attr("x", d => x(d.pct))
-                    .attr("y", d => y(d.country))
+                    .attr("y", d => y(d.col))
                     .attr("width", d => x(100) - x(d.pct));
             }
         );
-    // label index and country
+    // label index and name
     chart.selectAll(".hbarstext")
         .data(data)
         .join(
-            txt => {
-                txt.append("text")
+            enter => {
+                enter.append("text")
                     .attr("class", "hbarstext")
                     .attr("x", x(0) + 5)
-                    .attr("y", d => y(d.country) + y.bandwidth() - 5)
+                    .attr("y", d => y(d.col) + y.bandwidth() - 10)
                     .attr("fill", c_border)
-                    .text((d, i) => `${i + 1}. ${d.country} ${d.emoji}`);
+                    .text((d, i) => `${i + 1}. ${d.col} ${d.emoji}`);
             },
-            txt => {
-                txt.transition().duration(AT)
+            update => {
+                update.transition().duration(AT)
                     .attr("x", x(0) + 5)
-                    .attr("y", d => y(d.country) + y.bandwidth() - 5)
-                    .text((d, i) => `${i + 1}. ${d.country} ${d.emoji}`);
+                    .attr("y", d => y(d.col) + y.bandwidth() - 10)
+                    .text((d, i) => `${i + 1}. ${d.col} ${d.emoji}`);
             }
         );
-    // label percentage
+    // label percentage, with minimum to avoid overlap with name
     chart.selectAll(".hbarstext2")
         .data(data)
         .join(
-            txt => {
-                txt.append("text")
+            enter => {
+                enter.append("text")
                     .attr("class", "hbarstext2")
-                    .attr("x", d => x(d.pct) + 5)
-                    .attr("y", d => y(d.country) + y.bandwidth() - 5)
+                    .attr("x", d => Math.max(x(d.pct), x(30)) + 5)
+                    .attr("y", d => y(d.col) + y.bandwidth() - 10)
                     .attr("fill", c_border)
                     .text(d => `${d.pct}%`);
             },
-            txt => {
-                txt.transition().duration(AT)
-                    .attr("x", d => x(d.pct) + 5)
-                    .attr("y", d => y(d.country) + y.bandwidth() - 5)
+            update => {
+                update.transition().duration(AT)
+                    .attr("x", d => Math.max(x(d.pct), x(30)) + 5)
+                    .attr("y", d => y(d.col) + y.bandwidth() - 10)
                     .text(d => `${d.pct}%`);
             }
         );
@@ -368,8 +295,8 @@ const drawCountryChart = (asc, id) => {
             val: overall
         }])
         .join(
-            line => {
-                line.append("line")
+            enter => {
+                enter.append("line")
                     .attr("class", "line")
                     .attr("x1", d => x(d.val))
                     .attr("x2", d => x(d.val))
@@ -377,18 +304,37 @@ const drawCountryChart = (asc, id) => {
                     .attr("y2", h - 25)
                     .attr("stroke", c_border);
             },
-            line => {
-                line.transition().duration(AT)
+            update => {
+                update.transition().duration(AT)
                     .attr("x1", d => x(d.val))
                     .attr("x2", d => x(d.val));
+            }
+        );
+    chart.selectAll(".marker")
+        .data([{
+            val: overall
+        }])
+        .join(
+            enter => {
+                enter.append("text")
+                    .attr("class", "marker")
+                    .attr("x", d => x(d.val) - 10)
+                    .attr("y", 20)
+                    .attr("fill", c_border)
+                    .text(d => `${emojis.Overall} ${d.val}%`);
+            },
+            update => {
+                update.transition().duration(AT)
+                    .attr("x", d => x(d.val))
+                    .text(d => `${emojis.Overall} ${d.val}%`);
             }
         );
 };
 
 const drawChart = () => {
-    drawCountryChart(false, 1);
-    drawYesNoChart(["Male", "Female"], "Gender", 2);
-    drawYesNoChart(["iPhone", "Android"], "Mobile Brand", 3);
+    horizontalBarChart(countries, "Country", true, true, 1);
+    horizontalBarChart(["Male", "Female"], "Gender", false, false, 2);
+    horizontalBarChart(["iPhone", "Android"], "Mobile Brand", false, false, 3);
 };
 
 const setupVis = elementId => {
@@ -446,6 +392,9 @@ const setupVis = elementId => {
         .attr("class", "next_fld")
         .text("❯")
         .on("click", _ => {
+            if (selected >= processedData.length) {
+                return;
+            }
             const idx = selected;
             const q = processedData[idx];
             const text = `${q.qid}. ${q.q_text}`;
@@ -458,6 +407,9 @@ const setupVis = elementId => {
         .attr("class", "prev_fld")
         .text("❮")
         .on("click", _ => {
+            if (selected <= 1) {
+                return;
+            }
             const idx = selected - 2;
             const q = processedData[idx];
             const text = `${q.qid}. ${q.q_text}`;
