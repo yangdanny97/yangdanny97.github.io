@@ -452,7 +452,6 @@ const setupVis = elementId => {
             selector.property("value", text);
             title.text(text);
             selected = selected + 1;
-            selector.node().focus();
             drawChart();
         });
     questions.append("div")
@@ -465,7 +464,6 @@ const setupVis = elementId => {
             selector.property("value", text);
             title.text(text);
             selected = selected - 1;
-            selector.node().focus();
             drawChart();
         });
     container.append("h2")
