@@ -210,9 +210,21 @@ const horizontalBarChart = (columns, title, sort, numbered, id) => {
         .range([25, h - 25])
         .domain(data.map(d => d.col))
         .padding(0.1);
+    const clamp = p => {
+        if (p < 30) {
+            return x(30);
+        } else if (p > 90) {
+            return x(90);
+        } else {
+            return x(p);
+        }
+    }
+    const num = i => {
+        return numbered ? (i + 1).toString() + '.' : '';
+    }
     // horizontal bars
     chart.selectAll(".hbars")
-        .data(data)
+        .data(data, d => d.col)
         .join(
             enter => {
                 enter.append("rect")
@@ -232,7 +244,7 @@ const horizontalBarChart = (columns, title, sort, numbered, id) => {
         );
     // fill the remainder of the space
     chart.selectAll(".hbars2")
-        .data(data)
+        .data(data, d => d.col)
         .join(
             enter => {
                 enter.append("rect")
@@ -252,7 +264,7 @@ const horizontalBarChart = (columns, title, sort, numbered, id) => {
         );
     // label index and name
     chart.selectAll(".hbarstext")
-        .data(data)
+        .data(data, d => d.col)
         .join(
             enter => {
                 enter.append("text")
@@ -260,30 +272,30 @@ const horizontalBarChart = (columns, title, sort, numbered, id) => {
                     .attr("x", x(0) + 5)
                     .attr("y", d => y(d.col) + y.bandwidth() - 10)
                     .attr("fill", c_border)
-                    .text((d, i) => `${numbered ? (i + 1).toString() + '.' : ''} ${d.col} ${d.emoji}`);
+                    .text((d, i) => `${num(i)} ${d.col} ${d.emoji}`);
             },
             update => {
                 update.transition().duration(AT)
                     .attr("x", x(0) + 5)
                     .attr("y", d => y(d.col) + y.bandwidth() - 10)
-                    .text((d, i) => `${numbered ? (i + 1).toString() + '.' : ''} ${d.col} ${d.emoji}`);
+                    .text((d, i) => `${num(i)} ${d.col} ${d.emoji}`);
             }
         );
-    // label percentage, with minimum to avoid overlap with name
+    // label percentage
     chart.selectAll(".hbarstext2")
-        .data(data)
+        .data(data, d => d.col)
         .join(
             enter => {
                 enter.append("text")
                     .attr("class", "hbarstext2")
-                    .attr("x", d => Math.max(x(d.pct), x(30)) + 5)
+                    .attr("x", d => clamp(d.pct) + 5)
                     .attr("y", d => y(d.col) + y.bandwidth() - 10)
                     .attr("fill", c_border)
                     .text(d => `${d.pct}%`);
             },
             update => {
                 update.transition().duration(AT)
-                    .attr("x", d => Math.max(x(d.pct), x(30)) + 5)
+                    .attr("x", d => clamp(d.pct) + 5)
                     .attr("y", d => y(d.col) + y.bandwidth() - 10)
                     .text(d => `${d.pct}%`);
             }
@@ -318,7 +330,7 @@ const horizontalBarChart = (columns, title, sort, numbered, id) => {
             enter => {
                 enter.append("text")
                     .attr("class", "marker")
-                    .attr("x", d => x(d.val) - 10)
+                    .attr("x", d => x(d.val) - 15)
                     .attr("y", 20)
                     .attr("fill", c_border)
                     .text(d => `${emojis.Overall} ${d.val}%`);
