@@ -1,4 +1,4 @@
-const setupDannyVis = elementId => {
+const setupD3RiceVis = elementId => {
     const rawData =
         `qid;q_text;Overall;United States;United Kingdom;Japan;Canada;Australia;Germany;Netherlands;Indonesia;Ireland;Italy;Sweden;New Zealand;Finland;Spain;Israel;Argentina;France;Thailand;South Africa;Brazil;Mexico;Russia;South Korea;Nigeria;Portugal;Male;Female;iPhone;Android
 1;"Held hands, romantically?";74.75%;83.48%;78.61%;40.11%;76.38%;71.47%;72.99%;75.86%;57.67%;72.06%;79.84%;68.40%;73.55%;73.46%;79.56%;72.60%;81.42%;82.54%;55.79%;81.42%;82.94%;84.26%;83.07%;63.91%;78.51%;81.19%;75.32%;72.74%;77.90%;72.69%
@@ -174,10 +174,10 @@ const setupDannyVis = elementId => {
     var height = 600;
 
     const horizontalBarChart = (columns, title, sort, numbered, id) => {
-        d3.select(`#title${id}`)
+        d3.select(`#d3-rice-vis-title${id}`)
             .text(`By ${title}`);
         const h = 40 * columns.length + 50;
-        const chart = d3.select(`#chart${id}`)
+        const chart = d3.select(`#d3-rice-vis-chart${id}`)
             .attr("height", h);
         var data = columns.map(
             c => ({
@@ -212,12 +212,12 @@ const setupDannyVis = elementId => {
             return numbered ? (i + 1).toString() + '.' : '';
         }
         // horizontal bars
-        chart.selectAll(".hbars")
+        chart.selectAll(".d3-rice-vis-hbars")
             .data(data, d => d.col)
             .join(
                 enter => {
                     enter.append("rect")
-                        .attr("class", "hbars")
+                        .attr("class", "d3-rice-vis-hbars")
                         .attr("x", x(0))
                         .attr("y", d => y(d.col))
                         .attr("width", d => x(d.pct))
@@ -232,12 +232,12 @@ const setupDannyVis = elementId => {
                 }
             );
         // fill the remainder of the space
-        chart.selectAll(".hbars2")
+        chart.selectAll(".d3-rice-vis-hbars2")
             .data(data, d => d.col)
             .join(
                 enter => {
                     enter.append("rect")
-                        .attr("class", "hbars2")
+                        .attr("class", "d3-rice-vis-hbars2")
                         .attr("x", d => x(d.pct))
                         .attr("y", d => y(d.col))
                         .attr("width", d => x(100) - x(d.pct))
@@ -252,12 +252,12 @@ const setupDannyVis = elementId => {
                 }
             );
         // label index and name
-        chart.selectAll(".hbarstext")
+        chart.selectAll(".d3-rice-vis-hbarstext")
             .data(data, d => d.col)
             .join(
                 enter => {
                     enter.append("text")
-                        .attr("class", "hbarstext")
+                        .attr("class", "d3-rice-vis-hbarstext")
                         .attr("x", x(0) + 5)
                         .attr("y", d => y(d.col) + y.bandwidth() - 10)
                         .attr("fill", c_border)
@@ -271,12 +271,12 @@ const setupDannyVis = elementId => {
                 }
             );
         // label percentage
-        chart.selectAll(".hbarstext2")
+        chart.selectAll(".d3-rice-vis-hbarstext2")
             .data(data, d => d.col)
             .join(
                 enter => {
                     enter.append("text")
-                        .attr("class", "hbarstext2")
+                        .attr("class", "d3-rice-vis-hbarstext2")
                         .attr("x", d => clamp(d.pct) + 5)
                         .attr("y", d => y(d.col) + y.bandwidth() - 10)
                         .attr("fill", c_border)
@@ -291,14 +291,14 @@ const setupDannyVis = elementId => {
             );
         // mark overall percentage with line
         const overall = parseFloat(q.Overall);
-        chart.selectAll(".line")
+        chart.selectAll(".d3-rice-vis-line")
             .data([{
                 val: overall
             }])
             .join(
                 enter => {
                     enter.append("line")
-                        .attr("class", "line")
+                        .attr("class", "d3-rice-vis-line")
                         .attr("x1", d => x(d.val))
                         .attr("x2", d => x(d.val))
                         .attr("y1", 25)
@@ -311,14 +311,14 @@ const setupDannyVis = elementId => {
                         .attr("x2", d => x(d.val));
                 }
             );
-        chart.selectAll(".marker")
+        chart.selectAll(".d3-rice-vis-marker")
             .data([{
                 val: overall
             }])
             .join(
                 enter => {
                     enter.append("text")
-                        .attr("class", "marker")
+                        .attr("class", "d3-rice-vis-marker")
                         .attr("x", d => x(d.val) - 15)
                         .attr("y", 20)
                         .attr("fill", c_border)
@@ -337,31 +337,31 @@ const setupDannyVis = elementId => {
         horizontalBarChart(["Male", "Female"], "Gender", false, false, 2);
         horizontalBarChart(["iPhone", "Android"], "Mobile Brand", false, false, 3);
     };
-    
+
     const fmt = d3.dsvFormat(";");
     processedData = fmt.parse(rawData);
     const container = d3.select(`#${elementId}`);
-    container.append("h1").text("Ultimate Rice Purity Test Stats Report");
+    container.append("h5").text("Ultimate Rice Purity Test Stats Report");
     const questions = container.append("div")
-        .attr("class", "wrp_quests");
+        .attr("class", "d3-rice-vis-wrp-quests");
     const selector = questions.append("input")
-        .attr("class", "select_fld")
-        .attr("id", "qSelector")
+        .attr("class", "d3-rice-vis-select-fld")
+        .attr("id", "d3-rice-vis-qSelector")
         .attr("type", "text")
         .attr("list", "qList")
         .attr("value", `${processedData[0].qid}. ${processedData[0].q_text}`);
     const list = container.append("datalist")
-        .attr("id", "qList");
-    list.selectAll(".qsOption")
+        .attr("id", "d3-rice-vis-qList");
+    list.selectAll(".d3-rice-vis-qsOption")
         .data(processedData)
         .join(
             opts =>
             opts.append("option")
             .attr("value", d => `${d.qid}. ${d.q_text}`)
-            .attr("class", ".qsOption")
+            .attr("class", "d3-rice-vis-qsOption")
             .text(d => `${d.qid}. ${d.q_text}`)
         );
-    const title = container.append("h2")
+    const title = container.append("h4")
         .text(`${processedData[0].qid}. ${processedData[0].q_text}`);
     const qs = {};
     processedData.forEach(d => {
@@ -382,14 +382,14 @@ const setupDannyVis = elementId => {
             drawChart();
         });
     questions.append("div")
-        .attr("class", "clear_fld")
+        .attr("class", "d3-rice-vis-clear-fld")
         .text("▼")
         .on("click", _ => {
             selector.property("value", "");
             selector.node().focus();
         });
     questions.append("div")
-        .attr("class", "next_fld")
+        .attr("class", "d3-rice-vis-next-fld")
         .text("❯")
         .on("click", _ => {
             if (selected >= processedData.length) {
@@ -404,7 +404,7 @@ const setupDannyVis = elementId => {
             drawChart();
         });
     questions.append("div")
-        .attr("class", "prev_fld")
+        .attr("class", "d3-rice-vis-prev-fld")
         .text("❮")
         .on("click", _ => {
             if (selected <= 1) {
@@ -418,22 +418,22 @@ const setupDannyVis = elementId => {
             selected = selected - 1;
             drawChart();
         });
-    container.append("h2")
-        .attr("id", "title1");
+    container.append("h4")
+        .attr("id", "d3-rice-vis-title1");
     container.append("svg")
-        .attr("id", "chart1")
+        .attr("id", "d3-rice-vis-chart1")
         .attr("width", width)
         .attr("height", height);
-    container.append("h2")
-        .attr("id", "title2");
+    container.append("h4")
+        .attr("id", "d3-rice-vis-title2");
     container.append("svg")
-        .attr("id", "chart2")
+        .attr("id", "d3-rice-vis-chart2")
         .attr("width", width)
         .attr("height", height);
-    container.append("h2")
-        .attr("id", "title3");
+    container.append("h4")
+        .attr("id", "d3-rice-vis-title3");
     container.append("svg")
-        .attr("id", "chart3")
+        .attr("id", "d3-rice-vis-chart3")
         .attr("width", width)
         .attr("height", height);
     drawChart();

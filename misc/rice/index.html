@@ -8,19 +8,7 @@
         font: 18px sans-serif;
     }
 
-    .axis {
-        font: 18px sans-serif;
-    }
-
-    .label {
-        font: 18px sans-serif;
-    }
-
-    label {
-        padding: 5px;
-    }
-
-    .wrp_quests {
+    .d3-rice-vis-wrp-quests {
         width: 95%;
         display: inline-block;
         position: relative;
@@ -29,9 +17,9 @@
         text-align: center;
     }
 
-    .clear_fld,
-    .next_fld,
-    .prev_fld {
+    .d3-rice-vis-clear-fld,
+    .d3-rice-vis-next-fld,
+    .d3-rice-vis-prev-fld {
         position: absolute;
         top: -1px;
         background: #4E6969;
@@ -44,18 +32,17 @@
         border: 1px solid #9FF;
     }
 
-    .next_fld {
+    .d3-rice-vis-next-fld {
         right: -1px;
     }
-    .prev_fld {
+    .d3-rice-vis-prev-fld {
         left: 0;
     }
-    .clear_fld {
+    .d3-rice-vis-clear-fld {
         right: 43px;
     }
 
-    .select_fld,
-    .select_fld_show {
+    .d3-rice-vis-select-fld {
         width: 100%;
         background: #333;
         font-size: 16px;
@@ -66,23 +53,19 @@
         display: inline-block;
     }
 
-    .select_fld {
+    .d3-rice-vis-select-fld {
         padding: 10px 90px 10px 50px;
-    }
-
-    .select_fld_show {
-        padding: 10px 40px 10px 10px;
     }
 </style>
 
 <body>
-    <div id="danny-container">
+    <div id="d3-rice-vis">
     </div>
 </body>
 <script>
     aload('https://d3js.org/d3.v7.min.js', () => {
         aload('./vis.js', () => {
-            setupDannyVis("danny-container");
+            setupD3RiceVis("d3-rice-vis");
         });
     });
     function aload(l, cb) {
