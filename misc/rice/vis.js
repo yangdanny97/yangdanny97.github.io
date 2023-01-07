@@ -1,5 +1,6 @@
-const rawData =
-    `qid;q_text;Overall;United States;United Kingdom;Japan;Canada;Australia;Germany;Netherlands;Indonesia;Ireland;Italy;Sweden;New Zealand;Finland;Spain;Israel;Argentina;France;Thailand;South Africa;Brazil;Mexico;Russia;South Korea;Nigeria;Portugal;Male;Female;iPhone;Android
+const setupDannyVis = elementId => {
+    const rawData =
+        `qid;q_text;Overall;United States;United Kingdom;Japan;Canada;Australia;Germany;Netherlands;Indonesia;Ireland;Italy;Sweden;New Zealand;Finland;Spain;Israel;Argentina;France;Thailand;South Africa;Brazil;Mexico;Russia;South Korea;Nigeria;Portugal;Male;Female;iPhone;Android
 1;"Held hands, romantically?";74.75%;83.48%;78.61%;40.11%;76.38%;71.47%;72.99%;75.86%;57.67%;72.06%;79.84%;68.40%;73.55%;73.46%;79.56%;72.60%;81.42%;82.54%;55.79%;81.42%;82.94%;84.26%;83.07%;63.91%;78.51%;81.19%;75.32%;72.74%;77.90%;72.69%
 2;Been on a date?;66.52%;76.20%;69.25%;54.13%;69.21%;62.30%;65.49%;71.29%;52.63%;61.59%;69.11%;59.71%;64.37%;60.01%;71.81%;66.13%;73.20%;76.98%;39.56%;64.57%;68.48%;76.29%;68.83%;70.88%;49.32%;68.45%;67.74%;63.19%;70.39%;63.44%
 3;Been in a relationship?;73.27%;84.23%;76.21%;54.11%;75.41%;71.38%;66.32%;73.75%;59.64%;73.10%;74.24%;70.57%;75.04%;68.28%;70.52%;61.20%;71.48%;82.12%;61.75%;80.18%;65.13%;79.33%;75.83%;68.42%;65.90%;71.57%;74.80%;71.66%;76.35%;71.60%
@@ -101,255 +102,242 @@ const rawData =
 99;Had an STD (sexually transmitted disease) test due to reasonable suspicion?;8.24%;14.54%;7.72%;10.46%;10.52%;7.44%;5.70%;7.57%;2.69%;6.28%;7.06%;13.41%;11.49%;5.97%;7.26%;9.09%;9.56%;20.95%;1.72%;5.28%;9.14%;11.18%;7.17%;11.90%;8.97%;5.07%;11.46%;8.79%;7.93%;8.57%
 100;Had an STD?;4.94%;9.16%;4.04%;5.63%;5.75%;4.89%;3.76%;4.65%;2.20%;4.15%;8.60%;8.45%;6.10%;3.81%;3.43%;6.71%;4.91%;9.85%;1.00%;3.68%;6.12%;5.42%;0.99%;6.01%;7.69%;3.85%;6.64%;4.97%;4.84%;4.86%`;
 
-const segments = {
-    SORT_COUNTRY: "Sort by Country",
-    COUNTRY: "Country",
-    GENDER: "Gender",
-    MOBILE_BRAND: "Mobile Brand"
-};
+    const c_light = '#4e6969';
+    const c_dark = '#333';
+    const c_border = '#9ff';
+    const AT = 500;
 
-const charts = {
-    YES_NO: 0,
-    COUNTRIES: 1
-};
+    const countries = [
+        "United States",
+        "United Kingdom",
+        "Japan",
+        "Canada",
+        "Australia",
+        "Germany",
+        "Netherlands",
+        "Indonesia",
+        "Ireland",
+        "Italy",
+        "Sweden",
+        "New Zealand",
+        "Finland",
+        "Spain",
+        "Israel",
+        "Argentina",
+        "France",
+        "Thailand",
+        "South Africa",
+        "Brazil",
+        "Mexico",
+        "Russia",
+        "South Korea",
+        "Nigeria",
+        "Portugal",
+    ];
 
-const c_light = '#4e6969';
-const c_dark = '#333';
-const c_border = '#9ff';
-const AT = 500;
+    const emojis = {
+        "United States": "🇺🇸",
+        "United Kingdom": "🇬🇧",
+        "Japan": "🇯🇵",
+        "Canada": "🇨🇦",
+        "Australia": "🇦🇺",
+        "Germany": "🇩🇪",
+        "Netherlands": "🇳🇱",
+        "Indonesia": "🇮🇩",
+        "Ireland": "🇮🇪",
+        "Italy": "🇮🇹",
+        "Sweden": "🇸🇪",
+        "New Zealand": "🇳🇿",
+        "Finland": "🇫🇮",
+        "Spain": "🇪🇸",
+        "Israel": "🇮🇱",
+        "Argentina": "🇦🇷",
+        "France": "🇫🇷",
+        "Thailand": "🇹🇭",
+        "South Africa": "🇿🇦",
+        "Brazil": "🇧🇷",
+        "Mexico": "🇲🇽",
+        "Russia": "🇷🇺",
+        "South Korea": "🇰🇷",
+        "Nigeria": "🇳🇬",
+        "Portugal": "🇵🇹",
+        "Male": "👨",
+        "Female": "👩",
+        "iPhone": "🍎",
+        "Android": "🤖️",
+        "Overall": "🌍"
+    };
 
-const countries = [
-    "United States",
-    "United Kingdom",
-    "Japan",
-    "Canada",
-    "Australia",
-    "Germany",
-    "Netherlands",
-    "Indonesia",
-    "Ireland",
-    "Italy",
-    "Sweden",
-    "New Zealand",
-    "Finland",
-    "Spain",
-    "Israel",
-    "Argentina",
-    "France",
-    "Thailand",
-    "South Africa",
-    "Brazil",
-    "Mexico",
-    "Russia",
-    "South Korea",
-    "Nigeria",
-    "Portugal",
-];
+    var processedData;
+    var selected = 1;
+    var width = Math.min(document.documentElement.clientWidth, 600);
+    var height = 600;
 
-const emojis = {
-    "United States": "🇺🇸",
-    "United Kingdom": "🇬🇧",
-    "Japan": "🇯🇵",
-    "Canada": "🇨🇦",
-    "Australia": "🇦🇺",
-    "Germany": "🇩🇪",
-    "Netherlands": "🇳🇱",
-    "Indonesia": "🇮🇩",
-    "Ireland": "🇮🇪",
-    "Italy": "🇮🇹",
-    "Sweden": "🇸🇪",
-    "New Zealand": "🇳🇿",
-    "Finland": "🇫🇮",
-    "Spain": "🇪🇸",
-    "Israel": "🇮🇱",
-    "Argentina": "🇦🇷",
-    "France": "🇫🇷",
-    "Thailand": "🇹🇭",
-    "South Africa": "🇿🇦",
-    "Brazil": "🇧🇷",
-    "Mexico": "🇲🇽",
-    "Russia": "🇷🇺",
-    "South Korea": "🇰🇷",
-    "Nigeria": "🇳🇬",
-    "Portugal": "🇵🇹",
-    "Male": "👨",
-    "Female": "👩",
-    "iPhone": "🍎",
-    "Android": "🤖️",
-    "Overall": "🌍"
-};
-
-var processedData;
-var selected = 1;
-var width = Math.min(document.documentElement.clientWidth, 600);
-var height = 600;
-
-const horizontalBarChart = (columns, title, sort, numbered, id) => {
-    d3.select(`#title${id}`)
-        .text(`By ${title}`);
-    const h = 40 * columns.length + 50;
-    const chart = d3.select(`#chart${id}`)
-        .attr("height", h);
-    var data = columns.map(
-        c => ({
-            col: c,
-            emoji: emojis[c],
-        })
-    );
-    const q = processedData.filter(d => d.qid === selected.toString())[0];
-    data.forEach(d => d.pct = parseFloat(q[d.col]));
-    // descending sort
-    if (sort) {
-        data.sort((a, b) => a.pct - b.pct);
-        data = data.reverse();
-    }
-    const x = d3.scaleLinear()
-        .domain([0, 100])
-        .range([25, width - 25]);
-    const y = d3.scaleBand()
-        .range([25, h - 25])
-        .domain(data.map(d => d.col))
-        .padding(0.1);
-    const clamp = p => {
-        if (p < 30) {
-            return x(30);
-        } else if (p > 90) {
-            return x(90);
-        } else {
-            return x(p);
+    const horizontalBarChart = (columns, title, sort, numbered, id) => {
+        d3.select(`#title${id}`)
+            .text(`By ${title}`);
+        const h = 40 * columns.length + 50;
+        const chart = d3.select(`#chart${id}`)
+            .attr("height", h);
+        var data = columns.map(
+            c => ({
+                col: c,
+                emoji: emojis[c],
+            })
+        );
+        const q = processedData.filter(d => d.qid === selected.toString())[0];
+        data.forEach(d => d.pct = parseFloat(q[d.col]));
+        // descending sort
+        if (sort) {
+            data.sort((a, b) => a.pct - b.pct);
+            data = data.reverse();
         }
-    }
-    const num = i => {
-        return numbered ? (i + 1).toString() + '.' : '';
-    }
-    // horizontal bars
-    chart.selectAll(".hbars")
-        .data(data, d => d.col)
-        .join(
-            enter => {
-                enter.append("rect")
-                    .attr("class", "hbars")
-                    .attr("x", x(0))
-                    .attr("y", d => y(d.col))
-                    .attr("width", d => x(d.pct))
-                    .attr("height", y.bandwidth())
-                    .attr("fill", c_light);
-            },
-            update => {
-                update.transition().duration(AT)
-                    .attr("x", x(0))
-                    .attr("y", d => y(d.col))
-                    .attr("width", d => x(d.pct));
+        const x = d3.scaleLinear()
+            .domain([0, 100])
+            .range([25, width - 25]);
+        const y = d3.scaleBand()
+            .range([25, h - 25])
+            .domain(data.map(d => d.col))
+            .padding(0.1);
+        const clamp = p => {
+            if (p < 30) {
+                return x(30);
+            } else if (p > 90) {
+                return x(90);
+            } else {
+                return x(p);
             }
-        );
-    // fill the remainder of the space
-    chart.selectAll(".hbars2")
-        .data(data, d => d.col)
-        .join(
-            enter => {
-                enter.append("rect")
-                    .attr("class", "hbars2")
-                    .attr("x", d => x(d.pct))
-                    .attr("y", d => y(d.col))
-                    .attr("width", d => x(100) - x(d.pct))
-                    .attr("height", y.bandwidth())
-                    .attr("fill", c_dark);
-            },
-            update => {
-                update.transition().duration(AT)
-                    .attr("x", d => x(d.pct))
-                    .attr("y", d => y(d.col))
-                    .attr("width", d => x(100) - x(d.pct));
-            }
-        );
-    // label index and name
-    chart.selectAll(".hbarstext")
-        .data(data, d => d.col)
-        .join(
-            enter => {
-                enter.append("text")
-                    .attr("class", "hbarstext")
-                    .attr("x", x(0) + 5)
-                    .attr("y", d => y(d.col) + y.bandwidth() - 10)
-                    .attr("fill", c_border)
-                    .text((d, i) => `${num(i)} ${d.col} ${d.emoji}`);
-            },
-            update => {
-                update.transition().duration(AT)
-                    .attr("x", x(0) + 5)
-                    .attr("y", d => y(d.col) + y.bandwidth() - 10)
-                    .text((d, i) => `${num(i)} ${d.col} ${d.emoji}`);
-            }
-        );
-    // label percentage
-    chart.selectAll(".hbarstext2")
-        .data(data, d => d.col)
-        .join(
-            enter => {
-                enter.append("text")
-                    .attr("class", "hbarstext2")
-                    .attr("x", d => clamp(d.pct) + 5)
-                    .attr("y", d => y(d.col) + y.bandwidth() - 10)
-                    .attr("fill", c_border)
-                    .text(d => `${d.pct}%`);
-            },
-            update => {
-                update.transition().duration(AT)
-                    .attr("x", d => clamp(d.pct) + 5)
-                    .attr("y", d => y(d.col) + y.bandwidth() - 10)
-                    .text(d => `${d.pct}%`);
-            }
-        );
-    // mark overall percentage with line
-    const overall = parseFloat(q.Overall);
-    chart.selectAll(".line")
-        .data([{
-            val: overall
-        }])
-        .join(
-            enter => {
-                enter.append("line")
-                    .attr("class", "line")
-                    .attr("x1", d => x(d.val))
-                    .attr("x2", d => x(d.val))
-                    .attr("y1", 25)
-                    .attr("y2", h - 25)
-                    .attr("stroke", c_border);
-            },
-            update => {
-                update.transition().duration(AT)
-                    .attr("x1", d => x(d.val))
-                    .attr("x2", d => x(d.val));
-            }
-        );
-    chart.selectAll(".marker")
-        .data([{
-            val: overall
-        }])
-        .join(
-            enter => {
-                enter.append("text")
-                    .attr("class", "marker")
-                    .attr("x", d => x(d.val) - 15)
-                    .attr("y", 20)
-                    .attr("fill", c_border)
-                    .text(d => `${emojis.Overall} ${d.val}%`);
-            },
-            update => {
-                update.transition().duration(AT)
-                    .attr("x", d => x(d.val))
-                    .text(d => `${emojis.Overall} ${d.val}%`);
-            }
-        );
-};
+        }
+        const num = i => {
+            return numbered ? (i + 1).toString() + '.' : '';
+        }
+        // horizontal bars
+        chart.selectAll(".hbars")
+            .data(data, d => d.col)
+            .join(
+                enter => {
+                    enter.append("rect")
+                        .attr("class", "hbars")
+                        .attr("x", x(0))
+                        .attr("y", d => y(d.col))
+                        .attr("width", d => x(d.pct))
+                        .attr("height", y.bandwidth())
+                        .attr("fill", c_light);
+                },
+                update => {
+                    update.transition().duration(AT)
+                        .attr("x", x(0))
+                        .attr("y", d => y(d.col))
+                        .attr("width", d => x(d.pct));
+                }
+            );
+        // fill the remainder of the space
+        chart.selectAll(".hbars2")
+            .data(data, d => d.col)
+            .join(
+                enter => {
+                    enter.append("rect")
+                        .attr("class", "hbars2")
+                        .attr("x", d => x(d.pct))
+                        .attr("y", d => y(d.col))
+                        .attr("width", d => x(100) - x(d.pct))
+                        .attr("height", y.bandwidth())
+                        .attr("fill", c_dark);
+                },
+                update => {
+                    update.transition().duration(AT)
+                        .attr("x", d => x(d.pct))
+                        .attr("y", d => y(d.col))
+                        .attr("width", d => x(100) - x(d.pct));
+                }
+            );
+        // label index and name
+        chart.selectAll(".hbarstext")
+            .data(data, d => d.col)
+            .join(
+                enter => {
+                    enter.append("text")
+                        .attr("class", "hbarstext")
+                        .attr("x", x(0) + 5)
+                        .attr("y", d => y(d.col) + y.bandwidth() - 10)
+                        .attr("fill", c_border)
+                        .text((d, i) => `${num(i)} ${d.col} ${d.emoji}`);
+                },
+                update => {
+                    update.transition().duration(AT)
+                        .attr("x", x(0) + 5)
+                        .attr("y", d => y(d.col) + y.bandwidth() - 10)
+                        .text((d, i) => `${num(i)} ${d.col} ${d.emoji}`);
+                }
+            );
+        // label percentage
+        chart.selectAll(".hbarstext2")
+            .data(data, d => d.col)
+            .join(
+                enter => {
+                    enter.append("text")
+                        .attr("class", "hbarstext2")
+                        .attr("x", d => clamp(d.pct) + 5)
+                        .attr("y", d => y(d.col) + y.bandwidth() - 10)
+                        .attr("fill", c_border)
+                        .text(d => `${d.pct}%`);
+                },
+                update => {
+                    update.transition().duration(AT)
+                        .attr("x", d => clamp(d.pct) + 5)
+                        .attr("y", d => y(d.col) + y.bandwidth() - 10)
+                        .text(d => `${d.pct}%`);
+                }
+            );
+        // mark overall percentage with line
+        const overall = parseFloat(q.Overall);
+        chart.selectAll(".line")
+            .data([{
+                val: overall
+            }])
+            .join(
+                enter => {
+                    enter.append("line")
+                        .attr("class", "line")
+                        .attr("x1", d => x(d.val))
+                        .attr("x2", d => x(d.val))
+                        .attr("y1", 25)
+                        .attr("y2", h - 25)
+                        .attr("stroke", c_border);
+                },
+                update => {
+                    update.transition().duration(AT)
+                        .attr("x1", d => x(d.val))
+                        .attr("x2", d => x(d.val));
+                }
+            );
+        chart.selectAll(".marker")
+            .data([{
+                val: overall
+            }])
+            .join(
+                enter => {
+                    enter.append("text")
+                        .attr("class", "marker")
+                        .attr("x", d => x(d.val) - 15)
+                        .attr("y", 20)
+                        .attr("fill", c_border)
+                        .text(d => `${emojis.Overall} ${d.val}%`);
+                },
+                update => {
+                    update.transition().duration(AT)
+                        .attr("x", d => x(d.val))
+                        .text(d => `${emojis.Overall} ${d.val}%`);
+                }
+            );
+    };
 
-const drawChart = () => {
-    horizontalBarChart(countries, "Country", true, true, 1);
-    horizontalBarChart(["Male", "Female"], "Gender", false, false, 2);
-    horizontalBarChart(["iPhone", "Android"], "Mobile Brand", false, false, 3);
-};
-
-const setupVis = elementId => {
+    const drawChart = () => {
+        horizontalBarChart(countries, "Country", true, true, 1);
+        horizontalBarChart(["Male", "Female"], "Gender", false, false, 2);
+        horizontalBarChart(["iPhone", "Android"], "Mobile Brand", false, false, 3);
+    };
+    
     const fmt = d3.dsvFormat(";");
     processedData = fmt.parse(rawData);
     const container = d3.select(`#${elementId}`);
