@@ -172,6 +172,8 @@ const setupD3RiceVis = elementId => {
     var selected = 1;
     var width = Math.min(document.documentElement.clientWidth, 600);
     var height = 600;
+    var country1 = countries[0];
+    var country2 = countries[1];
 
     const horizontalBarChart = (columns, title, sort, numbered, id) => {
         d3.select(`#d3-rice-vis-title${id}`)
@@ -332,10 +334,279 @@ const setupD3RiceVis = elementId => {
             );
     };
 
+    const violinChart = (c1, c2, id) => {
+        d3.select(`#d3-rice-vis-title${id}`)
+            .text("Compare Countries");
+        const h = 600;
+        const chart = d3.select(`#d3-rice-vis-chart${id}`)
+            .attr("height", h);
+        const compare = [c1, c2];
+        chart.selectAll(".d3-rice-vis-violin-axis").remove();
+        chart.selectAll("d3-rice-vis-violin-marker").remove();
+
+        const x = d3.scaleBand()
+            .range([25, width - 25])
+            .domain(compare)
+            .padding(0.05)
+        chart.append("g")
+            .attr("transform", `translate(0,${height - 25})`)
+            .attr("class", "d3-rice-vis-violin-axis")
+            .call(d3.axisBottom(x))
+
+        const data = compare.map(c => processedData.map(d => ({
+            col: c,
+            pct: parseFloat(d[c]) - parseFloat(d.Overall)
+        }))).flat();
+        const bound = Math.max(...d3.extent(data.map(d => d.pct)).map(x => Math.abs(x)));
+        const y = d3.scaleLinear()
+            .domain([-bound, bound])
+            .range([height - 25, 25])
+        chart.append("g").call(d3.axisLeft(y))
+            .attr("class", "d3-rice-vis-violin-axis")
+            .attr("transform", `translate(25,0)`);
+            const histogram = d3.histogram()
+            .domain(y.domain())
+            .thresholds(y.ticks(20))
+            .value(d => d)
+        const sumstat = d3.rollup(data, d => {
+            const input = d.map(g => g.pct)
+            return histogram(input);
+        }, d => d.col);
+        var maxNum = 0;
+        for (const [_, allBins] of sumstat) {
+            const lengths = allBins.map(d => d.length);
+            const maxLen = Math.max(...lengths);
+            maxNum = Math.max(maxNum, maxLen);
+        }
+        const xNum = d3.scaleLinear()
+            .range([0, x.bandwidth()])
+            .domain([-maxNum, maxNum]);
+        chart
+            .selectAll(".d3-rice-vis-violin")
+            .data(sumstat)
+            .join(
+                enter => enter.append("path")
+                .attr("transform", d => {
+                    return `translate(${x(d[0])},0)`;
+                })
+                .datum(d => d[1])
+                .attr("class", "d3-rice-vis-violin")
+                .style("stroke", c_border)
+                .style("fill", c_light)
+                .attr("d", d3.area()
+                    .x0(d => xNum(-d.length))
+                    .x1(d => xNum(d.length))
+                    .y(d => y(d.x0))
+                    .curve(d3.curveCatmullRom)
+                ),
+                update => update.attr("transform", d => {
+                    return `translate(${x(d[0])},0)`;
+                })
+                .datum(d => d[1])
+                .transition().duration(AT)
+                .attr("d", d3.area()
+                    .x0(d => xNum(-d.length))
+                    .x1(d => xNum(d.length))
+                    .y(d => y(d.x0))
+                    .curve(d3.curveCatmullRom)
+                )
+            );
+        chart.append("line")
+            .attr("class", "d3-rice-vis-violin-marker")
+            .attr("x1", 25)
+            .attr("x2", width - 25)
+            .attr("y1", y(0))
+            .attr("y2", y(0))
+            .attr("stroke", c_border);
+        chart.append("text")
+            .attr("class", "d3-rice-vis-violin-marker")
+            .attr("x", 30)
+            .attr("y", y(0) - 5)
+            .text(`More Yes Responses Than Average`)
+            .attr("fill", c_border);
+        chart.append("text")
+            .attr("class", "d3-rice-vis-violin-marker")
+            .attr("x", 30)
+            .attr("y", y(0) + 25)
+            .text(`Fewer Yes Responses Than Average`)
+            .attr("fill", c_border);
+    }
+
+    const clevelandDotPlot = (c1, c2, id) => {
+        d3.select(`#d3-rice-vis-title${id}`)
+            .text("Compare Countries");
+        const h = 900;
+        const chart = d3.select(`#d3-rice-vis-chart${id}`)
+            .attr("height", h);
+        const compare = [c2, c1];
+
+        const y = d3.scaleLinear()
+            .range([25, h - 25])
+            .domain([0, 100]);
+        const markers = processedData.map(d => compare.map((c, i) => ({
+            qid: d.qid,
+            pct: parseFloat(d[c]) - parseFloat(d.Overall),
+            emoji: emojis[c],
+            key: `${d.qid.toString()}-${i}`
+        }))).flat();
+        const pcts = markers.map(d => d.pct);
+        const minpct = Math.min(...pcts);
+        const maxpct = Math.max(...pcts);
+        const bound = Math.max(Math.abs(minpct), maxpct);
+        const x = d3.scaleLinear()
+            .domain([-bound, bound])
+            .range([25, width - 25]);
+
+        chart.selectAll(".d3-rice-vis-cleveland-axis").remove();
+        chart.append("g").call(d3.axisLeft(y))
+            .attr("class", "d3-rice-vis-cleveland-axis")
+            .attr("transform", `translate(25,0)`);
+        chart.append("g")
+            .attr("transform", `translate(0,${h - 25})`)
+            .attr("class", "d3-rice-vis-cleveland-axis")
+            .call(d3.axisBottom(x));
+
+        chart.selectAll(".d3-rice-vis-cleveland-middle").remove();
+        chart.append("line")
+            .attr("class", "d3-rice-vis-cleveland-middle")
+            .attr("x1", x(0))
+            .attr("x2", x(0))
+            .attr("y1", y(0))
+            .attr("y2", y(100))
+            .attr("stroke-width", 1)
+            .attr("stroke", c_border);
+        chart.append("text")
+            .attr("class", "d3-rice-vis-cleveland-middle")
+            .attr("x", x(0) - 10)
+            .attr("y", y(0))
+            .text(emojis.Overall);
+        chart.selectAll(".d3-rice-vis-cleveland-line")
+            .data(processedData)
+            .join(
+                enter => enter.append("line")
+                .attr("class", "d3-rice-vis-cleveland-line")
+                .attr("x1", d =>
+                    x(Math.min(...compare.map(
+                        c => parseFloat(d[c]) - parseFloat(d.Overall)
+                    )))
+                )
+                .attr("x2", d =>
+                    x(Math.max(...compare.map(
+                        c => parseFloat(d[c]) - parseFloat(d.Overall)
+                    )))
+                )
+                .attr("y1", d => y(d.qid))
+                .attr("y2", d => y(d.qid))
+                .attr("stroke-width", 1)
+                .attr("stroke", c_border),
+                update => update.transition().duration(AT)
+                .attr("x1", d =>
+                    x(Math.min(...compare.map(
+                        c => parseFloat(d[c]) - parseFloat(d.Overall)
+                    )))
+                )
+                .attr("x2", d =>
+                    x(Math.max(...compare.map(
+                        c => parseFloat(d[c]) - parseFloat(d.Overall)
+                    )))
+                )
+            );
+        chart.selectAll(".d3-rice-vis-cleveland-text")
+            .data(markers, d => d.key)
+            .join(
+                enter => enter.append("text")
+                .attr("class", "d3-rice-vis-cleveland-text")
+                .attr("x", d => x(d.pct) - 5)
+                .attr("y", d => y(d.qid) + 5)
+                .text(d => d.emoji),
+                update => update.transition().duration(AT)
+                .attr("x", d => x(d.pct) - 5)
+                .attr("y", d => y(d.qid) + 5)
+                .text(d => d.emoji),
+                exit => exit.remove()
+            );
+    }
+
+    const scatterPlot = (c1, c2, id) => {
+        d3.select(`#d3-rice-vis-title${id}`)
+            .text("Compare Countries");
+        const h = 600;
+        const chart = d3.select(`#d3-rice-vis-chart${id}`)
+            .attr("height", h);
+        const compare = [c2, c1];
+
+        const x = d3.scaleLinear()
+            .domain([0, 100])
+            .range([25, width - 25]);
+        const y = d3.scaleLinear()
+            .range([h - 25, 25])
+            .domain([1, 100]);
+        const markers = processedData.map(d => compare.map((c, i) => ({
+            qid: d.qid,
+            y: parseFloat(d[c]),
+            x: parseFloat(d.Overall),
+            emoji: emojis[c],
+            key: `${d.qid.toString()}-${i}`
+        }))).flat();
+        chart.selectAll(".d3-rice-vis-scatter-axis").remove();
+        chart.selectAll(".d3-rice-vis-scatter-label").remove();
+        chart.append("g").call(d3.axisLeft(y))
+            .attr("class", "d3-rice-vis-scatter-axis")
+            .attr("transform", `translate(25,0)`);
+        chart.append("g")
+            .attr("transform", `translate(0,${h - 25})`)
+            .attr("class", "d3-rice-vis-scatter-axis")
+            .call(d3.axisBottom(x));
+
+        chart.selectAll(".d3-rice-vis-scatter-middle").remove();
+        chart.append("line")
+            .attr("class", "d3-rice-vis-scatter-middle")
+            .attr("x1", x(0))
+            .attr("x2", x(100))
+            .attr("y1", y(0))
+            .attr("y2", y(100))
+            .attr("stroke-width", 1)
+            .attr("stroke", c_border);
+        chart.append("text")
+            .attr("class", "d3-rice-vis-cleveland-middle")
+            .attr("x", x(100))
+            .attr("y", y(100))
+            .text(emojis.Overall);
+        chart.selectAll(".d3-rice-vis-scatter-text")
+            .data(markers, d => d.key)
+            .join(
+                enter => enter.append("text")
+                .attr("class", "d3-rice-vis-scatter-text")
+                .attr("x", d => x(d.x) - 5)
+                .attr("y", d => y(d.y) + 5)
+                .text(d => d.emoji),
+                update => update.transition().duration(AT)
+                .attr("x", d => x(d.x) - 5)
+                .attr("y", d => y(d.y) + 5)
+                .text(d => d.emoji),
+                exit => exit.remove()
+            );
+        chart.append("text")
+            .attr("class", "d3-rice-vis-scatter-label")
+            .attr("x", x(10))
+            .attr("y", y(90))
+            .text("More Yes Responses Than Average")
+            .attr("fill", c_border);
+        chart.append("text")
+            .attr("class", "d3-rice-vis-scatter-label")
+            .attr("x", x(40))
+            .attr("y", y(10))
+            .text("Fewer Yes Responses Than Average")
+            .attr("fill", c_border);
+    }
+
     const drawChart = () => {
         horizontalBarChart(countries, "Country", true, true, 1);
         horizontalBarChart(["Male", "Female"], "Gender", false, false, 2);
         horizontalBarChart(["iPhone", "Android"], "Mobile Brand", false, false, 3);
+        violinChart(country1, country2, 4);
+        clevelandDotPlot(country1, country2, 5);
+        scatterPlot(country1, country2, 6);
     };
 
     const fmt = d3.dsvFormat(";");
@@ -434,6 +705,56 @@ const setupD3RiceVis = elementId => {
         .attr("id", "d3-rice-vis-title3");
     container.append("svg")
         .attr("id", "d3-rice-vis-chart3")
+        .attr("width", width)
+        .attr("height", height);
+
+    container.append("hr");
+
+    const select1 = container.append("select")
+        .attr("id", "d3-rice-vis-select1");
+    const select2 = container.append("select")
+        .attr("id", "d3-rice-vis-select2");
+    select1.on("change", d => {
+        country1 = d3.select("#d3-rice-vis-select1").property("value");
+        drawChart();
+    });
+    select2.on("change", d => {
+        country2 = d3.select("#d3-rice-vis-select2").property("value");
+        drawChart();
+    });
+    select1.selectAll("option")
+        .data(countries)
+        .join(
+            enter => enter.append("option")
+            .attr("value", d => d)
+            .text(d => `${d} ${emojis[d]}`)
+            .property("selected", d => d === countries[0])
+        );
+    select2.selectAll("option")
+        .data(countries)
+        .join(
+            enter => enter.append("option")
+            .attr("value", d => d)
+            .text(d => `${d} ${emojis[d]}`)
+            .property("selected", d => d === countries[1])
+        );
+    container.append("br");
+    container.append("h4")
+        .attr("id", "d3-rice-vis-title4");
+    container.append("svg")
+        .attr("id", "d3-rice-vis-chart4")
+        .attr("width", width)
+        .attr("height", height);
+    container.append("h4")
+        .attr("id", "d3-rice-vis-title5");
+    container.append("svg")
+        .attr("id", "d3-rice-vis-chart5")
+        .attr("width", width)
+        .attr("height", height);
+    container.append("h4")
+        .attr("id", "d3-rice-vis-title6");
+    container.append("svg")
+        .attr("id", "d3-rice-vis-chart6")
         .attr("width", width)
         .attr("height", height);
     drawChart();
