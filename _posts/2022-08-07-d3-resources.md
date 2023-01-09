@@ -55,12 +55,6 @@ It's impressively extensive, covering everything from heatmaps to chord diagrams
 
 If you want to learn about the strengths, weaknesses, and use cases for different types of charts, or if you have a dataset and aren't sure what type of chart to use to visualize it, then this site is a great starting point.
 
-## Bl.ocks
-
-Before the official examples switched to Observable notebooks, examples were hosted on a site called [bl.ocks](https://bl.ocks.org/mbostock), where the creator of D3 made thousands of examples. Each example shows the completed result, as well as the complete source code used to create the visualization. 
-
-The great thing about these examples is that they cover a huge range of use cases for D3, including some of the more obscure APIs. The main downside is that the code is likely outdated, since a few years ago the official examples were moved to Observable notebooks. I still prefer the old examples since you can copy/paste the code into your own project and run it directly, whereas code from Observable notebooks can't run outside a notebook without heavy modification.
-
 ## Official API Reference
 
 The [official API reference](https://github.com/d3/d3/blob/main/API.md) for D3 is found on Github. 
