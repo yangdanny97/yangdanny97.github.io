@@ -30,7 +30,7 @@ First, set up some boilerplate in an HTML file. In addition to D3, we'll need to
 
 ``` html
 <html>
-<script src='https://d3js.org/d3.v6.min.js'></script>
+<script src='https://d3js.org/d3.v7.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/geotiff'></script>
 
 <body>
@@ -91,15 +91,17 @@ Now, we can draw the contour plot. Note that we upscale the drawn contour shapes
 
 ``` javascript
 let path = d3.geoPath();
-let elevations = svg.selectAll('.elevations').data(contourData);
-elevations.enter().append('path')
-    .attr('class', 'elevations')
-    .attr('fill', d => colorScale(d.value))
-    .attr('stroke', 'black')
-    .attr('stroke-width', 0.1)
-    .style('opacity', 1)
-    .attr('d', d => path(d))
-    .attr('transform', `scale(${scaling})`);
+svg.selectAll('.elevations')
+    .data(contourData)
+    .join(enter => enter.append('path')
+        .attr('class', 'elevations')
+        .attr('fill', d => colorScale(d.value))
+        .attr('stroke', 'black')
+        .attr('stroke-width', 0.1)
+        .style('opacity', 1)
+        .attr('d', d => path(d))
+        .attr('transform', `scale(${scaling})`)
+    );
 ```
 
 We can load the chart in your browser by placing your HTML file in the same directory as your GeoTIFF file, starting a local http server in that directory using Python (`python3 -m http.server`), and navigating to `localhost:<PORT_NUMBER>` in your browser. Using the same data as my example, the chart should look something like this:
@@ -118,7 +120,7 @@ Add the import at the top of the page:
 
 We'll put the legend below the chart, so we'll have to make a slightly larger SVG.
 ``` javascript
-let svg = d3.select('#vis').append('svg').attr('width', width).attr('height', height + 100);
+let svg = d3.select('#vis').append('svg').attr('width', width).attr('height', height + 150);
 ```
 
 The library makes adding the legend easy. Feel free to experiment with different orientation, positioning, and styling.
@@ -130,7 +132,7 @@ let legend = d3.legendColor()
     .shapeWidth(50)
     .title('Elevation (m)');
 svg.append('g')
-    .attr('transform', `translate(10,${height + 50})`)
+    .attr('transform', `translate(10,${height + 25})`)
     .call(legend);
 ```
 

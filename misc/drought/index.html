@@ -4,58 +4,59 @@ title: Drought in the US
 description: Recreating the "5 Years of Drought" Visualization using D3
 ---
 <link rel='stylesheet' href="{{ site.url }}/css/site-style.css">
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
 
 <div>
     <svg id="vis"></svg>
     <script>
-        var width = window.innerWidth * 0.9,
+        let width = window.innerWidth * 0.9,
             height = window.innerHeight * 0.9;
 
         // set up SVG
-        var svg = d3.select("#vis").attr("width", width).attr("height", height);
+        let svg = d3.select("#vis").attr("width", width).attr("height", height);
         svg.append("rect")
             .attr("width", width)
             .attr("height", height * 2)
             .attr("fill", "whitesmoke");
 
         function drawStates(state_data, y = 0) {
-            var statesProjection = d3.geoAlbersUsa()
+            let statesProjection = d3.geoAlbersUsa()
                 .fitSize([width, height], state_data);
 
-            var statesGenerator = d3.geoPath()
+            let statesGenerator = d3.geoPath()
                 .projection(statesProjection);
 
-            var states = svg.selectAll(`.state`)
-                .data(state_data.features);
-            states.enter().append("path")
-                .attr("class", `state`)
-                .attr("d", statesGenerator)
-                .attr("fill", "none")
-                .attr("stroke", "gray")
-                .attr("stroke-width", 0.5)
-                .attr("transform", `translate(0,${y})`);
+            svg.selectAll(`.state`)
+                .data(state_data.features)
+                .join(enter => enter.append("path")
+                    .attr("class", `state`)
+                    .attr("d", statesGenerator)
+                    .attr("fill", "none")
+                    .attr("stroke", "gray")
+                    .attr("stroke-width", 0.5)
+                    .attr("transform", `translate(0,${y})`)
+                );
         }
 
         function drawDrought(drought_data, scale, colorScale, widthScale, y = 0) {
-            var hexbin = d3.hexbin()
+            let hexbin = d3.hexbin()
                 .x(d => d.geometry.coordinates[0])
                 .y(d => d.geometry.coordinates[1])
                 .size([width, height])
                 .radius(scale * 20000);
 
-            var drought = svg.selectAll(`.drought`)
-                .data(hexbin(drought_data.features));
-            drought.enter()
-                .append("path")
-                .attr("class", `drought`)
-                .attr("d", d => d[0].properties.PctAny > 0 ? hexbin.hexagon(scale * 20000) : hexbin.hexagon(0))//hexbin.hexagon(scale * 20000 * widthScale(d[0].properties.PctAny)))
-                .attr("transform", d => `translate(${d.x},${d.y + y})`)
-                .attr("fill", d => colorScale(d[0].properties.CountWgt))
-                .attr("stroke", "black")
-                .attr("stroke-width", 0);
+            svg.selectAll(`.drought`)
+                .data(hexbin(drought_data.features))
+                .join(enter => enter.append("path")
+                    .attr("class", `drought`)
+                    .attr("d", d => d[0].properties.PctAny > 0 ? hexbin.hexagon(scale * 20000) : hexbin.hexagon(0))
+                    .attr("transform", d => `translate(${d.x},${d.y + y})`)
+                    .attr("fill", d => colorScale(d[0].properties.CountWgt))
+                    .attr("stroke", "black")
+                    .attr("stroke-width", 0)
+                );
         }
 
         function drawLegend(severity, widthScale, x = 0, y = 0) {
@@ -85,8 +86,8 @@ description: Recreating the "5 Years of Drought" Visualization using D3
                 .attr("transform", `translate(${x + 20},${y - 5})`)
                 .attr("fill", "black")
                 .text("Severity");
-            for (var i = 0; i < severity.length; i++) {
-                for (var j = 0; j < 5; j++) {
+            for (let i = 0; i < severity.length; i++) {
+                for (let j = 0; j < 5; j++) {
                     svg.append("circle")
                         .attr("r", 5 * widthScale(0.2 + j * 0.2))
                         .attr("cx", x + 15 * i)
@@ -103,16 +104,16 @@ description: Recreating the "5 Years of Drought" Visualization using D3
                 x.properties.NAME != "Puerto Rico"
             );
 
-            var state_data = topojson.feature(usa, usa.objects.us_20m);
+            let state_data = topojson.feature(usa, usa.objects.us_20m);
 
-            var drought_data = topojson.feature(droughts, droughts.objects["30KMSampleAll"]);
+            let drought_data = topojson.feature(droughts, droughts.objects["30KMSampleAll"]);
 
-            var extent_x = d3.extent(drought_data.features.map(f => f.geometry.coordinates[0]));
-            var extent_y = d3.extent(drought_data.features.map(f => f.geometry.coordinates[1]));
-            var scale_x = width / (extent_x[1] - extent_x[0]) * 0.99;
-            var scale_y = height / (extent_y[1] - extent_y[0]) * 0.99;
-            var offset_x = extent_x[0];
-            var offset_y = extent_y[0];
+            let extent_x = d3.extent(drought_data.features.map(f => f.geometry.coordinates[0]));
+            let extent_y = d3.extent(drought_data.features.map(f => f.geometry.coordinates[1]));
+            let scale_x = width / (extent_x[1] - extent_x[0]) * 0.99;
+            let scale_y = height / (extent_y[1] - extent_y[0]) * 0.99;
+            let offset_x = extent_x[0];
+            let offset_y = extent_y[0];
 
             var scale, adjust_x = 0, adjust_y = -0.01 * height;
             if (scale_x > scale_y) {
@@ -122,8 +123,8 @@ description: Recreating the "5 Years of Drought" Visualization using D3
                 scale = scale_x;
                 adjust_y = (height - (extent_y[1] - extent_y[0]) * scale) / 2;
             }
-            var proj = function (coords) {
-                var x = coords[0], y = coords[1];
+            let proj = coords => {
+                let x = coords[0], y = coords[1];
                 return [(x - offset_x) * scale + adjust_x, -1 * (y - offset_y) * scale + height + adjust_y];
             }
 
@@ -134,17 +135,17 @@ description: Recreating the "5 Years of Drought" Visualization using D3
                 maxWgt = Math.max(f.properties.CountWgt, maxWgt);
             });
 
-            var diff = maxWgt - minWgt;
-            var severityDomain = [minWgt,
+            let diff = maxWgt - minWgt;
+            let severityDomain = [minWgt,
                 minWgt + diff / 5,
                 minWgt + diff * 2 / 5,
                 minWgt + diff * 3 / 5,
                 minWgt + diff * 4 / 5,
                 maxWgt];
-            var severityRange = ["none", "lightyellow", "orange", "red", "darkmagenta", "indigo"];
+            let severityRange = ["none", "lightyellow", "orange", "red", "darkmagenta", "indigo"];
 
-            var colorScale = d3.scaleLinear().domain(severityDomain).range(severityRange);
-            var widthScale = d3.scaleQuantize().domain([0, 0.95]).range([0.0, 0.4, 0.6, 0.8, 1.0]);
+            let colorScale = d3.scaleLinear().domain(severityDomain).range(severityRange);
+            let widthScale = d3.scaleQuantize().domain([0, 0.95]).range([0.0, 0.4, 0.6, 0.8, 1.0]);
 
             drawDrought(drought_data, scale, colorScale, widthScale);
             drawStates(state_data);

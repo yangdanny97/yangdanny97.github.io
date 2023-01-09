@@ -4,7 +4,7 @@ title: Elevation Map in D3
 description: D3 Contour Plot Example
 ---
 <link rel='stylesheet' href="{{ site.url }}/css/site-style.css">
-<script src='https://d3js.org/d3.v6.min.js'></script>
+<script src='https://d3js.org/d3.v7.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/geotiff'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js'></script>
 <div>
@@ -23,7 +23,7 @@ description: D3 Contour Plot Example
             // scale to fit page
             let scaling = Math.min(window.innerWidth * .9 / w, window.innerHeight * .9 / h);
             let width = w * scaling, height = h * scaling;
-            let svg = d3.select('#vis').append('svg').attr('width', width).attr('height', height + 100);
+            let svg = d3.select('#vis').append('svg').attr('width', width).attr('height', height + 150);
 
             // add background map (must have same aspect ratio as elevation data)
             svg.append('image')
@@ -36,15 +36,17 @@ description: D3 Contour Plot Example
 
             let colorScale = d3.scaleSequential(d3.extent(values), d3.interpolateViridis);
             let path = d3.geoPath();
-            let elevations = svg.selectAll('.elevations').data(contourData);
-            elevations.enter().append('path')
-                .attr('class', 'elevations')
-                .attr('fill', d => colorScale(d.value))
-                .attr('stroke', 'black')
-                .attr('stroke-width', 0.1)
-                .style('opacity', 1)
-                .attr('d', d => path(d))
-                .attr('transform', `scale(${scaling})`);
+            svg.selectAll('.elevations')
+                .data(contourData)
+                .join(enter => enter.append('path')
+                    .attr('class', 'elevations')
+                    .attr('fill', d => colorScale(d.value))
+                    .attr('stroke', 'black')
+                    .attr('stroke-width', 0.1)
+                    .style('opacity', 1)
+                    .attr('d', d => path(d))
+                    .attr('transform', `scale(${scaling})`)
+                );
 
             d3.select('#opacity').attr('width', '300px').attr('min', 0).attr('max', 20).attr('value', 20)
                 .on('input', function () {
@@ -58,7 +60,7 @@ description: D3 Contour Plot Example
                 .shapeWidth(50)
                 .title('Elevation (m)');
             svg.append('g')
-                .attr('transform', `translate(10,${height + 50})`)
+                .attr('transform', `translate(10,${height + 25})`)
                 .call(legend);
         }
         renderVis();

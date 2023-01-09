@@ -22,7 +22,7 @@ First to get started we will need some boilerplate code. Create an `index.html` 
 
 ``` html
     <html>
-        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
         <body>
         </body>
         <script>
@@ -35,7 +35,7 @@ Let's generate some fake data. Put the following code inside the `<script>` tag.
 
 ``` javascript
 let data = [];
-let features = ["A","B","C","D","E","F"];
+let features = ["A", "B", "C", "D", "E", "F"];
 //generate the data
 for (var i = 0; i < 3; i++){
     var point = {}
@@ -55,9 +55,11 @@ Feel free to open `index.html` in your browser and inspect the data in the brows
 In D3, the charts are usually displayed as SVG's (Scalable Vector Graphics, an image format). We use `d3.select` to select the `<body>` tag, and add a 600x600 blank SVG inside to draw our chart on. 
 
 ``` javascript
+let width = 600;
+let height = 600;
 let svg = d3.select("body").append("svg")
-    .attr("width", 600)
-    .attr("height", 600);
+    .attr("width", width)
+    .attr("height", height);
 ```
 
 ## Plotting the Gridlines
@@ -66,23 +68,27 @@ D3 provides helper functions for mapping data into coordinates. We will make a s
 
 ``` javascript
 let radialScale = d3.scaleLinear()
-    .domain([0,10])
-    .range([0,250]);
-let ticks = [2,4,6,8,10];
+    .domain([0, 10])
+    .range([0, 250]);
+let ticks = [2, 4, 6, 8, 10];
 ```
 
 Now, let's add some circles to mark the positions of the ticks we previously set. We place grey, unfilled circles centered at the middle of our SVG. The radius of the circle is determined by the scale we previously defined. For example, an input of 2 corresponds to an output of 50 on our scale, which means the circle for the tick at 2 will be 50px wide.
 
 ``` javascript
-ticks.forEach(t =>
-    svg.append("circle")
-    .attr("cx", 300)
-    .attr("cy", 300)
-    .attr("fill", "none")
-    .attr("stroke", "gray")
-    .attr("r", radialScale(t))
-);
+svg.selectAll("circle")
+    .data(ticks)
+    .join(
+        enter => enter.append("circle")
+            .attr("cx", width / 2)
+            .attr("cy", height / 2)
+            .attr("fill", "none")
+            .attr("stroke", "gray")
+            .attr("r", d => radialScale(d))
+    );
 ```
+
+If you want to understand what's happening inside the call to `.join`, check out [this page](https://yangdanny97.github.io/intro-to-d3/data-binding/#joins-selectiondata-and-selectionjoin) for an overview of data binding in D3.
 
 The page should look like this now:
 
@@ -91,12 +97,15 @@ The page should look like this now:
 Next we will add text labels for the ticks; they will be arranged going up from the center of the chart. We offset the x value by 5 so that the label will not overlap with some of the later lines we will draw. 
 
 ``` javascript
-ticks.forEach(t =>
-    svg.append("text")
-    .attr("x", 305)
-    .attr("y", 300 - radialScale(t))
-    .text(t.toString())
-);
+svg.selectAll(".ticklabel")
+    .data(ticks)
+    .join(
+        enter => enter.append("text")
+            .attr("class", "ticklabel")
+            .attr("x", width / 2 + 5)
+            .attr("y", d => height / 2 - radialScale(d))
+            .text(d => d.toString())
+    );
 ```
 Notice that the y value is not the value output by the radial scale. This is because SVG coordinate systems have the top left as (0,0) and the y axis extends downwards from there (see diagram below). That means something that is 500 pixels from the bottom of the SVG has a y value of 100. Something that is 250 pixels up from the center of the SVG (like the text label for 10) will be at y value of 50. 
 
@@ -112,7 +121,7 @@ We will now map each feature onto a line extending outwards from the center of t
 function angleToCoordinate(angle, value){
     let x = Math.cos(angle) * radialScale(value);
     let y = Math.sin(angle) * radialScale(value);
-    return {"x": 300 + x, "y": 300 - y};
+    return {"x": width / 2 + x, "y": height / 2 - y};
 }
 ```
 
@@ -123,26 +132,37 @@ Normally, the axis at 0 degrees will extend horizontally to the right from the c
 For SVG line elements, there are four attributes that specify the starting and ending x and y coordinates of the line. We map the text labels to a radius slightly larger than the largest circle to prevent overlaps.
 
 ``` javascript
-for (var i = 0; i < features.length; i++) {
-    let ft_name = features[i];
+let featureData = features.map((f, i) => {
     let angle = (Math.PI / 2) + (2 * Math.PI * i / features.length);
-    let line_coordinate = angleToCoordinate(angle, 10);
-    let label_coordinate = angleToCoordinate(angle, 10.5);
+    return {
+        "name": f,
+        "angle": angle,
+        "line_coord": angleToCoordinate(angle, 10),
+        "label_coord": angleToCoordinate(angle, 10.5)
+    };
+});
 
-    //draw axis line
-    svg.append("line")
-    .attr("x1", 300)
-    .attr("y1", 300)
-    .attr("x2", line_coordinate.x)
-    .attr("y2", line_coordinate.y)
-    .attr("stroke","black");
+// draw axis line
+svg.selectAll("line")
+    .data(featureData)
+    .join(
+        enter => enter.append("line")
+            .attr("x1", width / 2)
+            .attr("y1", height / 2)
+            .attr("x2", d => d.line_coord.x)
+            .attr("y2", d => d.line_coord.y)
+            .attr("stroke","black")
+    );
 
-    //draw axis label
-    svg.append("text")
-    .attr("x", label_coordinate.x)
-    .attr("y", label_coordinate.y)
-    .text(ft_name);
-}
+// draw axis label
+svg.selectAll(".axislabel")
+    .data(featureData)
+    .join(
+        enter => enter.append("text")
+            .attr("x", d => d.label_coord.x)
+            .attr("y", d => d.label_coord.y)
+            .text(d => name)
+    );
 ```
 
 The page should look like this now:
@@ -177,21 +197,19 @@ function getPathCoordinates(data_point){
 We then append a `<path>`, which is a SVG element that draws a continuous line between the coordinate values specified in its `d` attribute. These path values are encoded as a string with complicated formatting, so we are using the `d3.line` that we defined earlier to generate it for us. We input the coordinates for the path using `.datum`, and set the shape to have the correct color and filling. Opacity is set to 0.5 that way each data point will not completely obscure the data plotted below.
 
 ``` javascript
-for (var i = 0; i < data.length; i ++){
-    let d = data[i];
-    let color = colors[i];
-    let coordinates = getPathCoordinates(d);
-
-    //draw the path element
-    svg.append("path")
-    .datum(coordinates)
-    .attr("d",line)
-    .attr("stroke-width", 3)
-    .attr("stroke", color)
-    .attr("fill", color)
-    .attr("stroke-opacity", 1)
-    .attr("opacity", 0.5);
-}
+// draw the path element
+svg.selectAll("path")
+    .data(data)
+    .join(
+        enter => enter.append("path")
+            .datum(d => getPathCoordinates(d))
+            .attr("d", line)
+            .attr("stroke-width", 3)
+            .attr("stroke", (_, i) => colors[i])
+            .attr("fill", (_, i) => color[i])
+            .attr("stroke-opacity", 1)
+            .attr("opacity", 0.5)
+    );
 ```
 
 Congratulations! You have made your first spider chart in D3. Refer to the beginning of this post for how it should look, or check out a live version of the visualization here: [D3 spider chart](https://yangdanny97.github.io/misc/spider_chart/).

@@ -4,87 +4,115 @@ title: D3 Spider Chart Visualization
 description: D3 Radar Chart Example
 ---
 <link rel='stylesheet' href="{{ site.url }}/css/site-style.css">
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
     let data = [];
     let features = ["A", "B", "C", "D", "E", "F"];
-    //generate the data
+    // generate the data
     for (var i = 0; i < 3; i++) {
         var point = {}
-        //each feature will be a random number from 2-8
+        //each feature will be a random number from 1-9
         features.forEach(f => point[f] = 1 + Math.random() * 8);
         data.push(point);
     }
+    console.log(data);
 
-    let svg = d3.select("body").append("svg").attr("width", 600).attr("height", 600);
-    let radialScale = d3.scaleLinear().domain([0, 10]).range([0, 250]);
+    let width = 600;
+    let height = 600;
+    let svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    let radialScale = d3.scaleLinear()
+        .domain([0, 10])
+        .range([0, 250]);
     let ticks = [2, 4, 6, 8, 10];
-    //draw grid lines (circles)
-    ticks.forEach(t =>
-        svg.append("circle")
-            .attr("cx", 300)
-            .attr("cy", 300)
-            .attr("fill", "none")
-            .attr("stroke", "gray")
-            .attr("r", radialScale(t))
-    );
-    //draw tick labels
-    ticks.forEach(t =>
-        svg.append("text")
-            .attr("x", 305)
-            .attr("y", 300 - radialScale(t))
-            .text(t.toString())
-    );
-    //draw axis for each feature
+    // draw grid lines (circles)
+    svg.selectAll("circle")
+        .data(ticks)
+        .join(
+            enter => enter.append("circle")
+                .attr("cx", width / 2)
+                .attr("cy", height / 2)
+                .attr("fill", "none")
+                .attr("stroke", "gray")
+                .attr("r", d => radialScale(d))
+        );
+    // draw tick labels
+    svg.selectAll(".ticklabel")
+        .data(ticks)
+        .join(
+            enter => enter.append("text")
+                .attr("class", "ticklabel")
+                .attr("x", width / 2 + 5)
+                .attr("y", d => height / 2 - radialScale(d))
+                .text(d => d.toString())
+        );
+    // draw axis for each feature
     function angleToCoordinate(angle, value) {
         let x = Math.cos(angle) * radialScale(value);
         let y = Math.sin(angle) * radialScale(value);
-        return { "x": 300 + x, "y": 300 - y };
+        return { "x": width / 2 + x, "y": height / 2 - y };
     }
-    for (var i = 0; i < features.length; i++) {
-        let ft_name = features[i];
+
+    let featureData = features.map((f, i) => {
         let angle = (Math.PI / 2) + (2 * Math.PI * i / features.length);
-        let line_coordinate = angleToCoordinate(angle, 10);
-        let label_coordinate = angleToCoordinate(angle, 10.5);
-        svg.append("line")
-            .attr("x1", 300)
-            .attr("y1", 300)
-            .attr("x2", line_coordinate.x)
-            .attr("y2", line_coordinate.y)
-            .attr("stroke", "black");
-        svg.append("text")
-            .attr("x", label_coordinate.x)
-            .attr("y", label_coordinate.y)
-            .text(ft_name);
-    }
-    //drawing the line for the spider chart
+        return {
+            "name": f,
+            "angle": angle,
+            "line_coord": angleToCoordinate(angle, 10),
+            "label_coord": angleToCoordinate(angle, 10.5)
+        };
+    });
+
+    // draw axis line
+    svg.selectAll("line")
+        .data(featureData)
+        .join(
+            enter => enter.append("line")
+                .attr("x1", width / 2)
+                .attr("y1", height / 2)
+                .attr("x2", d => d.line_coord.x)
+                .attr("y2", d => d.line_coord.y)
+                .attr("stroke", "black")
+        );
+
+    // draw axis label
+    svg.selectAll(".axislabel")
+        .data(featureData)
+        .join(
+            enter => enter.append("text")
+                .attr("x", d => d.label_coord.x)
+                .attr("y", d => d.label_coord.y)
+                .text(d => name)
+        );
+
+    // drawing the line for the spider chart
     let line = d3.line().x(d => d.x).y(d => d.y);
     let colors = ["darkorange", "gray", "navy"];
 
-    //get coordinates for a data point
-    function getPathCoordinates(d) {
+    // get coordinates for a data point
+    function getPathCoordinates(data_point) {
         let coordinates = [];
         for (var i = 0; i < features.length; i++) {
             let ft_name = features[i];
             let angle = (Math.PI / 2) + (2 * Math.PI * i / features.length);
-            coordinates.push(angleToCoordinate(angle, d[ft_name]));
+            coordinates.push(angleToCoordinate(angle, data_point[ft_name]));
         }
         return coordinates;
     }
 
-    for (var i = 0; i < data.length; i++) {
-        let d = data[i];
-        let color = colors[i];
-        let coordinates = getPathCoordinates(d);
-
-        //draw the path element
-        svg.append("path")
-            .datum(coordinates)
-            .attr("d", line)
-            .attr("stroke-width", 3)
-            .attr("stroke", color)
-            .attr("fill", color)
-            .attr("stroke-opacity", 1)
-            .attr("opacity", 0.5);
-    }
+    // draw the path element
+    svg.selectAll("path")
+        .data(data)
+        .join(
+            enter => enter.append("path")
+                .datum(d => getPathCoordinates(d))
+                .attr("d", line)
+                .attr("stroke-width", 3)
+                .attr("stroke", (_, i) => colors[i])
+                .attr("fill", (_, i) => colors[i])
+                .attr("stroke-opacity", 1)
+                .attr("opacity", 0.5)
+        );
 </script>
