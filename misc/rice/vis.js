@@ -170,7 +170,7 @@ const setupD3RiceVis = elementId => {
 
     var processedData;
     var selected = 1;
-    var width = Math.min(document.documentElement.clientWidth, 600);
+    var width = Math.min(document.documentElement.clientWidth * 0.95, document.documentElement.clientWidth * 0.95, 600);
     var height = 600;
     var country1 = countries[0];
     var country2 = countries[1];
@@ -357,14 +357,14 @@ const setupD3RiceVis = elementId => {
             col: c,
             pct: parseFloat(d[c]) - parseFloat(d.Overall)
         }))).flat();
-        const bound = Math.max(...d3.extent(data.map(d => d.pct)).map(x => Math.abs(x)));
+        const bound = d3.max(d3.extent(data.map(d => d.pct)).map(x => Math.abs(x)));
         const y = d3.scaleLinear()
             .domain([-bound, bound])
             .range([height - 25, 25])
         chart.append("g").call(d3.axisLeft(y))
             .attr("class", "d3-rice-vis-violin-axis")
             .attr("transform", `translate(25,0)`);
-            const histogram = d3.histogram()
+        const histogram = d3.histogram()
             .domain(y.domain())
             .thresholds(y.ticks(20))
             .value(d => d)
@@ -375,7 +375,7 @@ const setupD3RiceVis = elementId => {
         var maxNum = 0;
         for (const [_, allBins] of sumstat) {
             const lengths = allBins.map(d => d.length);
-            const maxLen = Math.max(...lengths);
+            const maxLen = d3.max(lengths);
             maxNum = Math.max(maxNum, maxLen);
         }
         const xNum = d3.scaleLinear()
@@ -450,8 +450,8 @@ const setupD3RiceVis = elementId => {
             key: `${d.qid.toString()}-${i}`
         }))).flat();
         const pcts = markers.map(d => d.pct);
-        const minpct = Math.min(...pcts);
-        const maxpct = Math.max(...pcts);
+        const minpct = d3.min(pcts);
+        const maxpct = d3.max(pcts);
         const bound = Math.max(Math.abs(minpct), maxpct);
         const x = d3.scaleLinear()
             .domain([-bound, bound])
@@ -486,12 +486,12 @@ const setupD3RiceVis = elementId => {
                 enter => enter.append("line")
                 .attr("class", "d3-rice-vis-cleveland-line")
                 .attr("x1", d =>
-                    x(Math.min(...compare.map(
+                    x(d3.min(compare.map(
                         c => parseFloat(d[c]) - parseFloat(d.Overall)
                     )))
                 )
                 .attr("x2", d =>
-                    x(Math.max(...compare.map(
+                    x(d3.max(compare.map(
                         c => parseFloat(d[c]) - parseFloat(d.Overall)
                     )))
                 )
@@ -501,12 +501,12 @@ const setupD3RiceVis = elementId => {
                 .attr("stroke", c_border),
                 update => update.transition().duration(AT)
                 .attr("x1", d =>
-                    x(Math.min(...compare.map(
+                    x(d3.min(compare.map(
                         c => parseFloat(d[c]) - parseFloat(d.Overall)
                     )))
                 )
                 .attr("x2", d =>
-                    x(Math.max(...compare.map(
+                    x(d3.max(compare.map(
                         c => parseFloat(d[c]) - parseFloat(d.Overall)
                     )))
                 )
