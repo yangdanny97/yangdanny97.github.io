@@ -170,7 +170,7 @@ const setupD3RiceVis = elementId => {
 
     var processedData;
     var selected = 1;
-    var width = Math.min(document.documentElement.clientWidth * 0.95, document.documentElement.clientWidth * 0.95, 600);
+    var width;
     var height = 600;
     var country1 = countries[0];
     var country2 = countries[1];
@@ -612,6 +612,9 @@ const setupD3RiceVis = elementId => {
     const fmt = d3.dsvFormat(";");
     processedData = fmt.parse(rawData);
     const container = d3.select(`#${elementId}`);
+
+    width = Math.min(container.node().getBoundingClientRect().width, 600);
+
     container.append("h5").text("Ultimate Rice Purity Test Stats Report");
     const questions = container.append("div")
         .attr("class", "d3-rice-vis-wrp-quests");
