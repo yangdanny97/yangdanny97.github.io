@@ -30,11 +30,11 @@ Depending on the level of detail, GeoJSON can get very large. For example, the G
     
     If you don't need a high level of detail, it is possible to reduce the complexity of the shape data by removing vertices, or reducing the precision of the coordinates.
 
-4. **Converting to TopoJSON** 
+4. **Converting to [TopoJSON](https://github.com/topojson/topojson/wiki)** 
 
-    GeoJSON encodes each shape separately while TopoJSON encodes each shared line once, so converting a GeoJSON to a TopoJSON saves a lot of space when there are many shapes with shared edges. This approach can lead to very drastic savings - the entire SF Land Use dataset can be represented by a 32mb TopoJSON. 
+    GeoJSON encodes each shape separately while TopoJSON encodes each shared line once, so converting a GeoJSON to a TopoJSON saves a lot of space when there are many shapes with shared edges. This approach can lead to very drastic savings - the entire SF Land Use dataset can be represented by a 32mb TopoJSON, which is more than 75% less! Check out the link above for more details about the TopoJSON format.
 
-    Converting is as easy as loading the file into MapShaper and exporting as TopoJSON. The drawback, as I understand it, is that you can't adjust the projection like you can with GeoJSON, so it is best to set your desired projection using a tool like MapShaper before you convert it. 
+    Converting is as easy as loading the file into MapShaper and re-exporting as TopoJSON. The drawback, as I understand it, is that you can't adjust the projection like you can with GeoJSON, so it is best to set your desired projection using a tool like MapShaper before you convert it. 
 
 ### Load Times
 
