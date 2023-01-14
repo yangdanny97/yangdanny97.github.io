@@ -17,7 +17,6 @@ Depending on the level of detail, GeoJSON can get very large. For example, the G
     A feature refers to some object on the map (like a building) that has a shape and some properties. Properties are like columns in a traditional CSV, they can hold data. For example, in the SF Land Use dataset, each parcel is a feature and contains properties like their age and zoning type. 
     
     Oftentimes, the datasets you download will have a lot of properties that you don't plan on displaying, which can be removed to save on size. Applying this method reduced the SF Land Use dataset from 137mb to 98mb.
-
 2. **Compacting the JSON** 
 
     JSON data is stored as text, and thus we can save on file size by cutting down the number of characters we use. For example, removing spaces after each colon or comma, or shortening the names of properties/features. The former can be easily done by loading the JSON into Python, then saving it with separators that don't have trailing spaces. Removing whitespace reduced the size of the SF Land Use dataset from 98 to 93mb.
@@ -25,11 +24,9 @@ Depending on the level of detail, GeoJSON can get very large. For example, the G
     ``` python
     json.dump(data,f, separators=(',',':'))
     ```
-
 3. **Simplifying the shapes** 
     
     If you don't need a high level of detail, it is possible to reduce the complexity of the shape data by removing vertices, or reducing the precision of the coordinates.
-
 4. **Converting to [TopoJSON](https://github.com/topojson/topojson/wiki)** 
 
     GeoJSON encodes each shape separately while TopoJSON encodes each shared line once, so converting a GeoJSON to a TopoJSON saves a lot of space when there are many shapes with shared edges. This approach can lead to very drastic savings - the entire SF Land Use dataset can be represented by a 32mb TopoJSON, which is more than 75% less! Check out the link above for more details about the TopoJSON format.
@@ -89,7 +86,6 @@ There are 2 ways to implement zooming and panning:
 1.  **Translating and scaling the shapes using [d3-zoom](https://github.com/d3/d3-zoom)**
 
     This might be laggy if the map is very complex, but it is possible to work around this by tiling the background. 
-
 2.  **Adjusting scaling/offset for the projection** 
 
     The offset of a projection can be conceptualized like adjusting the view by rotating a globe. This approach has the benefit of the map not having any edges, but it only works for world maps. 
@@ -99,7 +95,6 @@ There are 2 different approaches allow the user to zoom into a map; which one is
 1. **Click to Focus**
 
     When the user clicks on a country, the map zooms in to that country. When the user clicks a different country while zoomed in, the map pans to the new country. When the user clicks the country that is currently being focused, the map zooms out. This approach is best for choropleths and things that have distinct items that users would want to click and focus on.
-
 2. **Free Panning and Zooming**
 
     This approach allows the user to freely pan by dragging and zoom by scrolling. This is preferred if the data is unevenly distributed (dense in some areas but not in others) or if there isn't any geographical unit that the user would logically want to click on. 
@@ -111,9 +106,7 @@ For simpler maps with fewer shapes, zooming is totally doable by using translate
 Here are some features that have a lot of negative impact on zooming smoothness - they should be avoided if possible.
 
 1. filling shapes with images
-
 2. layering shapes
-
 3. semi-transparent fill
 
 ### Tiling

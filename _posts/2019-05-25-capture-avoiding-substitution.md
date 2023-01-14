@@ -13,7 +13,6 @@ For example, suppose we were to evaluate `(λx.λy.x y) y`. If we were to direct
 To perform capture-avoiding substitution on `λv1.e1 {e2\v2}` (where v1 and v2 are arbitrary variables), there are two things we need to check to make sure the variable names do not conflict.
 
 1. We need to make sure that `v1` and `v2` are not the same variable name. If they are, then we need to rename `v1` to something else. This is because performing a simple substitution would also replace variables bound under the abstraction for `v1` with `e2`, which would be incorrect.
-
 2. We need to make sure that `v1` is not in the free variables of of `e2`. If it is, then we need to rename `v1` to something else. This is because performing a simple substitution would cause occurrences of `v1` inside `e2` to become bound (as in the example earlier).
 
 Once we have made sure there are no conflicts, we can continue applying the substitution recursively (`λv1.(e1 {e2\v2})`). 
@@ -25,7 +24,5 @@ To correctly perform substitution for the earlier example, we would rename the `
 To define things more formally, the complete rules for substitution would be as follows:
 
 - `v1 {e\v2}` -> `e` if `v1` == `v2`, otherwise `v1`
-
 - `e1 e2 {e3\v}` -> `(e1 {e3\v}) (e2 {e3\v})`
-
 - `λv1.e1 {e2\v2}` -> `λv1.(e1 {e2\v2})` where `v1` != `v2` and `v1` is not in the free variables of `e2`.

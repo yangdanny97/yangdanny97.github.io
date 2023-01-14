@@ -104,11 +104,7 @@ For freshmen who have absolutely no idea what to take (use case 3), we decided t
 Below are the main takeaways from this project:
 
 1. **Good preprocessing -> easier to make good recommendations**: by preprocessing our data first into a bipartite students/courses graph and then further processing it into post-enrollment and co-enrollment graphs, it became much easier to understand our data and allowed us to make recommendations just by looking at a node's neighbors and their weights
-
 2. **Don't discount heuristics**: our recommendation system is based on heuristics, and our edge-overlap-reducing layout is also a heuristic - both may not be objectively optimal, but they are "good enough" and more importantly very fast, which makes them more suitable for our task
-
 3. **User Feedback is important**: as developers, we know how a system is supposed to work and when we click around it feels perfectly natural, but users who have never seen the system before might not agree. Getting feedback from users in the form of "I didn't expect this to happen" or "I didn't know how to do X" or "I don't know what Y does" is very valuable, because it exposes parts of the interface that are unintuitive to new users. 
-
 4. **Qualitative Feedback is important**: for recommendation systems, it's often difficult to have an objective measure of how good results are. We found that qualitative user feedback was important for getting a sense for where we were doing well and where we could improve.
-
 5. **Bridging the gap between "working" and "usable/useful" is hard**: it's one thing to have all the features in the backend and no bugs (which is what developers usually aim for), and another thing entirely to make an intuitive interface so that people will actually use them. This project made us appreciate how much thought goes into designing interfaces that are easy to understand for users.
