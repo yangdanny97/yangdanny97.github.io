@@ -320,9 +320,17 @@ const setupD3RiceVis = elementId => {
     };
 
     const COMPARE = {
-        "Violin": 0,
-        "Cleveland": 1,
-        "Scatter": 2
+        "Violin": "Violin Plot",
+        "Cleveland": "Cleveland Dot Plot",
+        "Scatter": "Scatter Plot"
+    };
+
+    const CHARTS = {
+        "BARS": "Bar Chart: Countries",
+        "USA": "Map: US States",
+        "AUS": "Map: Australian States",
+        "CA": "Map: Canadian Provinces",
+        "EUR": "Map: European Countries"
     };
 
     var processedData;
@@ -333,15 +341,19 @@ const setupD3RiceVis = elementId => {
     var country2 = COUNTRIES[1];
     var comparison = COMPARE.Cleveland;
     var compareSelected = null;
+    var selectedChart = CHARTS.BARS;
 
     const diff = (d, c) => parseFloat(d[c]) - parseFloat(d.Overall);
 
-    const horizontalBarChart = (columns, title, sort, numbered, id) => {
+    const horizontalBarChart = (columns, title, sort, numbered, id, clear) => {
         d3.select(`#d3-rice-vis-title${id}`)
             .text(`By ${title}`);
         const h = 40 * columns.length + 50;
         const chart = d3.select(`#d3-rice-vis-chart${id}`)
             .attr("height", h);
+        if (clear) {
+            chart.selectAll("*").remove();
+        }
         var data = columns.map(
             c => ({
                 col: c,
@@ -795,60 +807,53 @@ const setupD3RiceVis = elementId => {
     }
 
     const regionScore = region => {
-        var sum = 0;
-        processedData.forEach(d => {
-            sum += parseFloat(d[region]);
-        });
-        return sum / 100;
+        const q = processedData.filter(d => d.qid === selected.toString())[0];
+        return parseFloat(q[region]);
     }
 
-    const ausMap = id => {
+    const setGradient = svg => {
+        svg.selectAll("defs").remove();
+        const gradient = svg.append("defs")
+            .append("linearGradient")
+            .attr("id", "linear-gradient")
+            .attr("x1", "0%")
+            .attr("y1", "0%")
+            .attr("x2", "100%")
+            .attr("y2", "0%");
+        gradient.append("stop")
+            .attr("offset", "0%")
+            .attr("stop-color", "blue");
+        gradient.append("stop")
+            .attr("offset", "100%")
+            .attr("stop-color", "red");
+    }
+
+    const drawMap = (name, file, regions, projectionFn, center, scale, id, clear) => {
         d3.select(`#d3-rice-vis-title${id}`)
-            .text("Australia");
-        const w = 600,
+            .text(name);
+        const w = width,
             h = 600;
         const chart = d3.select(`#d3-rice-vis-chart${id}`)
             .attr("width", w)
             .attr("height", h);
-        const projection = d3.geoMercator()
-            .center([132, -28])
-            .translate([width / 2, h / 2])
-            .scale(840);
+        if (clear) {
+            chart.selectAll("*").remove();
+        }
+        setGradient(chart);
+        var projection = projectionFn.translate([width / 2, h / 2])
+            .scale(scale);
+        if (center != null) {
+            projection = projection.center(center);
+        }
+        chart.selectAll(".d3-rice-vis-map-scale").remove();
         const path = d3.geoPath()
             .projection(projection);
-        d3.json("aus.json").then(json => {
-            const scores = AUS_REGIONS.map(r => regionScore(r)).filter(s => s != 0);
-            const colorScale = d3.scaleLinear().domain(d3.extent(scores)).range(['blue', 'red']);
-            chart.selectAll("path")
-                .data(json.features)
-                .join(
-                    enter => enter.append("path")
-                    .attr("d", path)
-                    .attr("class", d => (d.properties.STATE_NAME).replace(/\s/g, ""))
-                    .attr("stroke", "dimgray")
-                    .attr("opacity", 1)
-                    .attr("fill", d => colorScale(regionScore(d.properties.STATE_NAME)))
-                );
-        });
-    }
-
-    const usMap = id => {
-        d3.select(`#d3-rice-vis-title${id}`)
-            .text("United States");
-        const w = 600,
-            h = 600;
-        const chart = d3.select(`#d3-rice-vis-chart${id}`)
-            .attr("width", w)
-            .attr("height", h);
-        const projection = d3.geoMercator()
-            .center([-120, 47])
-            .translate([width / 2, h / 2])
-            .scale(300);
-        const path = d3.geoPath()
-            .projection(projection);
-        d3.json("us.json").then(json => {
-            const scores = US_REGIONS.map(r => regionScore(r)).filter(s => s != 0);
-            const colorScale = d3.scaleLinear().domain(d3.extent(scores)).range(['blue', 'red']);
+        d3.json(file).then(json => {
+            // const scores = regions.map(r => regionScore(r)).filter(s => s != 0);
+            // const extent = d3.extent(scores);
+            const extent = [0, 100];
+            const colorScale = d3.scaleLinear().domain(extent).range(['blue', 'red']);
+            const x = d3.scaleLinear().domain(extent).range([25, width - 25]);
             chart.selectAll("path")
                 .data(json.features)
                 .join(
@@ -857,88 +862,71 @@ const setupD3RiceVis = elementId => {
                     .attr("class", d => (d.properties.name).replace(/\s/g, ""))
                     .attr("stroke", "dimgray")
                     .attr("opacity", 1)
+                    .attr("fill", d => colorScale(regionScore(d.properties.name))),
+                    update => update.transition().duration(AT)
                     .attr("fill", d => colorScale(regionScore(d.properties.name)))
                 );
+            chart.append("rect")
+                .attr("class", "d3-rice-vis-map-scale")
+                .attr("x", 25)
+                .attr("width", w - 50)
+                .attr("height", 20)
+                .style("fill", "url(#linear-gradient)");
+            chart.append("g")
+                .attr("class", "d3-rice-map-scale")
+                .call(d3.axisBottom(x));
         });
     }
 
-    const caMap = id => {
-        d3.select(`#d3-rice-vis-title${id}`)
-            .text("Canada");
-        const w = 600,
-            h = 600;
-        const chart = d3.select(`#d3-rice-vis-chart${id}`)
-            .attr("width", w)
-            .attr("height", h);
-        const projection = d3.geoMercator()
-            .center([-106, 56])
-            .translate([width / 2, h / 2])
-            .scale(300);
-        const path = d3.geoPath()
-            .projection(projection);
-        d3.json("ca.json").then(json => {
-            const scores = CA_REGIONS.map(r => regionScore(r)).filter(s => s != 0);
-            const colorScale = d3.scaleLinear().domain(d3.extent(scores)).range(['blue', 'red']);
-            chart.selectAll("path")
-                .data(json.features)
-                .join(
-                    enter => enter.append("path")
-                    .attr("d", path)
-                    .attr("class", d => (d.properties.name).replace(/\s/g, ""))
-                    .attr("stroke", "dimgray")
-                    .attr("opacity", 1)
-                    .attr("fill", d => colorScale(regionScore(d.properties.name)))
-                );
-        });
+    const ausMap = (id, clear) => {
+        drawMap("Australia", "aus.json", AUS_REGIONS, d3.geoMercator(), [132, -28], 800, id, clear);
     }
 
-    const europeMap = id => {
-        d3.select(`#d3-rice-vis-title${id}`)
-            .text("Europe");
-        const w = 600,
-            h = 800;
-        const chart = d3.select(`#d3-rice-vis-chart${id}`)
-            .attr("width", w)
-            .attr("height", h);
-        const projection = d3.geoMercator()
-            .center([15, 54])
-            .translate([width / 2, h / 2])
-            .scale(450);
-        const path = d3.geoPath()
-            .projection(projection);
-        d3.json("europe.json").then(json => {
-            const scores = EUROPE.map(r => regionScore(r)).filter(s => s != 0);
-            const colorScale = d3.scaleLinear().domain(d3.extent(scores)).range(['blue', 'red']);
-            chart.selectAll("path")
-                .data(json.features)
-                .join(
-                    enter => enter.append("path")
-                    .attr("d", path)
-                    .attr("class", d => (d.properties.name).replace(/\s/g, ""))
-                    .attr("stroke", "dimgray")
-                    .attr("opacity", 1)
-                    .attr("fill", d => colorScale(regionScore(d.properties.name)))
-                );
-        });
+    const usMap = (id, clear) => {
+        drawMap("United States", "us.json", US_REGIONS, d3.geoAlbersUsa(), null, 800, id, clear);
     }
 
-    const drawChart = clearCompare => {
-        horizontalBarChart(COUNTRIES, "Country", true, true, 1);
+    const caMap = (id, clear) => {
+        drawMap("Canada", "ca.json", CA_REGIONS, d3.geoMercator(), [-96, 62], 300, id, clear);
+    }
+
+    const europeMap = (id, clear) => {
+        drawMap("Europe", "europe.json", EUROPE, d3.geoMercator(), [15, 54], 450, id, clear);
+    }
+
+    const drawChart = clear => {
+        if (selectedChart == CHARTS.USA) {
+            usMap(1, clear);
+        } else if (selectedChart == CHARTS.EUR) {
+            europeMap(1, clear);
+        } else if (selectedChart == CHARTS.CA) {
+            caMap(1, clear);
+        } else if (selectedChart == CHARTS.AUS) {
+            ausMap(1, clear);
+        } else if (selectedChart == CHARTS.BARS) {
+            horizontalBarChart(COUNTRIES, "Country", true, true, 1, clear);
+        }
+
         horizontalBarChart(["Male", "Female"], "Gender", false, false, 2);
         horizontalBarChart(["iPhone", "Android"], "Mobile Brand", false, false, 3);
         if (country1 != country2) {
             if (comparison == COMPARE.Cleveland) {
-                clevelandDotPlot(country1, country2, 4, clearCompare);
+                clevelandDotPlot(country1, country2, 4, clear);
             } else if (comparison == COMPARE.Scatter) {
-                scatterPlot(country1, country2, 4, clearCompare);
+                scatterPlot(country1, country2, 4, clear);
             } else if (comparison == COMPARE.Violin) {
-                violinChart(country1, country2, 4, clearCompare);
+                violinChart(country1, country2, 4, clear);
             }
         }
-        usMap(5);
-        europeMap(6);
-        caMap(7);
-        ausMap(8);
+        if (selectedChart == CHARTS.USA) {
+            usMap(5);
+        } else if (selectedChart == CHARTS.EUR) {
+            europeMap(5);
+        } else if (selectedChart == CHARTS.CA) {
+            caMap(5);
+        } else if (selectedChart == CHARTS.AUS) {
+            ausMap(5);
+        }
     };
 
     const fmt = d3.dsvFormat(";");
@@ -1024,6 +1012,18 @@ const setupD3RiceVis = elementId => {
             selected = selected - 1;
             drawChart(false);
         });
+    container.append("br");
+    for (const [_, value] of Object.entries(CHARTS)) {
+        container.append("button")
+            .text(value)
+            .on("click", _ => {
+                if (selectedChart != value) {
+                    selectedChart = value;
+                    drawChart(true);
+                }
+            });
+    }
+    container.append("br");
     container.append("h4")
         .attr("id", "d3-rice-vis-title1");
     container.append("svg")
@@ -1073,75 +1073,21 @@ const setupD3RiceVis = elementId => {
             .text(d => `${d} ${EMOJIS[d]}`)
             .property("selected", d => d === COUNTRIES[1])
         );
-    container.append("button")
-        .text("Cleveland Dot Plot")
-        .on("click", _ => {
-            if (comparison != COMPARE.Cleveland) {
-                comparison = COMPARE.Cleveland;
-                drawChart(true);
-            }
-        });
-    container.append("button")
-        .text("Scatter Plot")
-        .on("click", _ => {
-            if (comparison != COMPARE.Scatter) {
-                comparison = COMPARE.Scatter;
-                drawChart(true);
-            }
-        });
-    container.append("button")
-        .text("Violin Plot")
-        .on("click", _ => {
-            if (comparison != COMPARE.Violin) {
-                comparison = COMPARE.Violin;
-                drawChart(true);
-            }
-        })
+    for (const [_, value] of Object.entries(COMPARE)) {
+        container.append("button")
+            .text(value)
+            .on("click", _ => {
+                if (comparison != value) {
+                    comparison = value;
+                    drawChart(true);
+                }
+            });
+    }
     container.append("br");
     container.append("h4")
         .attr("id", "d3-rice-vis-title4");
     container.append("svg")
         .attr("id", "d3-rice-vis-chart4")
-        .attr("width", width)
-        .attr("height", height);
-
-    container.append("h4")
-        .attr("id", "d3-rice-vis-title5");
-    container.append("br");
-    container.append("svg")
-        .attr("id", "d3-rice-vis-chart5")
-        .attr("width", width)
-        .attr("height", height);
-
-    container.append("h4")
-        .attr("id", "d3-rice-vis-title6");
-    container.append("br");
-    container.append("svg")
-        .attr("id", "d3-rice-vis-chart6")
-        .attr("width", width)
-        .attr("height", height);
-
-    container.append("h4")
-        .attr("id", "d3-rice-vis-title7");
-    container.append("br");
-    container.append("svg")
-        .attr("id", "d3-rice-vis-chart7")
-        .attr("width", width)
-        .attr("height", height);
-
-    container.append("h4")
-        .attr("id", "d3-rice-vis-title8");
-    container.append("br");
-    container.append("svg")
-        .attr("id", "d3-rice-vis-chart8")
-        .attr("width", width)
-        .attr("height", height);
-
-    container.append("h4")
-        .attr("id", "d3-rice-vis-title9");
-    container.append("br");
-    container.append("svg")
-        .attr("id", "d3-rice-vis-chart9")
         .attr("width", width)
         .attr("height", height);
     drawChart(false);
