@@ -69,6 +69,16 @@ Beyond that, country centroids also have another issue when used for certain typ
 
 The solution is to pre-determine nice-looking lat/long coordinates for country centers (there are also datasets available for this), and then join it with the GeoJSON feature for each country. The data points can just be displayed by applying the projection to the coordinates, without relying on re-calculating the centroid of each shape on the map.
 
+### Color Spilling - Incorrect Winding
+
+![color spilling out of paths](https://yangdanny97.github.io/misc/dashboard/spilling.png){: width="650" }
+
+Sometimes you may encounter an issue where the color for a particular shape on a map "spills" out of the shape and fills the whole map.
+
+This is caused by a winding issue with your GeoJSON file. D3 expects the coordinates on a path to be [ordered in a clockwise direction](https://github.com/d3/d3-geo) - your data source likely has the correct coordinates ordered in reverse.
+
+There are several online tools and libraries that can re-wind your GeoJSON correctly, like [this one by David Bumbeishvili](https://observablehq.com/@bumbeishvili/rewind-geojson).
+
 ### D3 Projections Returning NaN
 
 This is a pretty common gotcha when using projections for single coordinates, such as when calculating positions of tooltips or using the pre-determined centroids that I mentioned in the last section.
