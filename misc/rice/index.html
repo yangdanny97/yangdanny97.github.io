@@ -56,6 +56,11 @@
     .d3-rice-vis-select-fld {
         padding: 10px 90px 10px 50px;
     }
+
+    .tooltip {
+        position: absolute;
+        color: black;
+    }
 </style>
 
 <body>
@@ -64,7 +69,7 @@
 </body>
 <script>
     aload('https://d3js.org/d3.v7.min.js', () => {
-        aload('./vis.js', () => {
+        aload('./vis-bundle.js', () => {
             setupD3RiceVis("d3-rice-vis");
         });
     });
