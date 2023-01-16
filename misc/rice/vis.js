@@ -849,11 +849,11 @@ const setupD3RiceVis = elementId => {
         const path = d3.geoPath()
             .projection(projection);
         d3.json(file).then(json => {
-            // const scores = regions.map(r => regionScore(r)).filter(s => s != 0);
-            // const extent = d3.extent(scores);
-            const extent = [0, 100];
-            const colorScale = d3.scaleLinear().domain(extent).range(['blue', 'red']);
-            const x = d3.scaleLinear().domain(extent).range([25, width - 25]);
+            const scores = regions.map(r => regionScore(r)).filter(s => s != 0);
+            const extent = d3.extent(scores);
+            // const extent = [0, 100];
+            const colorScale = d3.scaleLinear().domain(extent).range(['blue', 'red']).nice();
+            const x = d3.scaleLinear().domain(extent).range([25, width - 25]).nice();
             chart.selectAll("path")
                 .data(json.features)
                 .join(
