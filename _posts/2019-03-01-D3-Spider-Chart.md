@@ -206,7 +206,7 @@ svg.selectAll("path")
             .attr("d", line)
             .attr("stroke-width", 3)
             .attr("stroke", (_, i) => colors[i])
-            .attr("fill", (_, i) => color[i])
+            .attr("fill", (_, i) => colors[i])
             .attr("stroke-opacity", 1)
             .attr("opacity", 0.5)
     );
