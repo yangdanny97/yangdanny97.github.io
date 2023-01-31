@@ -84,7 +84,7 @@ description: D3 Radar Chart Example
             enter => enter.append("text")
                 .attr("x", d => d.label_coord.x)
                 .attr("y", d => d.label_coord.y)
-                .text(d => name)
+                .text(d => d.name)
         );
 
     // drawing the line for the spider chart

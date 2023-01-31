@@ -161,7 +161,7 @@ svg.selectAll(".axislabel")
         enter => enter.append("text")
             .attr("x", d => d.label_coord.x)
             .attr("y", d => d.label_coord.y)
-            .text(d => name)
+            .text(d => d.name)
     );
 ```
 
