@@ -1,175 +1,179 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<meta content="width=device-width, initial-scale=1" name="viewport" />
-<style>
-    body {
-        background-color: #eef0f2;
-        color: #3fae7e;
-        font: 18px sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <style>
+        body {
+            background-color: #eef0f2;
+            color: #3fae7e;
+            font: 18px sans-serif;
+        }
 
-    #d3-rice-vis {
-        background-color: #eef0f2;
-        color: #3fae7e;
-    }
+        #d3-rice-vis {
+            background-color: #eef0f2;
+            color: #3fae7e;
+        }
 
-    .d3-rice-vis-wrp-quests {
-        width: 95%;
-        display: inline-block;
-        position: relative;
-        margin-top: 5px;
-        border: 2px solid #3fae7e;
-        text-align: center;
-        border-radius: 5px;
-        font-size: 12px;
-    }
+        .d3-rice-vis-wrp-quests {
+            width: 95%;
+            display: inline-block;
+            position: relative;
+            margin-top: 5px;
+            border: 2px solid #3fae7e;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 12px;
+        }
 
-    .d3-rice-vis-next-fld,
-    .d3-rice-vis-prev-fld {
-        position: absolute;
-        top: -1.5px;
-        background: white;
-        color: #3fae7e;
-        width: 20px;
-        height: 100%;
-        line-height: 40px;
-        cursor: pointer;
-        border: 2px solid #3fae7e;
-        vertical-align: top;
-    }
+        .d3-rice-vis-next-fld,
+        .d3-rice-vis-prev-fld {
+            position: absolute;
+            top: -1.5px;
+            background: white;
+            color: #3fae7e;
+            width: 20px;
+            height: 100%;
+            line-height: 40px;
+            cursor: pointer;
+            border: 2px solid #3fae7e;
+            vertical-align: top;
+        }
 
-    .d3-rice-vis-next-fld {
-        right: -1px;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        height: 100%;
-    }
+        .d3-rice-vis-next-fld {
+            right: -1px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            height: 100%;
+        }
 
-    .d3-rice-vis-prev-fld {
-        left: 0;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-        height: 100%;
-    }
+        .d3-rice-vis-prev-fld {
+            left: 0;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            height: 100%;
+        }
 
-    .d3-rice-vis-select-fld {
-        width: 100%;
-        background: white;
-        font-size: 16px;
-        color: #3fae7e;
-        border: none;
-        text-overflow: ellipsis;
-        box-sizing: border-box;
-        display: inline-block;
-        border-radius: 5px;
-    }
+        .d3-rice-vis-select-fld {
+            width: 100%;
+            background: white;
+            font-size: 16px;
+            color: #3fae7e;
+            border: none;
+            text-overflow: ellipsis;
+            box-sizing: border-box;
+            display: inline-block;
+            border-radius: 5px;
+            padding: 10px 30px 10px 30px;
+            cursor: pointer;
+        }
 
-    .d3-rice-vis-select-fld {
-        padding: 10px 90px 10px 50px;
-    }
+        .d3-rice-vis-tooltip {
+            position: absolute;
+            color: #3fae7e;
+        }
 
-    .d3-rice-vis-tooltip {
-        position: absolute; 
-        color: #3fae7e;
-    }
+        .d3-rice-vis-card {
+            background-color: white;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+        }
 
-    .d3-rice-vis-card {
-        background-color: white;
-        border-radius: 5px;
-        margin: 10px;
-        padding: 10px;
-    }
+        .d3-rice-vis-card-desktop {
+            background-color: white;
+            border-radius: 5px;
+            padding: 10px;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    .d3-rice-vis-card-desktop {
-        background-color: white;
-        border-radius: 5px;
-        padding: 10px;
-        max-width: 620px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+        .d3-rice-vis-top-gradient {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-image: linear-gradient(#a1e0c5, #eef0f2);
+            color: #31576f;
+        }
 
-    .d3-rice-vis-top-gradient {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding: 10px;
-        background-image: linear-gradient(#a1e0c5, #eef0f2);
-        color: #31576f;
-    }
+        .d3-rice-vis-centered {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
 
-    .d3-rice-vis-centered {
-        text-align: center;
-    }
+        .d3-rice-vis-dark {
+            padding: 10px;
+            background-color: #3fae7e;
+            color: white;
+        }
 
-    .d3-rice-vis-dark {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding: 10px;
-        background-color: #3fae7e;
-        color: white;
-    }
+        #d3-rice-vis h5 {
+            text-align: center;
+        }
 
-    #d3-rice-vis h5 {
-        text-align: center;
-    }
+        #d3-rice-vis h4 {
+            color: #31576f;
+            text-align: center;
+        }
 
-    #d3-rice-vis h4 {
-        color: #31576f;
-        text-align: center;
-    }
+        #d3-rice-vis-q-text {
+            color: white !important;
+            text-align: center;
+        }
 
-    #d3-rice-vis-q-text {
-        color: white !important;
-        text-align: center;
-    }
+        #d3-rice-vis button {
+            border: 2px solid #dfe0e2;
+            background-color: white;
+            color: #3fae7e;
+            margin-left: 3px;
+            margin-right: 3px;
+            border-radius: 5px;
+            fill: #4CBB8B;
+            cursor: pointer;
+            font-size: 16px;
+            height: 30px;
+        }
 
-    #d3-rice-vis button {
-        border: 2px solid #dfe0e2;
-        background-color: white;
-        color: #3fae7e;
-        margin: 3px;
-        border-radius: 5px;
-        padding: 5px;
-        fill: #4CBB8B;
-    }
+        #d3-rice-vis select {
+            border: 2px solid #3fae7e;
+            background-color: white;
+            color: #31576f;
+            margin: 3px;
+            border-radius: 5px;
+            padding: 5px;
+            cursor: pointer;
+        }
 
-    #d3-rice-vis select {
-        border: 2px solid #3fae7e;
-        background-color: white;
-        color: #31576f;
-        margin: 3px;
-        border-radius: 5px;
-        padding: 5px;
-    }
+        #d3-rice-vis button:hover {
+            border: 2px solid #3fae7e;
+        }
 
-    #d3-rice-vis button:hover {
-        border: 2px solid #3fae7e;
-    }
+        #d3-rice-vis .d3-rice-vis-button-selected {
+            border: 2px solid #3fae7e;
+            background-color: #3fae7e;
+            color: white;
+            fill: white !important;
+        }
 
-    #d3-rice-vis .d3-rice-vis-button-selected {
-        border: 2px solid #3fae7e;
-        background-color: #3fae7e;
-        color: white;
-        fill: white !important;
-    }
+        main {
+            width: 90%;
+            max-width: 900px;
+            border: 3px solid red;
+        }
 
-    main {
-      width: 90%;
-      max-width:900px;
-      border:3px solid red;
-    }
-
-    @media only screen and (max-width: 480px) {
-      main {
-        border:3px solid blue;
-        width:90%;
-        min-width:320px;
-      }
-    }
-</style>
+        @media only screen and (max-width: 480px) {
+            main {
+                border: 3px solid blue;
+                width: 90%;
+                min-width: 320px;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <main style="margin:1em auto;">
         <div id="d3-rice-vis">

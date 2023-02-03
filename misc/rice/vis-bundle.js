@@ -6,7 +6,7 @@ const setupD3RiceVis = elementId => {
     const c_marker = '#3fac7d';
     const c_dark_text = '#31576f'; //dark blue
     const AT = 500;
-    const gradient = ["red", "yellow", "green"];
+    const gradient = ["green", "yellow", "red"];
 
     // these get replaced with the actual data using preprocess.py
     const rawData = `qid;q_text;Overall;Albania;Andorra;Argentina;Australia;Austria;Belarus;Belgium;Bosnia & Herzegovina;Brazil;Bulgaria;Canada;Croatia;Czechia;Denmark;Estonia;Faroe Islands;Finland;France;Germany;Gibraltar;Greece;Guernsey;Hungary;Iceland;Indonesia;Ireland;Israel;Italy;Japan;Jersey;Kosovo;Latvia;Lithuania;Luxembourg;Malta;Mexico;Moldova;Monaco;Montenegro;Netherlands;New Zealand;Nigeria;North Macedonia;Norway;Poland;Portugal;Romania;Russia;San Marino;Serbia;Slovakia;Slovenia;South Africa;South Korea;Spain;Sweden;Switzerland;Thailand;Ukraine;United Kingdom;United States;Male;Female;iPhone;Android;Australian Capital Territory;New South Wales;Northern Territory;Queensland;South Australia;Tasmania;Victoria;Western Australia;Adelaide;Albury;Brisbane;Cairns;Canberra;Central Coast;Forbes;Gold Coast;Hobart;Melbourne;Newcastle;Parkes;Perth;Rockhampton;Sydney;England;Northern Ireland;Scotland;Wales;Aberdeen;Athens;Belfast;Belgrade;Birmingham;Bristol;Bucharest;Cardiff;Copenhagen;Cork;Dublin;Edinburgh;Frankfurt;Glasgow;Helsinki;Leeds;Liverpool;London;Luton;Manchester;Milan;Milton Keynes;Newcastle upon Tyne;Nottingham;Oslo Municipality;Plymouth;Sheffield;Stockholm;Stoke-on-Trent;Swansea;Vienna;Warsaw;Wolverhampton;Zagreb;Alberta;British Columbia;Manitoba;New Brunswick;Newfoundland and Labrador;Northwest Territories;Nova Scotia;Nunavut;Ontario;Prince Edward Island;Quebec;Saskatchewan;Yukon;Brampton;Calgary;Edmonton;Halifax Regional Municipality;Hamilton;London;Mississauga;Montreal;Ottawa;Regina;Saskatoon;Surrey;Toronto;Vancouver;Windsor;Winnipeg;Alabama;Alaska;Arizona;Arkansas;California;Colorado;Connecticut;Delaware;District of Columbia;Florida;Georgia;Hawaii;Idaho;Illinois;Indiana;Iowa;Kansas;Kentucky;Louisiana;Maine;Maryland;Massachusetts;Michigan;Minnesota;Mississippi;Missouri;Montana;Nebraska;Nevada;New Hampshire;New Jersey;New Mexico;New York;North Carolina;North Dakota;Ohio;Oklahoma;Oregon;Pennsylvania;Rhode Island;South Carolina;South Dakota;Tennessee;Texas;Utah;Vermont;Virginia;Washington;West Virginia;Wisconsin;Wyoming;Atlanta;Austin;Baltimore;Birmingham;Boston;Charlotte;Chicago;Cleveland;Clinton;Columbus;Dallas;Denver;Detroit;Honolulu;Houston;Indianapolis;Jacksonville;Kansas City;Las Vegas;Los Angeles;Miami;Minneapolis;Nashville;New York;Oklahoma City;Orlando;Philadelphia;Phoenix;Portland;Raleigh;San Diego;San Francisco;San Jose;Seattle;Tempe;Washington
@@ -696,9 +696,9 @@ const setupD3RiceVis = elementId => {
         if (bars.node() == null) {
             bars = chart.append("g").attr("id", "d3-rice-heatmap-colors");
             text = chart.append("g").attr("id", "d3-rice-heatmap-text");
-            legend = chart.append("g").attr("id", "d3-rice-heatmap-legend")
-            chart.append("text").attr("fill", 'white').attr("text-anchor", "start").attr("x", width * 0.1).attr("y", 20).text("Low");
-            chart.append("text").attr("fill", 'white').attr("text-anchor", "end").attr("x", width * 0.9).attr("y", 20).text("High");
+            legend = chart.append("g").attr("id", "d3-rice-heatmap-legend");
+            chart.append("text").attr("fill", 'white').attr("text-anchor", "start").attr("x", width * 0.1).attr("y", 20).text("No");
+            chart.append("text").attr("fill", 'white').attr("text-anchor", "end").attr("x", width * 0.9).attr("y", 20).text("Yes");
         }
         var data = processedData.map(q => {
             var items = columns.map((c, i) => ({
@@ -1097,8 +1097,8 @@ const setupD3RiceVis = elementId => {
             chart.selectAll("*").remove();
             map = chart.append("g").attr("id", "d3-rice-vis-map");
             legend = chart.append("g").attr("id", "d3-rice-map-legend");
-            chart.append("text").attr("fill", 'white').attr("text-anchor", "start").attr("x", width * 0.1).attr("y", 15).text("Low");
-            chart.append("text").attr("fill", 'white').attr("text-anchor", "end").attr("x", width * 0.9).attr("y", 15).text("High");
+            chart.append("text").attr("fill", 'white').attr("text-anchor", "start").attr("x", width * 0.1).attr("y", 15).text("No");
+            chart.append("text").attr("fill", 'white').attr("text-anchor", "end").attr("x", width * 0.9).attr("y", 15).text("Yes");
         }
         const projection = projectionFn.fitSize([w, h - 25], geoJson);
         const path = d3.geoPath()
