@@ -445,13 +445,15 @@ const setupD3RiceVis = elementId => {
         "Scatter": "Scatter Plot"
     };
 
+    const mapIcon = '<span><svg width="16" height="16"><use xlink:href="#d3-rice-vis-map-icon"></use></svg></span>'
+
     const CHARTS = {
         "BARS": "Bar Chart: Countries",
-        "USA": "📍 US",
-        "GB": "📍 UK/Ireland",
-        "EUR": "📍 Europe",
-        "AUS": "📍 Australia",
-        "CA": "📍 Canada"
+        "USA": `${mapIcon} US`,
+        "GB": `${mapIcon} UK/Ireland`,
+        "EUR": `${mapIcon} Europe`,
+        "AUS": `${mapIcon} Australia`,
+        "CA": `${mapIcon} Canada`
     };
 
     const HEATMAPS = {
@@ -1178,6 +1180,7 @@ const setupD3RiceVis = elementId => {
     const container = d3.select(`#${elementId}`);
 
     width = Math.min(container.node().getBoundingClientRect().width - 40, 600);
+    const cardCls = width == 600 ? "d3-rice-vis-card-desktop" : "d3-rice-vis-card";
 
     const topContainer = container.append("div")
         .attr("class", "d3-rice-vis-dark");
@@ -1224,13 +1227,6 @@ const setupD3RiceVis = elementId => {
             drawChart(false);
         });
     questions.append("div")
-        .attr("class", "d3-rice-vis-clear-fld")
-        .text("▼")
-        .on("click", _ => {
-            selector.property("value", "");
-            selector.node().focus();
-        });
-    questions.append("div")
         .attr("class", "d3-rice-vis-next-fld")
         .text("❯")
         .on("click", _ => {
@@ -1267,7 +1263,7 @@ const setupD3RiceVis = elementId => {
         btnContainer.append("button")
             .attr("class", cls)
             .attr("id", id)
-            .text(value)
+            .html(value)
             .on("click", _ => {
                 if (selectedChart != value) {
                     const clear = selectedChart == CHARTS.BARS || value == CHARTS.BARS;
@@ -1280,7 +1276,7 @@ const setupD3RiceVis = elementId => {
                 }
             });
     }
-    const chart1Card = container.append("div").attr("class", "d3-rice-vis-card");
+    const chart1Card = container.append("div").attr("class", cardCls);
     chart1Card.append("h4")
         .attr("id", "d3-rice-vis-title1");
     chart1Card.append("svg")
@@ -1303,7 +1299,7 @@ const setupD3RiceVis = elementId => {
         .attr("height", height);
 
     const chart2Title = container.append("div").attr("class", "d3-rice-vis-top-gradient d3-rice-vis-centered");
-    const chart2Card = container.append("div").attr("class", "d3-rice-vis-card");
+    const chart2Card = container.append("div").attr("class", cardCls);
 
     chart2Title.append("h4")
         .attr("id", "d3-rice-vis-title4");
@@ -1369,7 +1365,7 @@ const setupD3RiceVis = elementId => {
         .style("padding", "5px");
 
     const chart3Title = container.append("div").attr("class", "d3-rice-vis-top-gradient d3-rice-vis-centered");
-    const chart3Card = container.append("div").attr("class", "d3-rice-vis-card");
+    const chart3Card = container.append("div").attr("class", cardCls);
     chart3Title.append("h4")
         .attr("id", "d3-rice-vis-title5");
     for (const [idx, [_, value]] of Object.entries(Object.entries(HEATMAPS))) {
