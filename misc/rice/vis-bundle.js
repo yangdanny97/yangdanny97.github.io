@@ -1078,11 +1078,11 @@ const setupD3RiceVis = selectorPrefix => {
         return parseFloat(q[region]);
     }
 
-    const drawMap = (name, geoJson, regions, projectionFn, center, scale, id, clear) => {
+    const drawMap = (name, geoJson, regions, projectionFn, aspect, id, clear) => {
         d3.select(`#${selectorPrefix}-title${id}`)
             .text(name);
         const w = width,
-            h = 600;
+            h = width * aspect;
         const chart = d3.select(`#${selectorPrefix}-chart${id}`)
             .attr(`width`, w)
             .attr(`height`, h);
@@ -1141,29 +1141,30 @@ const setupD3RiceVis = selectorPrefix => {
                 .style(`fill`, d => colorScale(d)),
                 update => update.transition().duration(AT)
                 .attr(`x`, d => xScale(d))
+                .attr(`width`, d => Math.floor(xScale(d + 1)) - Math.floor(xScale(d)) + 1)
                 .style(`fill`, d => colorScale(d)),
                 exit => exit.remove(),
             );
     }
 
     const ausMap = (id, clear) => {
-        drawMap(`Australia`, ausJson, AUS_REGIONS, d3.geoMercator(), [132, -28], 800, id, clear);
+        drawMap(`Australia`, ausJson, AUS_REGIONS, d3.geoMercator(), 1, id, clear);
     }
 
     const usMap = (id, clear) => {
-        drawMap(`United States`, usJson, US_REGIONS, d3.geoAlbersUsa(), null, 800, id, clear);
+        drawMap(`United States`, usJson, US_REGIONS, d3.geoAlbersUsa(), 0.8, id, clear);
     }
 
     const caMap = (id, clear) => {
-        drawMap(`Canada`, caJson, CA_REGIONS, d3.geoMercator(), [-96, 62], 300, id, clear);
+        drawMap(`Canada`, caJson, CA_REGIONS, d3.geoMercator(), 1, id, clear);
     }
 
     const europeMap = (id, clear) => {
-        drawMap(`Europe`, eurJson, EUROPE, d3.geoMercator(), [15, 54], 450, id, clear);
+        drawMap(`Europe`, eurJson, EUROPE, d3.geoMercator(), 1, id, clear);
     }
 
     const gbMap = (id, clear) => {
-        drawMap(`UK/Ireland`, gbJson, GB_REGIONS, d3.geoMercator(), [-2, 54], 1200, id, clear);
+        drawMap(`UK/Ireland`, gbJson, GB_REGIONS, d3.geoMercator(), 1, id, clear);
     }
 
     const drawChart = clear => {
@@ -1288,7 +1289,7 @@ const setupD3RiceVis = selectorPrefix => {
         });
     const btnContainer = container.append(`div`).attr(`class`, `${selectorPrefix}-centered`);
     for (const [idx, [_, value]] of Object.entries(Object.entries(CHARTS))) {
-        const cls = idx == 0 ? `${selectorPrefix}-button-selected` : ``;
+        const cls = idx == 0 ? `${selectorPrefix}-button-selected` : `${selectorPrefix}-button`;
         const id = `${selectorPrefix}-button-1-${idx}`;
         btnContainer.append(`button`)
             .attr(`class`, cls)
@@ -1301,8 +1302,12 @@ const setupD3RiceVis = selectorPrefix => {
                     drawChart(clear);
                     btnContainer.selectAll(`button`)
                         .classed(`${selectorPrefix}-button-selected`, false);
+                    btnContainer.selectAll(`button`)
+                        .classed(`${selectorPrefix}-button`, true);
                     d3.select(`#${id}`)
                         .classed(`${selectorPrefix}-button-selected`, true);
+                    d3.select(`#${id}`)
+                        .classed(`${selectorPrefix}-button`, false);
                 }
             });
     }
@@ -1363,7 +1368,7 @@ const setupD3RiceVis = selectorPrefix => {
             .property(`selected`, d => d === COUNTRIES[1])
         );
     for (const [idx, [_, value]] of Object.entries(Object.entries(COMPARE))) {
-        const cls = idx == 0 ? `${selectorPrefix}-button-selected` : ``;
+        const cls = idx == 0 ? `${selectorPrefix}-button-selected` : `${selectorPrefix}-button`;
         const id = `${selectorPrefix}-button-2-${idx}`;
         chart2Title.append(`button`)
             .attr(`class`, cls)
@@ -1375,8 +1380,12 @@ const setupD3RiceVis = selectorPrefix => {
                     drawChart(true);
                     chart2Title.selectAll(`button`)
                         .classed(`${selectorPrefix}-button-selected`, false);
+                    chart2Title.selectAll(`button`)
+                        .classed(`${selectorPrefix}-button`, true);
                     d3.select(`#${id}`)
                         .classed(`${selectorPrefix}-button-selected`, true);
+                    d3.select(`#${id}`)
+                        .classed(`${selectorPrefix}-button`, false);
                 }
             });
     }
@@ -1399,7 +1408,7 @@ const setupD3RiceVis = selectorPrefix => {
     chart3Title.append(`h4`)
         .attr(`id`, `${selectorPrefix}-title5`);
     for (const [idx, [_, value]] of Object.entries(Object.entries(HEATMAPS))) {
-        const cls = idx == 0 ? `${selectorPrefix}-button-selected` : ``;
+        const cls = idx == 0 ? `${selectorPrefix}-button-selected` : `${selectorPrefix}-button`;
         const id = `${selectorPrefix}-button-3-${idx}`;
         chart3Title.append(`button`)
             .attr(`class`, `${cls}`)
@@ -1411,8 +1420,12 @@ const setupD3RiceVis = selectorPrefix => {
                     drawChart(false);
                     chart3Title.selectAll(`button`)
                         .classed(`${selectorPrefix}-button-selected`, false);
+                    chart3Title.selectAll(`button`)
+                        .classed(`${selectorPrefix}-button`, true);
                     d3.select(`#${id}`)
                         .classed(`${selectorPrefix}-button-selected`, true);
+                    d3.select(`#${id}`)
+                        .classed(`${selectorPrefix}-button`, false);
                 }
             });
     }
@@ -1424,6 +1437,6 @@ const setupD3RiceVis = selectorPrefix => {
 
     window.addEventListener('resize', _ => {
         width = Math.min(container.node().getBoundingClientRect().width - 40, 600);
-        drawChart(false);
+        drawChart(true);
     });
 };

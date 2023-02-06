@@ -20,7 +20,7 @@
             width: 95%;
             position: relative;
             margin-top: 5px;
-            border: 2px solid #3fae7e;
+            border: 1px solid #3fae7e;
             text-align: center;
             border-radius: 5px;
             font-size: 12px;
@@ -38,7 +38,7 @@
             height: 100%;
             line-height: 40px;
             cursor: pointer;
-            border: 2px solid #3fae7e;
+            border: 1px solid #3fae7e;
             vertical-align: top;
         }
 
@@ -78,7 +78,10 @@
         .d3-rice-vis-card {
             background-color: white;
             border-radius: 5px;
-            margin: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
             padding: 10px;
         }
 
@@ -125,20 +128,32 @@
             text-align: center;
         }
 
-        #d3-rice-vis button {
-            border: 2px solid #dfe0e2;
+        .d3-rice-vis-button {
+            border: 1px solid #dfe0e2;
             background-color: white;
             color: #3fae7e;
+            fill: #4CBB8B;
             margin: 5px;
             border-radius: 5px;
-            fill: #4CBB8B;
+            cursor: pointer;
+            font-size: 16px;
+            height: 30px;
+        }
+
+        .d3-rice-vis-button-selected {
+            border: 1px solid #3fae7e;
+            background-color: #3fae7e;
+            color: white;
+            fill: white !important;
+            margin: 5px;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
             height: 30px;
         }
 
         #d3-rice-vis select {
-            border: 2px solid #3fae7e;
+            border: 1px solid #3fae7e;
             background-color: white;
             color: #31576f;
             margin: 3px;
@@ -147,15 +162,8 @@
             cursor: pointer;
         }
 
-        #d3-rice-vis button:hover {
-            border: 2px solid #3fae7e;
-        }
-
-        #d3-rice-vis .d3-rice-vis-button-selected {
-            border: 2px solid #3fae7e;
-            background-color: #3fae7e;
-            color: white;
-            fill: white !important;
+        .d3-rice-vis-button:hover {
+            border: 1px solid #3fae7e;
         }
 
         main {
