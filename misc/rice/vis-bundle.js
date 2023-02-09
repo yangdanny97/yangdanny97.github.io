@@ -465,6 +465,11 @@ const setupD3RiceVis = selectorPrefix => {
         "EUR": `${mapIcon} Europe`,
         "AUS": `${mapIcon} Australia`,
         "CA": `${mapIcon} Canada`,
+        "USA_C": "US Cities",
+        "GB_C": "UK/Ireland Cities",
+        "EUR_C": "European Cities",
+        "AUS_C": "Australian Cities",
+        "CA_C": "Canadian Cities"
     };
 
     const ALT_TITLE = {
@@ -474,15 +479,12 @@ const setupD3RiceVis = selectorPrefix => {
         "EUR": `${mapIcon} EU`,
         "AUS": `${mapIcon} AU`,
         "CA": `${mapIcon} CA`,
+        "USA_C": "US Cities",
+        "GB_C": "UK/IE Cities",
+        "EUR_C": "EU Cities",
+        "AUS_C": "AU Cities",
+        "CA_C": "CA Cities"
     };
-
-    const HEATMAPS = {
-        "USA": "US Cities",
-        "GB": "UK/Ireland Cities",
-        "EUR": "European Cities",
-        "AUS": "Australian Cities",
-        "CA": "Canadian Cities"
-    }
 
     var processedData;
     var selected = 1;
@@ -493,7 +495,6 @@ const setupD3RiceVis = selectorPrefix => {
     var comparison = COMPARE.Cleveland;
     var compareSelected = null;
     var selectedChart = CHARTS.BARS;
-    var selectedHeatmap = HEATMAPS.USA;
     var tooltip;
 
     const ttMouseover = (e, d) => {
@@ -513,7 +514,7 @@ const setupD3RiceVis = selectorPrefix => {
 
     const diff = (d, c) => parseFloat(d[c]) - parseFloat(d.Overall);
 
-    const horizontalBarChart = (columns, colors, title, sort, numbered, allQuestions, id, clear) => {
+    const horizontalBarChart = (columns, colors, title, sort, numbered, id, clear) => {
         d3.select(`#${selectorPrefix}-title${id}`)
             .text(`By ${title}`);
         const h = 30 * columns.length + 50;
@@ -529,20 +530,8 @@ const setupD3RiceVis = selectorPrefix => {
                 icon: ICONS[c],
             })
         );
-        var q = null;
-        if (allQuestions) {
-            data.forEach(d => d.pct = 0);
-            processedData.forEach(
-                q =>
-                data.forEach(d => {
-                    d.pct = d.pct + parseFloat(q[d.col])
-                })
-            );
-            data.forEach(d => d.pct = (Math.round(d.pct) / 100));
-        } else {
-            q = processedData.filter(d => d.qid === selected.toString())[0];
-            data.forEach(d => d.pct = parseFloat(q[d.col]));
-        }
+        const q = processedData.filter(d => d.qid === selected.toString())[0];
+        data.forEach(d => d.pct = parseFloat(q[d.col]));
         // descending sort
         if (sort) {
             data.sort((a, b) => a.pct - b.pct);
@@ -655,48 +644,46 @@ const setupD3RiceVis = selectorPrefix => {
                 }
             );
         // mark overall percentage with line
-        if (!allQuestions) {
-            const overall = parseFloat(q.Overall);
-            chart.selectAll(`.${selectorPrefix}-line`)
-                .data([{
-                    val: overall
-                }])
-                .join(
-                    enter => {
-                        enter.append(`line`)
-                            .attr(`class`, `${selectorPrefix}-line`)
-                            .attr(`x1`, d => x(d.val))
-                            .attr(`x2`, d => x(d.val))
-                            .attr(`y1`, 25)
-                            .attr(`y2`, h - 25)
-                            .attr(`stroke`, c_dark_text);
-                    },
-                    update => {
-                        update.transition().duration(AT)
-                            .attr(`x1`, d => x(d.val))
-                            .attr(`x2`, d => x(d.val));
-                    }
-                );
-            chart.selectAll(`.${selectorPrefix}-marker`)
-                .data([{
-                    val: overall
-                }])
-                .join(
-                    enter => {
-                        enter.append(`text`)
-                            .attr(`class`, `${selectorPrefix}-marker`)
-                            .attr(`x`, d => x(d.val) - 10)
-                            .attr(`y`, 20)
-                            .attr(`fill`, c_dark_text)
-                            .text(d => `${EMOJIS.Overall} ${d.val}%`);
-                    },
-                    update => {
-                        update.transition().duration(AT)
-                            .attr(`x`, d => x(d.val) - 10)
-                            .text(d => `${EMOJIS.Overall} ${d.val}%`);
-                    }
-                );
-        }
+        const overall = parseFloat(q.Overall);
+        chart.selectAll(`.${selectorPrefix}-line`)
+            .data([{
+                val: overall
+            }])
+            .join(
+                enter => {
+                    enter.append(`line`)
+                        .attr(`class`, `${selectorPrefix}-line`)
+                        .attr(`x1`, d => x(d.val))
+                        .attr(`x2`, d => x(d.val))
+                        .attr(`y1`, 25)
+                        .attr(`y2`, h - 25)
+                        .attr(`stroke`, c_dark_text);
+                },
+                update => {
+                    update.transition().duration(AT)
+                        .attr(`x1`, d => x(d.val))
+                        .attr(`x2`, d => x(d.val));
+                }
+            );
+        chart.selectAll(`.${selectorPrefix}-marker`)
+            .data([{
+                val: overall
+            }])
+            .join(
+                enter => {
+                    enter.append(`text`)
+                        .attr(`class`, `${selectorPrefix}-marker`)
+                        .attr(`x`, d => x(d.val) - 10)
+                        .attr(`y`, 20)
+                        .attr(`fill`, c_dark_text)
+                        .text(d => `${EMOJIS.Overall} ${d.val}%`);
+                },
+                update => {
+                    update.transition().duration(AT)
+                        .attr(`x`, d => x(d.val) - 10)
+                        .text(d => `${EMOJIS.Overall} ${d.val}%`);
+                }
+            );
     };
 
     const violinChart = (c1, c2, id, clear) => {
@@ -1110,11 +1097,21 @@ const setupD3RiceVis = selectorPrefix => {
         } else if (selectedChart == CHARTS.GB) {
             gbMap(1, clear);
         } else if (selectedChart == CHARTS.BARS) {
-            horizontalBarChart(COUNTRIES, null, `Country`, true, true, false, 1, clear);
+            horizontalBarChart(COUNTRIES, null, `Country`, true, true, 1, clear);
+        } else if (selectedChart == CHARTS.USA_C) {
+            horizontalBarChart(US_CITIES, null, `Compare Cities`, true, true, 1, clear);
+        } else if (selectedChart == CHARTS.EUR_C) {
+            horizontalBarChart(EUR_CITIES, null, `Compare Cities`, true, true, 1, clear);
+        } else if (selectedChart == CHARTS.CA_C) {
+            horizontalBarChart(CA_CITIES, null, `Compare Cities`, true, true, 1, clear);
+        } else if (selectedChart == CHARTS.AUS_C) {
+            horizontalBarChart(AUS_CITIES, null, `Compare Cities`, true, true, 1, clear);
+        } else if (selectedChart == CHARTS.GB_C) {
+            horizontalBarChart(GB_CITIES, null, `Compare Cities`, true, true, 1, clear);
         }
 
-        horizontalBarChart([`Male`, `Female`], [`#c9daf0`, `#f4cacc`], `Gender`, false, false, false, 2);
-        horizontalBarChart([`iPhone`, `Android`], [`#c9d1d5`, `#c1e09f`], `Mobile Brand`, false, false, false, 3);
+        horizontalBarChart([`Male`, `Female`], [`#c9daf0`, `#f4cacc`], `Gender`, false, false, 2);
+        horizontalBarChart([`iPhone`, `Android`], [`#c9d1d5`, `#c1e09f`], `Mobile Brand`, false, false, 3);
         if (country1 != country2) {
             if (comparison == COMPARE.Cleveland) {
                 clevelandDotPlot(country1, country2, 4, clear);
@@ -1123,17 +1120,6 @@ const setupD3RiceVis = selectorPrefix => {
             } else if (comparison == COMPARE.Violin) {
                 violinChart(country1, country2, 4, clear);
             }
-        }
-        if (selectedHeatmap == HEATMAPS.USA) {
-            horizontalBarChart(US_CITIES, null, `Compare Cities`, true, true, true, 5, true);
-        } else if (selectedHeatmap == HEATMAPS.EUR) {
-            horizontalBarChart(EUR_CITIES, null, `Compare Cities`, true, true, true, 5, true);
-        } else if (selectedHeatmap == HEATMAPS.CA) {
-            horizontalBarChart(CA_CITIES, null, `Compare Cities`, true, true, true, 5, true);
-        } else if (selectedHeatmap == HEATMAPS.AUS) {
-            horizontalBarChart(AUS_CITIES, null, `Compare Cities`, true, true, true, 5, true);
-        } else if (selectedHeatmap == HEATMAPS.GB) {
-            horizontalBarChart(GB_CITIES, null, `Compare Cities`, true, true, true, 5, true);
         }
     };
 
@@ -1228,9 +1214,8 @@ const setupD3RiceVis = selectorPrefix => {
             .html(width < 600 ? ALT_TITLE[k] : value)
             .on(`click`, _ => {
                 if (selectedChart != value) {
-                    const clear = selectedChart == CHARTS.BARS || value == CHARTS.BARS;
                     selectedChart = value;
-                    drawChart(clear);
+                    drawChart(true);
                     btnContainer.selectAll(`button`)
                         .classed(`${selectorPrefix}-button-selected`, false);
                     btnContainer.selectAll(`button`)
@@ -1333,37 +1318,6 @@ const setupD3RiceVis = selectorPrefix => {
         .style(`border-width`, `2px`)
         .style(`border-radius`, `5px`)
         .style(`padding`, `5px`);
-
-    const chart3Title = container.append(`div`).attr(`class`, `${selectorPrefix}-top-gradient ${selectorPrefix}-centered`);
-    const chart3Card = container.append(`div`).attr(`class`, cardCls);
-    chart3Title.append(`h4`)
-        .attr(`id`, `${selectorPrefix}-title5`);
-    for (const [idx, [_, value]] of Object.entries(Object.entries(HEATMAPS))) {
-        const cls = idx == 0 ? `${selectorPrefix}-button-selected` : `${selectorPrefix}-button`;
-        const id = `${selectorPrefix}-button-3-${idx}`;
-        chart3Title.append(`button`)
-            .attr(`class`, `${cls}`)
-            .attr(`id`, id)
-            .text(value)
-            .on(`click`, _ => {
-                if (selectedHeatmap != value) {
-                    selectedHeatmap = value;
-                    drawChart(false);
-                    chart3Title.selectAll(`button`)
-                        .classed(`${selectorPrefix}-button-selected`, false);
-                    chart3Title.selectAll(`button`)
-                        .classed(`${selectorPrefix}-button`, true);
-                    d3.select(`#${id}`)
-                        .classed(`${selectorPrefix}-button-selected`, true);
-                    d3.select(`#${id}`)
-                        .classed(`${selectorPrefix}-button`, false);
-                }
-            });
-    }
-    chart3Card.append(`svg`)
-        .attr(`id`, `${selectorPrefix}-chart5`)
-        .attr(`width`, width)
-        .attr(`height`, height);
     drawChart(false);
 
     window.addEventListener('resize', _ => {
