@@ -31,10 +31,10 @@
         .d3-rice-vis-next-fld,
         .d3-rice-vis-prev-fld {
             position: absolute;
-            top: -1.5px;
+            top: -0.5px;
             background: white;
             color: #3fae7e;
-            width: 20px;
+            width: 30px;
             height: 100%;
             line-height: 40px;
             cursor: pointer;
@@ -66,8 +66,12 @@
             box-sizing: border-box;
             display: inline-block;
             border-radius: 5px;
-            padding: 10px 30px 10px 30px;
+            padding: 10px 40px 10px 40px;
             cursor: pointer;
+        }
+
+        .d3-rice-vis-select-fld:focus-visible {
+            outline: none;
         }
 
         .d3-rice-vis-tooltip {

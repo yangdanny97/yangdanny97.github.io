@@ -450,7 +450,7 @@ const setupD3RiceVis = selectorPrefix => {
     const femaleIcon = '<g transform="translate(3 3)" fill-rule="nonzero" fill="none"><circle stroke="#D53A39" fill="#FF5F5F" cx="11" cy="11" r="11"/><path d="M12.75 4a5.24 5.24 0 0 0-4.2 8.4l-.7.7-1.95-1.95-1 1 1.98 1.98L4 17l.99.99 2.88-2.88 1.98 1.98.99-.99-1.98-1.99.7-.7A5.25 5.25 0 1 0 12.75 4Zm0 9.1a3.85 3.85 0 1 1 0-7.7 3.85 3.85 0 0 1 0 7.7Z" fill="#FFF"/></g>';
     const iphoneIcon = '<g transform="translate(6 1)" fill="none" fill-rule="evenodd"><rect stroke="#333" fill="#555" x=".5" y=".5" width="15" height="25" rx="3"/><rect fill="#333" x="5" y="2" width="6" height="2" rx="1"/><rect fill="#333" x="4" y="23" width="8" height="1" rx=".5"/><path d="M9.57 8.94c.56-.88.43-1.84.39-1.92-.07-.08-.9.08-1.48 1.04-.52.88-.52 1.84-.45 1.92.06.08.9 0 1.54-1.04Zm1.65 4.44c-.07-1.23 1.07-2 1.3-2.15v-.08s-1-1.22-2.44-1.15c-.91.08-1.37.54-1.98.54-.76 0-1.44-.54-2.28-.54-.68 0-2.66.62-2.81 3.22a7.48 7.48 0 0 0 2.38 5.5c.69.46 1.14.3 1.9-.08a2.7 2.7 0 0 1 2.29.15c.83.31 2.05.08 3.42-2.99-.18.03-1.7-.35-1.78-2.42Z" fill="#FFF" fill-rule="nonzero"/></g>';
     const androidIcon = '<g transform="translate(6 1)" fill="none" fill-rule="evenodd"><rect stroke="#333" fill="#555" x=".5" y=".5" width="15" height="25" rx="3"/><path d="M12.62 9.16c.34.24.43.7.19 1.04l-1.34 1.9A6 6 0 0 1 14 17H2v-.22a6 6 0 0 1 2.58-4.71l-1.3-1.87a.75.75 0 1 1 1.23-.86l1.42 2.03a5.99 5.99 0 0 1 4.21.02l1.44-2.05a.75.75 0 0 1 1.04-.18ZM5.25 14a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm5.5 0a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z" fill="#98E442"/></g>';
-    
+
     const ICONS = {
         "Male": maleIcon,
         "Female": femaleIcon,
@@ -464,7 +464,16 @@ const setupD3RiceVis = selectorPrefix => {
         "GB": `${mapIcon} UK/Ireland`,
         "EUR": `${mapIcon} Europe`,
         "AUS": `${mapIcon} Australia`,
-        "CA": `${mapIcon} Canada`
+        "CA": `${mapIcon} Canada`,
+    };
+
+    const ALT_TITLE = {
+        "BARS": "Countries",
+        "USA": `${mapIcon} US`,
+        "GB": `${mapIcon} UK/IE`,
+        "EUR": `${mapIcon} EU`,
+        "AUS": `${mapIcon} AU`,
+        "CA": `${mapIcon} CA`,
     };
 
     const HEATMAPS = {
@@ -504,10 +513,10 @@ const setupD3RiceVis = selectorPrefix => {
 
     const diff = (d, c) => parseFloat(d[c]) - parseFloat(d.Overall);
 
-    const horizontalBarChart = (columns, colors, title, sort, numbered, id, clear) => {
+    const horizontalBarChart = (columns, colors, title, sort, numbered, allQuestions, id, clear) => {
         d3.select(`#${selectorPrefix}-title${id}`)
             .text(`By ${title}`);
-        const h = 40 * columns.length + 50;
+        const h = 30 * columns.length + 50;
         const chart = d3.select(`#${selectorPrefix}-chart${id}`)
             .attr(`height`, h);
         if (clear) {
@@ -516,12 +525,24 @@ const setupD3RiceVis = selectorPrefix => {
         var data = columns.map(
             c => ({
                 col: c,
-                emoji: EMOJIS[c],
+                emoji: EMOJIS[c] != null ? EMOJIS[c] : '',
                 icon: ICONS[c],
             })
         );
-        const q = processedData.filter(d => d.qid === selected.toString())[0];
-        data.forEach(d => d.pct = parseFloat(q[d.col]));
+        var q = null;
+        if (allQuestions) {
+            data.forEach(d => d.pct = 0);
+            processedData.forEach(
+                q =>
+                data.forEach(d => {
+                    d.pct = d.pct + parseFloat(q[d.col])
+                })
+            );
+            data.forEach(d => d.pct = (Math.round(d.pct) / 100));
+        } else {
+            q = processedData.filter(d => d.qid === selected.toString())[0];
+            data.forEach(d => d.pct = parseFloat(q[d.col]));
+        }
         // descending sort
         if (sort) {
             data.sort((a, b) => a.pct - b.pct);
@@ -529,20 +550,11 @@ const setupD3RiceVis = selectorPrefix => {
         }
         const x = d3.scaleLinear()
             .domain([0, 100])
-            .range([25, width - 25]);
+            .range([5, width - 5]);
         const y = d3.scaleBand()
             .range([25, h - 25])
             .domain(data.map(d => d.col))
             .padding(0.1);
-        const clamp = p => {
-            if (p < 30) {
-                return x(30);
-            } else if (p > 90) {
-                return x(90);
-            } else {
-                return x(p);
-            }
-        }
         const num = i => {
             return numbered ? (i + 1).toString() + '.' : '';
         }
@@ -595,14 +607,14 @@ const setupD3RiceVis = selectorPrefix => {
                     enter.append(`text`)
                         .attr(`class`, `${selectorPrefix}-hbarstext`)
                         .attr(`x`, d => x(0) + offset(d) + 5)
-                        .attr(`y`, d => y(d.col) + y.bandwidth() - 10)
+                        .attr(`y`, d => y(d.col) + y.bandwidth() - 5)
                         .attr(`fill`, c_dark_text)
                         .text((d, i) => `${num(i)} ${d.col} ${d.emoji}`);
                 },
                 update => {
                     update.transition().duration(AT)
                         .attr(`x`, d => x(0) + offset(d) + 5)
-                        .attr(`y`, d => y(d.col) + y.bandwidth() - 10)
+                        .attr(`y`, d => y(d.col) + y.bandwidth() - 5)
                         .text((d, i) => `${num(i)} ${d.col} ${d.emoji}`);
                 }
             );
@@ -613,13 +625,13 @@ const setupD3RiceVis = selectorPrefix => {
                     enter.append(`svg`)
                         .attr(`class`, `${selectorPrefix}-hbarsicon`)
                         .attr(`x`, x(0) + 5)
-                        .attr(`y`, d => y(d.col) + 5)
+                        .attr(`y`, d => y(d.col))
                         .html(d => d.icon);
                 },
                 update => {
                     update.transition().duration(AT)
                         .attr(`x`, x(0) + 5)
-                        .attr(`y`, d => y(d.col) + 5);
+                        .attr(`y`, d => y(d.col));
                 }
             );
         // label percentage
@@ -629,143 +641,62 @@ const setupD3RiceVis = selectorPrefix => {
                 enter => {
                     enter.append(`text`)
                         .attr(`class`, `${selectorPrefix}-hbarstext2`)
-                        .attr(`x`, d => clamp(d.pct) + 5)
+                        .attr(`x`, x(99))
                         .attr(`y`, d => y(d.col) + y.bandwidth() - 10)
                         .attr(`fill`, c_dark_text)
+                        .attr(`text-anchor`, `end`)
                         .text(d => `${d.pct}%`);
                 },
                 update => {
                     update.transition().duration(AT)
-                        .attr(`x`, d => clamp(d.pct) + 5)
+                        .attr(`x`, x(99))
                         .attr(`y`, d => y(d.col) + y.bandwidth() - 10)
                         .text(d => `${d.pct}%`);
                 }
             );
         // mark overall percentage with line
-        const overall = parseFloat(q.Overall);
-        chart.selectAll(`.${selectorPrefix}-line`)
-            .data([{
-                val: overall
-            }])
-            .join(
-                enter => {
-                    enter.append(`line`)
-                        .attr(`class`, `${selectorPrefix}-line`)
-                        .attr(`x1`, d => x(d.val))
-                        .attr(`x2`, d => x(d.val))
-                        .attr(`y1`, 25)
-                        .attr(`y2`, h - 25)
-                        .attr(`stroke`, c_dark_text);
-                },
-                update => {
-                    update.transition().duration(AT)
-                        .attr(`x1`, d => x(d.val))
-                        .attr(`x2`, d => x(d.val));
-                }
-            );
-        chart.selectAll(`.${selectorPrefix}-marker`)
-            .data([{
-                val: overall
-            }])
-            .join(
-                enter => {
-                    enter.append(`text`)
-                        .attr(`class`, `${selectorPrefix}-marker`)
-                        .attr(`x`, d => x(d.val) - 10)
-                        .attr(`y`, 20)
-                        .attr(`fill`, c_dark_text)
-                        .text(d => `${EMOJIS.Overall} ${d.val}%`);
-                },
-                update => {
-                    update.transition().duration(AT)
-                        .attr(`x`, d => x(d.val) - 10)
-                        .text(d => `${EMOJIS.Overall} ${d.val}%`);
-                }
-            );
-    };
-
-    const heatMap = (columns, title, id) => {
-        d3.select(`#${selectorPrefix}-title${id}`)
-            .text(`${title}`);
-        const h = 30 * columns.length + 75;
-        const chart = d3.select(`#${selectorPrefix}-chart${id}`)
-            .attr(`height`, h);
-        var bars = d3.select(`#d3-rice-heatmap-colors`);
-        var text = d3.select(`#d3-rice-heatmap-text`);
-        var legend = d3.select(`#d3-rice-heatmap-legend`);
-        if (bars.node() == null) {
-            bars = chart.append(`g`).attr(`id`, `d3-rice-heatmap-colors`);
-            text = chart.append(`g`).attr(`id`, `d3-rice-heatmap-text`);
-            legend = chart.append(`g`).attr(`id`, `d3-rice-heatmap-legend`);
-            chart.append(`text`).attr(`fill`, 'white').attr(`text-anchor`, `start`).attr(`x`, width * 0.1).attr(`y`, 20).text(`No`);
-            chart.append(`text`).attr(`fill`, 'white').attr(`text-anchor`, `end`).attr(`x`, width * 0.9).attr(`y`, 20).text(`Yes`);
+        if (!allQuestions) {
+            const overall = parseFloat(q.Overall);
+            chart.selectAll(`.${selectorPrefix}-line`)
+                .data([{
+                    val: overall
+                }])
+                .join(
+                    enter => {
+                        enter.append(`line`)
+                            .attr(`class`, `${selectorPrefix}-line`)
+                            .attr(`x1`, d => x(d.val))
+                            .attr(`x2`, d => x(d.val))
+                            .attr(`y1`, 25)
+                            .attr(`y2`, h - 25)
+                            .attr(`stroke`, c_dark_text);
+                    },
+                    update => {
+                        update.transition().duration(AT)
+                            .attr(`x1`, d => x(d.val))
+                            .attr(`x2`, d => x(d.val));
+                    }
+                );
+            chart.selectAll(`.${selectorPrefix}-marker`)
+                .data([{
+                    val: overall
+                }])
+                .join(
+                    enter => {
+                        enter.append(`text`)
+                            .attr(`class`, `${selectorPrefix}-marker`)
+                            .attr(`x`, d => x(d.val) - 10)
+                            .attr(`y`, 20)
+                            .attr(`fill`, c_dark_text)
+                            .text(d => `${EMOJIS.Overall} ${d.val}%`);
+                    },
+                    update => {
+                        update.transition().duration(AT)
+                            .attr(`x`, d => x(d.val) - 10)
+                            .text(d => `${EMOJIS.Overall} ${d.val}%`);
+                    }
+                );
         }
-        var data = processedData.map(q => {
-            var items = columns.map((c, i) => ({
-                name: c,
-                pct: parseFloat(q[c]),
-                qid: parseInt(q.qid),
-                cid: i,
-            }));
-            items.sort((a, b) => d3.descending(a.pct, b.pct));
-            items.forEach((d, i) => d.score = i / columns.length * 100);
-            return items;
-        });
-        data = data.flat();
-        const x = d3.scaleLinear()
-            .domain([1, 100])
-            .range([25, width - 25]);
-        const y = d3.scaleLinear()
-            .range([50, h - 25])
-            .domain([0, columns.length]);
-        const colorScale = d3.scaleSequential()
-            .interpolator(d3.interpolateRgbBasis(gradient))
-            .domain([0, 100]);
-        bars.selectAll(`rect`)
-            .data(data, d => d.col)
-            .join(
-                enter => enter.append(`rect`)
-                .attr(`x`, d => x(d.qid))
-                .attr(`y`, d => y(d.cid))
-                .attr(`width`, (width - 50) / 100)
-                .attr(`height`, (h - 50) / columns.length)
-                .attr(`fill`, d => colorScale(d.score)),
-                update => update
-                .attr(`x`, d => x(d.qid))
-                .attr(`y`, d => y(d.cid))
-                .attr(`fill`, d => colorScale(d.score)),
-                exit => exit.remove(),
-            );
-        text.selectAll(`text`)
-            .data(columns)
-            .join(enter =>
-                enter.append(`text`)
-                .attr(`x`, x(1) + 5)
-                .attr(`y`, (_, i) => y(i + 0.75))
-                .attr(`fill`, c_dark_text)
-                .attr(`stroke`, `white`)
-                .attr(`stroke-width`, 0.6)
-                .style(`font-weight`, `bold`)
-                .text(d => d),
-                update => update.attr(`x`, x(1) + 5)
-                .attr(`y`, (_, i) => y(i + 0.75))
-                .attr(`fill`, c_dark_text)
-                .text(d => d),
-                exit => exit.remove(),
-            );
-        legend.selectAll(`rect`)
-            .data(Array.from(Array(100).keys()))
-            .join(
-                enter => enter.append(`rect`)
-                .attr(`x`, d => Math.floor(x(d + 1)))
-                .attr(`width`, d => Math.floor(x(d + 2)) - Math.floor(x(d + 1)) + 1)
-                .attr(`height`, 25)
-                .style(`fill`, d => colorScale(d + 1)),
-                update => update
-                .attr(`x`, d => Math.floor(x(d + 1)))
-                .style(`fill`, d => colorScale(d)),
-                exit => exit.remove(),
-            );
     };
 
     const violinChart = (c1, c2, id, clear) => {
@@ -782,7 +713,7 @@ const setupD3RiceVis = selectorPrefix => {
         chart.selectAll(`${selectorPrefix}-violin-marker`).remove();
 
         const x = d3.scaleBand()
-            .range([25, width - 25])
+            .range([5, width - 5])
             .domain(compare)
             .padding(0.05)
         chart.append(`g`)
@@ -897,7 +828,7 @@ const setupD3RiceVis = selectorPrefix => {
         const bound = Math.max(Math.abs(minpct), maxpct);
         const x = d3.scaleLinear()
             .domain([-bound, bound])
-            .range([25, width - 25]);
+            .range([5, width - 5]);
 
         chart.selectAll(`.${selectorPrefix}-cleveland-axis`).remove();
         chart.append(`g`).call(d3.axisLeft(y))
@@ -1008,7 +939,7 @@ const setupD3RiceVis = selectorPrefix => {
 
         const x = d3.scaleLinear()
             .domain([0, 100])
-            .range([25, width - 25]);
+            .range([5, width - 5]);
         const y = d3.scaleLinear()
             .range([h - 25, 25])
             .domain([1, 100]);
@@ -1087,7 +1018,7 @@ const setupD3RiceVis = selectorPrefix => {
             .attr(`width`, w)
             .attr(`height`, h);
         const xScale = d3.scaleLinear()
-            .domain([0, 100]).range([25, width - 25]).nice();
+            .domain([0, 100]).range([5, width - 5]).nice();
         const colorScale = d3.scaleSequential()
             .interpolator(d3.interpolateRgbBasis(gradient))
             .domain([0, 100]);
@@ -1179,11 +1110,11 @@ const setupD3RiceVis = selectorPrefix => {
         } else if (selectedChart == CHARTS.GB) {
             gbMap(1, clear);
         } else if (selectedChart == CHARTS.BARS) {
-            horizontalBarChart(COUNTRIES, null, `Country`, true, true, 1, clear);
+            horizontalBarChart(COUNTRIES, null, `Country`, true, true, false, 1, clear);
         }
 
-        horizontalBarChart([`Male`, `Female`], [`#c9daf0`, `#f4cacc`], `Gender`, false, false, 2);
-        horizontalBarChart([`iPhone`, `Android`], [`#c9d1d5`, `#c1e09f`], `Mobile Brand`, false, false, 3);
+        horizontalBarChart([`Male`, `Female`], [`#c9daf0`, `#f4cacc`], `Gender`, false, false, false, 2);
+        horizontalBarChart([`iPhone`, `Android`], [`#c9d1d5`, `#c1e09f`], `Mobile Brand`, false, false, false, 3);
         if (country1 != country2) {
             if (comparison == COMPARE.Cleveland) {
                 clevelandDotPlot(country1, country2, 4, clear);
@@ -1194,15 +1125,15 @@ const setupD3RiceVis = selectorPrefix => {
             }
         }
         if (selectedHeatmap == HEATMAPS.USA) {
-            heatMap(US_CITIES, `Compare Cities`, 5);
+            horizontalBarChart(US_CITIES, null, `Compare Cities`, true, true, true, 5, true);
         } else if (selectedHeatmap == HEATMAPS.EUR) {
-            heatMap(EUR_CITIES, `Compare Cities`, 5);
+            horizontalBarChart(EUR_CITIES, null, `Compare Cities`, true, true, true, 5, true);
         } else if (selectedHeatmap == HEATMAPS.CA) {
-            heatMap(CA_CITIES, `Compare Cities`, 5);
+            horizontalBarChart(CA_CITIES, null, `Compare Cities`, true, true, true, 5, true);
         } else if (selectedHeatmap == HEATMAPS.AUS) {
-            heatMap(AUS_CITIES, `Compare Cities`, 5);
+            horizontalBarChart(AUS_CITIES, null, `Compare Cities`, true, true, true, 5, true);
         } else if (selectedHeatmap == HEATMAPS.GB) {
-            heatMap(GB_CITIES, `Compare Cities`, 5);
+            horizontalBarChart(GB_CITIES, null, `Compare Cities`, true, true, true, 5, true);
         }
     };
 
@@ -1288,13 +1219,13 @@ const setupD3RiceVis = selectorPrefix => {
             drawChart(false);
         });
     const btnContainer = container.append(`div`).attr(`class`, `${selectorPrefix}-centered`);
-    for (const [idx, [_, value]] of Object.entries(Object.entries(CHARTS))) {
+    for (const [idx, [k, value]] of Object.entries(Object.entries(CHARTS))) {
         const cls = idx == 0 ? `${selectorPrefix}-button-selected` : `${selectorPrefix}-button`;
         const id = `${selectorPrefix}-button-1-${idx}`;
         btnContainer.append(`button`)
             .attr(`class`, cls)
             .attr(`id`, id)
-            .html(value)
+            .html(width < 600 ? ALT_TITLE[k] : value)
             .on(`click`, _ => {
                 if (selectedChart != value) {
                     const clear = selectedChart == CHARTS.BARS || value == CHARTS.BARS;
