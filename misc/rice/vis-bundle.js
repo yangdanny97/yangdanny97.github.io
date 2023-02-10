@@ -1128,8 +1128,8 @@ const setupD3RiceVis = selectorPrefix => {
 
     const topContainer = container.append(`div`)
         .attr(`class`, `${selectorPrefix}-dark`);
-
-    topContainer.append(`h5`).text(`Ultimate Rice Purity Test Stats Report`);
+    const btnContainer = topContainer.append(`div`)
+        .attr(`class`, `${selectorPrefix}-centered`);
     const questions = topContainer.append(`div`)
         .attr(`class`, `${selectorPrefix}-wrp-quests`);
     const selector = questions.append(`input`)
@@ -1200,7 +1200,6 @@ const setupD3RiceVis = selectorPrefix => {
             selected = selected - 1;
             drawChart(false);
         });
-    const btnContainer = container.append(`div`).attr(`class`, `${selectorPrefix}-centered`);
     for (const [idx, [k, value]] of Object.entries(Object.entries(CHARTS))) {
         const cls = idx == 0 ? `${selectorPrefix}-button-selected` : `${selectorPrefix}-button`;
         const id = `${selectorPrefix}-button-1-${idx}`;
