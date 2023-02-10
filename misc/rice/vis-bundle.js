@@ -432,17 +432,13 @@ const setupD3RiceVis = selectorPrefix => {
         "South Korea": "🇰🇷",
         "Nigeria": "🇳🇬",
         "Portugal": "🇵🇹",
-        "Male": "",
-        "Female": "",
-        "iPhone": "",
-        "Android": "",
         "Overall": "🌎"
     };
 
     const COMPARE = {
-        "Cleveland": "Cleveland Dot Plot",
-        "Violin": "Violin Plot",
-        "Scatter": "Scatter Plot"
+        "Cleveland": "Cleveland Dot",
+        "Violin": "Violin",
+        "Scatter": "Scatter"
     };
 
     const mapIcon = '<span><svg width="16" height="16"><path d="M13.65 5.85a.51.51 0 0 0-.5-.03l-1.12.51a.51.51 0 1 0 .42.93l.4-.18v5.08l-3.17 1-3.58-1.11a.51.51 0 0 0-.27-.01l-2.64.62v-5.1l1-.66a.51.51 0 1 0-.57-.86l-1.23.8a.51.51 0 0 0-.23.43v6.04a.51.51 0 0 0 .63.5l3.14-.74 3.6 1.12a.51.51 0 0 0 .3 0l3.7-1.16a.51.51 0 0 0 .35-.5V6.29a.51.51 0 0 0-.23-.43Z"/><path d="M7.74 10.6c.1.13.24.2.39.2.15 0 .3-.07.39-.19.03-.03.76-.9 1.51-1.98 1.06-1.54 1.57-2.66 1.57-3.45a3.42 3.42 0 0 0-3.44-3.44 3.42 3.42 0 0 0-3.44 3.44c0 .79.5 1.91 1.53 3.44a27.53 27.53 0 0 0 1.49 1.99Zm.42-7.84a2.42 2.42 0 0 1 2.41 2.42c0 .32-.18 1.11-1.38 2.86-.39.56-.78 1.07-1.06 1.42-.27-.35-.65-.85-1.03-1.41C5.92 6.3 5.74 5.5 5.74 5.18a2.42 2.42 0 0 1 2.42-2.42Z"/><path d="M9.88 5.34a1.72 1.72 0 1 0-3.45 0 1.72 1.72 0 0 0 3.45 0Zm-2.42 0a.7.7 0 1 1 1.4 0 .7.7 0 0 1-1.4 0Z"/></g></svg></span>';
@@ -1127,7 +1123,7 @@ const setupD3RiceVis = selectorPrefix => {
     processedData = fmt.parse(rawData);
     const container = d3.select(`#${selectorPrefix}`);
 
-    width = Math.min(container.node().getBoundingClientRect().width - 40, 600);
+    width = Math.min(container.node().getBoundingClientRect().width - 20, 600);
     const cardCls = width == 600 ? `${selectorPrefix}-card-desktop` : `${selectorPrefix}-card`;
 
     const topContainer = container.append(`div`)
