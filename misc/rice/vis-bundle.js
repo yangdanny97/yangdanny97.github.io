@@ -119,11 +119,11 @@ const setupD3RiceVis = selectorPrefix => {
 
     const COUNTRIES = [
         `United States`,
+        `Germany`,
         `United Kingdom`,
         `Japan`,
         `Canada`,
         `Australia`,
-        `Germany`,
         `Netherlands`,
         `Indonesia`,
         `Ireland`,
