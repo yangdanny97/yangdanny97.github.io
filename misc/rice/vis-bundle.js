@@ -1231,6 +1231,7 @@ const setupD3RiceVis = selectorPrefix => {
     chart1Card.append(`h4`)
         .attr(`id`, `${selectorPrefix}-title1`);
     chart1Card.append(`svg`)
+        .attr("class", `${selectorPrefix}-chart`)
         .attr(`id`, `${selectorPrefix}-chart1`)
         .attr(`width`, width)
         .attr(`height`, height);
@@ -1238,6 +1239,7 @@ const setupD3RiceVis = selectorPrefix => {
     chart1Card.append(`h4`)
         .attr(`id`, `${selectorPrefix}-title2`);
     chart1Card.append(`svg`)
+        .attr("class", `${selectorPrefix}-chart`)
         .attr(`id`, `${selectorPrefix}-chart2`)
         .attr(`width`, width)
         .attr(`height`, height);
@@ -1245,6 +1247,7 @@ const setupD3RiceVis = selectorPrefix => {
     chart1Card.append(`h4`)
         .attr(`id`, `${selectorPrefix}-title3`);
     chart1Card.append(`svg`)
+        .attr("class", `${selectorPrefix}-chart`)
         .attr(`id`, `${selectorPrefix}-chart3`)
         .attr(`width`, width)
         .attr(`height`, height);
@@ -1307,6 +1310,7 @@ const setupD3RiceVis = selectorPrefix => {
     }
     chart2Card.append(`svg`)
         .attr(`id`, `${selectorPrefix}-chart4`)
+        .attr("class", `${selectorPrefix}-chart`)
         .attr(`width`, width)
         .attr(`height`, height);
     tooltip = container
