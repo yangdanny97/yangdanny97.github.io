@@ -1123,7 +1123,7 @@ const setupD3RiceVis = selectorPrefix => {
     processedData = fmt.parse(rawData);
     const container = d3.select(`#${selectorPrefix}`);
 
-    width = Math.min(container.node().getBoundingClientRect().width - 20, 600);
+    width = Math.max(Math.min(container.node().getBoundingClientRect().width - 40, 600), 100);
     const cardCls = width == 600 ? `${selectorPrefix}-card-desktop` : `${selectorPrefix}-card`;
 
     const topContainer = container.append(`div`)
@@ -1320,7 +1320,7 @@ const setupD3RiceVis = selectorPrefix => {
     drawChart(false);
 
     window.addEventListener('resize', _ => {
-        width = Math.min(container.node().getBoundingClientRect().width - 40, 600);
+        width = Math.max(Math.min(container.node().getBoundingClientRect().width - 40, 600), 100);
         drawChart(true);
     });
 };
