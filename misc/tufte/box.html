@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+    .domain {
+        display: none;
+    }
+
+    .tick {
+        stroke-width: 2px;
+    }
+
+    .tick text {
+        font-size: 12px;
+        font-family: serif;
+    }
+</style>
+
+<body>
+    <h1>Tufte in D3: Minimal Boxplot</h1>
+</body>
+<script>
+    const width = 800,
+        height = 600;
+    const svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+    d3.csv("./quakes.csv").then(data => {
+        data.forEach(d => {
+            d.stations = parseInt(d.stations);
+        });
+        const extent = d3.extent(data, d => parseFloat(d.mag));
+        const x = d3.scaleLinear()
+            .domain(extent)
+            .range([75, width - 25]);
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.stations)])
+            .range([height - 75, 25]).nice();
+
+        const mags = [...new Set(data.map(d => d.mag))];
+        const grouped = [];
+        for (const i of mags) {
+            const matches = data.filter(d => d.mag === i).map(d => d.stations).sort(d3.ascending);
+            grouped.push({
+                mag: parseFloat(i),
+                min: d3.min(matches),
+                q1: d3.quantile(matches, .25),
+                median: d3.quantile(matches, .5),
+                q3: d3.quantile(matches, .75),
+                max: d3.max(matches)
+            });
+        }
+        console.log(grouped);
+        const plot = svg.append("g");
+        plot.selectAll("circle")
+            .data(grouped)
+            .join(
+                enter => enter.append("circle")
+                .attr("r", 5)
+                .attr("fill", "black")
+                .attr("cx", d => x(d.mag))
+                .attr("cy", d => y(d.median))
+            );
+        plot.selectAll(".bottom")
+            .data(grouped)
+            .join(
+                enter => enter.append("line")
+                .attr("class", "bottom")
+                .attr("stroke", "black")
+                .attr("stroke-width", 1)
+                .attr("x1", d => x(d.mag))
+                .attr("x2", d => x(d.mag))
+                .attr("y1", d => y(d.q1))
+                .attr("y2", d => y(d.min))
+            );
+        plot.selectAll(".top")
+            .data(grouped)
+            .join(
+                enter => enter.append("line")
+                .attr("class", "top")
+                .attr("stroke", "black")
+                .attr("stroke-width", 1)
+                .attr("x1", d => x(d.mag))
+                .attr("x2", d => x(d.mag))
+                .attr("y1", d => y(d.q3))
+                .attr("y2", d => y(d.max))
+            );
+
+        const xAxis = svg.append("g")
+            .attr("transform", `translate(0,${height-50})`)
+            .call(d3.axisBottom(x).ticks((extent[1]- extent[0]) * 10));
+        const yAxis = svg.append("g")
+            .attr("transform", `translate(50,0)`)
+            .call(d3.axisLeft(y));
+        svg.append("text")
+            .attr("transform", `translate(100,${y(140)})`)
+            .attr("font-size", 20)
+            .text("Number of stations reporting Richter Magnitude of Fiji earthquakes (n=1000)")
+    });
+</script>
+
+</html>

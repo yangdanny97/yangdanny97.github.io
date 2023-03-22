@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+    .domain {
+        display: none;
+    }
+
+    .tick line {
+        display: none;
+    }
+
+    .tick {
+        stroke-width: 2px;
+    }
+
+    .tick text {
+        font-size: 20px;
+        font-family: serif;
+    }
+</style>
+
+<body>
+    <h1>Tufte in D3: Dot-Dash Scatter Plot</h1>
+</body>
+<script>
+    const width = 800,
+        height = 600;
+    const svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+    d3.csv("./mtcars.csv").then(data => {
+        data.forEach(d => {
+            d.disp = parseInt(d.disp);
+        });
+        const x = d3.scaleLinear()
+            .domain(d3.extent(data, d => d.disp))
+            .range([150, width - 25]);
+        const y = d3.scaleLinear()
+            .domain(d3.extent(data, d => d.mpg))
+            .range([height - 100, 25]).nice();
+        svg.selectAll("circle")
+            .data(data)
+            .join(
+                enter => enter.append("circle")
+                .attr("r", 5)
+                .attr("fill", "black")
+                .attr("cx", d => x(d.disp))
+                .attr("cy", d => y(d.mpg))
+            );
+
+        const xHist = svg.append("g");
+        xHist.selectAll("line")
+            .data(data)
+            .join(enter => enter.append("line")
+                .attr("stroke", "black")
+                .attr("stroke-width", 3)
+                .attr("x1", d => x(d.disp))
+                .attr("x2", d => x(d.disp))
+                .attr("y1", height - 80)
+                .attr("y2", height - 60));
+
+        const yHist = svg.append("g")
+        yHist.selectAll("line")
+            .data(data)
+            .join(enter => enter
+                .append("line")
+                .attr("stroke", "black")
+                .attr("stroke-width", 2)
+                .attr("x1", 100)
+                .attr("x2", 125)
+                .attr("y1", d => y(d.mpg))
+                .attr("y2", d => y(d.mpg)));
+
+        const xAxis = svg.append("g")
+            .attr("transform", `translate(0,${height-50})`)
+            .call(d3.axisBottom(x));
+        const yAxis = svg.append("g")
+            .attr("transform", `translate(75,0)`)
+            .call(d3.axisLeft(y));
+        svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("transform", `translate(${width/2},${height - 5})`)
+            .attr("font-size", 20)
+            .text("Displacement (cubic inches)");
+        svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("transform", `translate(25,${height/2})rotate(-90)`)
+            .attr("font-size", 20)
+            .text("Miles per gallon of fuel");
+    });
+</script>
+
+</html>

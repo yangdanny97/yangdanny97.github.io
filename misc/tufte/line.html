@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+    .domain {
+        display: none;
+    }
+
+    .tick {
+        stroke-width: 2px;
+    }
+
+    .tick text {
+        font-size: 20px;
+        font-family: serif;
+    }
+</style>
+
+<body>
+    <h1>Tufte in D3: Minimal Line Plot</h1>
+</body>
+<script>
+    const width = 800,
+        height = 600;
+    const data = [{
+        gdp: 50749.31,
+        year: 2010
+    }, {
+        gdp: 51193.47,
+        year: 2011
+    }, {
+        gdp: 51565.08,
+        year: 2012
+    }, {
+        gdp: 52545.25,
+        year: 2013
+    }, {
+        gdp: 53654.59,
+        year: 2014
+    }, {
+        gdp: 54280.36,
+        year: 2015
+    }, {
+        gdp: 55004.99,
+        year: 2016
+    }, {
+        gdp: 56192.49,
+        year: 2017
+    }, {
+        gdp: 57252.36,
+        year: 2018
+    }, {
+        gdp: 57821.28,
+        year: 2019
+    }];
+    const svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+    const x = d3.scaleLinear()
+        .domain(d3.extent(data, d => d.year))
+        .range([100, width - 25]);
+    const y = d3.scaleLinear()
+        .domain(d3.extent(data, d => d.gdp))
+        .range([height - 50, 25]).nice();
+    svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "black")
+        .attr("stroke-width", 1)
+        .attr("d", d3.line()
+            .x(d => x(d.year))
+            .y(d => y(d.gdp))
+        );
+    svg.selectAll("circle")
+        .data(data)
+        .join(
+            enter => enter.append("circle")
+            .attr("stroke", "white")
+            .attr("stroke-width", 5)
+            .attr("r", 8)
+            .attr("fill", "black")
+            .attr("cx", d => x(d.year))
+            .attr("cy", d => y(d.gdp))
+        );
+    const xAxis = svg.append("g")
+        .attr("transform", `translate(0,${height-25})`)
+        .call(d3.axisBottom(x).tickFormat(d => d));
+    const yAxis = svg.append("g")
+        .attr("transform", `translate(75,0)`)
+        .call(d3.axisLeft(y).tickFormat(d => `$${d}`));
+    svg.append("text")
+        .attr("x", width * 0.5)
+        .attr("y", height * 0.75)
+        .attr("font-size", 20)
+        .text("US GDP per capita in constant dollars");
+</script>
+
+</html>
