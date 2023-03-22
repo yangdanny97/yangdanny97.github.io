@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+    .domain {
+        display: none;
+    }
+
+    .tick {
+        stroke-width: 2px;
+    }
+
+    .tick text {
+        font-size: 20px;
+        font-family: serif;
+    }
+</style>
+
+<body>
+    <h1>Tufte in D3: Minimal Bar Chart</h1>
+</body>
+<script>
+    const width = 800,
+        height = 600;
+    const svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+    d3.csv("./watson.csv").then(data => {
+        data.forEach(d => {
+            d.score = parseFloat(d.score);
+        });
+        const x = d3.scaleBand()
+            .domain(data.map(d => d.feeling))
+            .range([100, width - 25])
+            .padding(0.2);
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.score)])
+            .range([height - 50, 25]).nice();
+        svg.selectAll("rect")
+            .data(data)
+            .join(
+                enter => enter.append("rect")
+                .attr("fill", "silver")
+                .attr("x", d => x(d.feeling))
+                .attr("y", d => y(d.score))
+                .attr("width", x.bandwidth())
+                .attr("height", d => height - 50 - y(d.score))
+            );
+        const xAxis = svg.append("g")
+            .attr("transform", `translate(0,${height-30})`)
+            .call(d3.axisBottom(x));
+        const yAxis = svg.append("g")
+            .attr("transform", `translate(75,0)`)
+            .call(d3.axisLeft(y).ticks(7));
+        for (var i = 0; i < 7; i++) {
+            svg.append("line")
+                .attr("stroke", "white")
+                .attr("stroke-width", 3)
+                .attr("x1", x.range()[0])
+                .attr("x2", x.range()[1])
+                .attr("y1", y(i))
+                .attr("y2", y(i));
+        }
+        svg.append("text")
+            .attr("x", width * 0.15)
+            .attr("y", height * 0.1)
+            .attr("font-size", 20)
+            .text("Average scores on negative emotion traits from 3896 participants");
+        svg.append("text")
+            .attr("x", width * 0.15)
+            .attr("y", height * 0.15)
+            .attr("font-size", 20)
+            .text("(Watson et al., 1988)");
+    });
+</script>
+
+</html>
