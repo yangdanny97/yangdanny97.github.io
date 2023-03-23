@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+    .domain {
+        display: none;
+    }
+
+    .tick {
+        stroke-width: 0px;
+    }
+
+    .tick text {
+        font-size: 15px;
+        font-family: serif;
+    }
+</style>
+
+<body>
+    <h1>Tufte in D3: Sparklines</h1>
+</body>
+<script>
+    const width = 800,
+        height = 600;
+    const svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+    const types = ["Total", "Violent", "Property", "Murder", "Rape", "Robbery", "Aggravated Assault", "Burglary",
+        "Larceny Theft", "Vehicle Theft"
+    ];
+    d3.csv("./us_nr_of_crimes_1960_2014.csv").then(data => {
+        data.forEach(d => {
+            for (const t of types) {
+                d[t] = parseFloat(d[t]);
+            }
+            d.Year = parseInt(d.Year);
+        });
+        const latest = data[data.length - 1];
+        const x = d3.scaleLinear()
+            .domain(d3.extent(data, d => d.Year))
+            .range([50, width - 200]);
+        const y = d3.scaleBand()
+            .domain(types)
+            .range([height - 50, 25]);
+        const grouped = [];
+        for (const t of types) {
+            const minY = data[d3.minIndex(data, d => d[t])].Year;
+            const maxY = data[d3.maxIndex(data, d => d[t])].Year;
+            const min = d3.min(data, d => d[t]);
+            const max = d3.max(data, d => d[t]);
+            const scale = d3.scaleLinear()
+                .domain([min, max])
+                .range([y(t) + y.bandwidth(), y(t)]);
+            grouped.push({
+                minY: minY,
+                maxY: maxY,
+                min: min,
+                max: max,
+                scale: scale,
+                category: t,
+                data: data
+            });
+        }
+        svg.selectAll(".sl")
+            .data(grouped.values())
+            .join(
+                enter => {
+                    enter.append("path")
+                        .attr("class", "sl")
+                        .attr("fill", "none")
+                        .attr("stroke", "black")
+                        .attr("stroke-width", 1)
+                        .attr("d", d => {
+                            const line = d3.line()
+                                .x(i => x(i.Year))
+                                .y(i => d.scale(i[d.category]));
+                            return line(d.data);
+                        });
+                    // minimum
+                    enter.append("circle")
+                        .attr("class", "sl")
+                        .attr("r", 3)
+                        .attr("fill", "red")
+                        .attr("cx", d => x(d.minY))
+                        .attr("cy", d => d.scale(d.min));
+                    enter.append("text")
+                        .attr("class", "sl")
+                        .attr("text-anchor", "middle")
+                        .attr("x", d => x(d.minY))
+                        .attr("y", d => d.scale(d.min) - 10)
+                        .text(d => Math.floor(d.min));
+                    // maximum
+                    enter.append("circle")
+                        .attr("class", "sl")
+                        .attr("r", 3)
+                        .attr("fill", "blue")
+                        .attr("cx", d => x(d.maxY))
+                        .attr("cy", d => d.scale(d.max));
+                    enter.append("text")
+                        .attr("class", "sl")
+                        .attr("text-anchor", "middle")
+                        .attr("x", d => x(d.maxY))
+                        .attr("y", d => d.scale(d.max) + 25)
+                        .text(d => Math.floor(d.max));
+                    // latest
+                    enter.append("text")
+                        .attr("class", "sl")
+                        .attr("x", x(latest.Year) + 5)
+                        .attr("y", d => d.scale(latest[d.category]) + 5)
+                        .text(d => Math.floor(latest[d.category]));
+                    enter.append("text")
+                        .attr("class", "sl")
+                        .attr("x", x(latest.Year) + 50)
+                        .attr("y", d => d.scale(latest[d.category]) + 5)
+                        .text(d => d.category);
+                }
+            );
+        const xAxis = svg.append("g")
+            .attr("transform", `translate(0,${height-25})`)
+            .call(d3.axisBottom(x).ticks([1960, 1970, 1980, 1990, 2000, 2010]));
+    });
+</script>
+
+</html>
