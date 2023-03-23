@@ -11,7 +11,7 @@
     }
 
     .tick {
-        stroke-width: 2px;
+        stroke-width: 0px;
     }
 
     .tick text {
@@ -21,7 +21,7 @@
 </style>
 
 <body>
-    <h1>Tufte in D3: Minimal Boxplot</h1>
+    <h1>Tufte in D3: Marginal Distribution</h1>
 </body>
 <script>
     const width = 800,
@@ -29,64 +29,78 @@
     const svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
     d3.csv("./quakes.csv").then(data => {
         data.forEach(d => {
-            d.stations = parseInt(d.stations);
+            d.depth = parseFloat(d.depth);
             d.mag = parseFloat(d.mag);
         });
         const x = d3.scaleLinear()
-            .domain(d3.extent(data, d => d.mag))
-            .range([75, width - 25]);
+            .domain(d3.extent(data, d => d.depth))
+            .range([100, width - 150]);
         const y = d3.scaleLinear()
-            .domain([0, d3.max(data, d => d.stations)])
-            .range([height - 75, 25]).nice();
-        svg.selectAll("circle")
+            .domain(d3.extent(data, d => d.mag))
+            .range([height - 100, 150]);
+        svg.append("g").selectAll("circle")
             .data(data)
             .join(
                 enter => enter.append("circle")
-                .attr("r", 5)
+                .attr("r", 4)
                 .attr("fill", "black")
-                .attr("cx", d => x(d.mag))
-                .attr("cy", d => y(d.stations))
+                .attr("cx", d => x(d.depth))
+                .attr("cy", d => y(d.mag))
             );
 
+        const xDist = d3.histogram()
+            .value(d => d.depth)
+            .thresholds(25);
+        const xBins = xDist(data);
         const xHist = svg.append("g");
-        xHist.selectAll("line")
-            .data(data)
-            .join(enter => enter.append("line")
+        const xHistScale = d3.scaleLinear()
+            .domain([0, d3.max(xBins, d => d.length)])
+            .range([100, 0]);
+        xHist.selectAll("rect")
+            .data(xBins)
+            .join(enter => enter.append("rect")
                 .attr("stroke", "black")
-                .attr("stroke-width", 3)
-                .attr("x1", d => x(d.mag))
-                .attr("x2", d => x(d.mag))
-                .attr("y1", height - 80)
-                .attr("y2", height - 60));
+                .attr("fill", "none")
+                .attr("x", d => x(d.x0) - 5)
+                .attr("y", d => xHistScale(d.length))
+                .attr("width", d => x(d.x1) - x(d.x0) - 1)
+                .attr("height", d => 100 - xHistScale(d.length)));
 
-        const yHist = svg.append("g")
-        yHist.selectAll("line")
-            .data(data)
-            .join(enter => enter
-                .append("line")
+
+        const yDist = d3.histogram()
+            .value(d => d.mag)
+            .thresholds(25);
+        const yBins = yDist(data);
+        const yHist = svg.append("g");
+        const yHistScale = d3.scaleLinear()
+            .domain([0, d3.max(yBins, d => d.length)])
+            .range([width - 100, width]);
+        yHist.selectAll("rect")
+            .data(yBins)
+            .join(enter => enter.append("rect")
                 .attr("stroke", "black")
-                .attr("stroke-width", 2)
-                .attr("x1", 100)
-                .attr("x2", 125)
-                .attr("y1", d => y(d.stations))
-                .attr("y2", d => y(d.stations)));
+                .attr("fill", "none")
+                .attr("x", d => width - 100)
+                .attr("y", d => y(d.x0) - 5)
+                .attr("width", d => yHistScale(d.length) - width + 101)
+                .attr("height", d => Math.abs(y(d.x1) - y(d.x0))));
 
         const xAxis = svg.append("g")
             .attr("transform", `translate(0,${height-50})`)
-            .call(d3.axisBottom(x));
+            .call(d3.axisBottom(x).tickValues([200, 400, 600]));
         const yAxis = svg.append("g")
             .attr("transform", `translate(75,0)`)
-            .call(d3.axisLeft(y));
+            .call(d3.axisLeft(y).tickValues([4.0, 4.5, 5.0, 5.5, 6.0, 6.5]));
         svg.append("text")
             .attr("text-anchor", "middle")
             .attr("transform", `translate(${width/2},${height - 5})`)
             .attr("font-size", 20)
-            .text("Displacement (cubic inches)");
+            .text("Depth (km)");
         svg.append("text")
             .attr("text-anchor", "middle")
             .attr("transform", `translate(25,${height/2})rotate(-90)`)
             .attr("font-size", 20)
-            .text("Miles per gallon of fuel");
+            .text("Richter Magnitude");
     });
 </script>
 

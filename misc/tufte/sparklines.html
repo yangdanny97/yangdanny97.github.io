@@ -114,8 +114,10 @@
                 }
             );
         const xAxis = svg.append("g")
-            .attr("transform", `translate(0,${height-25})`)
-            .call(d3.axisBottom(x).ticks([1960, 1970, 1980, 1990, 2000, 2010]));
+            .attr("transform", `translate(0,${height-40})`)
+            .call(d3.axisBottom(x)
+                .tickValues([1960, 1970, 1980, 1990, 2000, 2010])
+                .tickFormat(d => d));
     });
 </script>
 
