@@ -64,8 +64,7 @@
                 .attr("x", d => x(d.x0) - 5)
                 .attr("y", d => xHistScale(d.length))
                 .attr("width", d => x(d.x1) - x(d.x0) - 1)
-                .attr("height", d => 100 - xHistScale(d.length)));
-
+                .attr("height", d => 125 - xHistScale(d.length)));
 
         const yDist = d3.histogram()
             .value(d => d.mag)
@@ -80,7 +79,7 @@
             .join(enter => enter.append("rect")
                 .attr("stroke", "black")
                 .attr("fill", "none")
-                .attr("x", d => width - 100)
+                .attr("x", d => width - 125)
                 .attr("y", d => y(d.x0) - 5)
                 .attr("width", d => yHistScale(d.length) - width + 101)
                 .attr("height", d => Math.abs(y(d.x1) - y(d.x0))));
