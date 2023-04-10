@@ -4,9 +4,12 @@ title: "Scratching the PL Itch"
 description: "How to use compilers and programming languages skills in industry without being a compiler engineer"
 date: 2022-09-03
 category: "Compilers"
+tag: "Technical"
 ---
 
 When browsing programming forums online, I often see people ask questions along the lines of "is a background in PL/compilers useful in industry?"
+
+<!-- more -->
 
 I can't blame them for asking the question - 90% of discussion on PL and compilers topics online are either A) highly academic and theoretical, or B) hobbyists making a new language for fun. At a glance, it can be hard to see how knowledge about PL and compilers can be used practically in day-to-day work, outside of academia and side projects.
 

@@ -4,8 +4,11 @@ title: "Scrutinizing Datasets"
 description: "Things to look for when you evaluate datasets - Data Science"
 date: 2019-11-11
 category: "Technical"
+tag: "Technical"
 ---
 One of the biggest challenges for people new to data science is finding the right dataset to use. There are a lot of online sources for data these days: from online collections found on sites like Kaggle to government and nonprofit open data APIs. The documentation on many datasets is lacking or inconsistent, and many beginners don't know what questions to ask when evaluating whether a dataset should be used.
+
+<!-- more -->
 
 Recently, there has been a push to set industry standards for documenting datasets. One such example is [Datasheets for Datasets](https://arxiv.org/pdf/1803.09010.pdf), where the authors propose a documentation standard similar to datasheets for electronic components. 
 

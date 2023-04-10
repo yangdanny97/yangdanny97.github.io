@@ -7,6 +7,8 @@ category: "Cooking"
 ---
 A quick and easy pork chop recipe.
 
+<!-- more -->
+
 ### Pan-Fried Pork Chops:
 - Prep time: 5 minutes
 - Cook time: 10 minutes

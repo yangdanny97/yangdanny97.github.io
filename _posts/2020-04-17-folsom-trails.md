@@ -10,6 +10,8 @@ Due to the coronavirus lockdown ruining all my spring 2020 travel plans, I've be
 
 In this post I will share my thoughts on some of the major biking trails in Folsom; I hope to regularly update this with info on more walking/biking trails in the future. Credit for the trail maps goes to [Friends of Folsom Parkways](https://enjoyfolsomtrails.org/trailsmaps.html).
 
+<!-- more -->
+
 ## Major Trails
 
 ### Lake Natoma Trail

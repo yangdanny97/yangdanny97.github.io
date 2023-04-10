@@ -4,6 +4,7 @@ title: "Chocopy Hacking Part 2: Compiling to JVM"
 description: "Building a JVM compiler backend for a subset of Python 3"
 date: 2021-08-26
 category: "Compilers"
+tag: "Technical"
 ---
 
 Around a year ago, I [built a compiler frontend]((https://github.com/yangdanny97/chocopy-python-compiler)) for [Chocopy](https://chocopy.org/), a subset of Python 3.6 with mandatory type annotations. In my [blog post for that project](https://yangdanny97.github.io/blog/2020/05/29/chocopy-typechecker), I noted several possible backends that I could extend the compiler to support. 
@@ -11,6 +12,8 @@ Around a year ago, I [built a compiler frontend]((https://github.com/yangdanny97
 Part 2 of my Chocopy Compiler Hacking series will be all about how I built a backend to compile this subset of Python to JVM bytecode.
 
 In this post, I will discuss my general approach to the project, and dive into details on how I compiled the more interesting features in Python, like nested functions and nonlocals. I'll also outline some tips for debugging and testing, which may be useful to anyone who wants to implement a JVM backend themselves.
+
+<!-- more -->
 
 ## General Approach
 

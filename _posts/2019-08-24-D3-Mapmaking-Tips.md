@@ -4,9 +4,12 @@ title: "Mapmaking with D3: Tips and Common Pitfalls"
 description: "Tips and tricks for making interactive maps using D3"
 date: 2019-08-24
 category: "Vis"
+tag: "Technical"
 ---
 
 This post is a collection of common problems people will encounter while making maps using D3, and my advice for how to deal with them. I plan to make regular updates/corrections as my understanding improves.
+
+<!-- more -->
 
 ### Large GeoJSON Files
 

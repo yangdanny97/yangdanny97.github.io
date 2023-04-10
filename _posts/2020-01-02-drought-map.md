@@ -4,9 +4,12 @@ title: "Recreating the 5 Years of Drought Visualization"
 description: "Visualizing the severity and frequency of drought using D3"
 date: 2020-01-02
 category: "Vis"
+tag: "Technical"
 ---
 
 As a challenge for myself, I decided to recreate one of my all-time favorite visualizations: [Five Years of Drought](https://adventuresinmapping.com/2016/07/12/five-years-of-drought/) by John Nelson. As the name suggests, it's a map of drought severity and frequency in the US over 5 years, with the drought data binned into a hexagonal grid. When I first saw it, I admired the stunning color scheme and was impressed that the author was able to display 2 variables on the same map (made possible by the hexagonal grid). This map has a lot of personal significance for me because it ultimately piqued my interest in the field of data visualization. 
+
+<!-- more -->
 
 For convenience of comparison, the original map is is displayed below:
 

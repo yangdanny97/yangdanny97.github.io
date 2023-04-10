@@ -4,6 +4,7 @@ title: "Chocopy Hacking Part 4: Compiling to WASM"
 description: "Building a WASM compiler backend for a subset of Python 3"
 date: 2022-10-11
 category: "Compilers"
+tag: "Technical"
 ---
 
 In the fourth part of my Chocopy Compiler Hacking series, I will be discussing how I built the backend to compile [Chocopy](https://chocopy.org/) (a statically typed subset of Python 3) to WebAssembly. 
@@ -11,6 +12,8 @@ In the fourth part of my Chocopy Compiler Hacking series, I will be discussing h
 For those unfamiliar with the topic, Chocopy is a subset of Python 3 with static type annotations. WebAssembly is a binary instruction format designed for high performance web applications. WebAssembly can run in most browsers and other JavaScript environments such as NodeJS.
 
 In this post, I'll discuss the overall approach and highlight some interesting details of the WebAssembly backend concerning memory management and runtime.
+
+<!-- more -->
 
 For reference, the source code for the compiler is available on Github, and past projects in this series are documented on this blog:
 - [Source Code](https://github.com/yangdanny97/chocopy-python-compiler)

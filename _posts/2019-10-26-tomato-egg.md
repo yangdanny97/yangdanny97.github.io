@@ -10,6 +10,8 @@ I decided that it would be a good idea to start writing down recipes for foods t
 
 Growing up in a Chinese household, this dish was commonplace in my family and remains one of my favorite dishes to make. The mild acidity makes it an appetizing meal despite being very lightly seasoned.
 
+<!-- more -->
+
 ### Tomato and Egg
 - Prep time: 5 minutes
 - Cook time: 10 minutes

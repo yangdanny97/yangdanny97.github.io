@@ -4,6 +4,7 @@ title: "Chocopy Hacking Part 1: Building a compiler frontend in Python"
 description: "Building a typechecker using Python"
 date: 2020-05-29
 category: "Compilers"
+tag: "Technical"
 ---
 
 A while back, I thought about trying to hack around with various languages and compilers for fun/practice. Since I'm still pretty busy with research currently and I start work in 2 months, I decided from the outset to keep my projects limited in scope. 
@@ -11,6 +12,8 @@ A while back, I thought about trying to hack around with various languages and c
 After taking a peek at the project ideas page for Cornell's [grad compilers course](https://www.cs.cornell.edu/courses/cs6120/2019fa/), I decided that Chocopy seemed like a suitable language to work on. [Chocopy](https://chocopy.org/) is a subset of Python 3.6 that is used for UC Berkeley's compilers course and has a reference compiler implementation built in Java. 
 
 For the first project, I built a compiler frontend for Chocopy. It was implemented in Python, in order to leverage Python's built-in parser and the `ast` module. Despite using a different language, I wanted to maintain compatibility with Chocopy's reference implementation, which would allow Chocopy's backend to generate assembly using typechecked ASTs from my frontend.
+
+<!-- more -->
 
 Here's a link to the source code for this project: [Chocopy Python Frontend Source Code](https://github.com/yangdanny97/chocopy-python-frontend).
  

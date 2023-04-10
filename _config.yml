@@ -9,3 +9,5 @@ title: Danny Yang's Blog
 description: A blog mostly about compilers, programming languages, and data vis.
 feed:
   posts_limit: 100
+  excerpt-only: true
+  excerpt-separator: <!-- more -->

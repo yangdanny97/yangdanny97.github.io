@@ -4,9 +4,12 @@ title: "A Brief Explanation of Capture-Avoiding Substitution"
 description: "Short notes on capture-avoiding substitution in lambda calculus"
 date: 2019-05-25
 category: "Compilers"
+tag: "Technical"
 ---
 
 During evaluation of lambda calculus, we often need to perform substitutions of variables or expressions. To evaluate the application `(λx.e1) e2` (where `e1` and `e2` are arbitrary expressions) we would need to replace occurrences of `x` inside `e1` with `e2` (notation: `e1 {e2\x}`). Normally substitutions are applied recursively, but since the expressions involved in the substitution might share variable names, the meaning of the resulting expression might change if we are not careful.
+
+<!-- more -->
 
 For example, suppose we were to evaluate `(λx.λy.x y) y`. If we were to directly substitute `y` for `x` in `λy.x y`, we would get `λy.y y`. This changes the meaning of the expression, because the `y` which we wanted to substitute was originally a free variable; it is not the same `y` that is bound as an argument to the lambda. In our resulting incorrect expression, the `y` we substituted became bound, or captured under the lambda - we want to avoid this by doing something called _capture-avoiding substitution_. 
 

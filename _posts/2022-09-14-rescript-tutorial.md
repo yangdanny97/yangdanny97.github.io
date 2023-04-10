@@ -4,11 +4,14 @@ title: "ReScript Tutorial: Learn ReScript in Y Minutes"
 description: "A whirlwind tour of ReScript"
 date: 2022-09-14
 category: "Technical"
+tag: "Technical"
 ---
 
 ReScript is a robustly typed language that compiles to efficient and human-readable JavaScript. It brings features like type inference, pattern matching, and null-safety to the web ecosystem, along with beginner-friendly syntax and easy integration with JavaScript.
 
 This tutorial is a brief introduction to the syntax and features of ReScript, based on the [Learn Reason in Y Minutes](https://learnxinyminutes.com/docs/reason/) tutorial. Credit for the original goes to [Seth Corker](https://sethcorker.com).
+
+<!-- more -->
 
 # Resources
 - [Official ReScript Documentation](https://rescript-lang.org/)

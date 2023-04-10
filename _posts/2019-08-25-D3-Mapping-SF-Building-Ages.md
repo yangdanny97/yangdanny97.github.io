@@ -4,10 +4,13 @@ title: "Mapping San Francisco Building Ages Using D3"
 description: "Interactive map of building ages in San Francisco using D3"
 date: 2019-08-25
 category: "Vis"
+tag: "Technical"
 ---
 
 Inspired by a recent [Reddit post](https://www.reddit.com/r/MapPorn/comments/csf3dw/map_with_the_age_of_the_buildings_of_amsterdam/) about visualizing building ages in Amsterdam, I decided to try my hand at creating this style of map using D3.js.
 The city I chose to map was San Francisco, because at the time of writing no one else had done it yet. 
+
+<!-- more -->
 
 San Francisco's open data sources are not suited for building-level visualizations, and as I soon [discovered](https://www.wired.com/2013/10/how-to-map-building-ages-in-your-home-town/), this was the main reason why no San Francisco building age map had been created yet.
 

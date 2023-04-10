@@ -4,6 +4,7 @@ title: "Advent of Code 2022 in Erlang"
 description: "My thoughts as a newcomer to Erlang"
 date: 2022-12-27
 category: "Technical"
+tag: "Technical"
 ---
 
 This year, I decided to do [Advent of Code](https://adventofcode.com/2022) using [Erlang](https://www.erlang.org/doc/index.html). My main interest in doing AoC is not the puzzles themselves - for me, it's just an excuse to learn/practice/evaluate various programming languages. 
@@ -11,6 +12,8 @@ This year, I decided to do [Advent of Code](https://adventofcode.com/2022) using
 Therefore, I won't bother with describing my solutions to each problem in this post. If you want to know about that, just check out the [source code](https://github.com/yangdanny97/advent-of-code-2022-erlang). 
 
 Although algorithmic puzzles are outside of the typical use case for Erlang (building distributed systems), I found that Erlang was surprisingly suitable for the task. Although Erlang is a functional language and the puzzle solutions I came up with were written in a functional style, there were quite a few features that made writing scripts in Erlang feel a bit like writing Python. 
+
+<!-- more -->
 
 ## Highlights
 

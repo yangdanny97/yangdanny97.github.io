@@ -4,9 +4,12 @@ title: "How Perceptrons Work"
 description: "Beginner-friendly explanation of how perceptrons work"
 date: 2019-02-28
 category: "Technical"
+tag: "Technical"
 ---
 
 Due to the recent surge in popularity of machine learning, many people have become interested in learning about how these algorithms work, either to understand how they can be applied to their businesses, or just out of curiosity. Systems such as Google Translate and self-driving cars are powered by machine learning models called neural networks, which are made of thousands of interconnected simpler models. Here, I will discuss an algorithm that was used as the building block of the earliest neural networks, the perceptron.
+
+<!-- more -->
 
 Originally developed in 1967 at Cornell for the task of image recognition, the perceptron algorithm is one of the earliest machine learning algorithms. Machine learning algorithms are used to build a model that can take in an input (images, numbers, text) and generate a useful output. For example, a model used in a self-driving car might take in a video of the road as input, and output the angle to turn the steering wheel. The perceptron is designed to classify the input into one of two categories (for example, red or blue, hotdog or not) - this problem is called binary classification.
 

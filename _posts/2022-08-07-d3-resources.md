@@ -4,10 +4,13 @@ title: "D3.js Resources: Tutorials, Tools, and References"
 description: "List of resources for learning and using D3.js"
 date: 2022-08-07
 category: "Vis"
+tag: "Technical"
 ---
 Learning D3 from scratch is not easy - breaking API changes mean that examples and tutorials are frequently outdated, and the advent of Observable means that official examples from recent years are not directly runnable.
 
 The following is a curated list of tutorials, references, and tools for learning and using D3. I hope that this is a useful starting point for anyone trying to get started with D3. 
+
+<!-- more -->
 
 # Learning D3
 

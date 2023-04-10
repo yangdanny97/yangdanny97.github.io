@@ -4,10 +4,13 @@ title: "Building a Dashboard using Vega - Tutorial"
 description: "Build a dashboard of COVID cases and deaths using Vega"
 date: 2020-05-07
 category: "Vis"
+tag: "Technical"
 ---
 In this tutorial, we will be using [Vega](https://vega.github.io/) to make an interactive map that displays COVID-19 data for each state in the US. 
 
 Vega is a declarative language for creating visualizations. You simply specify a schema for the visualization in JSON format, and Vega will translate that schema into a D3 visualization. 
+
+<!-- more -->
 
 Because Vega compiles to D3, a lot of D3 concepts will transfer over - the main difference is Vega eliminates a lot of the Javascript boilerplate that is required in D3 visualizations (such as hooking up listeners, preprocessing, etc) which results in more readable code that is easy to debug.
 

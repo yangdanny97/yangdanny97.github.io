@@ -4,11 +4,14 @@ title: "Rewriting a Project in ReScript"
 description: "My experience reimplementing a small project in ReScript"
 date: 2021-07-09
 category: "Technical"
+tag: "Technical"
 ---
 
 This blog post describes my experience incrementally rewriting a small [project](https://github.com/yangdanny97/fire-emblem-chess) in [ReScript](https://rescript-lang.org/). I'll talk about why I decided to migrate languages, how I approached the migration, and my thoughts on the language. I hope this will be useful to anyone considering starting a new project or rewriting an existing project in ReScript. 
 
 Note that this project did not use ReScript-React, and the parts migrated to ReScript did not include any UI-related code.
+
+<!-- more -->
 
 ## Background
 Several months ago, I built a [pass & play browser-based chess game](https://github.com/yangdanny97/fire-emblem-chess) entirely using Javascript. While I was developing the project, I realized several things:
