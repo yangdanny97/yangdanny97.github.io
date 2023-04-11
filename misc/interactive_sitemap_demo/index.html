@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
+<script src="./d3.v7.min.js"></script>
+<style>
+    svg {
+        border: 1px solid black;
+    }
+    #vis {
+        min-height: 1000px;
+    }
+    body {
+        font-family: sans-serif;
+    }
+</style>
+
+<body>
+    <button id="alpha">Alphabetical</button>
+    <button id="areas">Areas of Study</button>
+    <button id="sunburst">Sunburst</button>
+    <button id="circles">Circles</button>
+    <div id="vis"></div>
+</body>
+<script>
+    const container = d3.select("#vis");
+    const bbox = container.node().getBoundingClientRect();
+    const width = Math.min(bbox.width, bbox.height),
+        height = Math.min(bbox.width, bbox.height),
+        margin = 20;
+    const svg = container.append("svg").attr("width", width).attr("height", height);
+    var type = 'sunburst';
+    var cat = 'areas';
+
+    const AREAS_OF_STUDY = {};
+    const ALPHA = {};
+    const SITEMAP_AREAS = {
+        name: "sitemap",
+        children: []
+    };
+    const SITEMAP_ALPHA = {
+        name: "sitemap",
+        children: []
+    };
+
+    function drawCirclePacking(svg, data) {
+        svg.selectAll("*").remove();
+        const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2})`);
+
+        const pack = d3.pack()
+            .size([width - margin, height - margin])
+            .padding(2);
+        const root = d3.hierarchy(data).sum(d => ('Page Title' in d) ? 1 : 0)
+        .sort((a, b) =>  a.data.name.localeCompare(b.data.name));
+        const nodes = pack(root).descendants();
+        var focus = root,
+            view;
+
+        svg.on("click", _ => {
+            zoom(root);
+        });
+
+        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
+        const opacity = d3.scaleLinear().domain([-1, 2]).range([0.1, 0.5]);
+
+        const circle = g.selectAll("circle")
+            .data(nodes)
+            .enter().append("circle")
+            .attr("class", d => d.parent ? d.children ? "node" : "node node--leaf" : "node node--root")
+            .attr("fill", d => {
+                while (d.depth > 1) d = d.parent;
+                return color(d.data.name);
+            })
+            .style("fill-opacity", d => opacity(d.depth))
+            .attr("stroke", "silver")
+            .attr("stroke-width", 1)
+            .on("click", (e, d) => {
+                if (focus.data.name !== d.data.name) {
+                    zoom(d);
+                }
+                e.stopPropagation();
+            });
+        const text = g.selectAll("text")
+            .data(nodes)
+            .enter().append("text")
+            .attr("class", "label")
+            .attr("text-anchor", "middle")
+            .style("fill-opacity", d => d.parent === root ? 1 : 0)
+            .style("display", d => d.parent === root ? "inline" : "none")
+            .text(d => d.data.name);
+        const node = g.selectAll("circle,text");
+
+        function zoomTo(v) {
+            view = v;
+            const k = width / v[2];
+            node.attr("transform", d => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`);
+            circle.attr("r", d => d.r * k);
+        }
+
+        function zoom(d) {
+            focus = d;
+            const transition = d3.transition()
+                .duration(1000)
+                .tween("zoom", d => {
+                    const i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
+                    return t => {
+                        zoomTo(i(t));
+                    };
+                });
+
+            transition.selectAll("text")
+                .style("fill-opacity", d => (d.parent === focus || (d === focus && d.data.children.length == 0)) ? 1 :
+                    0)
+                .style("display", d => (d.parent === focus || (d === focus && d.data.children.length == 0)) ? "inline" :
+                    "none");
+        }
+        zoomTo([root.x, root.y, root.r * 2 + margin]);
+    }
+
+    function drawSunburst(svg, data) {
+        svg.selectAll("*").remove();
+        const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2})`);
+        const radius = (Math.min(width, height) / 4) - 10;
+
+        const root = d3.hierarchy(data).sum(d => ('Page Title' in d) ? 1 : 0)
+            .sort((a, b) =>  a.data.name.localeCompare(b.data.name));
+            
+        root.each(d => d.current = d);
+        const partition = d3.partition()
+            .size([2 * Math.PI, root.height + 1]);
+        const nodes = partition(root).descendants().slice(1);
+
+        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
+        const arc = d3.arc()
+            .startAngle(d => d.x0)
+            .endAngle(d => d.x1)
+            .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
+            .padRadius(radius * 1.5)
+            .innerRadius(d => d.y0 * radius)
+            .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1));
+
+        const path = g.selectAll("path")
+            .data(nodes)
+            .join(enter => enter.append("path")
+                .attr("fill", d => {
+                    while (d.depth > 1) d = d.parent;
+                    return color(d.data.name);
+                })
+                .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
+                .attr("pointer-events", d => arcVisible(d.current) ? "auto" : "none")
+                .attr("d", d => arc(d.current)));
+
+        path.filter(d => d.children)
+            .style("cursor", "pointer")
+            .on("click", clicked);
+
+        path.append("title")
+            .text(d => d.data.name);
+
+        const label = g
+            .selectAll("text")
+            .data(nodes)
+            .join(enter => enter.append("text")
+                .attr("dy", "0.35em")
+                .attr("fill-opacity", d => +labelVisible(d.current))
+                .attr("transform", d => labelTransform(d.current))
+                .text(d => d.data.name)
+                .attr("pointer-events", "none")
+                .attr("text-anchor", "middle")
+                .style("user-select", "none"));
+
+        const parent = g.append("circle")
+            .datum(root)
+            .attr("r", radius)
+            .attr("fill", "none")
+            .attr("pointer-events", "all")
+            .on("click", clicked);
+
+        function clicked(event, p) {
+            parent.datum(p.parent || root);
+
+            root.each(d => d.target = {
+                x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
+                x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
+                y0: Math.max(0, d.y0 - p.depth),
+                y1: Math.max(0, d.y1 - p.depth)
+            });
+
+            const t = g.transition().duration(750);
+
+            path.transition(t)
+                .tween("data", d => {
+                    const i = d3.interpolate(d.current, d.target);
+                    return t => d.current = i(t);
+                })
+                .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0)
+                .attr("pointer-events", d => arcVisible(d.target) ? "auto" : "none")
+
+                .attrTween("d", d => () => arc(d.current));
+
+            label.transition(t)
+                .attr("fill-opacity", d => +labelVisible(d.target))
+                .attrTween("transform", d => () => labelTransform(d.current));
+        }
+
+        function arcVisible(d) {
+            return d.y1 <= 2 && d.y0 >= 1 && d.x1 >= d.x0;
+        }
+
+        function labelVisible(d) {
+            return d.y1 <= 2 && d.y0 >= 1 && (d.y1 - d.y0) * (d.x1 - d.x0) > 0.01;
+        }
+
+        function labelTransform(d) {
+            const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
+            const y = (d.y0 + d.y1) / 2 * radius;
+            return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
+        }
+
+    }
+
+    function draw() {
+        const data = cat == 'areas' ? SITEMAP_AREAS : SITEMAP_ALPHA;
+        if (type == 'circles') {
+            drawCirclePacking(svg, data);
+        } else {
+            drawSunburst(svg, data);
+        }
+    }
+
+    d3.csv("./ScholarlyStanzas.csv").then(data => {
+        data = data.filter(d => d["Page Title"] !== '');
+        data.forEach(d => {
+            d.name = d["Page Title"];
+            d.children = [];
+
+            const aos = d['Areas of Study'];
+            if (!(aos in AREAS_OF_STUDY)) {
+                AREAS_OF_STUDY[aos] = [];
+            }
+            AREAS_OF_STUDY[aos].push(d);
+
+            const first = d["Page Title"].charAt(0).toUpperCase();
+            if (!(first in ALPHA)) {
+                ALPHA[first] = [];
+            }
+            ALPHA[first].push(d);
+        });
+
+        for (const [key, value] of Object.entries(AREAS_OF_STUDY)) {
+            const areaNode = {
+                name: key,
+                children: value
+            };
+            SITEMAP_AREAS.children.push(areaNode);
+        }
+        for (const [key, value] of Object.entries(ALPHA)) {
+            const alphaNode = {
+                name: key,
+                children: value
+            };
+            SITEMAP_ALPHA.children.push(alphaNode);
+        }
+        draw();
+    });
+    d3.select("#alpha").on('click', _ => {
+        cat = 'alpha';
+        draw();
+    });
+    d3.select("#areas").on('click', _ => {
+        cat = 'areas';
+        draw();
+    });
+    d3.select("#circles").on('click', _ => {
+        type = 'circles';
+        draw();
+    });
+    d3.select("#sunburst").on('click', _ => {
+        type = 'sunburst';
+        draw();
+    });
+</script>
+
+</html>
