@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html>
-<!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
-<script src="./d3.v7.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- <script src="./d3.v7.min.js"></script> -->
 <style>
     svg {
         border: 1px solid black;
     }
-    #vis {
-        min-height: 1000px;
+
+    svg text {
+        fill: silver;
     }
+
     body {
         font-family: sans-serif;
+        background: black;
+        color: silver;
     }
 </style>
 
 <body>
+    <h1>Scholarly Stanzas</h1>
     <button id="alpha">Alphabetical</button>
     <button id="areas">Areas of Study</button>
-    <button id="sunburst">Sunburst</button>
-    <button id="circles">Circles</button>
     <div id="vis"></div>
+    <iframe id="frame" src=""></iframe>
 </body>
 <script>
     const container = d3.select("#vis");
     const bbox = container.node().getBoundingClientRect();
-    const width = Math.min(bbox.width, bbox.height),
-        height = Math.min(bbox.width, bbox.height),
+    const width = Math.max(bbox.width, bbox.height),
+        height = width * 9 / 16,
         margin = 20;
     const svg = container.append("svg").attr("width", width).attr("height", height);
     var type = 'sunburst';
@@ -42,88 +46,14 @@
         children: []
     };
 
-    function drawCirclePacking(svg, data) {
-        svg.selectAll("*").remove();
-        const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2})`);
-
-        const pack = d3.pack()
-            .size([width - margin, height - margin])
-            .padding(2);
-        const root = d3.hierarchy(data).sum(d => ('Page Title' in d) ? 1 : 0)
-        .sort((a, b) =>  a.data.name.localeCompare(b.data.name));
-        const nodes = pack(root).descendants();
-        var focus = root,
-            view;
-
-        svg.on("click", _ => {
-            zoom(root);
-        });
-
-        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
-        const opacity = d3.scaleLinear().domain([-1, 2]).range([0.1, 0.5]);
-
-        const circle = g.selectAll("circle")
-            .data(nodes)
-            .enter().append("circle")
-            .attr("class", d => d.parent ? d.children ? "node" : "node node--leaf" : "node node--root")
-            .attr("fill", d => {
-                while (d.depth > 1) d = d.parent;
-                return color(d.data.name);
-            })
-            .style("fill-opacity", d => opacity(d.depth))
-            .attr("stroke", "silver")
-            .attr("stroke-width", 1)
-            .on("click", (e, d) => {
-                if (focus.data.name !== d.data.name) {
-                    zoom(d);
-                }
-                e.stopPropagation();
-            });
-        const text = g.selectAll("text")
-            .data(nodes)
-            .enter().append("text")
-            .attr("class", "label")
-            .attr("text-anchor", "middle")
-            .style("fill-opacity", d => d.parent === root ? 1 : 0)
-            .style("display", d => d.parent === root ? "inline" : "none")
-            .text(d => d.data.name);
-        const node = g.selectAll("circle,text");
-
-        function zoomTo(v) {
-            view = v;
-            const k = width / v[2];
-            node.attr("transform", d => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`);
-            circle.attr("r", d => d.r * k);
-        }
-
-        function zoom(d) {
-            focus = d;
-            const transition = d3.transition()
-                .duration(1000)
-                .tween("zoom", d => {
-                    const i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
-                    return t => {
-                        zoomTo(i(t));
-                    };
-                });
-
-            transition.selectAll("text")
-                .style("fill-opacity", d => (d.parent === focus || (d === focus && d.data.children.length == 0)) ? 1 :
-                    0)
-                .style("display", d => (d.parent === focus || (d === focus && d.data.children.length == 0)) ? "inline" :
-                    "none");
-        }
-        zoomTo([root.x, root.y, root.r * 2 + margin]);
-    }
-
     function drawSunburst(svg, data) {
         svg.selectAll("*").remove();
         const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2})`);
         const radius = (Math.min(width, height) / 4) - 10;
 
         const root = d3.hierarchy(data).sum(d => ('Page Title' in d) ? 1 : 0)
-            .sort((a, b) =>  a.data.name.localeCompare(b.data.name));
-            
+            .sort((a, b) => a.data.name.localeCompare(b.data.name));
+
         root.each(d => d.current = d);
         const partition = d3.partition()
             .size([2 * Math.PI, root.height + 1]);
@@ -147,11 +77,9 @@
                 })
                 .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
                 .attr("pointer-events", d => arcVisible(d.current) ? "auto" : "none")
-                .attr("d", d => arc(d.current)));
-
-        path.filter(d => d.children)
-            .style("cursor", "pointer")
-            .on("click", clicked);
+                .attr("d", d => arc(d.current))
+                .style("cursor", "pointer")
+                .on("click", clicked));
 
         path.append("title")
             .text(d => d.data.name);
@@ -176,6 +104,11 @@
             .on("click", clicked);
 
         function clicked(event, p) {
+            if (p.data.URL != null) {
+                const frame = d3.select("#frame");
+                frame.attr("src", p.data.URL);
+                return;
+            }
             parent.datum(p.parent || root);
 
             root.each(d => d.target = {
@@ -215,16 +148,11 @@
             const y = (d.y0 + d.y1) / 2 * radius;
             return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
         }
-
     }
 
     function draw() {
         const data = cat == 'areas' ? SITEMAP_AREAS : SITEMAP_ALPHA;
-        if (type == 'circles') {
-            drawCirclePacking(svg, data);
-        } else {
-            drawSunburst(svg, data);
-        }
+        drawSunburst(svg, data);
     }
 
     d3.csv("./ScholarlyStanzas.csv").then(data => {
@@ -270,14 +198,7 @@
         cat = 'areas';
         draw();
     });
-    d3.select("#circles").on('click', _ => {
-        type = 'circles';
-        draw();
-    });
-    d3.select("#sunburst").on('click', _ => {
-        type = 'sunburst';
-        draw();
-    });
+    d3.select("#frame").attr("width", width).attr("height", height);
 </script>
 
 </html>
