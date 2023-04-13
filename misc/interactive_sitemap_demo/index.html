@@ -32,13 +32,13 @@
     <button id="alpha">Alphabetical</button>
     <button id="areas">Areas of Study</button>
     <div id="vis"></div>
-    <iframe id="frame" src=""></iframe>
+    <iframe id="frame" src="" allow="fullscreen 'self' https://hypergraphia.com"></iframe>
 </body>
 <script>
     const container = d3.select("#vis");
     const bbox = container.node().getBoundingClientRect();
     const width = Math.max(bbox.width, bbox.height),
-        height = width * 9 / 16,
+        height = width,
         margin = 20;
     const svg = container.append("svg").attr("width", width).attr("height", height);
     const MAX_LINE_LENGTH = 25;
@@ -180,8 +180,7 @@
 
         function clicked(event, p) {
             if (p.data.URL != null) {
-                const frame = d3.select("#frame");
-                frame.attr("src", p.data.URL);
+                d3.select("#frame").attr("src", p.data.URL);
                 return;
             }
             parent.datum(p.parent || root);
@@ -264,6 +263,7 @@
             };
             SITEMAP_ALPHA.children.push(alphaNode);
         }
+        d3.select("#frame").attr("src", data[0].URL);
         draw(SORT.AREAS);
     });
     d3.select("#alpha").on('click', _ => {
@@ -272,7 +272,7 @@
     d3.select("#areas").on('click', _ => {
         draw(SORT.AREAS);
     });
-    d3.select("#frame").attr("width", width).attr("height", height);
+    d3.select("#frame").attr("width", width).attr("height", width * 9 / 16);
 </script>
 
 </html>
