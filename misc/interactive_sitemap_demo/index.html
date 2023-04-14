@@ -37,10 +37,10 @@
     <h1>Scholarly Stanzas</h1>
     <div>
         <div id="alpha" class="sort-btn" title="Alphabetical">
-            <img src="ScholarlyStanzasAlphabeticalNav.jpg" width="125px" height="125px" />
+            <img src="./ScholarlyStanzasAlphabeticalNav.jpg" width="100px" height="100px" />
         </div>
         <div id="areas" class="sort-btn" title="Areas of Study">
-            <img src="ScholarlyStanzasAreasNav.jpg" width="125px" height="125px" />
+            <img src="./ScholarlyStanzasAreasNav.jpg" width="100px" height="100px" />
         </div>
     </div>
     <div id="vis"></div>
@@ -279,7 +279,7 @@
         const content = (iframe.contentWindow || iframe.contentDocument);
         const body = content.document.body;
         d3.select(body).append("img")
-            .attr("src", "https://hypergraphia.com/ScholarlyStanzas/ScholarlyStanzasBottomCover.jpg")
+            .attr("src", "./ScholarlyStanzasBottomCover.jpg")
             .style("display", "block")
             .style("margin-left", "auto")
             .style("margin-right", "auto");
@@ -291,7 +291,7 @@
     d3.select("#areas").on('click', _ => {
         draw(SORT.AREAS);
     });
-    d3.select("#frame").attr("width", width).attr("height", width * 9 / 16);
+    d3.select("#frame").attr("width", width).attr("height", height);
 </script>
 
 </html>
