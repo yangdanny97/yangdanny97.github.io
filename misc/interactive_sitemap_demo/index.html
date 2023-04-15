@@ -56,10 +56,12 @@
     const container = d3.select("#vis");
     const bbox = container.node().getBoundingClientRect();
     const width = Math.max(bbox.width, bbox.height),
-        height = width,
-        margin = 20;
+        height = width;
     const svg = container.append("svg").attr("width", width).attr("height", height);
+    // maximum line length for text on each slice before splitting into two lines
     const MAX_LINE_LENGTH = 25;
+    // maximum ratio of largest slice to smallest slice
+    // decreasing it makes the slices more evenly sized
     const SLICE_RATIO = 5;
     const AREAS_OF_STUDY = {};
     const ALPHA = {};
