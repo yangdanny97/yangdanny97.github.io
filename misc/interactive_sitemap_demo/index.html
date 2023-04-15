@@ -289,6 +289,8 @@
         d3.select(body).append("img")
             .attr("src", "./ScholarlyStanzasBottomCover.jpg")
             .style("display", "block")
+            .attr("width", width - 40)
+            .attr("height", height - 40)
             .style("margin-left", "auto")
             .style("margin-right", "auto");
         draw(SORT.AREAS);
