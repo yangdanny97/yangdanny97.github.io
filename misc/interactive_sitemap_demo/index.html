@@ -5,6 +5,9 @@
 <style>
     svg {
         border: 1px solid black;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     svg text {
@@ -25,6 +28,9 @@
         border: 0;
         overflow: hidden;
         text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .sort-btn {
@@ -33,8 +39,6 @@
     }
 
     #vis {
-        margin-left: 40px;
-        margin-right: 40px;
         margin-bottom: 40px;
     }
 </style>
@@ -55,7 +59,8 @@
 <script>
     const container = d3.select("#vis");
     const bbox = container.node().getBoundingClientRect();
-    const width = Math.max(bbox.width, bbox.height),
+    const MAX_WIDTH = 1280;
+    const width = Math.min(Math.max(bbox.width, bbox.height) - 80, MAX_WIDTH),
         height = width;
     const svg = container.append("svg").attr("width", width).attr("height", height);
     // maximum line length for text on each slice before splitting into two lines
@@ -77,6 +82,7 @@
         AREAS: "areas",
         ALPHA: "alpha"
     };
+    var defaultImg = true;
 
     function splitText(text) {
         if (text.length <= MAX_LINE_LENGTH) {
@@ -201,6 +207,7 @@
         function clicked(event, p) {
             if (p.data.URL != null) {
                 d3.select("#frame").attr("src", p.data.URL);
+                defaultImg = false;
                 return;
             }
             parent.datum(p.parent || root);
@@ -285,8 +292,7 @@
         }
         const iframe = document.getElementById("frame");
         const content = (iframe.contentWindow || iframe.contentDocument);
-        const body = content.document.body;
-        d3.select(body).append("img")
+        d3.select(content.document.body).append("img")
             .attr("src", "./ScholarlyStanzasBottomCover.jpg")
             .style("display", "block")
             .attr("width", width - 40)
@@ -301,7 +307,12 @@
     d3.select("#areas").on('click', _ => {
         draw(SORT.AREAS);
     });
-    d3.select("#frame").attr("width", width).attr("height", height);
+    d3.select("#frame").attr("width", width).attr("height", height).on("load", _ => {
+        if (defaultImg) return;
+        const iframe = document.getElementById("frame");
+        const content = (iframe.contentWindow || iframe.contentDocument);
+        d3.select(content.document.body).selectAll("img").attr("width", 50);
+    });
 </script>
 
 </html>
