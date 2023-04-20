@@ -4,7 +4,6 @@
 <!-- <script src="./d3.v7.min.js"></script> -->
 <style>
     svg {
-        border: 1px solid black;
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -40,6 +39,13 @@
 
     #vis {
         margin-bottom: 40px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .container {
+        clear: both;
     }
 </style>
 
@@ -53,8 +59,10 @@
             <img src="./ScholarlyStanzasAreasNav.jpg" width="100px" height="100px" />
         </div>
     </div>
-    <div id="vis"></div>
-    <iframe id="frame" src="" allow="fullscreen 'self' https://hypergraphia.com"></iframe>
+    <div class="container">
+        <div id="vis"></div>
+        <iframe id="frame" src="" allow="fullscreen 'self' https://hypergraphia.com"></iframe>
+    </div>
 </body>
 <script>
     const container = d3.select("#vis");
@@ -307,12 +315,7 @@
     d3.select("#areas").on('click', _ => {
         draw(SORT.AREAS);
     });
-    d3.select("#frame").attr("width", width).attr("height", height).on("load", _ => {
-        if (defaultImg) return;
-        const iframe = document.getElementById("frame");
-        const content = (iframe.contentWindow || iframe.contentDocument);
-        d3.select(content.document.body).selectAll("img").attr("width", 50);
-    });
+    d3.select("#frame").attr("width", width).attr("height", height);
 </script>
 
 </html>
