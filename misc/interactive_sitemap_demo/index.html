@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<!-- <script src="./d3.v7.min.js"></script> -->
+<!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
+<script src="./d3.v7.min.js"></script>
 <style>
     svg {
         display: block;
@@ -76,6 +76,8 @@
     // maximum ratio of largest slice to smallest slice
     // decreasing it makes the slices more evenly sized
     const SLICE_RATIO = 5;
+    // number of possible images in the center
+    const N_CENTER_IMAGES = 8
     const AREAS_OF_STUDY = {};
     const ALPHA = {};
     const SITEMAP_AREAS = {
@@ -120,6 +122,26 @@
         const categories = type == SORT.AREAS ? AREAS_OF_STUDY : ALPHA;
 
         svg.selectAll("*").remove();
+
+        const defs = svg.append("defs");
+        for (var i = 1; i <= N_CENTER_IMAGES; i++) {
+            const pattern = defs.append("pattern")
+                .attr("id", `center${i}`)
+                .attr("x", 0)
+                .attr("y", 0)
+                .attr("width", 1)
+                .attr("height", 1)
+                .attr("viewbox", "256 256 768 768")
+                .attr("preserveAspectRatio", "xMidYMid slice")
+                .attr("patternContentUnits", "objectBoundingBox");
+            pattern.append("image")
+                .attr("x", -0.5)
+                .attr("y", -0.5)
+                .attr("width", 2)
+                .attr("height", 2)
+                .attr("xlink:href", `./images/LP-background${i}.png`);
+        }
+
         const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2})`);
         const radius = (Math.min(width, height) / 4);
         const maxSize = d3.max(Object.values(categories), x => x.length);
@@ -205,10 +227,11 @@
                     .style("user-select", "none");
             });
 
+        const centerImgNo = Math.ceil(Math.random() * N_CENTER_IMAGES);
         const parent = g.append("circle")
             .datum(root)
             .attr("r", radius)
-            .attr("fill", "none")
+            .attr("fill", `url(#center${centerImgNo})`)
             .attr("pointer-events", "all")
             .on("click", clicked);
 
