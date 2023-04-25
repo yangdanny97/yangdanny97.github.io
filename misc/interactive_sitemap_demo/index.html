@@ -32,9 +32,14 @@
         margin-right: auto;
     }
 
-    .sort-btn {
+    .sort-btn-left {
         float: left;
-        margin-right: 20px;
+        margin: 20px;
+    }
+
+    .sort-btn-right {
+        float: right;
+        margin: 20px;
     }
 
     #vis {
@@ -52,11 +57,11 @@
 <body>
     <h1>Scholarly Stanzas</h1>
     <div>
-        <div id="alpha" class="sort-btn" title="Alphabetical">
-            <img src="./ScholarlyStanzasAlphabeticalNav.jpg" width="100px" height="100px" />
-        </div>
-        <div id="areas" class="sort-btn" title="Areas of Study">
+        <div id="areas" class="sort-btn-left" title="Areas of Study">
             <img src="./ScholarlyStanzasAreasNav.jpg" width="100px" height="100px" />
+        </div>
+        <div id="alpha" class="sort-btn-right" title="Alphabetical">
+            <img src="./ScholarlyStanzasAlphabeticalNav.jpg" width="100px" height="100px" />
         </div>
     </div>
     <div class="container">
