@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Chocopy Hacking Part 2: Compiling to JVM"
-description: "Building a JVM compiler backend for a subset of Python 3"
+title: "Compiler Hacking Part 2: Building a JVM Backend"
+description: "Building a JVM compiler backend for Chocopy, a subset of Python 3"
 date: 2021-08-26
 category: "Compilers"
 tag: "Technical"

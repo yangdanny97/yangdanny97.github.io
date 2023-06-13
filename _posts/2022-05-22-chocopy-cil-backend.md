@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Chocopy Hacking Part 3: Compiling to CIL"
-description: "Building a CIL compiler backend for a subset of Python 3"
+title: "Compiler Hacking Part 3: Building a CIL Backend"
+description: "Building a CIL compiler backend for Chocopy, a subset of Python 3"
 date: 2022-05-22
 category: "Compilers"
 tag: "Technical"

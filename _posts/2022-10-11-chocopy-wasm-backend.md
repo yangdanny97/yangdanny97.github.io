@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Chocopy Hacking Part 4: Compiling to WASM"
-description: "Building a WASM compiler backend for a subset of Python 3"
+title: "Compiler Hacking Part 4: Building a WASM Backend"
+description: "Building a WASM compiler backend for Chocopy, a subset of Python 3"
 date: 2022-10-11
 category: "Compilers"
 tag: "Technical"
