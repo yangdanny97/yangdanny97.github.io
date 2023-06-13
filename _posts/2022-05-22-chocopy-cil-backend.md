@@ -7,7 +7,7 @@ category: "Compilers"
 tag: "Technical"
 ---
 
-In the fourth part of my Chocopy Compiler Hacking series, I will be discussing how I built the backend to compile [Chocopy](https://chocopy.org/) to Microsoft's Common Intermediate Language (CIL). 
+In the third part of my Chocopy Compiler Hacking series, I will be discussing how I built the backend to compile [Chocopy](https://chocopy.org/) to Microsoft's Common Intermediate Language (CIL). 
 
 For those unfamiliar with the topic, Chocopy is a subset of Python 3 with static type annotations. CIL is the intermediate format that languages in the .NET ecosystem like C# and F# compile to, similar to how Java, Kotlin, and Scala all compile to JVM. 
 
