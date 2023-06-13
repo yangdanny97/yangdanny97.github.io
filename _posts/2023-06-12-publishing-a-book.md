@@ -94,9 +94,11 @@ During this time there were some small hiccups. Issues with typesetting the Mark
 
 In January, I received word that the book had been published. Hooray! A while later, I received five printed copies of my book in the mail, which I distributed to friends and family. 
 
-<image width=300px src="https://yangdanny97.github.io/images/book.png">
 
-I'm not sure how (or if) the publishers marketed the book - there wasn't really much information from them aside from giving me some affiliate link. I also didn't really know how to market the book myself, so I just threw a link on my blog and made some Facebook and Linkedin posts about it.
+<image width=300px src="https://yangdanny97.github.io/images/book.png"/>
+
+
+I'm not sure how much the publishers marketed the book - there wasn't really much information from them aside from giving me some affiliate link. I also didn't really know how to market the book myself, so I just threw a link on my blog and made some Facebook and Linkedin posts about it.
 
 I experimented with a couple of Facebook/Instagram ads, but the cost-per-click was ridiculously bad, something like $0.70. Considering how I get like $3.50 of royalties per copy sold at full price, one in every 5 clicks would have to be a sale for these ads to break even. A terrible deal, had I not been using free ad credits. Without access to timely and detailed information on the sales data (a downside of not self-publishing), it's pretty hard to tweak ads to optimize for sales.
 
