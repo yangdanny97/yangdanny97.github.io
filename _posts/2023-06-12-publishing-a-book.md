@@ -31,39 +31,30 @@ During my back and forth with Apress, I realized that I did want to try writing 
 
 I had three options:
 
-1. Publish through Apress
+Option 1: Publish through Apress
 
-  - Pros:
+- Pros
+  - Apress helps with editing, proofreading, and typesetting
+- Cons
+  - No control over the pricing, cover, or format of the book. I would have preferred for the book to be available for free digitally, but unfortunately that wasn't an option.
 
-    - Apress helps with editing, proofreading, and typesetting
+Option 2: Publish through Apress Open Access
 
-  - Cons:
+- Pros
+  - The e-book is free for anyone to read
+  - Apress helps with editing, proofreading, and typesetting
+- Cons
+  - I have to pay Apress a flat fee
+  - The book would only be available digitally, unless I paid even more for printed copies
 
-    - No control over the pricing, cover, or format of the book. I would have preferred for the book to be available for free digitally, but unfortunately that wasn't an option.
+Option 3: Self-publish through Amazon
 
-2. Publish through Apress Open Access
-
-  - Pros:
-
-    - The e-book is free for anyone to read
-    - Apress helps with editing, proofreading, and typesetting
-
-  - Cons:
-
-    - I have to pay Apress a flat fee
-    - The book would only be available digitally, unless I paid even more for printed copies
-
-3. Self-publish through Amazon
-
-  - Pros:
-
-    - I don't have to spend any money
-    - Physical copies would be more affordable, and I could distribute it electronically for free if I wanted to
-
-  - Cons:
-  
-    - No one to help with editing/proofreading/typesetting
-    - Less "legit" than being published by someone else
+- Pros
+  - I don't have to spend any money
+  - Physical copies would be more affordable, and I could distribute it electronically for free if I wanted to
+- Cons
+  - No one to help with editing/proofreading/typesetting
+  - Less "legit" than being published by someone else
 
 In the end I chose #1, because I wasn't willing to spend money and I thought that going through the whole process with the support of the publishers would be a better experience for a first-time author like myself. 
 
