@@ -18,23 +18,23 @@ To fit the genre, the following criteria have to be met:
 
 Many examples I've seen fall into the slice-of-life genre, making them good for relaxation/unwinding after a long day. Video games of this genre are primarily text-based, similar to visual novels.
 
-# Midnight Diner (Netflix)
+## Midnight Diner (Netflix)
 
-A long-running show about ordinary people who eat in a small restaurant that opens from midnight until 7AM. 
+A long-running show about ordinary people who eat in a small restaurant that opens from midnight until 7AM. The nighttime setting adds to the peaceful vibes.
 
-# Death Parade (Anime)
+## Death Parade (Anime)
 
 A supernatural anime about a bar that receives the souls of the recently-deceased, and the bartender that judges them. 
 
-# Necrobarista (Game)
+## Necrobarista (Game)
 
 You work in a Melbourne coffee-house staffed by necromancers, where the living can mingle with the recently deceased. Unlike other text-based games, the scenes are 3D and animated, with dynamic camera angles leading to a very immersive presentation.
 
-# VA-11 Hall-A (Game)
+## VA-11 Hall-A (Game)
 
-A bartending game with a cyberpunk aesthetic and a fantastic soundtrack. Making drinks is a minigame, and you have to learn about your regulars to know which drink they want that night.
+A bartending game with a cyberpunk aesthetic and a fantastic soundtrack. Making drinks is a minigame, and you have to learn about your regulars to know which drink they want that night. The worldbuilding in this game was done very well - learning about the world through conversations with customers was very natural.
 
-# Coffee Talk (Game)
+## Coffee Talk (Game)
 
 You run a coffee shop in a world full of supernatural creatures (think elves, vampires, etc). Similar to VA-11 Hall-A, making coffee and doing latte art is a minigame.
 
