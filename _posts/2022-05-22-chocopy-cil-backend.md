@@ -130,6 +130,14 @@ load <new_temp_local>
 stelem
 ```
 
+#### Operators - Added 6/2023
+
+Unlike JVM, CIL doesn't have a standard library function that matches [Python's modulo implementation](https://en.wikipedia.org/wiki/Modulo#In_programming_languages). Again, the `rem` instruction does not match.
+
+Instead, we have to implement it as follows: `((a % b) + b) % b)`
+
+Similarly to the JVM backend, we implement the short-circuiting operators as ternaries.
+
 ### Debugging and Testing
 
 Since the assembler does not validate correctness or semantics, debugging the generated code is mostly manual. I used a combination of Mono's command line tools (csc, ilasm, monodis) and an [online C# compiler/decompiler](https://sharplab.io) to debug the generated CIL code. 

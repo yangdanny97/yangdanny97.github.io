@@ -68,6 +68,13 @@ class example {
 }
 ```
 
+### Operators - Added 6/2023
+
+Most operators were straightforward, with a few that deserve special discussion.
+- `//` is implemented with `Math.floorDiv`
+- `%` is implemented with `Math.floorMod` - watch out here: the `irem` instruction does not match the behavior of [Python's modulo operator](https://en.wikipedia.org/wiki/Modulo#In_programming_languages)
+- `and` and `or` are short-circuiting, so we can't use a single instruction. Instead, they are implemented as ternaries.
+
 ### Lists
 
 Lists in Chocopy compile to arrays in JVM. Although arrays are rarely used in Java these days, they are sufficient for our needs here because Chocopy lists don't support dynamic resizing (unlike Python, Chocopy doesn't have an `append()` function).
