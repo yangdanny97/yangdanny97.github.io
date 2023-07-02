@@ -142,7 +142,7 @@ Similarly to the JVM backend, we implement the short-circuiting operators as ter
 
 Since the assembler does not validate correctness or semantics, debugging the generated code is mostly manual. I used a combination of Mono's command line tools (csc, ilasm, monodis) and an [online C# compiler/decompiler](https://sharplab.io) to debug the generated CIL code. 
 
-Decompilers in particular are super useful for debugging, because they make errors in the generated instructions much easier to spot. If a generated CIL module fails at runtime, my first step would always be to disassemble it into C# - oftentimes the resulting C# code would have strange artifacts and fail to typecheck, which were excellent indicators of 1) what caused the program to fail and 2) what part of the compiler should be fixed.
+Decompilers in particular are super useful for debugging, because they make errors in the generated instructions much easier to spot. If a generated CIL module fails at runtime, my first step would always be to disassemble it into C# - oftentimes the resulting C# code would have strange artifacts and fail to typecheck, which were excellent indicators of 1. what caused the program to fail and 2. what part of the compiler should be fixed.
 
 Allow me to demonstrate with a specific example. Here is a cryptic error message printed when a generated CIL program failed to execute:
 ```
@@ -204,7 +204,7 @@ The same is not true for JVM. ALthough Java has an officially supported disassem
 
 Overall, I felt that this project was generally successful in meeting the goals I had set out. I learned a lot about CIL, C#, and the .NET ecosystem, and I gained some insights into how CIL compares to JVM. Writing the CIL backend was remarkably simple, I did it over approximately 2 days and only had to write around 700 lines of code. CIL is a pretty high level compilation target and it was very similar to JVM, which made things quite a bit simpler for me. 
 
-For future work, I'd like to explore targeting some lower level languages with this compiler, like WASM or LLVM. Targeting those will likely be harder than JVM/CIL, since they require manual memory management and don't have high-level object-oriented concepts like classes/fields/methods baked into the language. Of course, if anyone reading this has any suggestions for what I could try next, I'd by happy to hear them.
+For future work, I'd like to explore targeting some lower level languages with this compiler, like WASM or LLVM. Targeting those will likely be harder than JVM/CIL, since they require manual memory management and don't have high-level object-oriented concepts like classes/fields/methods baked into the language. Of course, if anyone reading this has any suggestions for what I could try next, I'd be happy to hear them.
 
 ## Resources
 - [Online compiler/disassembler](https://sharplab.io)

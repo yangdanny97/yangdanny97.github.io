@@ -7,7 +7,7 @@ category: "Compilers"
 tag: "Technical"
 ---
 
-In the fourth part of my Chocopy Compiler Hacking series, I will be discussing how I built the backend to compile [Chocopy](https://chocopy.org/) (a statically typed subset of Python 3) to WebAssembly. 
+In the fourth part of my Chocopy Compiler Hacking series, I will be discussing how I built the backend to compile [Chocopy](https://chocopy.org/) to WebAssembly. 
 
 For those unfamiliar with the topic, Chocopy is a subset of Python 3 with static type annotations. WebAssembly is a binary instruction format designed for high performance web applications. WebAssembly can run in most browsers and other JavaScript environments such as NodeJS.
 
@@ -39,7 +39,9 @@ When I implemented the frontend of this compiler a few years ago, someone told m
 
 # Implementation
 
-Compared to CIL and JVM, WASM is at a lower level of abstraction - it has manual memory management and no built-in concept of classes. This meant that I had to decide memory layouts for each data type, and implement various memory operations and dynamic dispatch from scratch. The other features in Chocopy - expressions, function calls, control flow, etc - were pretty straightforward to implement, so I won't discuss them in this blog post.
+Compared to CIL and JVM, WASM is at a lower level of abstraction - it has manual memory management and no built-in concept of classes. This meant that I had to decide memory layouts for each data type, and implement various memory operations and dynamic dispatch from scratch. 
+
+The other features in Chocopy - expressions, function calls, control flow, etc - were pretty straightforward to implement, so I won't discuss them in this blog post. Nested functions and captured nonlocal variables were hoisted using the same passes as the CIL/JVM backends; refer [here](https://yangdanny97.github.io/blog/2021/08/26/chocopy-jvm-backend) for more details.
 
 ## Data Types
 
