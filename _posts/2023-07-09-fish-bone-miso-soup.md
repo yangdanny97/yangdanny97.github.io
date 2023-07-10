@@ -20,13 +20,13 @@ Note that the bones are a choking hazard, so be careful while eating and don't s
 - 1/2 lb fish bones from some large fish (you can use leftovers or buy some salmon bones)
 - 8 cups of water
 - 6 tbsp miso paste
-- 2 cups diced tofu
+- 2 cups firm tofu
 - 1 cup onion
 - 1 cup carrot
 
 ### Directions
 1. Break up the fish's spine into 1" long pieces, remove any easily-removable small bones
-2. Cube the tofu, dice the onions and carrots 
+2. Cube the tofu to 1/2 or 1" depending on preference, dice the onions and carrots
 3. Put water, miso, and bones into a pot
 4. Bring to a boil and lower the heat
 5. Add the onion and carrot
