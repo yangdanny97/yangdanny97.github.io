@@ -9,6 +9,10 @@ This is one of my favorite ways to have noodles with soup. The noodles and veggi
 
 <!-- more -->
 
+<p align="center">
+  <img height="500" src="https://yangdanny97.github.io/misc/cooking/pork_belly_noodles.png">
+</p>
+
 ### Pork Belly Noodles:
 - Prep time: 5 minutes
 - Cook time: 25 minutes

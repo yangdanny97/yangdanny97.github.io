@@ -38,7 +38,7 @@ The CIL backend targets a plaintext representation of CIL instructions, and uses
 
 Both the plaintext representation and the assembler are standard/official parts of the toolchain, so setting up my compiler to target plaintext felt more natural and less cobbled-together. This is a big contrast with JVM, where there is no standard assembler and there are syntactical differences between the text formats accepted by different third-party assemblers.
 
-Without going into too much detail about each feature, below is a table showing the mapping of Chocopy's main language features into CIL. For the most part, this mapping is the same as the one from Chocopy->JVM, so please refer to that blog post for more implementation details. Although CIL is targeted by many languages, I chose C# as the main reference because it is the most similar to Java.
+Without going into too much detail about each feature, below is a table showing the mapping of Chocopy's main language features into CIL. For the most part, this mapping is the same as the one from Chocopy->JVM, so please refer to [that blog post](https://yangdanny97.github.io/blog/2021/08/26/chocopy-jvm-backend) for more implementation details. Although CIL is targeted by many languages, I chose C# as the main reference because it is the most similar to Java.
 
 <table>
 <tr>

@@ -9,6 +9,10 @@ A quick and easy pork chop recipe.
 
 <!-- more -->
 
+<p align="center">
+  <img height="500" src="https://yangdanny97.github.io/misc/cooking/porkchops.JPG">
+</p>
+
 ### Pan-Fried Pork Chops:
 - Prep time: 5 minutes
 - Cook time: 10 minutes
@@ -27,7 +31,3 @@ A quick and easy pork chop recipe.
 4. Heat some oil in a pan on medium high heat
 5. Cook each side for 3-5 minutes, until browned
 6. Scrape off any melted fat and remove from the pan, serve immediately
-
-<p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/cooking/porkchops.JPG">
-</p>

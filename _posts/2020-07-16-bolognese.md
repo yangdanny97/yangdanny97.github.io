@@ -11,6 +11,12 @@ A few months back I was surprised to discover that Impossible meat was basically
 
 My recipe for bolognese isn't particularly authentic, but it is quite flexible and it makes for a very tasty meat sauce.
 
+<!-- more -->
+
+<p align="center">
+  <img height="500" src="https://yangdanny97.github.io/misc/cooking/impossible_bolognese.png">
+</p>
+
 ### Impossible Bolognese:
 - Prep time: 10 minutes
 - Cook time: ~90 minutes
