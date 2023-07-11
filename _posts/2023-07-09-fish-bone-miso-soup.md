@@ -16,10 +16,10 @@ Note that the bones are a choking hazard, so be careful while eating and don't s
 - Prep time: 5 minutes
 - Cook time: 30-40 minutes
 
-### Ingredients (serves 3-4)
+### Ingredients (serves 4-6)
 - 1/2 lb fish bones from some large fish (you can use leftovers or buy some salmon bones)
-- 8 cups of water
-- 6 tbsp miso paste
+- 6 cups of water
+- 4 tbsp miso paste
 - 2 cups firm tofu
 - 1 cup onion
 - 1 cup carrot
