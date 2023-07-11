@@ -1,0 +1,20 @@
+---
+layout: default
+title: My Blog
+description: Blog Homepage
+---
+<div class='row slide'>
+    <div class="col-sm-6 offset-sm-3 content-pad">
+        <h3>{{ page.title }}</h3>
+        <div>Welcome to my blog! As you can see, I like to write about technical things (mainly programming languages,
+            compilers, & data vis). <a href="/feed.xml" target="_blank">RSS</a></div>
+        <br />
+        <a href="https://yangdanny97.github.io/blog">Sort by Category</a>
+        <hr>
+        <br>
+        {% for post in site.posts %}
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+                post.title }}</a> <span class="badge badge-secondary">{{ post.category }}</span></p>
+        {% endfor %}
+    </div>
+</div>

@@ -8,6 +8,8 @@ description: Blog Homepage
         <h3>{{ page.title }}</h3>
         <div>Welcome to my blog! As you can see, I like to write about technical things (mainly programming languages,
             compilers, & data vis). <a href="/feed.xml" target="_blank">RSS</a></div>
+        <br>
+        <a href="https://yangdanny97.github.io/blog/chronological.html">Sort by Date</a>
         <hr>
         <h3>Compilers/PL</h3>
         <p>Posts about programming languages and compilers</p>
@@ -40,8 +42,10 @@ description: Blog Homepage
         {% endfor %}
         <hr>
         <h3>Cooking</h3>
-        <p>Simple recipes for my favorite foods, featuring atrocious cell phone photos. Nothing fancy going on here, only practical recipes for normal people.</p>
-        <p>Want more yummy recipes? Check out <a href="https://ryanlu41.github.io/blog/blog_category.html">Ryan Lu's blog.</a></p>
+        <p>Simple recipes for my favorite foods, featuring atrocious cell phone photos. Nothing fancy going on here,
+            only practical recipes for normal people.</p>
+        <p>Want more yummy recipes? Check out <a href="https://ryanlu41.github.io/blog/blog_category.html">Ryan Lu's
+                blog.</a></p>
         <br>
         {% for post in site.posts %}
         {% if post.category == "Cooking" %}
