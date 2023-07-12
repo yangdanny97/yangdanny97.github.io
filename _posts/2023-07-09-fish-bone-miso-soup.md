@@ -19,7 +19,7 @@ Note that the bones are a choking hazard, so be careful while eating and don't s
 ### Ingredients (serves 4-6)
 - 1/2 lb fish bones from some large fish (you can use leftovers or buy some salmon bones)
 - 6 cups of water
-- 4 tbsp miso paste
+-  tbsp miso paste
 - 2 cups firm tofu
 - 1 cup onion
 - 1 cup carrot

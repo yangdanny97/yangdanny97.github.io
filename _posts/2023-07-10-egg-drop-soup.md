@@ -19,7 +19,7 @@ This classic Chinese soup is surprisingly cheap and easy to make, and it's very 
 - Prep time: 5 minutes
 - Cook time: 10 minutes
 
-### Ingredients (serves 4)
+### Ingredients
 - 4 cups chicken broth
 - 1 tsp turmeric (for color)
 - 2 eggs
