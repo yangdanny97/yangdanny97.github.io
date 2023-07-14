@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Recipe] Corn, Carrots, and Pork Ribs Soup"
+title: "[Recipe] Corn, Carrots, and Pork Rib Soup"
 description: "Recipe for making soup with corn, carrots, and pork ribs"
 date: 2023-07-13
 category: "Cooking"
@@ -16,7 +16,7 @@ This particular version is good in the summer because the flavor is light and sw
   <img height="500" src="https://yangdanny97.github.io/misc/cooking/corn_carrot_pork_soup.png">
 </p>
 
-### Daikon Soup
+### Corn, Carrot, and Pork Rib Soup
 - Prep time: 15 minutes
 - Cook time: 3 hours
 
