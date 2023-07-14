@@ -30,11 +30,11 @@ This particular version is good in the summer because the flavor is light and sw
 
 ### Directions
 1. If your rack of ribs came in one piece, cut between each bone to break it into separate pieces. You don't need to cut the bones to 1 inch like in the photo.
-2. Cut the carrots into 1 inch chunks
+2. Peel and cut the carrots into 1 inch chunks
 3. Cut each ear of corn into 4-5 pieces
 4. Put everything in a large pot and cover with water, then turn on the stove
 5. When the water boils, reduce to a simmer and cook for two and a half hours. Check in after 30 minutes and skim off any impurities that appear at the top. If too much water boils off, add more water and bring the temperature back up.
-6. Add salt to taste and serve.
+6. Skim off any remaining impurities floating on top, add salt to taste, and serve.
 
 ### Variations
 For enjoyment during the winter, you can make it a bit richer and spicier, reminiscent of Singaporean bak-kut-teh:

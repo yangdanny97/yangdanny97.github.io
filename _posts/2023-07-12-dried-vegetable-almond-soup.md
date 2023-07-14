@@ -33,7 +33,7 @@ This recipe requires two niche ingredients, both found at Asian supermarkets:
 ### Directions:
 1. Soak the dried vegetables in water for a few hours. 
 2. Rinse out any dirt and cut into 1-2 inch long pieces, discarding any stems that look too tough.
-3. Cut carrots into 1 inch triangular chunks.
+3. Peel the carrots and cut them into 1 inch triangular chunks.
 4. Throw everything into the pot and cover with water.
 5. When the water boils, stir it a bit, reduce to a simmer and cook for two hours. Check in after 30 minutes and skim off any impurities floating on top. Add more water if too much boils off.
 6. Skim off any remaining impurities floating on top, add salt to taste and serve.
