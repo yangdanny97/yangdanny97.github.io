@@ -40,5 +40,6 @@ This classic Chinese soup is surprisingly cheap and easy to make, and it's very 
 - In winter months, I like to give it a little more spice by upping the turmeric and adding some black pepper.
 - For a fancy twist you can add thinly sliced shiitake mushroom and dried purple laver (seaweed). If you do this, skip the turmeric, add the mushroom and seaweed at the beginning and boil for 10 minutes before adding the egg.
 
-
-
+<p align="center">
+  <img height="500" src="https://yangdanny97.github.io/misc/cooking/egg_drop_soup_2.png">
+</p>
