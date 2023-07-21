@@ -31,7 +31,7 @@ This is one of my favorite ways to have noodles with soup. The noodles and veggi
 ### Directions
 1. Cut the bok choy into halves.
 2. Cut each slice of pork belly into 1-2" wide pieces, and season with salt and pepper
-3. Heat some oil in a pan, and cook the pork belly as you would for bacon. A little bit of browning and crispiness is good, but don't fry it until it is crunchy. Splitting the pork up into several batches so that every piece of pork can have contact with the bottom of the pan will make it easier to ensure consistent texture.
+3. Heat some oil in a pan, and cook the pork belly as you would for bacon. A little bit of browning and crispiness is good, but don't fry it until it is crunchy. If you have a small pan, splitting the pork up into several batches so that every piece of pork can have contact with the bottom of the pan will make it easier to ensure consistent texture.
 4. Once the pork is cooked, set it aside.
 5. Boil 1-2 quarts of water in a pot, with the vegetables. Once the water is boiling, remove the vegetables.
 6. Add the soup base in the desired ratio, and cook the noodles.
