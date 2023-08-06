@@ -13,19 +13,19 @@ Circular bar charts (also called radial bar charts) are a form of bar chart that
 
 One famous example of the circular bar chart can be found in W.E.B Du Bois's hand-drawn statistical charts highlighting racial and economic inequalities faced by African Americans in 1900.
 
-![W.E.B Du Bois Circular Bar Chart](https://yangdanny97.github.io/misc/circular_bar_chart/dubois.jpg){: height="px300" width="300"}
+![W.E.B Du Bois Circular Bar Chart](https://yangdanny97.github.io/misc/circular_bar_chart/dubois.jpg){: height="px400" width="400"}
 
 This type of chart is still popular more than a hundred years later, famously being used by the Apple Watch (which has very strict space constraints due to its tiny screen):
 
-![Circular bar chart Apple Watch](https://yangdanny97.github.io/misc/circular_bar_chart/apple_watch.png){: height="px300" width="300"}
+![Circular bar chart Apple Watch](https://yangdanny97.github.io/misc/circular_bar_chart/apple_watch.png){: height="px400" width="400"}
 
 The main steps to making this type of chart for ourselves are: plotting the gridlines, plotting the axes, and plotting the shapes for the data. At the very end, I'll also show how we can style the example to look like the chart shown on the Apple Watch.
 
 Before we begin the tutorial, here is a peek of what the final product should look like.
 
-![D3 circular bar chart](https://yangdanny97.github.io/misc/circular_bar_chart/circular_bar_chart.png){: height="px300" width="300"}
+![D3 circular bar chart](https://yangdanny97.github.io/misc/circular_bar_chart/circular_bar_chart.png){: height="px400" width="400"}
 
-![D3 circular bar chart styled like Apple Watch](https://yangdanny97.github.io/misc/circular_bar_chart/d3_apple_watch.png){: height="px300" width="300"}
+![D3 circular bar chart styled like Apple Watch](https://yangdanny97.github.io/misc/circular_bar_chart/d3_apple_watch.png){: height="px400" width="400"}
 
 ## Setup
 
@@ -130,7 +130,7 @@ rAxis.selectAll("text")
 
 Now you should see something like this when you reload the page:
 
-![circular grid lines](https://yangdanny97.github.io/misc/circular_bar_chart/circles.png){: height="px300" width="300"}
+![circular grid lines](https://yangdanny97.github.io/misc/circular_bar_chart/circles.png){: height="px400" width="400"}
 
 Looking back at the code snippet, observe that the y value is not the value output by the radial scale. This is because SVG coordinate systems have the top left as (0,0) and the y axis extends downwards from there (see diagram below). That means something that is 500 pixels from the bottom of the SVG has a y value of 100. Something that is 250 pixels up from the center of the SVG (like the text label for 10) will be at y value of 50.
 
@@ -190,7 +190,7 @@ thetaAxis.selectAll("text")
 
 The page should now look like this.
 
-![radial grid lines](https://yangdanny97.github.io/misc/circular_bar_chart/circles_and_lines.png){: height="px300" width="300"}
+![radial grid lines](https://yangdanny97.github.io/misc/circular_bar_chart/circles_and_lines.png){: height="px400" width="400"}
 
 ## Plotting the Bars
 
@@ -228,10 +228,6 @@ It only takes a little more work to make our chart look more like the chart in t
 3. Add a faint ring behind each bar
 4. Add circles at both ends of each bar to make them look rounded
 
-Here's a reminder of what the finished product will look like:
-
-![D3 circular bar chart styled like Apple Watch](https://yangdanny97.github.io/misc/circular_bar_chart/d3_apple_watch.png){: height="px300" width="300"}
-
 Starting from the code from our finished example, we will first delete all the code related to `rAxis` and `thetaAxis`.
 
 To make the background black, we can make a black rectangle that covers the whole SVG. This should be done right after creating the SVG itself, so that the other elements are drawn on top.
@@ -262,7 +258,7 @@ bgBars.selectAll('path')
         .attr('transform', `translate(${width / 2},${height / 2})`));
 ```
 
-Finally, to create the effect of rounded bars we'll need to add a circle at each end of every bar, using `coord` to calculate the position. 
+Finally, to create the effect of rounded bars we'll need to add a circle at each end of every bar, using our `coord` helper to calculate the position. 
 
 ```javascript
 bars.selectAll('circle')
