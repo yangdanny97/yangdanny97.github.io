@@ -1,0 +1,103 @@
+---
+layout: default
+title: D3 Circular Bar Chart
+description: D3 Radial Bar Chart Example
+---
+<link rel='stylesheet' href='{{ site.url }}/css/site-style.css'>
+<script src='https://d3js.org/d3.v7.min.js'></script>
+<script>
+    let categories = ['A', 'B', 'C', 'D', 'E'];
+    let colors = ['darkorange', 'yellow', 'lime', 'cyan', 'magenta'];
+
+    // generate random values between 1 and 99
+    let data = categories.map(c => {
+        return {
+            name: c,
+            value: 1 + 98 * Math.random(),
+        }
+    });
+
+    let width = 600;
+    let height = 600;
+    let chartRadius = width / 2 - 50;
+    let barPadding = 10;
+
+    let svg = d3.select('body').append('svg')
+        .attr('width', width)
+        .attr('height', height);
+
+    let angleScale = d3.scaleLinear()
+        .domain([0, 100])
+        .range([0, 2 * Math.PI]);
+    let ticks = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
+    let tickAngle = Math.PI * 2 / ticks.length;
+
+    let nBars = categories.length;
+    let barWidth = chartRadius / nBars - barPadding;
+    let barRadius = categories.map((d, i) => chartRadius / nBars * i + barPadding);
+
+    // circular grid lines and category labels
+    let categoryAxis = svg.append('g')
+        .selectAll('g')
+        .data(data)
+        .join(enter => {
+            let categoryMarker = enter.append('g');
+            categoryMarker.append('circle')
+                .attr('r', (d, i) => barRadius[i] + barWidth)
+                .attr('cx', width / 2)
+                .attr('cy', height / 2)
+                .attr('fill', 'none')
+                .style('stroke', 'silver')
+                .style('stroke-width', '1px');
+            categoryMarker.append('text')
+                .attr('x', width / 2 - 10)
+                .attr('y', (d, i) => height / 2 - (barRadius[i] + barWidth / 2))
+                .text(d => d.name)
+                .style('text-anchor', 'end');
+        });
+
+    // radial tick lines
+    let tickData = ticks.map((d, i) => {
+        let angle = tickAngle * i + Math.PI / 2;
+        let x = Math.cos(angle) * chartRadius;
+        let y = Math.sin(angle) * chartRadius;
+        return {
+            value: d,
+            x: x,
+            y: y
+        };
+    });
+    let valueAxis = svg.append('g')
+        .selectAll('g')
+        .data(tickData)
+        .join(enter => {
+            let valueTick = enter.append('g');
+            valueTick.append('line')
+                .attr('x1', width / 2)
+                .attr('y1', height / 2)
+                .attr('x2', d => width / 2 - d.x)
+                .attr('y2', d => height / 2 - d.y)
+                .style('stroke', 'silver');
+            valueTick.append('text')
+                .attr('text-anchor', d => d.x < width / 2 ? 'end' : 'start')
+                .attr('x', d => width / 2 - d.x * 1.1)
+                .attr('y', d => height / 2 - d.y * 1.1 + 5)
+                .text(d => d.value);
+        });
+
+    // draw the bars
+    let arc = d3.arc()
+        .innerRadius((d, i) => barRadius[i])
+        .outerRadius((d, i) => barRadius[i] + barWidth)
+        .startAngle(0)
+        .endAngle((d, i) => angleScale(d))
+    let bars = svg.append('g')
+        .attr('class', 'bars')
+        .selectAll('path')
+        .data(data)
+        .join(enter => enter.append('path')
+            .attr('class', 'arc')
+            .style('fill', (d, i) => colors[i])
+            .attr('d', (d, i) => arc(d.value, i))
+            .attr('transform', `translate(${width / 2},${height / 2})`));
+</script>
