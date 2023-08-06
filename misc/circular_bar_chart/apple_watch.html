@@ -1,7 +1,7 @@
 ---
 layout: default
-title: D3 Circular Bar Chart
-description: D3 Radial Bar Chart Example
+title: D3 Apple Watch Circular Bar Chart
+description: D3 Radial Bar Chart Example Inspired by Apple Watch
 ---
 <link rel='stylesheet' href='{{ site.url }}/css/site-style.css'>
 <script src='https://d3js.org/d3.v7.min.js'></script>
@@ -9,11 +9,11 @@ description: D3 Radial Bar Chart Example
     let categories = ['A', 'B', 'C', 'D', 'E'];
     let colors = ['darkorange', 'yellow', 'lime', 'cyan', 'magenta'];
 
-    // generate random values between 1 and 99
+    // generate random values between 1 and 90
     let data = categories.map((c, i) => {
         return {
             name: c,
-            value: 1 + 98 * Math.random(),
+            value: 1 + 89 * Math.random(),
             color: colors[i],
         }
     });
@@ -23,6 +23,10 @@ description: D3 Radial Bar Chart Example
     let svg = d3.select('body').append('svg')
         .attr('width', width)
         .attr('height', height);
+    svg.append('rect')
+        .attr('width', width)
+        .attr('height', height)
+        .attr('fill', 'black');
 
     // modify data to add the radius to place the corresponding arc for each object
     let chartRadius = width / 2 - 50;
@@ -45,14 +49,6 @@ description: D3 Radial Bar Chart Example
                 .attr('fill', 'none')
                 .style('stroke', 'silver')
                 .style('stroke-width', '1px')
-        );
-    rAxis.selectAll("text")
-        .data(data)
-        .join(enter => enter.append("text")
-            .attr('x', width / 2 - 10)
-            .attr('y', d => height / 2 - (d.radius + barWidth / 2))
-            .text(d => d.name)
-            .style('text-anchor', 'end')
         );
 
     // define scale and ticks for bar values
@@ -81,14 +77,22 @@ description: D3 Radial Bar Chart Example
                 .attr('x2', d => coord(d, chartRadius).x)
                 .attr('y2', d => coord(d, chartRadius).y)
                 .style('stroke', 'silver'));
-    thetaAxis.selectAll("text")
-        .data(ticks)
-        .join(enter =>
-            enter.append('text')
-                .attr('text-anchor', d => coord(d, 1).x < width / 2 ? 'end' : 'start')
-                .attr('x', d => coord(d, chartRadius * 1.1).x)
-                .attr('y', d => coord(d, chartRadius * 1.1).y + 5)
-                .text(d => d));
+
+    // faint bars in the background
+    let bgArc = d3.arc()
+        .innerRadius(d => d.radius)
+        .outerRadius(d => d.radius + barWidth)
+        .startAngle(0)
+        .endAngle(Math.PI * 2)
+    let bgBars = svg.append('g');
+    bgBars.selectAll('path')
+        .data(data)
+        .join(enter => enter.append('path')
+            .attr('class', 'arc')
+            .style('fill', d => d.color)
+            .style('opacity', 0.5)
+            .attr('d', d => bgArc(d))
+            .attr('transform', `translate(${width / 2},${height / 2})`));
 
     // draw the bars
     let arc = d3.arc()
@@ -101,7 +105,21 @@ description: D3 Radial Bar Chart Example
         .data(data)
         .join(enter => enter.append('path')
             .attr('class', 'arc')
-            .style('fill', d => d.color)
+            .attr('fill', d => d.color)
             .attr('d', d => arc(d))
             .attr('transform', `translate(${width / 2},${height / 2})`));
+    bars.selectAll('circle')
+        .data(data)
+        .join(enter => {
+            enter.append("circle")
+                .attr('cx', d => coord(0, d.radius + barWidth / 2).x)
+                .attr('cy', d => coord(0, d.radius + barWidth / 2).y)
+                .attr('r', barWidth / 2)
+                .attr('fill', d => d.color);
+            enter.append("circle")
+                .attr('cx', d => coord(d.value, d.radius + barWidth / 2).x)
+                .attr('cy', d => coord(d.value, d.radius + barWidth / 2).y)
+                .attr('r', barWidth / 2)
+                .attr('fill', d => d.color)
+        });
 </script>
