@@ -9,11 +9,11 @@ description: D3 Radial Bar Chart Example Inspired by Apple Watch
     let categories = ['A', 'B', 'C', 'D', 'E'];
     let colors = ['darkorange', 'yellow', 'lime', 'cyan', 'magenta'];
 
-    // generate random values between 1 and 90
+    // generate random values between 5 and 75
     let data = categories.map((c, i) => {
         return {
             name: c,
-            value: 1 + 89 * Math.random(),
+            value: 5 + 75 * Math.random(),
             color: colors[i],
         }
     });
@@ -37,46 +37,15 @@ description: D3 Radial Bar Chart Example Inspired by Apple Watch
         d.radius = chartRadius / nBars * i + barPadding;
     });
 
-    // circular grid lines and category labels
-    let rAxis = svg.append("g");
-    rAxis.selectAll("circle")
-        .data(data)
-        .join(enter =>
-            enter.append('circle')
-                .attr('r', d => d.radius + barWidth)
-                .attr('cx', width / 2)
-                .attr('cy', height / 2)
-                .attr('fill', 'none')
-                .style('stroke', 'silver')
-                .style('stroke-width', '1px')
-        );
-
-    // define scale and ticks for bar values
     let angle = d3.scaleLinear()
         .domain([0, 100])
         .range([0, 2 * Math.PI]);
-    let ticks = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
-    let tickAngle = Math.PI * 2 / ticks.length;
-
-    // generate x and y coords based on angle and distance from the center of the chart
     let coord = (value, radius) => {
         let a = angle(value) + Math.PI / 2;
         let x = Math.cos(a) * radius;
         let y = Math.sin(a) * radius;
         return { x: width / 2 - x, y: height / 2 - y };
     }
-
-    // radial grid lines and value tick labels
-    let thetaAxis = svg.append("g");
-    thetaAxis.selectAll("line")
-        .data(ticks)
-        .join(enter =>
-            enter.append("line")
-                .attr('x1', width / 2)
-                .attr('y1', height / 2)
-                .attr('x2', d => coord(d, chartRadius).x)
-                .attr('y2', d => coord(d, chartRadius).y)
-                .style('stroke', 'silver'));
 
     // faint bars in the background
     let bgArc = d3.arc()
