@@ -60,7 +60,6 @@ description: D3 Radial Bar Chart Example
         .domain([0, 100])
         .range([0, 2 * Math.PI]);
     let ticks = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
-    let tickAngle = Math.PI * 2 / ticks.length;
 
     // generate x and y coords based on angle and distance from the center of the chart
     let coord = (value, radius) => {
@@ -95,12 +94,11 @@ description: D3 Radial Bar Chart Example
         .innerRadius(d => d.radius)
         .outerRadius(d => d.radius + barWidth)
         .startAngle(0)
-        .endAngle(d => angle(d.value))
+        .endAngle(d => angle(d.value));
     let bars = svg.append('g');
     bars.selectAll('path')
         .data(data)
         .join(enter => enter.append('path')
-            .attr('class', 'arc')
             .style('fill', d => d.color)
             .attr('d', d => arc(d))
             .attr('transform', `translate(${width / 2},${height / 2})`));

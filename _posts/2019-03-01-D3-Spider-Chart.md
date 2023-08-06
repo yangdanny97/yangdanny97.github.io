@@ -17,7 +17,7 @@ Because the variables can be placed around the chart in an arbitrary order, the 
 
 The main steps to making this chart are: plotting the gridlines, plotting the axes, and plotting the shapes for the data. Before we begin the tutorial, here is a peek of what the final product should look like.
 
-![console printout](https://yangdanny97.github.io/misc/spider_chart/4.png){: height="px300" width="300"}
+![D3 spider chart](https://yangdanny97.github.io/misc/spider_chart/4.png){: height="px300" width="300"}
 
 ## Setup
 

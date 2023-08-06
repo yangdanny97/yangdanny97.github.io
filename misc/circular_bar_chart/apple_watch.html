@@ -57,7 +57,6 @@ description: D3 Radial Bar Chart Example Inspired by Apple Watch
     bgBars.selectAll('path')
         .data(data)
         .join(enter => enter.append('path')
-            .attr('class', 'arc')
             .style('fill', d => d.color)
             .style('opacity', 0.5)
             .attr('d', d => bgArc(d))
@@ -73,7 +72,6 @@ description: D3 Radial Bar Chart Example Inspired by Apple Watch
     bars.selectAll('path')
         .data(data)
         .join(enter => enter.append('path')
-            .attr('class', 'arc')
             .attr('fill', d => d.color)
             .attr('d', d => arc(d))
             .attr('transform', `translate(${width / 2},${height / 2})`));
