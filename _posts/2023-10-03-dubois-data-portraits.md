@@ -32,9 +32,7 @@ Finally, I must caution against going overboard and wrapping multiple bars in a 
 
 ## Grouping Data in Bar Charts
 
-prints 26, 30, and 45 feature bar charts that use a `}` shape to group together several small bars into a single larger bar that represents the sum. This allows the smaller bars to be compared against each other, and for their sum to be compared against some other value.
-
-For example, 
+Prints 26, 30, and 45 feature bar charts that use a `}` shape to group together several small bars into a single larger bar that represents the sum. This allows the smaller bars to be compared against each other, and for their sum to be compared against some other value.
 
 ![Print 30](https://yangdanny97.github.io/misc/dubois/30.png){: height="px600" width="600"}
 
