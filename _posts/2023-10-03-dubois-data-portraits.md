@@ -48,7 +48,7 @@ To draw correctly-sized circles, the largest circle needs to be √1.32x the dia
 
 Interestingly, there are several charts utilizing other shapes that scale the areas correctly. This includes the money bags in print 18, along with the (surprisingly detailed) USA silhouettes in prints 41 and 42.
 
-![Print 18](https://yangdanny97.github.io/misc/dubois/42.png){: height="px600" width="600"}
+![Print 18](https://yangdanny97.github.io/misc/dubois/18.png){: height="px600" width="600"}
 
 ![Print 42](https://yangdanny97.github.io/misc/dubois/42.png){: height="px600" width="600"}
 
