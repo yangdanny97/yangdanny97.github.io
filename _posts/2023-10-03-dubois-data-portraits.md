@@ -60,7 +60,7 @@ Print 8 is a cool layout showing immigration and emigration between Georgia and 
 
 It looks like a vector field diagram, except here the lengths of the arrows are not proportional to the quantity of migration as I would expect. 
 
-![Vector Field](https://yangdanny97.github.io/misc/dubois/vectorfield.png){: height="px400" width="400"}
+![Vector Field](https://yangdanny97.github.io/misc/dubois/vectorfield.png){: height="px200" width="200"}
 
 Although this chart gives up arrow length as a visual channel, I suspect this is intentional: closer states would need longer arrows to show more migration despite having less physical space to work with, which would have probably made the chart much more cluttered.
 
