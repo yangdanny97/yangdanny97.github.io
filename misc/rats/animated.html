@@ -1,0 +1,187 @@
+---
+layout: default
+title: NYC Rat Sightings - 2010-2023
+description: Monthly count of 311 calls for rodents
+---
+<link rel="stylesheet" href="{{ site.url }}/css/site-style.css">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    div {
+        background-color: white;
+        color: black;
+    }
+
+    text {
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+    }
+</style>
+<svg></svg>
+<script>
+    async function createVis() {
+        let width = 800;
+        let height = 600;
+        let radius = height / 2 - 50;
+        let svg = d3.select("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        let data = await d3.csv("./rats.csv")
+        data.forEach(d => {
+            d.Month = parseInt(d.Month);
+            d.Year = parseInt(d.Year);
+            d.Count = parseInt(d.Count);
+        });
+        data.sort((a, b) => a.Year - b.Year || a.Month - b.Month);
+
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        let maxCount = d3.max(data, d => d.Count);
+        let ticks = [];
+        let scaleMax = 500;
+        while (scaleMax < maxCount) {
+            ticks.push(scaleMax);
+            scaleMax += 500;
+        }
+        scaleMax -= 500;
+
+        let radialScale = d3.scaleLinear()
+            .domain([0, scaleMax])
+            .range([0, radius]);
+
+        // draw grid lines (circles)
+        svg.selectAll("circle")
+            .data(ticks)
+            .join(
+                enter => enter.append("circle")
+                    .attr("cx", width / 2)
+                    .attr("cy", height / 2)
+                    .attr("fill", "none")
+                    .attr("stroke", "white")
+                    .attr("r", d => radialScale(d))
+            );
+
+        // draw axis for each feature
+        function angleToCoordinate(angle, value) {
+            let x = Math.cos(angle) * radialScale(value);
+            let y = Math.sin(angle) * radialScale(value);
+            return { "x": width / 2 - x, "y": height / 2 - y };
+        }
+
+        let monthData = months.map((f, i) => {
+            let monthNum = i + 1;
+            let angle = (Math.PI / 2) + (2 * Math.PI * monthNum / months.length);
+            return {
+                "name": f,
+                "angle": angle,
+                "label": angleToCoordinate(angle, scaleMax * 1.05)
+            };
+        });
+
+        // draw axis label
+        svg.selectAll(".axislabel")
+            .data(monthData)
+            .join(
+                enter => enter.append("text")
+                    .attr("x", d => d.label.x)
+                    .attr("y", d => d.label.y)
+                    .attr("class", "axisLabel")
+                    .text(d => d.name)
+                    .attr("fill", "white")
+                    .attr("text-anchor", d => d.label.x > (width / 2 + 5) ? "start" : (d.label.x < (width / 2 - 5) ? "end" : "middle"))
+            );
+
+        // tooltip
+        d3.select("body")
+            .append("div")
+            .attr("id", "tooltip")
+            .attr("style", "position: absolute; opacity: 0;");
+
+
+        // drawing the line for the chart
+        data.forEach(d => {
+            let angle = (Math.PI / 2) + (2 * Math.PI * d.Month / months.length);
+            d.coord = angleToCoordinate(angle, d.Count);
+            d.r = radialScale(d.Count);
+        });
+        // draw the path segments
+        let segments = data.map((d, i) => [d, (i + 1) < data.length ? data[i + 1] : null]).slice(0, data.length - 1);
+        let chartLayer = svg.append("g");
+
+        // draw tick labels
+        svg.selectAll(".ticklabel")
+            .data(ticks)
+            .join(
+                enter => enter.append("text")
+                    .attr("class", "ticklabel")
+                    .attr("x", width / 2 + 5)
+                    .attr("y", d => height / 2 - radialScale(d - 250))
+                    .text(d => d.toString())
+                    .attr("fill", "white")
+                    .attr("text-anchor", "middle")
+            );
+
+        // label first and last points
+        svg.append("text")
+            .attr("x", data[0].coord.x)
+            .attr("y", data[0].coord.y)
+            .text(`${data[0].Month}/${data[0].Year}`)
+            .attr("fill", "white");
+
+        let i = 0;
+        function step() {
+            let selected = segments.slice(0, i + 1);
+
+            svg.select(".last").remove();
+            if (i == segments.length - 1) {
+                let last = i;
+                svg.append("text")
+                    .attr("class", "last")
+                    .attr("x", data[last].coord.x)
+                    .attr("y", data[last].coord.y)
+                    .text(`${data[last].Month}/${data[last].Year}`)
+                    .attr("text-anchor", "middle")
+                    .attr("fill", "white");
+            } else {
+                svg.select(".last").remove();
+            }
+            chartLayer.selectAll(".segment")
+                .data(selected)
+                .join(
+                    enter => enter.append("line")
+                        .attr("class", "segment")
+                        .attr("x1", d => d[0].coord.x)
+                        .attr("x2", d => d[1].coord.x)
+                        .attr("y1", d => d[0].coord.y)
+                        .attr("y2", d => d[1].coord.y)
+                        .attr("stroke-width", 5)
+                        .attr("stroke-linecap", "round")
+                        .attr("stroke", d => d3.interpolateRdBu((scaleMax - (d[0].Count * .5 + d[1].Count * .5)) / scaleMax))
+                        .attr("stroke-opacity", 1)
+                        .on("mouseover", (_, d) =>
+                            d3.select("#tooltip").style("opacity", 1).text(`${d[0].Month}/${d[0].Year} - ${d[1].Month}/${d[1].Year}`)
+                        )
+                        .on("mouseout", () =>
+                            d3.select("#tooltip").style("opacity", 0)
+                        )
+                        .on("mousemove", event =>
+                            d3.select("#tooltip")
+                                .style("left", event.pageX + 20 + "px")
+                                .style("top", event.pageY + "px")
+                        ),
+                    _ => { },
+                    exit => exit.remove()
+                );
+            i += 1;
+            if (i > segments.length) {
+                i = 0;
+            }
+        }
+        window.setInterval(step, 250)
+    }
+    createVis();
+</script>
