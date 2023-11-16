@@ -28,12 +28,24 @@ function addTriangle(p1, p2, p3, color) {
     scene.add(mesh);
 }
 
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 async function createVis() {
     let data = await d3.csv("./rats.csv")
+    let temperatureData = await d3.csv("./temperature.csv");
+    let temperatures = {};
+    temperatureData.forEach(d => {
+        let year = parseInt(d.Year);
+        temperatures[year] = {};
+        months.forEach(m => {
+            temperatures[year][m] = parseFloat(d[m]);
+        });
+    });
     data.forEach(d => {
         d.Month = parseInt(d.Month);
         d.Year = parseInt(d.Year);
         d.Count = parseInt(d.Count);
+        d.Temperature = temperatures[d.Year][months[d.Month - 1]];
     });
     data.sort((a, b) => a.Year - b.Year || a.Month - b.Month);
 
@@ -44,6 +56,9 @@ async function createVis() {
     }
     scaleMax -= 500;
 
+    let tempScale = d3.scaleLinear()
+        .domain(d3.extent(data, d => d.Temperature))
+        .range([1, 0]);
     let radialScale = d3.scaleLinear()
         .domain([0, scaleMax])
         .range([0, 1]);
@@ -80,7 +95,7 @@ async function createVis() {
             if (p1 == null) continue;
             if (p2 == null) continue;
             if (p3 == null) continue;
-            let color = d3.interpolateRdBu((scaleMax - ((p1.Count + p2.Count + p3.Count) / 3)) / scaleMax);
+            let color = d3.interpolateRdBu(tempScale((p1.Temperature + p2.Temperature + p3.Temperature) / 3));
             addTriangle(p1.coord, p2.coord, p3.coord, color);
         }
     }
@@ -90,7 +105,7 @@ async function createVis() {
             const p2 = lookup[y][(m + 1 > 12) ? 1 : m + 1];
             const p3 = lookup[y + 1][m];
             if (p3 == null) continue;
-            let color = d3.interpolateRdBu((scaleMax - ((p1.Count + p2.Count + p3.Count) / 3)) / scaleMax);
+            let color = d3.interpolateRdBu(tempScale((p1.Temperature + p2.Temperature + p3.Temperature) / 3));
             addTriangle(p1.coord, p2.coord, p3.coord, color);
         }
     }

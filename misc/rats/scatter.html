@@ -71,7 +71,18 @@ description: Monthly count of 311 calls for rodents
             d.coord = {x: xScale(d.Temperature), y: yScale(d.Count)};
         });
         // draw the path segments
-        let segments = data.map((d, i) => [d, (i + 1) < data.length ? data[i + 1] : null]).slice(0, data.length - 1);
+        let segments = data.map((d, i) => [d, (i + 1) < data.length ? data[i + 1] : null])
+            .slice(0, data.length - 1);
+        
+        let colorScale = d3.scaleLinear()
+            .domain([0, 6])
+            .range([0, 1]);
+        let darkScale = d3.scaleLinear()
+            .domain(d3.extent(data, d => d.Year))
+            .range([5, 0]);
+        let satScale = d3.scaleLinear()
+            .domain(d3.extent(data, d => d.Year))
+            .range([-0.5, 0]);
 
         svg.selectAll(".segment")
             .data(segments)
@@ -84,7 +95,14 @@ description: Monthly count of 311 calls for rodents
                     .attr("y2", d => d[1].coord.y)
                     .attr("stroke-width", 5)
                     .attr("stroke-linecap", "round")
-                    .attr("stroke", d => d3.interpolateRdBu((scaleMax - (d[0].Count * .5 + d[1].Count * .5)) / scaleMax))
+                    .attr("stroke", d => {
+                        let color = d3.interpolateRdBu(colorScale(Math.abs(6 - d[0].Month)) * 0.5 + colorScale(Math.abs(6 - d[1].Month)) * 0.5);
+                        // return d3.color(color).darker(darkScale(d[0].Year));
+                        let c = d3.hsl(color);
+                        console.log(satScale(d[0].Year));
+                        c.s += satScale(d[0].Year);
+                        return c + "";
+                    })
                     .attr("stroke-opacity", 1)
                     .on("mouseover", (_, d) =>
                         d3.select("#tooltip").style("opacity", 1).text(`${d[0].Month}/${d[0].Year} - ${d[1].Month}/${d[1].Year}`)
