@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Recipe] Egg Drop Soup"
+title: "[Recipe] Egg Drop Soup ⏱️"
 description: "Recipe for making Chinese egg drop soup"
 date: 2023-07-10
 category: "Cooking"
