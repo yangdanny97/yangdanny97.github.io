@@ -45,7 +45,7 @@ Every time I pass through Richmond on a weekend I always stop by this shop to en
 I stumbled on this cafe on accident on a mission to visit Putien (a Michelin-starred Chinese restaurant). I'm really glad I stepped inside for a quick break - it was quiet and relaxing, and the drink I had was great (pea flower lemonade). On the walls, they were exhibiting a collection of artwork on the topic of breakups, which I felt added a bittersweet flavor to the vibes inside. Overall, definitely a unique and enjoyable time.
 
 <p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/cafes/main_street.jpeg">
+  <img height="500" src="https://yangdanny97.github.io/misc/cafes/main_street.jpg">
 </p>
 
 ### The Depot Cafe and Bookstore - Mill Valley, CA
