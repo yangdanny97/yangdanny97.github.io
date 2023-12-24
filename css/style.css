@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'neucharegular';
-    src: url('css/NeuchaRegular/neucha-regular-webfont.woff2') format('woff2'),
-         url('css/NeuchaRegular/neucha-regular-webfont.woff') format('woff');
+    src: url('NeuchaRegular/neucha-regular-webfont.woff2') format('woff2'),
+         url('NeuchaRegular/neucha-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
