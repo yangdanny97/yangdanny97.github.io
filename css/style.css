@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'neucharegular';
+    src: url('css/NeuchaRegular/neucha-regular-webfont.woff2') format('woff2'),
+         url('css/NeuchaRegular/neucha-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .text-center,
 .centered {
     text-align: center;
@@ -7,7 +16,7 @@
     font-size: 64px;
     margin-top: 50px;
     color: #555;
-    font-family: 'Lato', sans-serif;
+    font-family: 'neucharegular', 'Lato', sans-serif;
 }
 
 .row {
