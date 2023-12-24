@@ -90,8 +90,8 @@ async function createVis() {
     for (var y = 2011; y < 2024; y++) {
         for (var m = 1; m <= 12; m++) {
             const p1 = lookup[y][m];
-            const p2 = lookup[y][(m + 1 > 12) ? 1 : m + 1];
-            const p3 = lookup[y - 1][(m + 1 > 12) ? 1 : m + 1];
+            const p2 = lookup[(m - 1 < 1) ? y - 1 : y][(m - 1 < 1) ? 12 : m - 1];
+            const p3 = lookup[y - 1][m];
             if (p1 == null) continue;
             if (p2 == null) continue;
             if (p3 == null) continue;
@@ -102,8 +102,10 @@ async function createVis() {
     for (var y = 2010; y < 2023; y++) {
         for (var m = 1; m <= 12; m++) {
             const p1 = lookup[y][m];
-            const p2 = lookup[y][(m + 1 > 12) ? 1 : m + 1];
+            const p2 = lookup[(m + 1 > 12) ? y + 1 : y][(m + 1 > 12) ? 1 : m + 1];
             const p3 = lookup[y + 1][m];
+            if (p1 == null) continue;
+            if (p2 == null) continue;
             if (p3 == null) continue;
             let color = d3.interpolateRdBu(tempScale((p1.Temperature + p2.Temperature + p3.Temperature) / 3));
             addTriangle(p1.coord, p2.coord, p3.coord, color);
