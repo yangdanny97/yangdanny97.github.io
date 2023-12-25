@@ -64,11 +64,11 @@ This cafe has fantastic early morning vibes, especially for grabbing breakfast r
 
 ### For the Record - Greenpoint, NYC
 
-This cafe doubles as a record store, and it has enough space/seating to run workshops on the weekends.
+This cafe doubles as a record store, and has enough space to run various workshops on the weekends.
 
 ### Lately Cafe - Long Island City, NYC
 
-Great place to read, really good sandwiches and toast (though quite pricey).
+Great place to read - cozy, not too crowded, really good sandwiches and toast.
 
 ### World Traveler Coffee and Tea - Folsom, CA
 
