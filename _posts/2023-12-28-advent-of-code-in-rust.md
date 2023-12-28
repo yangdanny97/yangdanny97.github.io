@@ -24,6 +24,8 @@ A lot of things really impressed me about Rust:
 - clippy - Having a built-in linter is a huge boon for newcomers trying to learn the language, since it can prevent bad habits from forming. It was surprisingly opinionated, but I welcomed the suggestions for keeping my code clean.
 - `derive` - Having the compiler automatically implement useful traits was very nice for AOC. Since I like to do a lot of print-debugging for these problems `#[derive(Debug)]` was particularly helpful.
 
+Even though Rust is mainly supposed to be for systems programming, I found it to be surprisingly pleasant for general purpose scripting as well, certainly better than C++.
+
 ## Mixed Feelings
 
 Overall I think the borrow checker and the idea of ownership is great. I also don't think I've run into any horribly hairy situations with the borrow checker yet, since the code I wrote for AOC was mostly simple procedural code. 
@@ -38,7 +40,7 @@ Another strange (hopefully not-representative) issue that I ran into was some li
 
 I had some small syntax nits as well:
 - type parameters: `collect::<Vec<_>>()` is a little too many angle brackets for my liking, I would have preferred for it to just be `collect::Vec<_>()`, though there might be ambiguity issues preventing that
-- the `?` operator is neat, I just wish it also worked with options
+- the `?` operator is neat, I just wish it worked more generally (for example, forcing an early return in functions that return unit)
 
 ## ChatGPT
 
