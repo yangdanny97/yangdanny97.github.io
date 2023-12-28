@@ -30,7 +30,9 @@ Overall I think the borrow checker and the idea of ownership is great. I also do
 
 I found that writing code in a functional style helped keep the borrow checker happy. I ended up writing a lot of functions where I take a container, update it, and return the updated container. If I really wanted functions with side effects, I could have made some custom traits for the containers I cared about, but for scripting purposes I found just returning the updated container from a regular function to be adequate. For more complex update-or-insert style operations on HashMaps, I found `entry` to be very useful. 
 
-The trickiest situation that I ran into was probably is the "using a value in the container == borrowing the whole container" thing. I had a `HashMap<String, int64>` and I wanted to find & remove the mapping with the largest value (like a priority queue, but `O(n)`). My initial intuition was to use `max_by_value`, which should give me both the key and the value, but that borrows the whole container due to returning a reference to the value, preventing me from removing the mapping later on.
+The trickiest situation that I ran into was probably is the "using a value in the container == borrowing the whole container" thing. I had a `HashMap<String, int64>` and I wanted to find & remove the mapping with the largest value (like a priority queue, but `O(n)`). 
+
+My initial intuition was to get the key and value using `max_by_value`, then remove the entry. However, getting the value that way gives a reference to the value and borrows the container, preventing me from mutating the container later. In the end, I got the maximum key first, then got the value by removing the entry with `remove`.
 
 Another strange (hopefully not-representative) issue that I ran into was some linking errors when I tried to use the `z3` crate. I tried a number of solutions, including building z3 from source, but in the end I was unable to get it to work in Rust. For that particular puzzle, I gave up and just printed the constraints out and ran the z3 binary manually.
 
@@ -50,7 +52,7 @@ For explaining compiler errors, it was good at explaining the error messages abs
 
 ## Final Thoughts
 
-Overall, it was another fun set of puzzles to close out the year, and it's always good to get some algorithms practice without needing to grind Leetcode. 
+Overall, it was another fun set of puzzles to close out the year, and it's always good to get some algorithms practice without needing to grind Leetcode. I also got to practice/learn some Rust, though I'm not quite over the learning curve yet.
 
 The toughest part of this year was probably being on the East coast, since the problems release at midnight. I certainly can't stay up late every night for a whole month straight, so halfway through I gave up and started doing them the morning after. 
 
