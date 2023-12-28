@@ -32,7 +32,7 @@ Overall I think the borrow checker and the idea of ownership is great. I also do
 
 I found that writing code in a functional style helped keep the borrow checker happy. I ended up writing a lot of functions where I take a container, update it, and return the updated container. If I really wanted functions with side effects, I could have made some custom traits for the containers I cared about, but for scripting purposes I found just returning the updated container from a regular function to be adequate. For more complex update-or-insert style operations on HashMaps, I found `entry` to be very useful. 
 
-The trickiest situation that I ran into was probably is the "using a value in the container == borrowing the whole container" thing. I had a `HashMap<String, int64>` and I wanted to find & remove the mapping with the largest value (like a priority queue, but `O(n)`). 
+The trickiest situation that I ran into was probably is the "using a value in the container == borrowing the whole container" thing. I had a `HashMap<String, i64>` and I wanted to find & remove the mapping with the largest value (like a priority queue, but `O(n)`). 
 
 My initial intuition was to get the key and value using `max_by_value`, then remove the entry. However, getting the value that way gives a reference to the value and borrows the container, preventing me from mutating the container later. In the end, I got the maximum key first, then got the value by removing the entry with `remove`.
 
