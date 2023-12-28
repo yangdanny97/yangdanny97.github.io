@@ -11,7 +11,7 @@ This is my third year doing [Advent of Code](https://adventofcode.com/2023). In 
 
 My team at work has a sizable Rust codebase that I've touched a few times in the past, so this was a good opportunity to get a feel for the language and hopefully get better at my job.
 
-Since folks have been hyping up ChatGPT for a while, I was also curious to see how useful it would be for learning a new language. I didn't use it for any of the problem solving parts, and mainly just used it to explain compiler errors and as an alternative language documentation (think, `how do I split a string at each colon and semicolon`).
+Since folks have been hyping up ChatGPT for a while, I was also curious to see how useful it would be for learning a new language. I didn't use it for any of the problem solving parts, and mainly just used it to explain compiler errors and as an alternative language documentation (think, "how do I split a string at each colon and semicolon").
 
 As usual, I won't bother with describing my solutions to each problem in this post. If you want to know about that, just check out the [source code](https://github.com/yangdanny97/advent-of-code-2023-rust). 
 
