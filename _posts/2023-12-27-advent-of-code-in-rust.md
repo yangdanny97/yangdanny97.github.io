@@ -2,7 +2,7 @@
 layout: post
 title: "Advent of Code 2023 in Rust"
 description: "My thoughts as a newcomer to Rust"
-date: 2023-12-28
+date: 2023-12-27
 category: "Technical"
 tag: "Technical"
 ---

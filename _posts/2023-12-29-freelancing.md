@@ -2,7 +2,7 @@
 layout: post
 title: "1 Year of Data Visualization Freelancing"
 description: "My thoughts after 1 year of part-time freelancing on Upwork"
-date: 2023-12-28
+date: 2023-12-29
 category: "Technical"
 tag: "Technical"
 ---
