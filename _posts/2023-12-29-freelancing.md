@@ -97,9 +97,9 @@ Below is a screenshot of my public Upwork profile, to show that I'm not making t
 
 ![upwork profile 2](https://yangdanny97.github.io/images/upwork2.png)
 
-If I extrapolate this to full-time (assuming my plate is full all the time) I would have made $150-200k before taxes and fees for the year. Not too shabby, but it would be around a 50% pay cut from my current job and I wouldn't have health insurance.
+If I extrapolate this to full-time (with the unrealistic assumption that my plate is full all the time) I would have made $150-200k before taxes and fees for the year. Not too shabby, but it would be around a 50% pay cut from my current job and I wouldn't have health insurance or free food at the office or employer 401k matching.
 
-I think that if I actually relied on contracting to pay the bills, I would raise my rates and aim for longer contracts with higher commitments. The shorter/one-off contracts tend to pay less and have higher overhead with submitting proposals and negotiating with clients.
+I think that if I actually relied on contracting to pay the bills, I would need to raise my rates and aim for longer contracts with higher commitments. The shorter/one-off contracts tend to pay less and have higher overhead with submitting proposals and negotiating with clients.
 
 All the original goals I set for 2023 were met:
 
