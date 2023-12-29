@@ -56,9 +56,9 @@ Anyhow, once I made my account I filled out my profile, added a few portfolio li
 
 On Upwork, clients could set their budget for total project cost or per-hour, which really helped me select which contracts to bid for.
 
-For my first couple of contracts I bid really for low-budget contracts (like $50 or $100 for the whole project) so that I could accumulate some good reviews. Since the projects were pretty small and I was getting good practice, it wasn't a total waste of time.
+For my first couple of contracts, I targeted low-budget contracts (like $50 or $100 for the whole project) so that I could accumulate good reviews. Since the projects were pretty small and I was getting good practice, it wasn't a total waste of time.
 
-After getting one or two successful jobs under my belt, I started making more reasonable bids. My base rate was $100/hour (completely arbitrary), and the amount I was willing to negotiate depended on my appetite for new work at the time. As a hard rule, I tried to avoid anything that paid less than $50/hour after the first few contracts. This felt like a fair rate, though if I was relying on this to pay the bills I would have charged significantly more.
+After getting some successful jobs under my belt, I started being more selective with my bidding and rates. My base rate was set at $100/hour (completely arbitrary), and the amount I was willing to negotiate depended on my appetite for new work at the time. As a hard rule, I tried to avoid anything that paid less than $50/hour after the first few contracts. This felt like a fair rate, though if I was relying on this to pay the bills I would have charged significantly more.
 
 That said, nothing stops other freelancers from bidding under the client's budget, and I probably lost a lot of contracts due to being undercut on rates.
 
