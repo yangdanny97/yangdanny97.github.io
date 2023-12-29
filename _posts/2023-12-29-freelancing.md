@@ -74,7 +74,9 @@ Some platforms like Upwork take a percentage of your hourly fee, whereas others 
 
 ## Advertising
 
-I didn't really advertise these services except by putting a line in my Github README saying people could message me if they wanted to pay me to do something, but I don't think anyone reached out to me through those channels. I did get clients who found me on Upwork but reached out to me directly via email for various reasons, but the bulk of my contracts were directly through Upwork.
+I didn't really advertise these services except by putting a line in my Github README & my blog saying people could message me if they wanted to pay me to do something, but I don't think anyone reached out to me through those channels.
+
+I did get clients who found me on Upwork but reached out to me directly via email for whatever reason, but the bulk of my contracts were directly through Upwork.
 
 ## Working With Clients
 
