@@ -53,8 +53,11 @@ layout: default
 <div class='row slide'>
     <div class="col-sm-8 offset-sm-2 borders">
         <h1 class="post_title">{{ page.title }}</h1>
-        <div class="meta post">{{ page.date | date_to_string }} - {{ content | number_of_words }} words - 
+        <div class="meta post">{{ page.date | date_to_string }} - {{ content | number_of_words }} words - {{ content | number_of_words | divided_by: 300 }} minute read - 
             <a href="/feed.xml" target="_blank">RSS</a>
+        </div>
+        <div id="toc">
+            {:toc}
         </div>
         <div class="post">
             {% include anchor_headings.html html=content anchorBody="#" %}
