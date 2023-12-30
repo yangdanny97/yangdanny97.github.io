@@ -11,7 +11,7 @@ This post is a collection of common problems people will encounter while making 
 
 <!-- more -->
 
-### Large GeoJSON Files
+## Large GeoJSON Files
 
 Depending on the level of detail, GeoJSON can get very large. For example, the GeoJSON containing [land use information on each parcel of land in San Francisco](https://data.sfgov.org/Housing-and-Buildings/Land-Use/us3s-fp9q) is ~137mb. Since D3 visualizations are rendered by the browser, it forces the user to download a massive data file to view the visualization, which makes load times exceedingly long. This is something we want to minimize, and thankfully there are several ways to deal with this.
 
@@ -36,7 +36,7 @@ Depending on the level of detail, GeoJSON can get very large. For example, the G
 
     Converting is as easy as loading the file into MapShaper and re-exporting as TopoJSON. The drawback, as I understand it, is that you can't adjust the projection like you can with GeoJSON, so it is best to set your desired projection using a tool like MapShaper before you convert it. 
 
-### Load Times
+## Load Times
 
 Generally, page load time is related to the size of the dataset, and how much data processing/manipulation the visualization needs to do. Larger datasets take more time to load, and more display elements take longer to render and update. 
 
@@ -44,17 +44,17 @@ As a rule of thumb, loading datasets with more than 25mb will lead to a severe a
 
 For visualizations using static datasets, loading and combining multiple datasets or doing preprocessing on the data in Javascript is unnecessary. To optimize page load time, you should always merge datasets and do preprocessing offline ahead of time. 
 
-### Non-JSON File Formats
+## Non-JSON File Formats
 
 Map data doesn't always come nicely formatted as GeoJSON or TopoJSON; sometimes they will come as shapefiles, which cannot directly be displayed by D3. You can edit and convert map data using a tool called [MapShaper](https://mapshaper.org). It has both a web interface and CLI where you can upload files in a variety of formats, edit their layers and polygons, and re-export them as GeoJSON or TopoJSON. I used it once to convert a shapefile of Westeros into a format that can be displayed in D3 (the final map, if you're curious, is here: [Game Of Thrones Interactive Battles Map](https://yangdanny97.github.io/GoT-interactive-battles-map/)).
 
-### Scaling Issues
+## Scaling Issues
 
 This is most common when working with city-level GeoJSON data, which will appear as a tiny speck on the screen if the projection is not adjusted. This can be fixed by centering the projection on the city's centroid, then zooming and offsetting appropriately. 
 
 Note that most of the time TopoJSON already comes with a projection applied, so it is not possible to adjust the projection's scaling. In this case, you can set the `transform` attribute [using D3](https://www.tutorialspoint.com/d3js/d3js_svg_transformation.htm), or you can upload the file to MapShaper and export a new version with the desired width/height/scaling.
 
-### Country Centers
+## Country Centers
 
 When plotting data points on top of countries/states, at first glance it might be intuitive to calculate the centroid of the shape and plot the point there, but there are several problems to this approach. 
 
@@ -72,7 +72,7 @@ Beyond that, country centroids also have another issue when used for certain typ
 
 The solution is to pre-determine nice-looking lat/long coordinates for country centers (there are also datasets available for this), and then join it with the GeoJSON feature for each country. The data points can just be displayed by applying the projection to the coordinates, without relying on re-calculating the centroid of each shape on the map.
 
-### Color Spilling - Incorrect Winding
+## Color Spilling - Incorrect Winding
 
 ![color spilling out of paths](https://yangdanny97.github.io/misc/dashboard/spilling.png){: width="650" }
 
@@ -82,7 +82,7 @@ This is caused by a winding issue with your GeoJSON file. D3 expects the coordin
 
 There are several online tools and libraries that can re-wind your GeoJSON correctly, like [this one by David Bumbeishvili](https://observablehq.com/@bumbeishvili/rewind-geojson).
 
-### D3 Projections Returning NaN
+## D3 Projections Returning NaN
 
 This is a pretty common gotcha when using projections for single coordinates, such as when calculating positions of tooltips or using the pre-determined centroids that I mentioned in the last section.
 
@@ -90,7 +90,7 @@ Trying to map a lat, long pair to pixel values with something like like `d3.geoM
 
 This is because D3 projection functions unintuitively accept input coordinates as `[long, lat]`, NOT `[lat, long]`. The solution is to flip the numbers - `d3.geoMercator()([-99, 10])` will yield the correct pixel position for 10N -99W.
 
-### Zooming/Panning Behavior
+## Zooming/Panning Behavior
 
 Maps with high levels of detail often benefit from the user being able to zoom and pan to focus on specific areas of the map.
 
@@ -112,7 +112,7 @@ There are 2 different approaches allow the user to zoom into a map; which one is
 
     This approach allows the user to freely pan by dragging and zoom by scrolling. This is preferred if the data is unevenly distributed (dense in some areas but not in others) or if there isn't any geographical unit that the user would logically want to click on. 
 
-### Zooming/Panning Performance
+## Zooming/Panning Performance
 
 For simpler maps with fewer shapes, zooming is totally doable by using translate/scale transformations on your shapes. Unfortunately, when the number of shapes gets large, it becomes very difficult to have smooth zooming behavior using the standard technique.
 
@@ -122,7 +122,7 @@ Here are some features that have a lot of negative impact on zooming smoothness 
 2. layering shapes
 3. semi-transparent fill
 
-### Tiling
+## Tiling
 
 For high-performance zooming and panning, tiling can be used. This is the technique that software like Google Maps/Mapbox use, to make zoomable & pannable [slippy maps](https://wiki.openstreetmap.org/wiki/Slippy_Map). Basically, the map is broken up into a grid of images (tiles), and only the part that is currently being looked at is rendered. 
 
