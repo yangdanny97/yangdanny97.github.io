@@ -56,10 +56,8 @@ layout: default
         <div class="meta post">{{ page.date | date_to_string }} - {{ content | number_of_words }} words - {{ content | number_of_words | divided_by: 300 }} minute read - 
             <a href="/feed.xml" target="_blank">RSS</a>
         </div>
-        <div id="toc">
-            {:toc}
-        </div>
         <div class="post">
+            {% include toc.html html=content %}
             {% include anchor_headings.html html=content anchorBody="#" %}
         </div>
         <hr>
