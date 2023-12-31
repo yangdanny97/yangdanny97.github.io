@@ -4,9 +4,11 @@ permalink: /blog/:year/:month/:day/:title
 highlighter: rouge
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
 author: Danny Yang
 title: Danny Yang's Blog
-description: A blog mostly about compilers, programming languages, and data vis.
+description: Personal blog about compilers, programming languages, and data visualization with D3.js
 feed:
   posts_limit: 100
   excerpt-only: true
