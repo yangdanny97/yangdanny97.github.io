@@ -19,6 +19,17 @@ description: Monthly count of 311 calls for rodents
     text {
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
     }
+
+    svg {
+        margin: auto;
+        display: block;
+    }
+
+    #tooltip {
+        position: absolute;
+        opacity: 0;
+        padding: 3px;
+    }
 </style>
 <svg></svg>
 <script>
@@ -53,54 +64,10 @@ description: Monthly count of 311 calls for rodents
             .domain([0, scaleMax])
             .range([0, radius]);
 
-        // draw grid lines (circles)
-        svg.selectAll("circle")
-            .data(ticks)
-            .join(
-                enter => enter.append("circle")
-                    .attr("cx", width / 2)
-                    .attr("cy", height / 2)
-                    .attr("fill", "none")
-                    .attr("stroke", "yellow")
-                    .attr("r", d => radialScale(d))
-            );
-
-        // draw axis for each feature
-        function angleToCoordinate(angle, value) {
-            let x = Math.cos(angle) * radialScale(value);
-            let y = Math.sin(angle) * radialScale(value);
-            return { "x": width / 2 - x, "y": height / 2 - y };
-        }
-
-        let monthData = months.map((f, i) => {
-            let monthNum = i + 1;
-            let angle = (Math.PI / 2) + (2 * Math.PI * monthNum / months.length);
-            return {
-                "name": f,
-                "angle": angle,
-                "label": angleToCoordinate(angle, scaleMax * 1.05)
-            };
-        });
-
-        // draw axis label
-        svg.selectAll(".axislabel")
-            .data(monthData)
-            .join(
-                enter => enter.append("text")
-                    .attr("x", d => d.label.x)
-                    .attr("y", d => d.label.y)
-                    .attr("class", "axisLabel")
-                    .text(d => d.name.toUpperCase().slice(0, 3))
-                    .attr("fill", "yellow")
-                    .attr("text-anchor", d => d.label.x > (width / 2 + 5) ? "start" : (d.label.x < (width / 2 - 5) ? "end" : "middle"))
-            );
-
         // tooltip
         d3.select("body")
             .append("div")
-            .attr("id", "tooltip")
-            .attr("style", "position: absolute; opacity: 0;");
-
+            .attr("id", "tooltip");
 
         // drawing the line for the chart
         data.forEach(d => {
@@ -135,6 +102,47 @@ description: Monthly count of 311 calls for rodents
                             .style("left", event.pageX + 20 + "px")
                             .style("top", event.pageY + "px")
                     )
+            );
+
+        // draw grid lines (circles)
+        svg.selectAll("circle")
+            .data(ticks)
+            .join(
+                enter => enter.append("circle")
+                    .attr("cx", width / 2)
+                    .attr("cy", height / 2)
+                    .attr("fill", "none")
+                    .attr("stroke", "yellow")
+                    .attr("r", d => radialScale(d))
+            );
+
+        function angleToCoordinate(angle, value) {
+            let x = Math.cos(angle) * radialScale(value);
+            let y = Math.sin(angle) * radialScale(value);
+            return { "x": width / 2 - x, "y": height / 2 - y };
+        }
+
+        let monthData = months.map((f, i) => {
+            let monthNum = i + 1;
+            let angle = (Math.PI / 2) + (2 * Math.PI * monthNum / months.length);
+            return {
+                "name": f,
+                "angle": angle,
+                "label": angleToCoordinate(angle, scaleMax * 1.05)
+            };
+        });
+
+        // draw axis label
+        svg.selectAll(".axislabel")
+            .data(monthData)
+            .join(
+                enter => enter.append("text")
+                    .attr("x", d => d.label.x)
+                    .attr("y", d => d.label.y)
+                    .attr("class", "axisLabel")
+                    .text(d => d.name.toUpperCase().slice(0, 3))
+                    .attr("fill", "yellow")
+                    .attr("text-anchor", d => d.label.x > (width / 2 + 5) ? "start" : (d.label.x < (width / 2 - 5) ? "end" : "middle"))
             );
 
         // draw tick labels

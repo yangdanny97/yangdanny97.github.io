@@ -19,6 +19,17 @@ description: Monthly count of 311 calls for rodents
     text {
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
     }
+
+    svg {
+        margin: auto;
+        display: block;
+    }
+
+    #tooltip {
+        position: absolute;
+        opacity: 0;
+        padding: 3px;
+    }
 </style>
 <svg></svg>
 <script>
@@ -63,8 +74,7 @@ description: Monthly count of 311 calls for rodents
         // tooltip
         d3.select("body")
             .append("div")
-            .attr("id", "tooltip")
-            .attr("style", "position: absolute; opacity: 0;");
+            .attr("id", "tooltip");
 
         // drawing the line for the chart
         data.forEach(d => {
@@ -99,8 +109,8 @@ description: Monthly count of 311 calls for rodents
                         let color = d3.interpolateRdBu(colorScale(Math.abs(6 - d[0].Month)) * 0.5 + colorScale(Math.abs(6 - d[1].Month)) * 0.5);
                         // return d3.color(color).darker(darkScale(d[0].Year));
                         let c = d3.hsl(color);
-                        console.log(satScale(d[0].Year));
-                        c.s += satScale(d[0].Year);
+                        // console.log(satScale(d[0].Year));
+                        // c.s += satScale(d[0].Year);
                         return c + "";
                     })
                     .attr("stroke-opacity", 1)

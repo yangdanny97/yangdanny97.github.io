@@ -19,6 +19,17 @@ description: Monthly count of 311 calls for rodents
     text {
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
     }
+
+    svg {
+        margin: auto;
+        display: block;
+    }
+
+    #tooltip {
+        position: absolute;
+        opacity: 0;
+        padding: 3px;
+    }
 </style>
 <svg></svg>
 <script>
@@ -98,8 +109,7 @@ description: Monthly count of 311 calls for rodents
         // tooltip
         d3.select("body")
             .append("div")
-            .attr("id", "tooltip")
-            .attr("style", "position: absolute; opacity: 0;");
+            .attr("id", "tooltip");
 
 
         // drawing the line for the chart
