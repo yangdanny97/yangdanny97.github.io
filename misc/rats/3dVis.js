@@ -37,7 +37,7 @@ async function createVis() {
         .range([0, 1]);
     let zScale = d3.scaleLinear()
         .domain([0, data.length])
-        .range([-0.5, 0.5]);
+        .range([-1, 1]);
 
     function angleToCoordinate(angle, value, index) {
         let x = -Math.cos(angle) * radialScale(value);
@@ -62,6 +62,20 @@ async function createVis() {
         const line = new THREE.Line(geometry, material);
         scene.add(line);
     });
+    for (let m = 1; m <= 12; m++) {
+        let monthData = data.filter(d => d.Month == m);
+        let segments = monthData.map((d, i) => [d, (i + 1) < monthData.length ? monthData[i + 1] : null])
+            .slice(0, monthData.length - 1);
+        segments.forEach(d => {
+            let color = d3.interpolateRdBu((scaleMax - (d[0].Count * .5 + d[1].Count * .5)) / scaleMax);
+            const material = new THREE.LineBasicMaterial({
+                color: color
+            });
+            const geometry = new THREE.BufferGeometry().setFromPoints([d[0].coord, d[1].coord]);
+            const line = new THREE.Line(geometry, material);
+            scene.add(line);
+        });
+    }
     renderer.render(scene, camera);
 }
 createVis();

@@ -8,6 +8,7 @@ description: Monthly count of 311 calls for rodents
     body {
         background-color: black;
         color: white;
+        font-family: sans-serif;
     }
 
     div {
@@ -78,7 +79,7 @@ description: Monthly count of 311 calls for rodents
             .attr("x", data[0].coord.x)
             .attr("y", data[0].coord.y)
             .text(`${data[0].Month}/${data[0].Year}`)
-            .attr("fill", "white");
+            .attr("fill", "yellow");
 
         let i = 0;
         function step() {
@@ -93,7 +94,7 @@ description: Monthly count of 311 calls for rodents
                     .attr("y", data[last].coord.y)
                     .text(`${data[last].Month}/${data[last].Year}`)
                     .attr("text-anchor", "middle")
-                    .attr("fill", "white");
+                    .attr("fill", "yellow");
             } else {
                 svg.select(".last").remove();
             }

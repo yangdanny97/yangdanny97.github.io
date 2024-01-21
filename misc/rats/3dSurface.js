@@ -8,7 +8,11 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 camera.position.z = 2.5;
+camera.position.y = 3;
 scene.rotateZ(0.25);
+scene.rotateY(-0.75);
+const axesHelper = new THREE.AxesHelper(3);
+scene.add( axesHelper );
 
 const controls = new ArcballControls(camera, renderer.domElement, scene);
 controls.setGizmosVisible(false);
@@ -64,7 +68,7 @@ async function createVis() {
         .range([0, 1]);
     let zScale = d3.scaleLinear()
         .domain([0, data.length])
-        .range([-1, 1]);
+        .range([0, 2]);
 
     function angleToCoordinate(angle, value, index) {
         let x = -Math.cos(angle) * radialScale(value);

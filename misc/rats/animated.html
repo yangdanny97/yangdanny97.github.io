@@ -8,6 +8,7 @@ description: Monthly count of 311 calls for rodents
     body {
         background-color: black;
         color: white;
+        font-family: sans-serif;
     }
 
     div {
@@ -41,12 +42,12 @@ description: Monthly count of 311 calls for rodents
 
         let maxCount = d3.max(data, d => d.Count);
         let ticks = [];
-        let scaleMax = 500;
+        let scaleMax = 1000;
         while (scaleMax < maxCount) {
             ticks.push(scaleMax);
-            scaleMax += 500;
+            scaleMax += 1000;
         }
-        scaleMax -= 500;
+        scaleMax -= 1000;
 
         let radialScale = d3.scaleLinear()
             .domain([0, scaleMax])
@@ -60,7 +61,7 @@ description: Monthly count of 311 calls for rodents
                     .attr("cx", width / 2)
                     .attr("cy", height / 2)
                     .attr("fill", "none")
-                    .attr("stroke", "white")
+                    .attr("stroke", "yellow")
                     .attr("r", d => radialScale(d))
             );
 
@@ -89,8 +90,8 @@ description: Monthly count of 311 calls for rodents
                     .attr("x", d => d.label.x)
                     .attr("y", d => d.label.y)
                     .attr("class", "axisLabel")
-                    .text(d => d.name)
-                    .attr("fill", "white")
+                    .text(d => d.name.toUpperCase().slice(0, 3))
+                    .attr("fill", "yellow")
                     .attr("text-anchor", d => d.label.x > (width / 2 + 5) ? "start" : (d.label.x < (width / 2 - 5) ? "end" : "middle"))
             );
 
@@ -120,7 +121,7 @@ description: Monthly count of 311 calls for rodents
                     .attr("x", width / 2 + 5)
                     .attr("y", d => height / 2 - radialScale(d - 250))
                     .text(d => d.toString())
-                    .attr("fill", "white")
+                    .attr("fill", "yellow")
                     .attr("text-anchor", "middle")
             );
 
@@ -129,8 +130,14 @@ description: Monthly count of 311 calls for rodents
             .attr("x", data[0].coord.x)
             .attr("y", data[0].coord.y)
             .text(`${data[0].Month}/${data[0].Year}`)
-            .attr("fill", "white");
-
+            .attr("fill", "yellow");
+        svg.append("text")
+            .attr("x", width / 2)
+            .attr("y", height / 2 + 10)
+            .attr("fill", "white")
+            .attr("font-size", 48)
+            .attr("text-anchor", "middle")
+            .text(String.fromCodePoint(0x1F400));
         let i = 0;
         function step() {
             let selected = segments.slice(0, i + 1);
@@ -144,7 +151,7 @@ description: Monthly count of 311 calls for rodents
                     .attr("y", data[last].coord.y)
                     .text(`${data[last].Month}/${data[last].Year}`)
                     .attr("text-anchor", "middle")
-                    .attr("fill", "white");
+                    .attr("fill", "yellow");
             } else {
                 svg.select(".last").remove();
             }
