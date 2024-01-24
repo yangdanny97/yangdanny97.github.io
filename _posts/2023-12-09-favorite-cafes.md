@@ -26,7 +26,7 @@ I had been following their Instagram account for years, so when I went to Taiwan
 
 Cafes that I would probably detour to visit if I pass through the area.
 
-### Open Air Coffee - Richmond, CA
+### Open Air Coffee - Richmond, California
 
 This is a really unique cafe, probably my favorite in the entire SF bay area. The cafe is located in the empty parking lot of a restaurant/catering business, using repurposed giant wire spools as tables. It only opens on weekends and seems to be popular with local cyclists thanks to its location near the bay trail. The vibe is unbeatable when it's a nice day and you can feel the sea breeze. 
 
@@ -48,7 +48,7 @@ I stumbled on this cafe on accident on a mission to visit Putien (a Michelin-sta
   <img height="500" src="https://yangdanny97.github.io/misc/cafes/main_street.jpg">
 </p>
 
-### The Depot Cafe and Bookstore - Mill Valley, CA
+### The Depot Cafe and Bookstore - Mill Valley, California
 
 This cafe has fantastic early morning vibes, especially for grabbing breakfast right before a hike or bike ride in the beautiful landscape of Marin County. As the name suggests, there's an adjacent bookstore - perfect for picking up a book to read with your coffee.
 
@@ -66,11 +66,11 @@ This cafe has fantastic early morning vibes, especially for grabbing breakfast r
 
 This cafe doubles as a record store, and has enough space to run various workshops on the weekends.
 
-### World Traveler Coffee and Tea - Folsom, CA
+### World Traveler Coffee and Tea - Folsom, California
 
 I have a lot of fond memories of this cafe in my hometown, though these days it's somewhat overshadowed by Temple. The loose leaf tea selection is very affordable, and they have a surprisingly large offering of pretty-looking mousse cakes.
 
-### Petaluma Coffee & Tea Company - Petaluma, CA
+### Petaluma Coffee & Tea Company - Petaluma, California
 
 I will admit I was baited in by their $1 coffee promotional sign outside, but I'm glad I checked it out. Inside was very cozy, with a bright and homey feeling (if your house had a coffee roaster in the living room) and great drinks.
 
@@ -78,7 +78,7 @@ I will admit I was baited in by their $1 coffee promotional sign outside, but I'
   <img height="500" src="https://yangdanny97.github.io/misc/cafes/petaluma.jpeg">
 </p>
 
-### Lever Coffee - Alamo, CA
+### Lever Coffee - Alamo, California
 
 This is probably my favorite coffee shop along the Iron Horse Trail in the East Bay. I remember their specialty latte being quite good, and the outdoor seating had nice views.
 
