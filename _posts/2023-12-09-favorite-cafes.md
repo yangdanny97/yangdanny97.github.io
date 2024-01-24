@@ -66,10 +66,6 @@ This cafe has fantastic early morning vibes, especially for grabbing breakfast r
 
 This cafe doubles as a record store, and has enough space to run various workshops on the weekends.
 
-### Lately Cafe - Long Island City, NYC
-
-Great place to read - cozy, not too crowded, really good sandwiches and toast.
-
 ### World Traveler Coffee and Tea - Folsom, CA
 
 I have a lot of fond memories of this cafe in my hometown, though these days it's somewhat overshadowed by Temple. The loose leaf tea selection is very affordable, and they have a surprisingly large offering of pretty-looking mousse cakes.
