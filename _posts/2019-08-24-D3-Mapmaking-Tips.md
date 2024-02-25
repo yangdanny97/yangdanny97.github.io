@@ -9,6 +9,8 @@ tag: "Technical"
 
 This post is a collection of common problems people will encounter while making maps using D3, and my advice for how to deal with them. I plan to make regular updates/corrections as my understanding improves.
 
+Last update: 2/25/24
+
 <!-- more -->
 
 ## Large GeoJSON Files
@@ -30,6 +32,9 @@ Depending on the level of detail, GeoJSON can get very large. For example, the G
 3. **Simplifying the shapes** 
     
     If you don't need a high level of detail, it is possible to reduce the complexity of the shape data by removing vertices, or reducing the precision of the coordinates.
+    
+    For example, if you're showing a world map that isn't designed to be zoomed in, then you probably don't need to render all the tiny islands and coastlines in a high level of detail. One way to simplify a complex shape by loading it into Mapshaper, using the slider to set your desired level of detail, and re-exporting the file. Sometimes you can shrink the file by over 90%!
+
 4. **Converting to [TopoJSON](https://github.com/topojson/topojson/wiki)** 
 
     GeoJSON encodes each shape separately while TopoJSON encodes each shared line once, so converting a GeoJSON to a TopoJSON saves a lot of space when there are many shapes with shared edges. This approach can lead to very drastic savings - the entire SF Land Use dataset can be represented by a 32mb TopoJSON, which is more than 75% less! Check out the link above for more details about the TopoJSON format.
@@ -42,7 +47,7 @@ Generally, page load time is related to the size of the dataset, and how much da
 
 As a rule of thumb, loading datasets with more than 25mb will lead to a severe and noticeable performance hit. The best option is always to shrink your dataset, but if that cannot be done, then adding a loading indicator/spinner can go a long way to making sure users don't think your visualization is broken while it loads.
 
-For visualizations using static datasets, loading and combining multiple datasets or doing preprocessing on the data in Javascript is unnecessary. To optimize page load time, you should always merge datasets and do preprocessing offline ahead of time. 
+For visualizations using static datasets, loading and combining multiple datasets or doing preprocessing on the data in Javascript each time the page loads is wasteful. To optimize page load time, merge datasets offline and do preprocessing ahead of time whenever you can. 
 
 ## Non-JSON File Formats
 
@@ -51,6 +56,8 @@ Map data doesn't always come nicely formatted as GeoJSON or TopoJSON; sometimes 
 ## Scaling Issues
 
 This is most common when working with city-level GeoJSON data, which will appear as a tiny speck on the screen if the projection is not adjusted. This can be fixed by centering the projection on the city's centroid, then zooming and offsetting appropriately. 
+
+D3 provides a useful [`fitExtent`](https://d3js.org/d3-geo/projection#projection_fitExtent) function, which projects whatever data you have into the desired bounds within the SVG, saving you the trouble of doing manual adjustments.
 
 Note that most of the time TopoJSON already comes with a projection applied, so it is not possible to adjust the projection's scaling. In this case, you can set the `transform` attribute [using D3](https://www.tutorialspoint.com/d3js/d3js_svg_transformation.htm), or you can upload the file to MapShaper and export a new version with the desired width/height/scaling.
 
