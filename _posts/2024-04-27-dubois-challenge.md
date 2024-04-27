@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Lessons from the Du Bois Challenge - Recreating Historical Data Viz in 2024 using D3.js"
+title: "Du Bois Challenge - Recreating Historical Data Viz in 2024 using D3.js"
 description: "Tips and tricks for recreating historical data visualizations in 2024 using D3.js"
 date: 2024-04-26
 category: "Vis"
