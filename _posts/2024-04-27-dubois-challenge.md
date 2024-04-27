@@ -9,18 +9,24 @@ tag: "Technical"
 
 <style>
     img {
-        height: 100%;
         width: auto;
         max-height: 500px;
         max-width: 50%;
     }
+
+    @media all and (max-width: 600px) 
+    {
+        img {
+            max-width: 100% !important;
+        }
+    }
 </style>
 
-This year, I completed the Du Bois Challenge - annual online event hosted by Anthony Starks where data vis practitioners are tasked with recreating one of W.E.B Du Bois's famous data visualizations each week over the course of 10 weeks.
+This spring, I completed the Du Bois Challenge - an annual online event where participants are tasked with recreating one of W.E.B Du Bois's famous data visualizations each week over the course of 10 weeks.
 
-My tool of choice for the challenge was naturally D3.js. Throughout the challenge, I discovered useful tools and data sources and learned a lot about the intricacies of D3, SVG, and web technologies in general. Although modern technology can quickly produce accurate charts, some of the organic, imperfect shapes and colors of these historical visualizations were quite tricky to recreate.
+Participants are allowed to use whatever tools they want, but my tool of choice for the challenge was naturally D3.js. Throughout the challenge, I discovered useful tools and historical data sources, and learned a lot about the intricacies of D3, SVG, and web technologies in general. Although modern technology can quickly produce accurate charts, some of the organic, imperfect shapes and colors of these historical visualizations were quite tricky to recreate.
 
-For the rest of the post, I'll discuss each of the ten plates I recreated, describing my process and interesting features in each visualization. Click into each title for a live view, or browse the [source code](https://github.com/yangdanny97/dubois-challenge-2024-d3js) on Github. In the galleries below, the left image is my reproduction and the right image is the original.
+For the rest of the post, I'll discuss each of the ten plates I recreated, describing my process and interesting features in each visualization. Click into each title for a live view, or browse the [source code](https://github.com/yangdanny97/dubois-challenge-2024-d3js) on Github. In the galleries below, the left/first image is my reproduction and the right/second image is the original.
 
 ## [Week 1 - Plate 06 - Choropleths](https://yangdanny97.github.io/dubois-challenge-2024-d3js/week1-plate06/)
 
