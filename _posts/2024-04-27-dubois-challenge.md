@@ -255,11 +255,11 @@ This was the command I ended up using to reduce the final dataset to 44kb.
 mapshaper -filter-islands min-area=200km2
 ```
 
-When plotting the map, I made each state a random color since it didn't seem like the color encoded any data here.
+Finally, when drawing the map I gave each state a random color since it didn't seem like the color channel encoded any meaningful data in the original.
 
 ### Pie Chart Customization
 
-I don't make pie charts frequently, and this was the first time I had to tweak the sorting order and start angle for one. Luckily, D3's pie chart helper supports those customizations.
+This was the first time I had to tweak the sorting order and start angle for a pie chart, since I don't work with them frequently. I was pleased to discover that D3's pie chart API supported those customizations.
 
 ```javascript
 const pie = d3.pie().value(d => d.Percentage)
@@ -267,9 +267,9 @@ const pie = d3.pie().value(d => d.Percentage)
     .sort((a, b) => a.Order - b.Order);
 ```
 
-In the original visualization, the text labels for narrower slices were placed closer to the outside and rendered using smaller font so they would fit.
+In the original visualization, the text labels for the smaller categories were placed closer to the outside and rendered using smaller font so they would fit in the narrow slices.
 
-Since pie chart labels are normally positioned by calculating the centroid of the slice, for labels on smaller slices I used a different arc generator with a larger radius than I used for the actual pie, so they would be placed closer to the outside of the slices.
+The standard way to place labels pie charts in D3 is to use the centroid of the slice, so I had to use a bit of a trick to make the positioning work in my re-creation. For the labels on smaller slices, I used a different arc generator with a larger radius than I used for the actual pie. That way, the centroid of this larger arc would be at the same angle but as the smaller arc, but closer to the outside of the visible slices.
 
 ```javascript
 // special arc for centroid calculations on smaller slices
