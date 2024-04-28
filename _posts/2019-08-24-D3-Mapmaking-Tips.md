@@ -13,6 +13,23 @@ Last update: 2/25/24
 
 <!-- more -->
 
+## Tool: National Historical GIS Data Finder
+
+For sourcing historical records like census data and map boundaries for the US, the National Historical GIS Data Finder is your best friend. You have to manually select and download your dataset (it's not a live API to query from), but it has datasets going back hundreds of years, many of which are difficult to source elsewhere.
+
+You can access it here: [NHGIS Data Finder](https://data2.nhgis.org/main)
+
+## Tool: Mapshaper
+
+When working with geographical data, I often use [MapShaper](https://mapshaper.org). It has both a web interface and CLI where you can upload files in a variety of formats, edit their layers and polygons, and re-export them in your format of choice.
+
+Some examples of things you can do include:
+- preview how two sets of shape data will look when combined
+- simplifying shapes by automatically removing some percentage of vertices/edges
+- manually select and delete certain features
+- remove islands below a certain size
+- import data as one format and re-export as another format
+
 ## Large GeoJSON Files
 
 Depending on the level of detail, GeoJSON can get very large. For example, the GeoJSON containing [land use information on each parcel of land in San Francisco](https://data.sfgov.org/Housing-and-Buildings/Land-Use/us3s-fp9q) is ~137mb. Since D3 visualizations are rendered by the browser, it forces the user to download a massive data file to view the visualization, which makes load times exceedingly long. This is something we want to minimize, and thankfully there are several ways to deal with this.
@@ -51,7 +68,7 @@ For visualizations using static datasets, loading and combining multiple dataset
 
 ## Non-JSON File Formats
 
-Map data doesn't always come nicely formatted as GeoJSON or TopoJSON; sometimes they will come as shapefiles, which cannot directly be displayed by D3. You can edit and convert map data using a tool called [MapShaper](https://mapshaper.org). It has both a web interface and CLI where you can upload files in a variety of formats, edit their layers and polygons, and re-export them as GeoJSON or TopoJSON. I used it once to convert a shapefile of Westeros into a format that can be displayed in D3 (the final map, if you're curious, is here: [Game Of Thrones Interactive Battles Map](https://yangdanny97.github.io/GoT-interactive-battles-map/)).
+Map data doesn't always come nicely formatted as GeoJSON or TopoJSON; sometimes they will come as shapefiles, which cannot directly be displayed by D3. To convert the data to a JSON format, simply upload it to Mapshaper and re-export it in your desired format. I used it once to convert a shapefile of Westeros into a format that can be displayed in D3 (the final map, if you're curious, is here: [Game Of Thrones Interactive Battles Map](https://yangdanny97.github.io/GoT-interactive-battles-map/)).
 
 ## Scaling Issues
 
