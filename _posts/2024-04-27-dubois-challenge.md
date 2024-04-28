@@ -180,7 +180,7 @@ There was some color blending between the sections of the chart to illustrate th
 
 I ended up having to rotate the gradient definitions to approximate the original colors.
 
-```javascript
+```html
 <linearGradient id="LeftGradient" gradientTransform="rotate(10)">
     <stop offset="95%" stop-color="black" />
     <stop offset="100%" stop-color="#2c1d11" />
@@ -193,7 +193,7 @@ I ended up having to rotate the gradient definitions to approximate the original
 
 To create the sketch-like hatching pattern in the white part of the chart, I used a repeating SVG pattern containing a single line.
 
-```javascript
+```html
 <pattern id="Lines" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
     <line x1="0" y1="0" x2="11" y2="11" stroke="silver" stroke-width="0.5" />
 </pattern>
