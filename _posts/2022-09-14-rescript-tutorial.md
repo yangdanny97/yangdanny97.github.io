@@ -21,6 +21,7 @@ This tutorial is a brief introduction to the syntax and features of ReScript, ba
 
 # Tutorial
 
+
 ```javascript
 /* Comments start with slash-star, and end with star-slash */
 // Single line comments start with double slash
@@ -88,10 +89,7 @@ let world = `🌍`
 let helloWorld = `hello, ${world}`
 /* Bindings must be converted to strings */
 let age = 10
-let ageMsg = `I am ${Js.Int.toString(age)} years old`
-
-/* Using `j` annotation in interpolation will implicitly convert bindings to strings */
-let ageMsg = j`I am $age years old`
+let ageMsg = `I am ${Int.toString(age)} years old`
 
 
 /* Concatenate strings with ++ */
@@ -182,7 +180,7 @@ let firstTrip = {destination: "London", capacity: 45, averageSpeed: 120.0}
 let maxPassengers = firstTrip.capacity
 
 /* If you define the record type in a different file, you have to reference the
-   filename, if trainJourney was in a file called Trips.re */
+   filename, if trainJourney was in a file called Trips.res */
 let secondTrip: Trips.trainJourney = {
   destination: "Paris",
   capacity: 50,
@@ -319,11 +317,12 @@ let showDialog = (~message: string): unit => {
    the `unit` type can also be represented as `()` */
 
 /* > Currying
-   Functions can be curried and are partially called, allowing for easy reuse */
+   Functions can be curried and are partially called, allowing for easy reuse 
+   The remaining arguments are represented with ... */
 
 let div = (denom, numr) => numr / denom
-let divBySix = div(6)
-let divByTwo = div(2)
+let divBySix = div(6, ...)
+let divByTwo = div(2, ...)
 
 div(3, 24)     /* - : int = 8  */
 divBySix(128)  /* - : int = 21 */
@@ -332,7 +331,7 @@ divByTwo(10)   /* - : int = 5  */
 /* > Optional Labeled Arguments */
 
 /* Use `=?` syntax for optional labeled arguments */
-let greetPerson = (~name, ~greeting=?, ()) => {
+let greetPerson = (~name, ~greeting=?) => {
   switch (greeting) {
   | Some(greet) => greet ++ " " ++ name
   | None => "Hi " ++ name
@@ -343,7 +342,7 @@ let greetPerson = (~name, ~greeting=?, ()) => {
    a partial function, to fix this we add `unit` when we declare and call it */
 
 /* Call greetPerson without the optional labeled argument */
-greetPerson(~name="Kate", ())
+greetPerson(~name="Kate")
 
 /* Call greetPerson with all arguments */
 greetPerson(~name="Marco", ~greeting="How are you today,")
@@ -485,13 +484,13 @@ let surfaceBook: surfaceComputer = { "color": "blue", "capacity": 512 }
 
 /* Objects don't require types */
 let hamster = { "color": "brown", "age": 2 }
-  
+
 /* Object typing is structural, so you can have functions that accept any object with the required fields */
 let getAge = animal => animal["age"]
 getAge(hamster)
 getAge({ "name": "Fido", "color": "silver", "age": 3 })
 getAge({ "age": 5 })
-  
+
 /*----------------------------------------------
  * Module
  *----------------------------------------------
