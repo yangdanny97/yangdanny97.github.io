@@ -83,6 +83,14 @@ Luckily, [Open Topography](https://portal.opentopography.org) provides high reso
 
 For more on how to use this data with D3, check out [this blog post](https://yangdanny97.github.io/blog/2020/11/26/D3-elevations).
 
+## National Historical GIS Data Finder
+
+For sourcing historical records like census data and map boundaries for the US, the NHGIS Data Finder is your best friend. 
+
+You have to manually select and download your dataset (it's not a live API to query from), but it has datasets going back hundreds of years, many of which are difficult to source elsewhere.
+
+You can access it here: [NHGIS Data Finder](https://data2.nhgis.org/main)
+
 ## Open Data
 
 In the US, many local, state, and federal governments have open data websites that provide a wealth of datasets that can be analyzed and visualized. It's a great resource for anyone looking for inspiration or ideas. 
