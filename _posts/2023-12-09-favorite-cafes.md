@@ -26,20 +26,6 @@ I had been following their Instagram account for years, so when I went to Taiwan
 
 Cafes that I would probably detour to visit if I pass through the area.
 
-### Open Air Coffee - Richmond, California
-
-This is a really unique cafe, probably my favorite in the entire SF bay area. The cafe is located in the empty parking lot of a restaurant/catering business, using repurposed giant wire spools as tables. It only opens on weekends and seems to be popular with local cyclists thanks to its location near the bay trail. The vibe is unbeatable when it's a nice day and you can feel the sea breeze. 
-
-Every time I pass through Richmond on a weekend I always stop by this shop to enjoy a coffee and some of the best mochi cake I've ever had (in fact, every pastry I've had from this has been fantastic). From what I hear, the cakes and pastries are made by the pastry chef at said restaurant. A couple years ago they also had a wood-fired pizza oven outside and served freshly made pizzas for lunch, but unfortunately that's no longer a thing.
-
-<p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/cafes/open_air.jpeg">
-</p>
-
-<p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/cafes/open_air2.jpeg">
-</p>
-
 ### Main Street Commissary - Singapore
 
 I stumbled on this cafe on accident on a mission to visit Putien (a Michelin-starred Chinese restaurant). I'm really glad I stepped inside for a quick break - it was quiet and relaxing, and the drink I had was great (pea flower lemonade). On the walls, they were exhibiting a collection of artwork on the topic of breakups, which I felt added a bittersweet flavor to the vibes inside. Overall, definitely a unique and enjoyable time.
@@ -68,7 +54,7 @@ This cafe doubles as a record store, and has enough space to run various worksho
 
 ### World Traveler Coffee and Tea - Folsom, California
 
-I have a lot of fond memories of this cafe in my hometown, though these days it's somewhat overshadowed by Temple. The loose leaf tea selection is very affordable, and they have a surprisingly large offering of pretty-looking mousse cakes.
+I have a lot of fond memories of this cafe in my hometown, though these days it's somewhat overshadowed by Temple. The loose leaf tea selection is very affordable and they have a surprisingly large offering of pretty-looking mousse cakes, though they no longer sell my favorite item, the almond tart.
 
 ### Petaluma Coffee & Tea Company - Petaluma, California
 
@@ -86,3 +72,24 @@ This is probably my favorite coffee shop along the Iron Horse Trail in the East 
   <img height="500" src="https://yangdanny97.github.io/misc/cafes/lever.jpeg">
 </p>
 
+### Open Air Coffee - Richmond, California
+
+This is a really unique cafe, probably my favorite in the entire SF bay area. The cafe is located in the empty parking lot of a restaurant/catering business, using repurposed giant wire spools as tables. It only opens on weekends and seems to be popular with local cyclists thanks to its location near the bay trail. The vibe is unbeatable when it's a nice day and you can feel the sea breeze. 
+
+Every time I pass through Richmond on a weekend I always stop by this shop to enjoy a coffee, though they no longer sell my favorite item, the mochi cake.
+
+<p align="center">
+  <img height="500" src="https://yangdanny97.github.io/misc/cafes/open_air.jpeg">
+</p>
+
+<p align="center">
+  <img height="500" src="https://yangdanny97.github.io/misc/cafes/open_air2.jpeg">
+</p>
+
+### Kijitora - Williamsburg, NYC
+
+This cafe in East Williamsburg has great matcha drinks and a delicious mochi brownie.
+
+<p align="center">
+  <img height="500" src="https://yangdanny97.github.io/misc/cafes/kijitora.png">
+</p>
