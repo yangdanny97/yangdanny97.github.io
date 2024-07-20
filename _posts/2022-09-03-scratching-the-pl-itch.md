@@ -48,7 +48,7 @@ The structure of a code generation tool is exactly that of a simple source-to-so
 2. Perform static analysis - for example, validating that schema changes are backwards-compatible.
 3. Output source code in your target language.
 
-How frequently you need to spin up custom code generation depends heavily on what your source of truth is and what language you're working in, but the coverage of existing open-sourced code generation tools is far from complete.
+How frequently you need to spin up custom code generation depends heavily on what your source of truth is and what language you're working in, but it's probably more common than you may think - the coverage of existing open-sourced code generation tools is far from complete.
 
 ## Domain-Specific Languages
 
@@ -56,13 +56,13 @@ Sometimes, your source of truth for codegen isn't a declarative, static schema -
 
 Writing your own domain-specific language is probably the most direct application for PL/compiler skills I've discussed, but it's also the hardest to do outside of the biggest tech companies with the most resources to spare. 
 
-Some DSLs in industry are used by hundreds of engineers, and are maintained by a team dedicated to improving developer experience. Sometimes they get open-sourced (GraphQL and [CG/SQL](https://cgsql.dev/) for example), but in many other cases they are only used internally at one company and never see the light of day. DSLs are surprisingly common at giant tech companies - in my two years at Meta I've used four DSLs that had more than a hundred users, and heard about several more at Google and other companies.
+Some DSLs in industry are used by hundreds of engineers, and are maintained by a team dedicated to improving developer experience. Sometimes they get open-sourced (GraphQL and [CG/SQL](https://cgsql.dev/) for example), but in many other cases they are only used internally at one company and never see the light of day. DSLs are surprisingly common at giant tech companies - in my time at Meta I've used four DSLs that had more than a hundred users each (sometimes thousands), and heard about several more at Google and other companies.
 
 You might be wondering: what counts as a DSL? The line between an API, a codegen tool, and a DSL are not as sharply defined as one may think, and DSLs may come in many forms.
 
 For example, a DSL doesn't need to have a bespoke syntax and parser to count as a language, many DSLs are subsets or extensions of other languages. I've worked with DSLs that are based on XML, SQL, Python - co-opting the syntax of another language but generating code for a completely different runtime.
 
-In fact, a DSL doesn't even need any syntax at all! I've also worked with that can only be used by building their AST programmatically in another language. These were definitely "languages": they supported variables, control flow, and functions; their compilers had static analysis and generated source code or bytecode. They just didn't have a standalone syntax, and that's fine. Designing that type of language is an interesting blend of API design and language design.
+In fact, a DSL doesn't even need a bespoke syntax at all! I've also worked with DSLs that can only be used by building their AST programmatically in another language. These were definitely "languages": they supported variables, control flow, and functions; their compilers had static analysis and generated source code or bytecode. They just didn't have a standalone syntax, and that's fine. Designing that type of language is an interesting blend of API design and language design.
 
 ## Aside: Web Performance
 
