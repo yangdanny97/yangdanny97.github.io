@@ -46,6 +46,12 @@ Topics:
 
 # D3 References
 
+## [Bl.ocks](https://blocks.roadtolarissa.com/mbostock)
+
+Bl.ocks was an online gallery of D3 charts containing side-by-side views of the chart and the code. This is the best place to find examples of specific APIs or chart types in D3, and probably remains the largest collection of D3 samples outside of Observable. 
+
+The original was shut down in 2022, but someone cloned it to keep everything accessible. This is a super useful resource that I find myself referencing very frequently as I build my projects.
+
 ## [D3 Graph Gallery](https://www.d3-graph-gallery.com/)
 
 The [D3 Graph Gallery](https://www.d3-graph-gallery.com/) is a website that list dozens of different types of charts organized by type, with examples for how to create each one using D3. 
