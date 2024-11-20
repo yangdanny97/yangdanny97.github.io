@@ -32,7 +32,7 @@ This is a simple braised chicken with chestnuts that I've been making for years.
 - 1 tbsp minced garlic
 
 ### Directions
-1. Soak the dried shiitake for 4 hours, and once they're soft cut off the stems
+1. Soak the dried shiitake for 4 hours, and once they're soft cut off the stems. Keep the mushroom soaking water around and set it to the side.
 2. Use a knife to cut an X into each chestnut's shell. What I like to do is put the chestnut on the cutting board flat side down, position the knife on the top, and lightly hit the top of the knife until it cuts into the chestnut.
 3. Put 6 chestnuts at a time into the microwave spaced evenly around the edge, and heat for 30 seconds.
 4. Peel the chestnuts before they cool down, also taking care not to burn your fingers.
@@ -41,7 +41,7 @@ This is a simple braised chicken with chestnuts that I've been making for years.
 7. Cook the drumsticks in a large pan or wok until the outside is lightly browned.
 8. Deglaze with a generous splash of cooking wine, and pour in the soy sauce, mirin, ginger, garlic, and all the dry spices.
 9. Put in the mushrooms and chestnuts, and mix.
-10. Pour in 1 additional cup of water, cover the wok, and cook on medium for about 40 minutes.
+10. Pour in 1 additional cup of water (use the mushroom water or low sodium chicken stock for extra umami), cover the wok, and cook on medium for about 40 minutes.
 11. Check occasionally to make sure it doesn't dry out and burn, and stir once or twice as the liquid boils down. If there's not enough color, carefully add a few more small splashes of soy sauce.
 12. Once the liquid has boiled down into a sauce, the dish is ready to serve.
 
