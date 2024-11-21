@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "NYC Subway Visualizations - Stations, Services, Convenience by Neighborhood"
+title: "NYC Subway Connectivity"
 description: "Visualizing the subway and transit connectivity of each neighborhood in New York City"
 date: 2024-11-20
 category: "Vis"
