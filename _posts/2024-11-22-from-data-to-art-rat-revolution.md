@@ -9,7 +9,7 @@ tag: "Technical"
 
 In March 2024, we showcased "Rat Revolution" at the [Data Through Design exhibition](https://datathroughdesign.com/2024-aftermath). "Rat Revolution" can be described as a light sculpture or a physical data visualization, but we affectionately refer to it as "the rat tornado". As a data visualization, it allows viewers to trace the ups and downs of New York's rodent infestation throughout the seasons and over the years. As a light fixture, it looks pretty darn good in a living room.
 
-In this post, we'll provide a brief retrospective of our six-month journey into the world of data art. 
+In this post, we'll provide a brief retrospective of our six-month journey into the world of data art and physical data visualizations. 
 
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/rats/images/finished.jpg">
@@ -179,5 +179,5 @@ For now, the lamp has found a happy home in Danny's living room.
   <img height="500" src="https://yangdanny97.github.io/misc/rats/images/livingroom.jpg">
 </p>
 
-To see more photos of our project, you can visit [Pia's website](https://www.piaboc.me/work/rat-revolution). 
+To see more photos of our project, you can visit [Pia's website](https://www.piaboc.me/work/rat-revolution).
 
