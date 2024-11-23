@@ -15,11 +15,15 @@ Join me for a brief retrospective of our six-month journey into the world of dat
   <img height="500" src="https://yangdanny97.github.io/misc/rats/images/finished.jpg">
 </p>
 
-## Brainstorming
+## Background
 
 [Data Through Design (DxD)](https://datathroughdesign.com/) is an independent collective which organizes an annual art exhibition during [NYC Open Data Week](https://opendata.cityofnewyork.us/open-data-week/), featuring works that use data from [NYC’s Open Data portal](https://opendata.cityofnewyork.us/). Each year's exhibition has a different theme, and 2024 had the theme of "Aftermath".
 
-One early topic we discussed was the lanternfly infestation that plagued New York City in recent summers. Unfortunately, the lanternfly phenomenon was too recent and there wasn’t granular, city-level data available so we had to abandon that idea for now.
+Several of us had been to previous DxD exhibitions, and we were excited to potentially participate as artists this year. Typically, DxD begins accepting proposals in the fall for the exhibition the following spring. Once the applications opened up and theme was announced, we immediately began brainstorming.
+
+## Brainstorming
+
+One early topic we discussed while brainstorming ideas for our proposal was the lanternfly infestation that plagued New York City in recent summers. Unfortunately, the lanternfly phenomenon was too recent and there wasn’t granular, city-level data available so we had to abandon that idea for now.
 
 Following that line of thinking, we immediately thought of rats. They were pests that were part of the zeitgeist in New York City, and thanks to their ubiquity, we were able to track rat complaints using a publicly available dataset from the Open Data portal. We used a subset of the [311 calls dataset](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/about_data) that only contained complaints mentioning the term "rodents".
 
