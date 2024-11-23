@@ -7,7 +7,7 @@ category: "Vis"
 tag: "Technical"
 ---
 
-In March 2024, we showcased "Rat Revolution" at the [Data Through Design exhibition](https://datathroughdesign.com/2024-aftermath). "Rat Revolution" can be described as a light sculpture or a physical data visualization, but we affectionately refer to it as "the rat tornado". As a data visualization, it allows viewers to trace the ups and downs of New York's rodent infestation throughout the seasons and over the years. As a light fixture, it looks pretty darn good in a living room.
+In March 2024, we unveiled ["Rat Revolution"](https://www.piaboc.me/work/rat-revolution) at the [Data Through Design exhibition](https://datathroughdesign.com/2024-aftermath). "Rat Revolution" can be described as a light sculpture or a physical data visualization, but we affectionately refer to it as "the rat tornado". As a data visualization, it allows viewers to trace the ups and downs of New York's rodent infestation throughout the seasons and over the years. As a light fixture, it looks pretty darn good in a living room.
 
 Join me for a brief retrospective of our six-month journey into the world of data art and physical data visualizations. 
 
