@@ -84,7 +84,7 @@ At first, we tried to replicate the traditional construction techniques of paper
 We also experimented with metal wire, but the material wasn’t rigid enough to support the lamp and prone to deformation when bumped.
 
 <p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/rats/images/wire2.png">
+  <img height="500" src="https://yangdanny97.github.io/misc/rats/images/wire2.jpg">
 </p>
 
 Our final material exploration included a set of 12 radial foam board frames extending from the center, held together by multiple gear-shaped brackets.
