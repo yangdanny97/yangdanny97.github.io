@@ -15,9 +15,9 @@ Some neighborhoods, like Long Island City, have multiple stations and many subwa
 
 Other neighborhoods, like Greenpoint right next door, have only a single station or line. Residents often need to transfer once (or even twice) to get to their destination, and when their only subway line stops running (such as during the G train shutdowns this summer) they are left with few alternatives.
 
-In this blog post, I discuss several proxies for transit connectivity in each neighborhood: how I calculated them, how different neighborhoods stack up, and their merits and flaws. Buckle in for some cool charts, graph theory, and making fun of Greenpoint - there's a little something for everyone here.
+In this blog post, I discuss several proxies for transit connectivity in each neighborhood: how I calculated them, how different neighborhoods stack up, and their merits and flaws. Buckle in for some cool charts, graph theory, and taking pity on Greenpoint - there's a little something for everyone here.
 
-## Datasets
+## Datasets/Tools
 
 To explore these questions, I downloaded some open datasets and got to work creating some visualizations in Python and D3.js. For the purposes of this project, I define neighborhoods based on "Neighborhood Tabulation Areas" used by the NYC Department of City Planning. There are some drawbacks to this approach, which we'll discuss later.
 
@@ -26,7 +26,7 @@ Data from NYC and NY Open Data:
 - [Subway Lines](https://data.cityofnewyork.us/Transportation/Subway-Lines/3qz8-muuu)
 - [Subway Stations](https://data.ny.gov/Transportation/MTA-Subway-Stations/39hk-dx4f/about_data)
 
-The source code is all on [Github](https://github.com/yangdanny97/nyc-subway-vis).
+The source code is all on [Github](https://github.com/yangdanny97/nyc-subway-vis). I used Python, Geopandas, and networkx for the analysis, and D3.js to make the online visualization.
 
 The interactive visualization I created is live [here](https://yangdanny97.github.io/nyc-subway-vis/) - feel free to click and around and explore for yourself!
 
@@ -50,7 +50,7 @@ Below is a map of the number of subway lines in each neighborhood. Note that I o
   <img height="500" src="https://yangdanny97.github.io/misc/subways/services.png">
 </p>
 
-Surprisingly, Bed-Stuy and Bushwick are also stand out as being particularly convenient, although their subway stations are all on the edges of the neighborhood so they may not be particularly easy to walk to. On the other hand, Astoria, Greenpoint, and Williamsburgh stand out as having very low redundancy compared to other popular/upscale neighborhoods, since they are dependent on only 1-2 lines.
+Bed-Stuy and Bushwick stand out as being particularly convenient, although their subway stations are all on the edges of the neighborhood so they may not be particularly easy to walk to. On the other hand, Astoria, Greenpoint, and Williamsburgh stand out as having few options compared to other popular neighborhoods, since they are dependent on only 1-2 lines.
 
 One issue with counting lines is that not all lines are created equal - having the E stop in your neighborhood is much more useful than having the Franklin Ave shuttle, for example. The length of the subway line, or where you can actually travel to along that line, definitely matters.
 
@@ -65,7 +65,7 @@ For this analysis, I modeled neighborhoods and subway lines as a graph using Pyt
 - Each line is condensed into a single node L.
 - For each line L that has a stop in neighborhood N, we have a 0-cost edge from Ns -> L and another 0-cost edge from L -> Nd.
 
-To calculate the neighborhoods reachable with a single-seat ride, I used `networkx` to see how many Nd's are reachable from a particular Ns.
+To calculate the neighborhoods reachable with a single-seat ride, I used networkx to see how many Nd's are reachable from a particular Ns.
 
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/subways/singleseat.png">
