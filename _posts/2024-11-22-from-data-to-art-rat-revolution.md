@@ -9,7 +9,7 @@ tag: "Technical"
 
 In March 2024, we unveiled ["Rat Revolution"](https://www.piaboc.me/work/rat-revolution) at the [Data Through Design exhibition](https://datathroughdesign.com/2024-aftermath). "Rat Revolution" can be described as a light sculpture or a physical data visualization, but we affectionately refer to it as "the rat tornado". As a data visualization, it allows viewers to trace the ups and downs of New York's rodent infestation throughout the seasons and over the years. As a light fixture, it looks pretty darn good in a living room.
 
-Join me for a brief retrospective of our six-month journey into the world of data art and physical data visualizations. 
+Join me for a brief retrospective of our six-month journey into the world of data art and physical data viz. 
 
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/rats/images/finished.jpg">
@@ -23,7 +23,7 @@ Several of us had been to previous DxD exhibitions, and we were excited to poten
 
 ## Brainstorming
 
-One early topic we discussed while brainstorming ideas for our proposal was the lanternfly infestation that plagued New York City in recent summers. Unfortunately, the lanternfly phenomenon was too recent and there wasn’t granular, city-level data available so we had to abandon that idea for now.
+One early topic we discussed was the lanternfly infestation that plagued New York City in recent summers. Unfortunately, the lanternfly phenomenon was too recent and there wasn’t granular, city-level data available so we had to abandon that idea for now.
 
 Following that line of thinking, we immediately thought of rats. They were pests that were part of the zeitgeist in New York City, and thanks to their ubiquity, we were able to track rat complaints using a publicly available dataset from the Open Data portal. We used a subset of the [311 calls dataset](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/about_data) that only contained complaints mentioning the term "rodents".
 
@@ -159,7 +159,7 @@ Given all the complications during our prototyping and assembly phase, the insta
   <img height="500" src="https://yangdanny97.github.io/misc/rats/images/installed.jpg">
 </p>
 
-It was such a surreal moment–just six months ago, our team took on this project with a little more than a paper drawing of our vision and now that vision was mirrored before us. All of this couldn't have been done without the support from local NY vendors, DxD organizers, and NYC Resistor members.
+It was such a surreal moment–just six months earlier, our team had taken on this project with a little more than a paper drawing of our vision and now that vision was mirrored before us. All of this couldn't have been done without the support from local NY vendors, DxD organizers, and NYC Resistor members, and we are immensely thankful to all of them for helping make this possible.
 
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/rats/images/exhibit1.jpg">
