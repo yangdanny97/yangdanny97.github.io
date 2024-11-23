@@ -177,7 +177,7 @@ Nowadays, data visualization discussions are commonly focused around the digital
 
 Physical data visualizations are still few and far between, but we hope that there will be more opportunities in the future to explore new forms of storytelling with 3D visualizations. 
 
-For now, the lamp has found a happy home in Danny's living room.
+For now, the lamp has found a happy home in my living room.
 
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/rats/images/livingroom.jpg">
