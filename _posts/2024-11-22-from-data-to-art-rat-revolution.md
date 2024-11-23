@@ -80,7 +80,7 @@ At first, we tried to replicate the traditional construction techniques of paper
 We also experimented with metal wire, but the material wasn’t rigid enough to support the lamp and prone to deformation when bumped.
 
 <p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/rats/images/wire.png">
+  <img height="500" src="https://yangdanny97.github.io/misc/rats/images/wire2.png">
 </p>
 
 Our final material exploration included a set of 12 radial foam board frames extending from the center, held together by multiple gear-shaped brackets.
@@ -100,7 +100,7 @@ To generate the laser cut schematics, we used Python to create SVG outlines of e
 We contacted a few different local vendors, but ultimately were limited by pricing and size. Most vendors did not have a laser cutting table large enough for our design, and the ones that did were out of budget. In the end, we worked with [NYCLaserCut](https://www.nyclasercut.com/) and reduced our schematics by 30%, which ended up cutting our fabrication cost in half.
 
 <p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/rats/images/frame_wrapped.png">
+  <img height="500" src="https://yangdanny97.github.io/misc/rats/images/frame_wrapped.jpg">
 </p>
 
 We purchased kinwashi paper for the sculptures’ surface from [TALAS](https://www.talasonline.com/), a local archival and bookbinding vendor in Brooklyn. This paper had thicker fibers embedded inside, and created a very nice texture for the surface of the lamp.
@@ -120,7 +120,7 @@ After building several prototypes, we knew that constructing the final version o
 Very early into the assembly process, we came across our first obstacle. The gear-shaped brackets that were supposed to hold the vertical frames together didn't have the correct dimensions; the spacing in the brackets was almost twice the thickness of the frames! With some creative thinking, we decided to pad the holes with foam tape and leftover wood from our prototypes. The combination of these two materials turned the oversized gear holes into snug fits for the vertical frames. 
 
 <p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/rats/images/frame_assembly2.png">
+  <img height="500" src="https://yangdanny97.github.io/misc/rats/images/frame_assembly2.jpg">
 </p>
 
 We ran into our second complication after finishing the skeleton of our lamp installation. We had initially acquired some mystery LED light strips and breadboards from the depths of our abandoned projects closet, but we didn't know how to wire them up. It took several trips to the only electronic store in the area – when did electronic brick-and-mortars become a sign of the past? – and long nights researching in makerspace forums for us to figure out the correct materials and methods needed to wire up the LED strip. 
