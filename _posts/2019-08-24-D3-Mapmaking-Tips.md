@@ -9,9 +9,17 @@ tag: "Technical"
 
 This post is a collection of common problems people will encounter while making maps using D3, and my advice for how to deal with them. I plan to make regular updates/corrections as my understanding improves.
 
-Last update: 2/25/24
+Last update: 12/03/24
 
 <!-- more -->
+
+## Geocoding
+
+Geocoding is the process of mapping addresses to their coordinates. It's useful when your're working with locations that aren't readily available as coordinates, such as free-form survey data.
+
+The best geocoding service is probably [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/start), but that costs money after a free trial.
+
+There's a free alternative called [Nominatim](https://melaniewalsh.github.io/Intro-Cultural-Analytics/07-Mapping/01-Mapping.html#import-nominatim) that uses OpenStreetMaps.
 
 ## Tool: National Historical GIS Data Finder
 
