@@ -8,7 +8,7 @@ tag: "Technical"
 image: "https://yangdanny97.github.io/misc/adopt_your_spot/before_after.png"
 ---
 
-After participating in Open Data Week last year, I became interested in getting involved in more community initiatives and doing more projects with publicly available data. One dataset that really piqued my interest is [Adopt Your Spot NYC](https://www.sanitationfoundation.org/adopt-your-spot-nyc), which is a community cleanup program that I've been involved in for a few months.
+After participating in Open Data Week earlier this year, I became interested in getting involved in more community initiatives and doing more projects with publicly available data. One dataset that really piqued my interest is [Adopt Your Spot NYC](https://www.sanitationfoundation.org/adopt-your-spot-nyc), which is a community cleanup program that I've been involved in for a few months.
 
 The program is simple: volunteers step up to "adopt" their favorite spot in their community and help keep it clean, and the Sanitation Foundation mails them a free starter kit containing a trash grabber, gloves, and trash bags. Anonymized data on all 500-something adopted spots can be downloaded from the interactive map on their site, and after downloading and converting the data I fired up a notebook to see what questions it could answer, such as:
 
