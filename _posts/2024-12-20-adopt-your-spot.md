@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Adopt Your Spot NYC"
-description: "Exploring and visualizing participation in a community cleanup program"
+description: "Exploring and visualizing data for Adopt Your Spot NYC, a community cleanup and trash picking program"
 date: 2024-12-20
 category: "Vis"
 tag: "Technical"
