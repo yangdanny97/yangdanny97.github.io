@@ -15,6 +15,9 @@
     <link rel='stylesheet' href="{{ site.url }}/css/style.css">
     <link rel='stylesheet' href="{{ site.url }}/css/rouge-github.css">
     {% seo %}
+    {% if page.image %}
+    <meta property="og:image" content="{{ page.image }}">
+    {% endif %}
 </head>
 
 <body>

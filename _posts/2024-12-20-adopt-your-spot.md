@@ -5,6 +5,7 @@ description: "Exploring and visualizing participation in a community cleanup pro
 date: 2024-12-20
 category: "Vis"
 tag: "Technical"
+image: "https://yangdanny97.github.io/misc/adopt_your_spot/before_after.png"
 ---
 
 After participating in Open Data Week last year, I became interested in getting involved in more community initiatives and doing more projects with publicly available data. One dataset that really piqued my interest is [Adopt Your Spot NYC](https://www.sanitationfoundation.org/adopt-your-spot-nyc), which is a community cleanup program that I've been involved in for a few months.
