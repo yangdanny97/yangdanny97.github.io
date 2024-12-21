@@ -9,7 +9,7 @@ tag: "Technical"
 
 After participating in Open Data Week last year, I became interested in getting involved in more community initiatives and doing more projects with publicly available data. One dataset that really piqued my interest is [Adopt Your Spot NYC](https://www.sanitationfoundation.org/adopt-your-spot-nyc), which is a community cleanup program that I've been involved in for a few months.
 
-The program is simple: volunteers step up to "adopt" their favorite spot in their community and help keep it clean, and the Sanitation Foundation mails them a free starter kit containing a trash grabber, gloves, and trash bags. Anonymized data on each adopted spot is could be downloaded from the interactive map on their site, and I was curious to see what questions it could answer. For example:
+The program is simple: volunteers step up to "adopt" their favorite spot in their community and help keep it clean, and the Sanitation Foundation mails them a free starter kit containing a trash grabber, gloves, and trash bags. Anonymized data on all 500-something adopted spots can be downloaded from the interactive map on their site, and after downloading and converting the data I fired up a notebook to see what questions it could answer, such as:
 
 - What kinds of places do people adopt?
 - Why were these places selected?
@@ -21,9 +21,9 @@ The code and data for this analysis can be found in this [Github repository](htt
 
 # What kinds of places do people adopt?
 
-The signup form for Adopt Your Spot contains a free-form section where people can name the spot they are adopting. Around half of the responses are addresses/street numbers, but the rest of them contain other words that describe the location, such as "sidewalk" or "bus stop" or "apartment".
+Each adopted spot has some text describing the location. Around half of the spots only list street numbers, but the rest of them contain other descriptive text such as "sidewalk" or "bus stop" or "apartment".
 
-To begin, I plotted the most common bigrams (two word phrases) in the responses as a word cloud:
+I plotted the most common bigrams (two word phrases) in the responses as a word cloud, which shows that tree beds are a very popular spot to adopt:
 
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/adopt_your_spot/locations_cloud.png">
@@ -37,7 +37,7 @@ In the end, I fed the entire dataset to a large language model to get a list of 
   <img height="500" src="https://yangdanny97.github.io/misc/adopt_your_spot/locations_bar.png">
 </p>
 
-Tree beds are the most commonly adopted spot by a fair margin. Other common locations include parks, residential areas, and locations along the street (sidewalks, corners, bus stops).
+The data confirms that tree beds are the most commonly adopted spot by a fair margin. Other common locations include parks, residential areas, and street locations.
 
 I was a little surprised to see so few responses mention vacant/abandoned lots or construction sites, since in my own neighborhood those areas tend to accumulate a lot of litter. Perhaps there are fewer vacant lots in other parts of the city.
 
@@ -71,7 +71,7 @@ Since the latter definition is overwhelmingly predominant in this dataset, I dec
 
 # Which neighborhoods have the most participants?
 
-The coordinates are not available in the downloaded data, so I had to use Google Maps' [Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview) to convert the addresses back into coordinates, with some manual edits for ~20 addresses that were ambiguous or unrecognized.
+The coordinates for each location are not available in the downloaded data despite being part of the map, so I had to use Google Maps' [Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview) to convert the location names back into coordinates, with some manual edits for ~20 locations that were ambiguous or unrecognized.
 
 Below is a map of the number of participants by neighborhood. 
 
@@ -103,9 +103,9 @@ Besides the hotspots of participation, we can also see which areas are underrepr
 
 # Spreading Awareness
 
-After participating for a while, I decided to share this program to some neighborhood-focused online communities to see if I can get more people involved.
+In mid-November, I decided to share this program to some neighborhood-focused online communities to see if I could get more people involved.
 
-The map looked noticeably more dense a couple weeks after I made the posts, so I became curious to see how many people actually signed up from my posts. 
+I noticed that the map looked noticeably more dense a week and a half after I made the posts, so I became curious to see how many people actually signed up from my posts. 
 
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/adopt_your_spot/before_after.png">
