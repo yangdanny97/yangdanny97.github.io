@@ -55,8 +55,8 @@ html {
   
   .dot {
     position: absolute;
-    width: 0.08rem;
-    height: 0.08rem;
+    width: 0.5rem;
+    height: 0.5rem;
     top: 50%;
     left: 50%;
     -webkit-animation: 160s ease both infinite alternate;
