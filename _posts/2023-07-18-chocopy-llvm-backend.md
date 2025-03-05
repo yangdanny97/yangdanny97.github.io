@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Compiler Hacking Part 5: Building an LLVM Backend"
-description: "Building a LLVM compiler backend for Chocopy, a subset of Python 3"
+title: "Compiler Hacking Part 5: Building an LLVM Backend with LLVMLite"
+description: "Building a LLVM compiler backend for Chocopy, a subset of Python 3, using LLVMLite"
 date: 2023-07-18
 category: "Compilers"
 tag: "Technical"
@@ -20,11 +20,11 @@ For reference, the source code for the compiler is available on Github, and past
 
 ## Background
 
-For those unfamiliar with the topic, Chocopy is a subset of Python 3 with static type annotations. LLVM is an extensive toolchain for building compilers that has (among other things) an IR (intermediate representation), optimization passes, and backends for many instruction sets. 
+For those unfamiliar with the topic, Chocopy is a subset of Python 3 with static type annotations. I'm writing a compiler for Chocopy, in Python. LLVM is an extensive toolchain for building compilers that has (among other things) an IR (intermediate representation), optimization passes, and backends for many instruction sets. 
 
 I first considered doing an LLVM backend for this compiler starting back in 2020, I wasn't sure how much work it would be given that LLVM IR was much lower-level than other potential compilation targets I was considering. After building the WASM backend last year, I finally felt like I had enough context to tackle LLVM. Since this compiler was written in Python, I decided to use LLVMLite, a set of Python bindings for LLVM that was originally developed for the numba library.
 
-Before I get started, I'd like to note an observation that the words "frontend" and "backend" are entirely relative terms. Since a compiler is just a series of transformations between text and binary data, something that is a frontend in one context can be a backend in another context. For example, the LLVM backend for this compiler transforms the Chocopy AST into LLVM IR, but when we view the compilation process from Chocopy to native code this entire compiler is a frontend while LLVM itself is the backend.
+Before I get started, I'd like to note an observation that the words "frontend" and "backend" are entirely relative terms. Since a compiler is just a series of transformations between text and binary data, something that is a frontend in one context can be a backend in another context. For example, the "LLVM backend" in this compiler transforms the Chocopy AST into LLVM IR, but when we view the compilation process from Chocopy to native code this entire compiler is a frontend while LLVM itself is the backend.
 
 ## Getting Started & Resources
 

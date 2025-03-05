@@ -9,7 +9,7 @@ category: "Cooking"
 The almonds and carrots add a rich and slightly sweet flavor that is absorbed by the dried vegetables.
 
 This recipe requires two niche ingredients, both found at Asian supermarkets:
-- dried bok choy - Try to get a pack with less stems and more leaves
+- dried greens - They're typically some sort of unspecified white-stemmed leafy green. Get the kind that's not pickled, and try to get a pack with less stems and more leaves.
 - Chinese almonds - Get the ones at the grocery store, NOT the ones at the Chinese medicine store. If you can't find them, regular almonds are an acceptable substitute (as seen in the photo below).
 
 <!-- more -->
