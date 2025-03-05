@@ -28,9 +28,10 @@ The main challenge of this dish is finding fresh whole water chestnuts. In Ameri
 - salt
 
 ### Directions:
-1. Put pork bones in large pot and fill halfway with water. If the pork bones are exposed above the water then you need more water and/or a bigger pot.
-2. Peel the carrots, cut them into 1 inch triangular chunks, and add them to the pot. Add the corn now if you have some.
-3. When the water boils, stir it a bit, reduce to a simmer and cook for an hour and a half. Check in after 30 minutes and skim off any foam clumps that appear at the top - better you are at this the clearer the soup will be at the end. Add more water if too much boils off.
-4. While you're waiting, wash and peel the water chestnuts carefully, and use a paring knife to cut off any weird-looking or damaged spots. Do not leave any skin on.
-5. Put the water chestnuts in and cook for another 20 or so minutes.
-6. Skim off any remaining impurities floating on top, add salt to taste, and serve.
+1. Put the meat into the pot, cover with water, and boil for 5 minutes.
+2. Take the meat out, dump the water with the gunk in it, put the meat back, and refill the pot with water.
+3. Peel the carrots, cut them into 1 inch triangular chunks, and add them to the pot. Add the corn now if you have some.
+4. When the water boils, stir it a bit, reduce to a simmer and cook for an hour and a half. Check in after 30 minutes and skim off any foam clumps that appear at the top - better you are at this the clearer the soup will be at the end. Add more water if too much boils off.
+5. While you're waiting, wash and peel the water chestnuts carefully, and use a paring knife to cut off any weird-looking or damaged spots. Do not leave any skin on.
+6. Put the water chestnuts in and cook for another 20 or so minutes.
+7. Skim off any remaining impurities floating on top, add salt to taste, and serve.

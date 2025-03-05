@@ -27,9 +27,11 @@ Winter melons are massive (roughly the size of a large watermelon), and one melo
 
 ### Directions
 1. Remove the skin and seeds from the winter melon, and cut it into 1 inch cubes.
-2. Put everything in a large pot and cover with water, then turn on the stove.
-3. When the water boils, reduce to a simmer and cook for two and a half hours. Check in after 30 minutes and skim off any impurities that appear at the top. If too much water boils off, add more water and bring the temperature back up.
-4. Skim off any remaining impurities floating on top, add salt to taste, and serve.
+2. Put the meat into the pot, cover with water, and boil for 5 minutes.
+3. Take the meat out, dump the water with the gunk in it, put the meat back, and refill the pot with water.
+4. Add the rest of the ingredients.
+5. When the water boils, reduce to a simmer and cook for two and a half hours. Check in after 30 minutes and skim off any impurities that appear at the top. If too much water boils off, add more water and bring the temperature back up.
+6. Skim off any remaining impurities floating on top, add salt to taste, and serve.
 
 ### Variations
 - The cafeteria at work likes to make a variant without meat but with black pepper and clear vermicelli. I'll update this recipe once I figure out the details.

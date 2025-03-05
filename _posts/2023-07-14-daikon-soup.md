@@ -34,6 +34,8 @@ The combination of daikon (a type of radish), nagaimo (a type of yam), and marro
 1. Peel the daikon and cut it into 1.5 inch triangular chunks. Each chunk will likely not contain an entire cross-section of radish since daikons are quite thick. The chunks do not need to be perfect or uniform.
 2. Peel the carrot and cut it into 1 inch triangular chunks.
 3. Peel and cut the nagaimo into similarly-sized chunks. It's very slimy and hard to grip so be careful while working with it.
-4. Put everything in a large pot and cover with water, then turn on the stove.
-5. When the water boils, reduce to a simmer and cook for two and a half hours. Check in after 30 minutes and skim off any foam clumps that appear at the top. If too much water boils off, add more water and bring the temperature back up.
-6. Skim off any remaining impurities floating on top, add salt to taste, and serve.
+4. Put the meat into the pot, cover with water, and boil for 5 minutes.
+5. Take the meat out, dump the water with the gunk in it, put the meat back, and refill the pot with water.
+6. Put the rest of the ingredients in.
+7. When the water boils, reduce to a simmer and cook for two and a half hours. Check in after 30 minutes and skim off any foam clumps that appear at the top. If too much water boils off, add more water and bring the temperature back up.
+8. Skim off any remaining impurities floating on top, add salt to taste, and serve.
