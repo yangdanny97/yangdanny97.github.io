@@ -48,19 +48,7 @@ This cafe has fantastic early morning vibes, especially for grabbing breakfast r
   <img height="500" src="https://yangdanny97.github.io/misc/cafes/depot2.jpeg">
 </p>
 
-### 51st Bakery and Cafe - Long Island City, NYC
-
-Near the waterfront, excellent pastries and food options. Show up early in the morning to snag a raspberry scone before they run out!
-
 ## Very Good Cafes ⭐️
-
-### Ninth Street Espresso - NYC
-
-They have several locations around the city, but I've only been to their roastery in Queens. It's a bit out of the way but well worth the trek for a consistently great drip coffee.
-
-### For the Record - Greenpoint, NYC
-
-This cafe doubles as a record store, and has enough space to run various workshops on the weekends.
 
 ### Petaluma Coffee & Tea Company - Petaluma, California
 
@@ -100,22 +88,12 @@ This cafe in East Williamsburg has great matcha drinks and a delicious mochi bro
   <img height="500" src="https://yangdanny97.github.io/misc/cafes/kijitora.png">
 </p>
 
-### Perkatory Coffee - Hartford, CT
-
-Unexpectedly great coffee in the outskirts of Hartford. Great pit stop if you're driving to/from Boston.
-
 ## Honorable Mentions
-
-### Cafe Jennie - Ithaca, NY
-
-The best raspberry shortbread cookie I've ever had. Located inside the campus store at Cornell.
-
-### No Stress - Long Island City, NY
-
-Store-baked pastries are the highlight of this tiny shop, particularly the almond croissants which are some of the best I've had.
-
-The drinks are not as consistent as some other spots in the area, and there is (almost) no seating.
 
 ### World Traveler Coffee and Tea - Folsom, California
 
 I have a lot of fond memories of this cafe in my hometown, though these days it's somewhat overshadowed by Temple. The loose leaf tea selection is very affordable and they have a surprisingly large offering of pretty-looking mousse cakes, though they no longer sell my favorite item, the almond tart.
+
+### Perkatory Coffee - Hartford, CT
+
+Unexpectedly great coffee in the outskirts of Hartford. Great pit stop if you're driving to/from Boston.
