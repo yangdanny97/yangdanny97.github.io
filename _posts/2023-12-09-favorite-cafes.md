@@ -10,11 +10,9 @@ I first got into cafe-hopping when I was writing my book - I would sit and write
 
 I'm not very particular about my coffee - I really don't have strong preferences aside from liking dark roast and taking most drinks unsweetened. Assuming the coffee is decent, ratings are often differentiated by other factors like tea, food, service, and overall vibes.
 
-Think of this post as my personal Michelin guide for cafes, rated using the familiar 3-star system. This page is very much a WIP since I'm still in the process of cataloging the cafes that I've visited in the last few years.
+This page is very much a WIP since I'm still in the process of cataloging the cafes that I've visited in the last few years.
 
-## Amazing Cafes ⭐️⭐️⭐️
-
-Cafes that I specifically took a trip to visit, that lived up to the hype.
+## Recommended Cafes
 
 ### Bugcat Capoo Cafe - Taichung
 
@@ -23,10 +21,6 @@ I had been following their Instagram account for years, so when I went to Taiwan
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/cafes/capoo.jpeg">
 </p>
-
-## Great Cafes ⭐️⭐️
-
-Cafes that I would probably detour 20-30 mins to visit.
 
 ### Main Street Commissary - Singapore
 
@@ -48,16 +42,6 @@ This cafe has fantastic early morning vibes, especially for grabbing breakfast r
   <img height="500" src="https://yangdanny97.github.io/misc/cafes/depot2.jpeg">
 </p>
 
-## Very Good Cafes ⭐️
-
-### Petaluma Coffee & Tea Company - Petaluma, California
-
-I will admit I was baited in by their $1 coffee promotional sign outside, but I'm glad I checked it out. Inside was very cozy, with a bright and homey feeling (if your house had a coffee roaster in the living room) and great drinks.
-
-<p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/cafes/petaluma.jpeg">
-</p>
-
 ### Lever Coffee - Alamo, California
 
 This is probably my favorite coffee shop along the Iron Horse Trail in the East Bay. I remember their specialty latte being quite good, and the outdoor seating had nice views.
@@ -68,7 +52,7 @@ This is probably my favorite coffee shop along the Iron Horse Trail in the East 
 
 ### Open Air Coffee - Richmond, California
 
-This is a really unique cafe, probably my favorite in the entire SF bay area. The cafe is located in the empty parking lot of a restaurant/catering business, using repurposed giant wire spools as tables. It only opens on weekends and seems to be popular with local cyclists thanks to its location near the bay trail. The vibe is unbeatable when it's a nice day and you can feel the sea breeze. 
+This is a really unique cafe, probably my favorite in the entire SF bay area. The cafe is a mini trailer located in the empty parking lot of a restaurant/catering business, using repurposed giant wire spools as tables. It only opens on weekends and seems to be popular with local cyclists thanks to its location near the bay trail. The vibe is unbeatable when it's a nice day and you can feel the sea breeze. 
 
 Every time I pass through Richmond on a weekend I always stop by this shop to enjoy a coffee, though they no longer sell my favorite item, the mochi cake.
 
@@ -80,15 +64,15 @@ Every time I pass through Richmond on a weekend I always stop by this shop to en
   <img height="500" src="https://yangdanny97.github.io/misc/cafes/open_air2.jpeg">
 </p>
 
-### Kijitora - Williamsburg, NYC
+### Teahouse by Calmplex, Manhattan, NYC
 
-This cafe in East Williamsburg has great matcha drinks and a delicious mochi brownie.
-
-<p align="center">
-  <img height="500" src="https://yangdanny97.github.io/misc/cafes/kijitora.png">
-</p>
+Located in the basement of a pottery studio, this cafe serves really good matcha and has a pleasant atmosphere.
 
 ## Honorable Mentions
+
+### Little Banchan Shop - Long Island City, NYC
+
+This isn't even a coffee shop - it sells Korean side dishes by day and houses Meju, a Michelin-starred restaurant, in the back. It also serves the best einspanner I've had in NYC.
 
 ### World Traveler Coffee and Tea - Folsom, California
 
@@ -96,4 +80,16 @@ I have a lot of fond memories of this cafe in my hometown, though these days it'
 
 ### Perkatory Coffee - Hartford, CT
 
-Unexpectedly great coffee in the outskirts of Hartford. Great pit stop if you're driving to/from Boston.
+Surprisingly great coffee in the outskirts of Hartford. Great pit stop if you're driving to/from Boston.
+
+### Three Legged Cat - Williamsburg, NYC
+
+### Spigolo Coffee - Pittsburgh, PA
+
+### Petaluma Coffee & Tea Company - Petaluma, California
+
+I will admit I was lured in by their $1 coffee promotional sign outside, but I'm glad I checked it out. Inside was very cozy, with a bright and homey feeling (if your house had a coffee roaster in the living room) and great drinks.
+
+<p align="center">
+  <img height="500" src="https://yangdanny97.github.io/misc/cafes/petaluma.jpeg">
+</p>

@@ -41,7 +41,7 @@ The content and logic of your essay do not matter at all to the E-grader. The gr
 
 To show just how ludicrous this is, I present a paragraph about “learning”, “reward”, and “punishment” from a BABEL-generated essay:
 
-According to professor of theory of knowledge Oscar Wilde, wages is the most fundamental amanuensis of human life. a neuron on opportunity inverts to reproduce. Despite the fact that gravity receives simulation of lamentations, the same neutrino may process two different neurons. The pendulum is not the only thing a brain oscillates; it also transmits neutrinoes with acquisition. Payoff which should be toil changes mimic on punishment. Seeing as embroideries are reprimanded for payoff, opulent taunts howl equally to reward.
+> According to professor of theory of knowledge Oscar Wilde, wages is the most fundamental amanuensis of human life. a neuron on opportunity inverts to reproduce. Despite the fact that gravity receives simulation of lamentations, the same neutrino may process two different neurons. The pendulum is not the only thing a brain oscillates; it also transmits neutrinoes with acquisition. Payoff which should be toil changes mimic on punishment. Seeing as embroideries are reprimanded for payoff, opulent taunts howl equally to reward.
 
 Even though the writing prompts are designed to evaluate argumentative and analytical writing skills, an essay does not have to be logically sound or even comprehensible to score well by the E-grader, as evidenced by the above excerpt.
 
