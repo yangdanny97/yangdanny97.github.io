@@ -27,7 +27,7 @@ For sourcing historical records like census data and map boundaries for the US, 
 
 You can access it here: [NHGIS Data Finder](https://data2.nhgis.org/main)
 
-## Tool; GeoJSONLint
+## Tool: GeoJSONLint
 
 This [handy browser-based tool](https://geojsonlint.com/) can help you preview your GeoJSON and diagnose any issues with its format.
 
