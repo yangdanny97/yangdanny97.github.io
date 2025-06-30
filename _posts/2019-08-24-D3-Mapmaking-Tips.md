@@ -9,7 +9,7 @@ tag: "Technical"
 
 This post is a collection of common problems people will encounter while making maps using D3, and my advice for how to deal with them. I plan to make regular updates/corrections as my understanding improves.
 
-Last update: 12/03/24
+Last update: 6/30/25
 
 <!-- more -->
 
@@ -26,6 +26,10 @@ There's a free alternative called [Nominatim](https://melaniewalsh.github.io/Int
 For sourcing historical records like census data and map boundaries for the US, the National Historical GIS Data Finder is your best friend. You have to manually select and download your dataset (it's not a live API to query from), but it has datasets going back hundreds of years, many of which are difficult to source elsewhere.
 
 You can access it here: [NHGIS Data Finder](https://data2.nhgis.org/main)
+
+## Tool; GeoJSONLint
+
+This [handy browser-based tool](https://geojsonlint.com/) can help you preview your GeoJSON and diagnose any issues with its format.
 
 ## Tool: Mapshaper
 
@@ -110,9 +114,13 @@ The solution is to pre-determine nice-looking lat/long coordinates for country c
 
 Sometimes you may encounter an issue where the color for a particular shape on a map "spills" out of the shape and fills the whole map.
 
-This is caused by a winding issue with your GeoJSON file. D3 expects the coordinates on a path to be [ordered in a clockwise direction](https://github.com/d3/d3-geo) - your data source likely has the correct coordinates ordered in reverse.
+This is caused by a winding issue with your GeoJSON file. D3 expects the coordinates on a path to be [ordered in a clockwise direction](https://github.com/d3/d3-geo), or what is sometimes called the "right hand rule".
 
-There are several online tools and libraries that can re-wind your GeoJSON correctly, like [this one by David Bumbeishvili](https://observablehq.com/@bumbeishvili/rewind-geojson).
+Your data source may have the coordinates ordered in reverse. To validate the winding in your GeoJSON, you can paste it into [GeoJSONLint](https://geojsonlint.com/).
+
+There are several online tools and libraries that can re-wind your GeoJSON correctly, like [this one by David Bumbeishvili](https://observablehq.com/@bumbeishvili/rewind-geojson) or [this one by Mapster](https://mapstertech.github.io/mapster-right-hand-rule-fixer/).
+
+For larger files that aren't compatible with browser tools, try using a library/CLI like [`geojson-rewind`](https://pypi.org/project/geojson-rewind/).
 
 ## D3 Projections Returning NaN
 
