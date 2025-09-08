@@ -13,8 +13,13 @@ description: Blog Homepage
         <hr>
         <br>
         {% for post in site.posts %}
+        {% if post.external_url %}
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.external_url }}" title="{{ post.title }}">{{
+                post.title }} 🔗 {{ post.external_site }}</a> <span class="badge badge-secondary">{{ post.category }}</span></p>
+        {% else %}
         <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
                 post.title }}</a> <span class="badge badge-secondary">{{ post.category }}</span></p>
+        {% endif %}
         {% endfor %}
     </div>
 </div>

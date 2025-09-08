@@ -7,7 +7,7 @@ description: Blog Homepage
     <div class="col-sm-6 offset-sm-3 content-pad">
         <h3>{{ page.title }}</h3>
         <div>Welcome to my blog! As you can see, I like to write about technical things (mainly programming languages,
-            compilers, & data vis). <a href="/feed.xml" target="_blank">RSS</a></div>
+            compilers, & data vis). Items marked with 🔗 are links to externally-published pieces I helped write. <a href="/feed.xml" target="_blank">RSS</a></div>
         <br>
         <a href="https://yangdanny97.github.io/blog/chronological.html">Sort by Date</a>
         <hr>
@@ -16,8 +16,13 @@ description: Blog Homepage
         <br>
         {% for post in site.posts %}
         {% if post.category == "Compilers" %}
+        {% if post.external_url %}
         <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
-                post.title }}</a> </p>
+                post.title }} 🔗 {{ post.external_site }}</a></p>
+        {% else %}
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+        post.title }}</a></p>
+        {% endif %}
         {% endif %}
         {% endfor %}
         <hr>
@@ -26,8 +31,13 @@ description: Blog Homepage
         <br>
         {% for post in site.posts %}
         {% if post.category == "Vis" %}
+        {% if post.external_url %}
         <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
-                post.title }}</a> </p>
+                post.title }} 🔗 {{ post.external_site }}</a></p>
+        {% else %}
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+        post.title }}</a></p>
+        {% endif %}
         {% endif %}
         {% endfor %}
         <hr>
@@ -36,8 +46,13 @@ description: Blog Homepage
         <br>
         {% for post in site.posts %}
         {% if post.category == "Technical" %}
+        {% if post.external_url %}
         <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
-                post.title }}</a> </p>
+                post.title }} 🔗 {{ post.external_site }}</a></p>
+        {% else %}
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+        post.title }}</a></p>
+        {% endif %}
         {% endif %}
         {% endfor %}
         <hr>
