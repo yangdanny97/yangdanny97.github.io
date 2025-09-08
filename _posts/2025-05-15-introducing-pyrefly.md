@@ -1,5 +1,5 @@
 ---
-title: "Introducing Pyrefly: A new type checker and IDE experience for Python"
+title: "Introducing Pyrefly"
 description: "Introducing a brand new, lightning-fast Python language server and type checker written in Rust"
 date: 2025-05-15
 category: "Compilers"

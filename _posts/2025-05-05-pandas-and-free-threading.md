@@ -1,5 +1,5 @@
 ---
-title: "Enhancing the Python ecosystem with type checking and free threading"
+title: "Enhancing the Python ecosystem w/ type checking and free threading"
 description: "Highlighting Meta's work to improve types in the Python ecosystem and improve the language's runtime performance"
 date: 2025-05-05
 category: "Technical"
