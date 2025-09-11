@@ -17,7 +17,7 @@ description: Blog Homepage
         {% for post in site.posts %}
         {% if post.category == "Compilers" %}
         {% if post.external_url %}
-        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.external_url }}" title="{{ post.title }}">{{
                 post.title }} 🔗 {{ post.external_site }}</a></p>
         {% else %}
         <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
@@ -32,7 +32,7 @@ description: Blog Homepage
         {% for post in site.posts %}
         {% if post.category == "Vis" %}
         {% if post.external_url %}
-        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.external_url }}" title="{{ post.title }}">{{
                 post.title }} 🔗 {{ post.external_site }}</a></p>
         {% else %}
         <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
@@ -47,7 +47,7 @@ description: Blog Homepage
         {% for post in site.posts %}
         {% if post.category == "Technical" %}
         {% if post.external_url %}
-        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
+        <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.external_url }}" title="{{ post.title }}">{{
                 post.title }} 🔗 {{ post.external_site }}</a></p>
         {% else %}
         <p><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}" title="{{ post.title }}">{{
