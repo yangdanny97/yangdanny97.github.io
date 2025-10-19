@@ -5,7 +5,7 @@ date: 2025-05-15
 category: "Compilers"
 tag: "External"
 external_url: "https://engineering.fb.com/2025/05/15/developer-tools/introducing-pyrefly-a-new-type-checker-and-ide-experience-for-python/"
-external_site: ""
+external_site: "Meta Engineering Blog"
 nofeed: true
 ---
 
