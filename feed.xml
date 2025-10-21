@@ -1,4 +1,4 @@
-{% raw %}{% for post in site.posts limit:100 %}
+{% for post in site.posts limit:100 %}
   {% unless post.nofeed %}
   <item>
     <title>{{ post.title | xml_escape }}</title>
@@ -8,4 +8,4 @@
     <guid isPermaLink="true">{{ post.url }}</guid>
   </item>
   {% endunless %}
-{% endfor %}{% endraw %}
+{% endfor %}
