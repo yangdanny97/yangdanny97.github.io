@@ -10,6 +10,10 @@ Don't be turned off by this strange ingredient - chicken feet are fantastic for 
 
 <!-- more -->
 
+<p align="center">
+  <img height="500" src="https://yangdanny97.github.io/misc/cooking/chicken_feet.png">
+</p>
+
 ### Chicken Feet Soup
 - Prep time: 4 hours
 - Cook time: 3 hours
