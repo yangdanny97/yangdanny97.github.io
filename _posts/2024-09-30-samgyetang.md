@@ -13,21 +13,21 @@ I referenced [this recipe](https://www.maangchi.com/recipe/samgyetang) when crea
 <!-- more -->
 
 ### Samgyetang
-- Prep time: 24 hours
+- Prep time: 24 hours if using dried ginseng
 - Cook time: 2.5 hours
 
 ### Ingredients (Serves 1, multiply ingredients and use a bigger pot for more people)
 - 1 cornish hen
 - 1 cup rice
 - 6 dried jujubes
-- 1 finger-sized piece of dried ginseng
+- 1 finger-sized piece of dried or fresh ginseng 
 - 6 inch length of nagaimo
 - salt
 - dried goji berry (optional)
 - scallions (optional)
 
 ### Directions
-1. Soak the dried ginseng for 24 hours, and slice it up
+1. If you're using dried ginseng, soak it for 24 hours and slice it up. If you're using the fresh stuff, slice it directly.
 2. Defrost and clean the inside of the cornish hen
 3. Peel and cut the nagaimo into stew-sized chunks
 4. Fill the chicken most of the way with rice, and stuff the end with 3 jujubes (the other 3 go into the soup)
