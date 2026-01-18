@@ -139,7 +139,7 @@ Of course, I had to turn the jitter up to max for this one too. I must say again
   <img height="800" src="https://yangdanny97.github.io/misc/citibike/citibike_global_max_jitter.png">
 </p>
 
-Finally, the raster heatmap:
+The raster heatmap looks like this:
 
 <p align="center">
   <img height="800" src="https://yangdanny97.github.io/misc/citibike/citibike_global_raster.png">
@@ -150,6 +150,10 @@ Here's a zoomed-in view:
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/citibike/citibike_global_raster_zoom.png">
 </p>
+
+Looking at the larger map, 1st/2nd/3rd Aves in Upper East Side & crosstown routes north of Central Park are notable hot spots. These are all symptoms of the same problem - these areas are underserved by public transit, which forces more people to get around by bike. Luckily, the 2nd Ave Subway may alleviate these issues, especially with the [newly-announced crosstown extension](https://www.governor.ny.gov/news/governor-hochul-unveils-plan-reimagine-jamaica-station-and-advance-second-avenue-subway) at 125th street.
+
+Outside of Manhattan, Bushwick and Red Hook appear very bright. While both of those neighborhoods have subway access, the subway layout isn't useful for getting around within the neighborhood, and many people live a long walk away from the nearest station.
 
 # Conclusion
 
