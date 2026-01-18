@@ -18,7 +18,13 @@ In this blog post, I'll show you how I downloaded and visualized my Citi Bike ri
 
 All the code for this blog post lives in [this Github repository](https://github.com/yangdanny97/citibike-heatmap), if you want to try it for yourself. For those of you not living in NYC, don't worry: this should work for all Lyft-operated bikeshare systems (SF, Chicago, DC, Boston, Portland, etc). 
 
-Before we get started, here's a sneak peek of the system-wide heatmap:
+Before we get started, here's a sneak peek of my personal heatmap:
+
+<p align="center">
+  <img height="600" src="https://yangdanny97.github.io/misc/citibike/citibike_global_raster.png">
+</p>
+
+And here's the system-wide heatmap:
 
 <p align="center">
   <img height="600" src="https://yangdanny97.github.io/misc/citibike/citibike_global_raster.png">
@@ -142,7 +148,7 @@ Finally, the raster heatmap:
 Here's a zoomed-in view:
 
 <p align="center">
-  <img height="800" src="https://yangdanny97.github.io/misc/citibike/citibike_global_raster_zoom.png">
+  <img height="500" src="https://yangdanny97.github.io/misc/citibike/citibike_global_raster_zoom.png">
 </p>
 
 # Conclusion
