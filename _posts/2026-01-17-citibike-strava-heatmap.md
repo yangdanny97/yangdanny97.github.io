@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Making a Strava-style Heatmap With My Citibike Ride History (Bonus: System-wide Heatmap)"
+title: "Making a Strava-style Heatmap With My Citibike Ride History"
 description: ""
 date: 2026-01-17
 category: "Vis"
@@ -144,6 +144,3 @@ This project was a fun exploration into techniques for visualizing route data as
 All the code for this blog post lives in [this Github repository](https://github.com/yangdanny97/citibike-heatmap), so please feel free to try it out for yourself, and let me know what you come up with!
 
 In the future, it would be awesome to reimagine this visualization as a physical installation, like this [Reddit user](https://www.reddit.com/r/Strava/comments/177bpmm/a_3d_print_of_my_san_francisco_heatmap/). It wouldn't be [the first time](https://nightingaledvs.com/making-rat-revolution/) I've done something like that.
-
-
-
