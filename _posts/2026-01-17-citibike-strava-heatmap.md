@@ -21,7 +21,7 @@ All the code for this blog post lives in [this Github repository](https://github
 Before we get started, here's a sneak peek of my personal heatmap:
 
 <p align="center">
-  <img height="600" src="https://yangdanny97.github.io/misc/citibike/citibike_global_raster.png">
+  <img height="600" src="https://yangdanny97.github.io/misc/citibike/citibike_raster.png">
 </p>
 
 And here's the system-wide heatmap:
