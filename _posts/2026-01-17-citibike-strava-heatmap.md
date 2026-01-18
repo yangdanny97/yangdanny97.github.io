@@ -91,7 +91,7 @@ There's a technique to add noise to data visualizations called jittering - the i
 
 While reading up on Strava's heatmap on [their engineering blog](https://medium.com/strava-engineering/the-global-heatmap-now-6x-hotter-23fc01d301de), I learned that Strava still adds jitter to each GPS data point, because some devices snap your coordinate to the center of the road.
 
-If even Strava was doing it, I decided that I had to fully embrace the imperfections in the process and intentioanlly degrade my data even more. 
+If even Strava was doing it, I decided that I had to fully embrace the imperfections in the process and intentionally degrade my data even more. 
 
 With a small amount of jitter applied, the lines look messier and closer to the aesthetic I'm aiming for. 
 
