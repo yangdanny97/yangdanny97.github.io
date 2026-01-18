@@ -8,11 +8,13 @@ tag: "Technical"
 image: "https://yangdanny97.github.io/citibike-heatmap/citibike_global_raster.png"
 ---
 
-One of my favorite features in Strava is the heatmap. It's fun to scroll through my personal heatmap and reminisce about adventures biking in other states and countries.
+The heatmap is one of my favorite features in Strava. It's fun to scroll through my personal heatmap and reminisce about adventures biking in other states and countries.
 
 I've always wondered what that heatmap would look like for my Citi Bike rides. The Citi Bike app doesn't have this functionality. All it shows is how many stations I've visited and how many rides I've done.
 
-To satisfy my curiosity, I had to take things into my own hands. In this blog post, I'll show you how I downloaded and visualized my Citi Bike ride history, showcasing several types of heatmaps and visualization techniques along the way. In the end, I'll also show a visualization of system-wide data, akin to a Strava-style Global Heatmap.
+To satisfy my curiosity, I had to take things into my own hands.
+
+In this blog post, I'll show you how I downloaded and visualized my Citi Bike ride history, showcasing several types of heatmaps and visualization techniques along the way. After that, I'll also use the same techniques to visualize system-wide data, creating something akin to Strava's Global Heatmap.
 
 For those of you not living in NYC, don't worry: this should work for all Lyft-operated bikeshare systems (SF, Chicago, DC, Boston, Portland, etc).
 
@@ -135,6 +137,12 @@ Finally, the raster heatmap:
 
 <p align="center">
   <img height="800" src="https://yangdanny97.github.io/misc/citibike/citibike_global_raster.png">
+</p>
+
+Here's a zoomed-in view:
+
+<p align="center">
+  <img height="800" src="https://yangdanny97.github.io/misc/citibike/citibike_global_raster_zoom.png">
 </p>
 
 # Conclusion
