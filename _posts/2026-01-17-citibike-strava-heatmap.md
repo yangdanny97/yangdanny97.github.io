@@ -153,7 +153,7 @@ Here's a zoomed-in view:
 
 Looking at the larger map, 1st/2nd/3rd Aves in Upper East Side & crosstown routes north of Central Park are notable hot spots. These are all symptoms of the same problem - these areas are underserved by public transit, which forces more people to get around by bike. Luckily, the 2nd Ave Subway may alleviate these issues, especially with the [newly-announced crosstown extension](https://www.governor.ny.gov/news/governor-hochul-unveils-plan-reimagine-jamaica-station-and-advance-second-avenue-subway) at 125th street.
 
-Outside of Manhattan, Bushwick and Red Hook appear very bright. While both of those neighborhoods have subway access, the subway layout isn't useful for getting around within the neighborhood, and many people live a long walk away from the nearest station.
+Outside of Manhattan, Bushwick and Red Hook appear very bright. While both of those neighborhoods have subway access, the subway layout isn't useful for getting around within the neighborhood, and many people live a long walk away from the nearest station. In Queens, the deeper parts of Astoria have a similar story, with a noticeable connections between the N/W and the M/R. The lack of crosstown subways in The Bronx is also very evident, with multiple bright east-west routes present on the map.
 
 # Conclusion
 
