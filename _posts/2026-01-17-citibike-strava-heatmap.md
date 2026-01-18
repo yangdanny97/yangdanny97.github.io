@@ -16,9 +16,7 @@ In order to satisfy my curiosity, I had to take things into my own hands.
 
 In this blog post, I'll show you how I downloaded and visualized my Citi Bike ride history, showcasing several types of heatmaps and visualization techniques along the way. After that, I'll also use the same techniques to visualize system-wide data, creating something akin to Strava's Global Heatmap.
 
-For those of you not living in NYC, don't worry: this should work for all Lyft-operated bikeshare systems (SF, Chicago, DC, Boston, Portland, etc).
-
-All the code for this blog post lives in [this Github repository](https://github.com/yangdanny97/citibike-heatmap).
+All the code for this blog post lives in [this Github repository](https://github.com/yangdanny97/citibike-heatmap), if you want to try it for yourself. For those of you not living in NYC, don't worry: this should work for all Lyft-operated bikeshare systems (SF, Chicago, DC, Boston, Portland, etc). 
 
 Before we get started, here's a sneak peek of the system-wide heatmap:
 
