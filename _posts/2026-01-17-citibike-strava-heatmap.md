@@ -162,3 +162,11 @@ This project was a fun exploration into techniques for visualizing route data as
 All the code for this blog post lives in [this Github repository](https://github.com/yangdanny97/citibike-heatmap), so please feel free to try it out for yourself, and let me know what you come up with!
 
 In the future, it would be awesome to reimagine this visualization as a physical installation, like this [Reddit user](https://www.reddit.com/r/Strava/comments/177bpmm/a_3d_print_of_my_san_francisco_heatmap/). It wouldn't be [the first time](https://nightingaledvs.com/making-rat-revolution/) I've done something like that.
+
+# Further Reading
+
+Other bikeshare systems have been mapped using similar techniques. Check them out!
+- [Toronto](https://schoolofcities.github.io/bike-share-toronto/trips-062024)
+- [San Francisco](https://www.sfchronicle.com/sf/article/bay-wheels-bike-map-19972251.php)
+- [Boston](https://www.reddit.com/r/bikeboston/comments/1mv3tn5/map_of_estimated_bluebikes_traffic_volume/)
+- [Washington DC](https://mobilitylab.org/research/bike/where-and-how-do-capital-bikeshare-riders-use-bike-lanes/)
