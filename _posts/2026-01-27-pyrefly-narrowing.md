@@ -1,5 +1,5 @@
 ---
-title: "4 Type Narrowing Patterns in Pyrefly that make Python Type Checking more Intuitive"
+title: "Type Narrowing Patterns in Pyrefly"
 description: "4 Type Narrowing Patterns in Pyrefly that make Python Type Checking more Intuitive"
 date: 2026-01-27
 category: "Compilers"
