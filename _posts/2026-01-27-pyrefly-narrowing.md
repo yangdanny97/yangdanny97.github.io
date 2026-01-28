@@ -5,7 +5,7 @@ date: 2026-01-27
 category: "Compilers"
 tag: "External"
 external_url: "https://pyrefly.org/blog/type-narrowing/"
-external_site: "Pyrefly Blog"
+external_site: ""
 nofeed: true
 ---
 
