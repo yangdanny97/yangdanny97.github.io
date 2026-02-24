@@ -15,7 +15,7 @@ Last update: 6/30/25
 
 ## Geocoding
 
-Geocoding is the process of mapping addresses to their coordinates. It's useful when your're working with locations that aren't readily available as coordinates, such as free-form survey data.
+Geocoding is the process of mapping addresses to their coordinates. It's useful when you're working with locations that aren't readily available as coordinates, such as free-form survey data.
 
 The best geocoding service is probably [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/start), but that costs money after a free trial.
 
