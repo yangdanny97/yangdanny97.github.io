@@ -6,7 +6,8 @@ layout: default
 <meta name="robots" content="noindex">
 {% else %}
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-<link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }}"
+    href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
 {% endif %}
 <style>
     .meta {
@@ -59,6 +60,12 @@ layout: default
 <div class='row slide'>
     <div class="col-sm-8 offset-sm-2 borders">
         <h1 class="post_title">{{ page.title }}</h1>
+        {% if page.external_url %}
+        <div class="post">
+            This blog post is published on another site:
+            <a href="{{ page.external_url }}">{{ page.external_url }}</a>
+        </div>
+        {% else %}
         <div class="meta post">{{ page.date | date_to_string }} - {{ content | number_of_words }} words - {{ content |
             number_of_words | divided_by: 200 }} minute read -
             <a href="/feed.xml" target="_blank">RSS</a>
@@ -66,6 +73,7 @@ layout: default
         <div class="post">
             {% include anchor_headings.html html=content anchorBody="#" %}
         </div>
+        {% endif %}
         <hr>
         <script src="https://giscus.app/client.js" data-repo="yangdanny97/yangdanny97.github.io"
             data-repo-id="MDEwOlJlcG9zaXRvcnk3NjkyNjY0Nw==" data-category="General"
