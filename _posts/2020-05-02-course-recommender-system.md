@@ -9,13 +9,13 @@ tag: "Technical"
 
 During my last semester at Cornell, I worked with my peers on Cornell Data Science to build a course visualization/recommender system. In this post, I'll give an overview of the project and how we built it. I'll also synthesize some of the lessons and insights that we learned from the process, for the benefit of anyone looking to build a similar system.
 
-<!-- more -->
-
 Here's a link to the [source code](https://github.com/yangdanny97/pathways-vis).
 
 <p align="center">
   <img width="500" src="https://yangdanny97.github.io/misc/pathways/final.png">
 </p>
+
+<!-- more -->
 
 ### Introduction
 

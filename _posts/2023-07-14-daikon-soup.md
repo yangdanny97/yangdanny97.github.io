@@ -12,11 +12,11 @@ Yes, I promise I know how to make other stuff, and yes, all the recipes are subt
 
 The combination of daikon (a type of radish), nagaimo (a type of yam), and marrow-filled pork bone makes a rich and hearty soup good for winter. 
 
-<!-- more -->
-
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/cooking/daikon_soup.png">
 </p>
+
+<!-- more -->
 
 ### Daikon Soup:
 - Prep time: 15 minutes

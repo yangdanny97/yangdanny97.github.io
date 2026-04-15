@@ -10,11 +10,11 @@ One of my favorite variants of pork bone soup, this one is good for summer becau
 
 The main challenge of this dish is finding fresh whole water chestnuts. In America most water chestnuts are sold canned and sliced. These are no good, they are flavorless. You need to buy fresh ones from an Asian supermarket, which are quite a pain to wash and peel.
 
-<!-- more -->
-
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/cooking/water_chestnut_soup.png">
 </p>
+
+<!-- more -->
 
 ### Water Chestnut Soup:
 - Prep time: 30 minutes

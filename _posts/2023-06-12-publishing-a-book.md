@@ -10,6 +10,8 @@ At the beginning of 2023, I published [a functional programming book](https://ya
 
 The goal of this blog post is to tell the story of the entire writing and publication process. Although I can't say that I know all the ins and outs of publishing from writing this single book, I hope my story is useful - whether you're interested in publishing a book or you're just curious about how it all works.
 
+<!-- more -->
+
 To frame the story, here a summary of the timeline:
 - 11/2021 - book proposal
 - 12/2021 - contract signed

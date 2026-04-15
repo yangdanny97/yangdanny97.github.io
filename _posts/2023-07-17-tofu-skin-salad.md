@@ -10,11 +10,11 @@ This is a nice cold dish for the summer and can be prepared in relatively large 
 
 Unlike regular salads this is not sweet or sour, it's salty. There are also no leafy greens. 
 
-<!-- more -->
-
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/cooking/tofu_skin_salad.png">
 </p>
+
+<!-- more -->
 
 ### Tofu Skin Salad
 - Prep time: 8 hours

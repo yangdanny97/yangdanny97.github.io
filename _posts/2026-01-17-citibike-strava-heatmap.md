@@ -30,6 +30,8 @@ And here's the system-wide heatmap:
   <img height="600" src="https://yangdanny97.github.io/misc/citibike/citibike_global_raster.png">
 </p>
 
+<!-- more -->
+
 # Part 1: Personal Heatmap
 
 While Citi Bike provides useful system-wide data in its API, there is no official way to download your personal ride history from Citi Bike. Luckily, I found [this script](https://github.com/fhoffa/code_snippets/tree/master/baywheels) by fhoffa that scrapes the ride data from the Citi Bike website while you're logged in.

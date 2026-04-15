@@ -10,6 +10,8 @@ A couple months ago, while I was preparing to take the GRE, I came across a surp
 
 What I discovered mostly lined up with my expectations - there are flaws that can be exploited to artificially boost your score, and the grader cannot tell the difference between a good essay and incomprehensible, sophisticated-sounding gibberish. 
 
+<!-- more -->
+
 ## How Essay Autograders Work
 
 Fundamentally, the GRE E-grader is a machine learning model that takes in an input and tries to predict what score a human grader would have given. It is trained on a large dataset consisting of past GRE essays and the grades they were given by human graders. Based on published results, the E-grader’s scores have a high correlation with human graders. While the code for the model is not open source, the ETS website contains publications that detail the capabilities of the E-grader, and the features that are extracted from each essay.

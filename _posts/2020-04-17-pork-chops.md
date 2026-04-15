@@ -7,11 +7,11 @@ category: "Cooking"
 ---
 A quick and easy pork chop recipe.
 
-<!-- more -->
-
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/cooking/porkchops.JPG">
 </p>
+
+<!-- more -->
 
 ### Pan-Fried Pork Chops:
 - Prep time: 5 minutes

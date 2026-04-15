@@ -9,11 +9,11 @@ tag: "Technical"
 
 As a challenge for myself, I decided to recreate one of my all-time favorite visualizations: [Five Years of Drought](https://adventuresinmapping.com/2016/07/12/five-years-of-drought/) by John Nelson. As the name suggests, it's a map of drought severity and frequency in the US over 5 years, with the drought data binned into a hexagonal grid. When I first saw it, I admired the stunning color scheme and was impressed that the author was able to display 2 variables on the same map (made possible by the hexagonal grid). This map has a lot of personal significance for me because it ultimately piqued my interest in the field of data visualization. 
 
-<!-- more -->
-
 For convenience of comparison, the original map is is displayed below:
 
 <img src="https://adventuresinmapping.files.wordpress.com/2016/07/droughtintensityandduration.jpg" height="400">
+
+<!-- more -->
 
 The original data was collected from weekly summaries provided by the [US Drought Monitor](https://droughtmonitor.unl.edu/), but since the author already aggregated and binned the data and shared the binned points as a shapefile, I decided to just use that. 
 

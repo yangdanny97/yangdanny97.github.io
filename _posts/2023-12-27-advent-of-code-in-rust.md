@@ -9,6 +9,8 @@ tag: "Technical"
 
 This is my third year doing [Advent of Code](https://adventofcode.com/2023). In the past, I've used it as a way to practice problem solving & learn new languages. This year, I decided to try Rust.
 
+<!-- more -->
+
 My team at work has a sizable Rust codebase that I've touched a few times in the past, so this was a good opportunity to get a feel for the language and hopefully get better at my job.
 
 Since folks have been hyping up ChatGPT for a while, I was also curious to see how useful it would be for learning a new language. I didn't use it for any of the problem solving parts, and mainly just used it to explain compiler errors and as an alternative language documentation (think, "how do I split a string at each colon and semicolon").

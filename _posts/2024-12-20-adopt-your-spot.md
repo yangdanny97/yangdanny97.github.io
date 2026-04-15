@@ -20,6 +20,8 @@ The program is simple: volunteers step up to "adopt" their favorite spot in thei
 
 The code and data for this analysis can be found in this [Github repository](https://github.com/yangdanny97/adopt-your-spot).
 
+<!-- more -->
+
 # What kinds of places do people adopt?
 
 Each adopted spot has some text describing the location. Around half of the spots only list street numbers, but the rest of them contain other descriptive text such as "sidewalk" or "bus stop" or "apartment".

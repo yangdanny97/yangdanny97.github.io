@@ -9,6 +9,8 @@ tag: "Technical"
 
 The importance of data visualization is rapidly growing in today's data-rich world, and web-based interactive visualizations such as those on [New York Times](https://www.nytimes.com/interactive/2018/03/27/upshot/make-your-own-mobility-animation.html) or [FiveThirtyEight](https://projects.fivethirtyeight.com/redistricting-maps/) can engage and inform a wide audience. One of the most popular tools for visualizing data on the web is D3, a powerful data visualization library for Javascript. This tutorial is intended to teach you how to make a circular bar chart in D3. Some knowledge of HTML and JavaScript is assumed.
 
+<!-- more -->
+
 Circular bar charts (also called radial bar charts) are a form of bar chart that curves each bar around a circle. They are more compact than regular bar charts, making them a good choice for situations where there are space constraints. The main disadvantage of this compared to regular bar charts is that it becomes harder to compare values between bars at a glance; bars closer to the middle appear much smaller than bars closer to the edge, even when the value they are plotting is larger.
 
 One famous example of the circular bar chart can be found in W.E.B Du Bois's hand-drawn statistical charts highlighting racial and economic inequalities faced by African Americans in 1900.

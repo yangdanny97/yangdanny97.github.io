@@ -11,6 +11,8 @@ Earlier this year, I thought it would be cool to try and understand the "transit
 
 Although the subway system in NYC has impressive coverage, not all neighborhoods are equal.
 
+<!-- more -->
+
 Some neighborhoods, like Long Island City, have multiple stations and many subway lines passing through. Residents in those neighborhoods can reach many other parts of the city without needing to change trains, and have plenty of backup options if one line is severely delayed or shut for maintenance.
 
 Other neighborhoods, like Greenpoint right next door, have only a single station or line. Residents often need to transfer once (or even twice) to get to their destination, and when their only subway line stops running (such as during the G train shutdowns this summer) they are left with few alternatives.

@@ -12,6 +12,8 @@ This mildly sweet porridge can be enjoyed hot or cold. Mung beans are already a 
   <img height="500" src="https://yangdanny97.github.io/misc/cooking/mung_bean_porridge.png">
 </p>
 
+<!-- more -->
+
 ### Mung Bean Porridge:
 - Prep time: 4 hours
 - Cook time: 1.5 hours

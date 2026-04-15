@@ -9,6 +9,8 @@ tag: "Technical"
 
 This post describes my experience doing part-time data visualization freelancing on Upwork in 2023. I'm not sure how representative it is or how much of it applies to full-time freelancing, but I hope my learnings here are useful for anyone who is curious about freelancing.
 
+<!-- more -->
+
 ## Introduction
 
 After I finished writing [my book](https://yangdanny97.github.io/book/) in December 2022, I decided to use my newfound free time to dabble in freelancing. I had been working in Big Tech™ ever since I graduated, so I thought it would be a good opportunity to experience another part of the sector.

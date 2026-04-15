@@ -8,11 +8,11 @@ category: "Cooking"
 
 This is a simple braised chicken with chestnuts that I've been making for years. Best eaten in the fall when chestnuts are in season.
 
-<!-- more -->
-
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/cooking/chestnut-chicken.png">
 </p>
+
+<!-- more -->
 
 ### Chestnut Chicken
 - Prep time: 4 hours

@@ -10,6 +10,8 @@ tag: "Technical"
 
 This post is a bit different from my previous posts. It's a review of the charts and visualizations in [W.E.B Dubois's Data Portraits: Visualizing Black America](https://papress.com/products/w-e-b-du-boiss-data-portraits-visualizing-black-america). The book features 63 charts by Du Bois and a team from Atlanta University, which were originally created for the 1900 Paris Exposition to show the progress that Black Americans had made since the Civil War. 
 
+<!-- more -->
+
 I had known about these visualizations for a while (they are classics, after all), but I didn't really take the chance to examine every print in detail until I recently acquired a copy. Truly ahead of their time both aesthetic appeal and clarity, Du Bois's charts use color, shapes, and layout effectively to convey a strong narrative using data. Being able to look at these charts printed on paper (as they were originally created/displayed) made a huge difference in my ability to enjoy and critique them.
 
 Since they were hand-crafted and hand-colored over 100 years ago, they also reflect the technology and limitations of their time. Several of the charts sacrifice visual clarity for novel and eye-catching colors/layouts (perhaps intentionally). Several other charts contain text or other elements that are challenging for today's data visualization practitioners to automatically generate without any hard-coding, demonstrating how tailor-made additions can enhance the impact of otherwise quotidian chart layouts.

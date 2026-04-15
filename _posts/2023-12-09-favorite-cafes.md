@@ -12,6 +12,8 @@ I'm not very particular about my coffee - I really don't have strong preferences
 
 This page is very much a WIP since I'm still in the process of cataloging the cafes that I've visited in the last few years.
 
+<!-- more -->
+
 ## Recommended Cafes
 
 ### Bugcat Capoo Cafe - Taichung

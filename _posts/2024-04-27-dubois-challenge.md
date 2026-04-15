@@ -28,6 +28,8 @@ Participants are allowed to use whatever tools they want, but my tool of choice 
 
 For the rest of the post, I'll discuss each of the ten plates I recreated, describing my process and interesting features in each visualization. Click into each title for a live view, or browse the [source code](https://github.com/yangdanny97/dubois-challenge-2024-d3js) on Github. In the galleries below, the left/first image is my reproduction and the right/second image is the original.
 
+<!-- more -->
+
 ## [Week 1 - Plate 06 - Choropleths](https://yangdanny97.github.io/dubois-challenge-2024-d3js/week1-plate06/)
 
 ![Plate 06 reproduction](https://yangdanny97.github.io/dubois-challenge-2024-d3js/week1-plate06/week1.png)

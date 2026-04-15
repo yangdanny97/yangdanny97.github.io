@@ -8,11 +8,11 @@ category: "Cooking"
 
 Don't be turned off by this strange ingredient - chicken feet are fantastic for making soup. They have lots of tendons, allowing you to make a smooth broth that contains lots of gelatin without breaking the bank to buy pork or beef tendons. The chicken feet themselves are also edible - they have an interesting texture since they get entirely gelatinized, allowing you to easily eat the good stuff and spit out the bones.
 
-<!-- more -->
-
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/cooking/chicken_feet.png">
 </p>
+
+<!-- more -->
 
 ### Chicken Feet Soup
 - Prep time: 4 hours

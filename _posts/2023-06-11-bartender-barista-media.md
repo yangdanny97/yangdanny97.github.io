@@ -10,6 +10,8 @@ This post is a list of examples of a rather niche genre of media I like to call 
 
 For years I've enjoyed this type of media without really knowing what it's called, but I figured I could start compiling a list. I'll keep this post updated as I come across more examples.
 
+<!-- more -->
+
 To fit the genre, the following criteria have to be met:
 
 1. the main/recurring character works as a bartender or barista

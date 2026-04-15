@@ -12,11 +12,11 @@ This recipe requires two niche ingredients, both found at Asian supermarkets:
 - dried greens - They're typically some sort of unspecified white-stemmed leafy green. Get the kind that's not pickled, and try to get a pack with less stems and more leaves.
 - Chinese almonds - Get the ones at the grocery store, NOT the ones at the Chinese medicine store. If you can't find them, regular almonds are an acceptable substitute (as seen in the photo below).
 
-<!-- more -->
-
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/cooking/dried-vegetable-soup.png">
 </p>
+
+<!-- more -->
 
 ### Dried Vegetable and Almond Soup:
 - Prep time: 4 hours

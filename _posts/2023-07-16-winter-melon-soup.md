@@ -10,11 +10,11 @@ Another variant of pork bone soup that less sweet and more hearty. Despite the n
 
 Winter melons are massive (roughly the size of a large watermelon), and one melon will likely be enough for several pots of soup. Luckily, most places sell them in quarters. 
 
-<!-- more -->
-
 <p align="center">
   <img height="500" src="https://yangdanny97.github.io/misc/cooking/winter_melon.png">
 </p>
+
+<!-- more -->
 
 ### Winter Melon Soup
 - Prep time: 15 minutes
