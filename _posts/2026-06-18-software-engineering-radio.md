@@ -1,5 +1,5 @@
 ---
-title: "🎙️ SE Radio 725: Danny & Sam on the Pyrefly Type Checker"
+title: "🎙️ Danny & Sam on the Pyrefly Type Checker"
 description: "SE Radio 725: Danny Yang and Sam Goldman on the Pyrefly Type Checker"
 date: 2026-06-18
 category: "Compilers"
