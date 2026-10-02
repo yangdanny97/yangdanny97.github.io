@@ -1,0 +1,44 @@
+---
+layout: default
+title: "Errata: Introducing ReScript 12"
+description: "Known errors in Introducing ReScript 12: Functional Programming for Web Applications, Second Edition"
+---
+<div class='row slide'>
+    <div class="col-sm-6 offset-sm-3 content-pad">
+        <h3>{{ page.title }}</h3>
+        <p>
+            Known errors in <a href="{{ site.url }}/book/">Introducing ReScript 12</a>, second edition, by printed page
+            number. Found something that isn't here? <a href="mailto:dzy4@cornell.edu">Let me know</a>.
+        </p>
+        <ul>
+            <li>
+                <p><strong>p. 80</strong> &mdash; the guard in <code>matchRecord4</code> should use <code>if</code>, not
+                    <code>when</code>:</p>
+                <pre><code>| {name: n} if String.length(n) &gt; 10 =&gt; true</code></pre>
+            </li>
+            <li>
+                <p><strong>p. 87</strong> &mdash; <code>manhattan2</code> should use <code>Math.Int.abs</code> rather
+                    than a bare <code>abs</code>. (<code>Math.abs</code> on p. 86 is correct; that example uses
+                    floats.)</p>
+            </li>
+            <li>
+                <p><strong>p. 92</strong> &mdash; &ldquo;by having <code>Array.get</code> returns an optional
+                    value&rdquo; should read &ldquo;return an optional value.&rdquo;</p>
+            </li>
+            <li>
+                <p><strong>p. 104</strong> &mdash; <code>Array.partition</code> is in the standard library as of
+                    ReScript 12.2. Disregard the note saying it is Belt-only.</p>
+            </li>
+            <li>
+                <p><strong>p. 157</strong> &mdash; <code>ArrayStack.peek</code> is missing its <code>if</code>. Since
+                    array access already returns an option, the check can go entirely:</p>
+                <pre><code>let peek = stack =&gt; stack[Array.length(stack) - 1]</code></pre>
+            </li>
+            <li>
+                <p><strong>p. 175</strong> &mdash; <code>TAG</code> holds the constructor name as a string, so the two
+                    compiled listings should read <code>TAG: "Player"</code> and <code>TAG: "Enemy"</code>. The raw
+                    JavaScript and console output on those pages are already correct.</p>
+            </li>
+        </ul>
+    </div>
+</div>
